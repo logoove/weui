@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>单选/复选/开关</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/> <link rel="stylesheet" href="../style/weui2.css"/>
+      <script src="../zepto.min.js"></script>
+
+</head>
+
+<body ontouchstart>
+      <article class="weui_article">
+            <h1>大标题</h1>
+            <section>
+                <h2 class="title">章标题</h2>
+                <section>
+                    <h3>1.1 节标题</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute</p>
+                </section>
+                <section>
+                    <h3>1.2 什么是小说</h3>
+                    <p>小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境。</p>
+                </section>
+            </section>
+        </article>
+<div class="">
+                      <table class="ui-table ui-border-tb">
+                <thead>
+                <tr><th>已购买</th><th>状态</th><th>会员到期时间</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>2014257777</td><td>使用中</td><td>2016-02-06</td></tr>
+                <tr><td>2014257777</td><td>待付款</td><td><a href="#">付款</a></td></tr>
+                <tr><td>2014257777</td><td>待付款</td><td><a href="#">付款</a></td></tr>
+                </tbody>
+            </table>
+   </div> 
+  <div class="p"> 
+ <table class="ui-table ui-border">
+                <thead>
+                <tr><th>已购买</th><th>状态</th><th>会员到期时间</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>2014257777</td><td>使用中</td><td>2016-02-06</td></tr>
+                <tr><td>2014257777</td><td>待付款</td><td><a href="#">付款</a></td></tr>
+                <tr><td>2014257777</td><td>待付款</td><td><a href="#">付款</a></td></tr>
+                </tbody>
+            </table></div>
+
+  <div class="slider" id="slider1">
+<ul>
+<li><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/1.jpg" width='640' height='200'/>
+<div class="slider-desc">基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</div></li>
+<li><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/2.jpg" width='640' height='200'>
+	<div class="slider-desc">零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</div>
+</li>
+<li><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/3.jpg" width='640' height='200'>
+<div class="slider-desc">只知道不知道 兑换【饿了么】畅享美食红包 消耗20金币</div>
+</li>
+</ul>
+</div>
+<ol class="slider-nav"><li><a class="active">1</a></li><li><a class="">2</a></li><li><a class="">3</a></li></ol>
+
+<br><br><br><br><br><br>
+
+<div  class="slider slider-a1" id="slider2">
+<ul >
+<li ><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/1.jpg" width='640' height='200'></li>
+<li class=""><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/2.jpg" width='640' height='200'></li>
+<li class=""><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/3.jpg" width='640' height='200'></li>
+
+</ul>
+</div>
+<ol class="a1-nav">
+<li><a class="active"></a></li><li><a class=""></a></li><li><a class=""></a></li></ol>
+<br><br><br><br><br><br>
+
+  <div class="slider" id="slider3">
+<ul>
+<li>
+<div height='30' class='txt'>基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</div></li>
+<li>
+	<div height='30' class='txt'>零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</div>
+</li>
+<li>
+<div height='30' class='txt'>兑换【饿了么】畅享美食红包 消耗20金币</div>
+</li>
+</ul>
+</div>
+
+<br><br><br><br><br><br>
+
+<script>
+$(function(){
+var elem = document.getElementById('slider1');
+window.mySwipe= Swiper(elem, {
+		speed:500,
+		auto:1000,
+		startSlide:0,		
+		callback: function(index,element){
+	$('.slider-nav li a').removeClass("active");
+	$('.slider-nav li a').eq(index).addClass("active");
+		},transitionEnd: function(index, element) {
+		 	
+		 }
+	});
+mySwipe.stop = function(){
+    delay = options.auto > 0 ? options.auto : 0;
+    clearTimeout(interval);
+};
+
+var elem2 = document.getElementById('slider2');
+window.mySwipe2= Swiper(elem2, {
+		speed:1000,
+		auto:1000,
+		startSlide:0,		
+		callback: function(index,element){
+	$('.a1-nav li a').removeClass("active");
+	$('.a1-nav li a').eq(index).addClass("active");
+		},transitionEnd: function(index, element) {
+		 	
+		 }
+	});
+	
+	var elem3 = document.getElementById('slider3');
+window.mySwipe3= Swiper(elem3, {
+		speed:3000,
+		auto:2000,
+		startSlide:0,		
+		callback: function(index,element){
+		},transitionEnd: function(index, element) {
+		 	
+		 }
+	});
+	
+});	
+</script>
+ 
+
+ <br><br><br><br><br><br><br>
+ <script src="../example.js"></script>
+</body>
+</html>
