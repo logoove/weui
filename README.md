@@ -1,3 +1,3 @@
-#weui演示
+#weui+是一个增强微信官方weui的前端界面
 =============================
-演示测试以下内容
+演示地址 [http://logoove.github.io/weui2](http://logoove.github.io/weui2)
