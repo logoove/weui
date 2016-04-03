@@ -50,10 +50,24 @@
           <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <textarea class="weui_textarea" placeholder="请输入评论" rows="3"></textarea>
-                    <div class="weui_textarea_counter"><span>0</span>/200</div>
+                    <div class="weui_textarea_counter"><span id='textarea_num'>剩余200字</span></div>
                 </div>
             </div>
-            
+          <script>
+$(function(){
+	$(".weui_textarea").on("input paste" , function(){
+				var num_left=200-$(this).val().length;
+				if(num_left<0){
+					$("#textarea_num").text("超过"+(-num_left)+"字");
+					$("#textarea_num").css("color","#E44443");
+				}else{
+					$("#textarea_num").text("剩余"+(num_left)+"字");
+					$("#textarea_num").css("color","#999999");
+				}
+			});
+
+})
+</script>   
           <div class="weui_cell weui_cell_warn">
                 <div class="weui_cell_hd"><label for="" class="weui_label">卡号</label></div>
                 <div class="weui_cell_bd weui_cell_primary">

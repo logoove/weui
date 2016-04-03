@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>单选/复选/开关</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+
+ <style>
+</style>
+ 
+ 
+</head>
+
+<body ontouchstart>
+  <div class="weui_panel weui_panel_access" >
+           
+            <div class="weui_panel_bd"  id="qq">
+                <div class="weui_media_box weui_media_text">
+                    
+                    <p class="weui_media_desc">1由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+                <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">2由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+                 <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">3由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">4由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+                  <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">5由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>              
+                 <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">6由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                 <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">7由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                 <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">8由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                  <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">9由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                 <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">10由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>  
+                     <div class="weui_media_box weui_media_text">         
+                     <p class="weui_media_desc">11由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                  <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">12由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>               
+                 <div class="weui_media_box weui_media_text">
+                   
+                    <p class="weui_media_desc">13由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>                  
+                               
+                
+                                
+            </div>
+            
+        </div>
+      <script src="../zepto.min.js"></script>
+ <script src="../refresh.js"></script>  
+<script>
+
+$(window).refresh({
+	contentEl: '#qq',
+	// 头部的高度
+	distanceToRefresh: 40,
+	// 开启刷新
+	isRefresh: true,
+	// 开启加载更多
+	isLoadingMore: true,
+	// 触发刷新回调
+	refreshCallback: function(complete) {
+		 setTimeout(function() {
+			window.location.reload();
+			complete();
+		 }, 1000)
+	},
+	// 加载更多回调
+	loadingMoreCallback: function(complete) {
+		var tpl = '';
+
+		for (var i = 0; i < 10; i++) {
+
+			tpl += '<div class="weui_media_box weui_media_text"><p class="weui_media_desc">'+(i+14) +'我爱你星球有一定的形状，有自己的运行轨道。</p></div>';
+		}
+
+		$('#qq').append(tpl);
+		complete('finish');
+
+	}
+});	
+</script>       
+</body>
+</html>

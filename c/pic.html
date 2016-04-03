@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>单选/复选/开关</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>  <link rel="stylesheet" href="../style/weui2.css"/>
+      <script src="../zepto.min.js"></script>
+<script src="../lrz.min.js"></script>
+
+</head>
+
+<body ontouchstart>
+   <div class="weui_cells weui_cells_form">
+   
+                  <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui_uploader">
+                        <div class="weui_uploader_hd weui_cell">
+                            <div class="weui_cell_bd weui_cell_primary">图片上传前压缩</div>
+                            <div class="weui_cell_ft"></div>
+                        </div>
+                        <div class="weui_uploader_bd">
+                            <ul class="weui_uploader_files" id='img'>
+                             
+                            </ul>
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" id="headimgurl" />
+                                <input  type="hidden"  id="headimgurl1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+ 
+                   <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui_uploader">
+                        <div class="weui_uploader_hd weui_cell">
+                            <div class="weui_cell_bd weui_cell_primary">图片上传不压缩</div>
+                            <div class="weui_cell_ft"></div>
+                        </div>
+                        <div class="weui_uploader_bd">
+                            <ul class="weui_uploader_files" id='img1'>
+                            
+                            
+                            </ul>
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" id="i1" onchange="previewImage(this)"/>
+                                <input  type="hidden"  id="i4" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+   
+                      <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui_uploader">
+                        <div class="weui_uploader_hd weui_cell">
+                            <div class="weui_cell_bd weui_cell_primary">多图上传</div>
+                            <div class="weui_cell_ft"></div>
+                        </div>
+                        <div class="weui_uploader_bd">
+                            <ul class="weui_uploader_files" id='img2'>
+                            
+                            
+                            </ul>
+                            <div class="weui_uploader_input_wrp">
+                                <input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif"  onchange="previewImage1(this)" multiple />
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+  </div>
+  
+  
+
+  
+  
+           <script>
+function previewImage(file) {
+    var MAXWIDTH = 100;
+    var MAXHEIGHT = 200;
+    if (file.files && file.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (evt) {         
+            $('#img1').html('<li class="weui_uploader_file" style="background-image:url('+evt.target.result+')"></li>');          
+        };
+        reader.readAsDataURL(file.files[0]);
+    }
+}
+function previewImage1(file) {
+    var MAXWIDTH = 100;
+    var MAXHEIGHT = 200;
+    for(var i=0;i<file.files.length;i++){
+    
+    if (file.files && file.files[i]) {
+        var reader = new FileReader();
+        reader.onload = function (evt) {   
+            $('#img2').append('<li class="weui_uploader_file" style="background-image:url('+evt.target.result+')"></li>');          
+        };
+        reader.readAsDataURL(file.files[i]);
+    }
+    
+    }
+    
+}
+       
+$(function(){
+
+
+ var f = document.querySelector('#headimgurl');
+f.onchange = function () {
+    lrz(this.files[0], {
+        width:400,
+       
+        // 压缩开始
+        before: function() {
+            console.log('压缩开始');
+        },
+        // 压缩失败
+        fail: function(err) {
+            console.error(err);
+        },
+        // 压缩结束（不论成功失败）
+        always: function() {
+            console.log('压缩结束');
+        },
+        // 压缩成功
+        done: function (results) {
+              console.log(results);
+         var data = {
+                    base64: results.base64,
+                    size: results.base64.length // 校验用，防止未完整接收
+                };
+          $.ajax({
+                url: "1.php",
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                error: function (data) {
+                  if(data.error==1){
+                    alert('格式错误只支持jpg,png,gif');
+                    }else if(data.error==2){
+                    alert("写入文件失败,可能超时或文件过大");
+                    }else if(data.error==3){
+                    alert("文件不能超过1MB");
+                    }else{
+                    alert("上传遇到未知错误");
+                    }
+                },
+                success: function (result) {
+              //$('#img').append('<li class="weui_uploader_file" style="background-image:url('+result.src+')"></li>');
+                $('#img').html('<li class="weui_uploader_file" style="background-image:url('+result.src+')"></li>');
+                $("#headimgurl1").val(result.src);
+                }
+            }); 
+        results.base64 = null;
+          //return false;         
+        }
+    });
+}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </script>  
+         
+</body>
+</html>

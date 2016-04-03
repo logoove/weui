@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>单选/复选/开关</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+      <script src="../zepto.min.js"></script>
+
+</head>
+
+<body ontouchstart>
+<div id="q">
+           
+
+
+</div>
+<script>
+var data={
+    txt:"登鹳雀楼",
+    list:[
+        "白日依山尽",
+        "黄河入海流",
+        "欲群千里目",
+        "更上一层楼"
+    ]
+}
+var tplHTML=' <div class="weui_cells_title"><%=txt%></div>'+
+        '<div class="weui_cells">'+
+        '<% for(var i=0;i<list.length;i++){ %><div class="weui_cell">'+
+                '<div class="weui_cell_bd weui_cell_primary">'+
+                    '<p><%=list[i]%></p>'+
+                '</div></div><% } %></div> ';
+var dest=$.tpl(tplHTML,data);
+$("#q").html(dest);
+</script> 
+
+<div id="q1">
+           
+
+
+</div>
+ <script id="test" type="text/html">
+         <div class="weui_cells_title"><%=title%></div>
+        <div class="weui_cells">
+        
+         <% for (var i = 0; i < list.length; i ++) {   %>
+                    <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p><%= i + 1 %> ：<%=list[i] %></p>
+                </div>
+                
+            </div>
+<% } %>
+</div>
+
+</script>
+<script>
+var data1 = {
+	title: '你最喜欢的电影是什么?',
+	list: ['疯狂动物城', '肖申克的救赎', '星球大战', '拯救大兵瑞恩']
+};
+var tpl = document.getElementById('test').innerHTML;
+var desc1=$.tpl(tpl,data1);
+document.getElementById('q1').innerHTML = desc1;
+
+</script>
+    
+</body>
+</html>

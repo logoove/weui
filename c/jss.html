@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>单选/复选/开关</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+      <script src="../zepto.min.js"></script>
+
+</head>
+
+<body ontouchstart>
+   <pre>
+browser 浏览器语言和版本判断对象
+{"version":{"ie":false,"opera":false,"webKit":false,"firefox":true,"mobile":false,"ios":false,"android":false,"iphone":false,"ipad":false,"weixin":false},"language":"zh-cn","wifi",true}
+转换实体htmlencode(str) 与还原htmldecode(str)
+date() Y-m-d H:i:s返回带0 Y-n-j不带0
+z一年中第几天要+1才正确
+w星期0是周日 N 7是周日
+D三个字母星期 l英语星期
+ W周
+F月份英语
+L闰年判断
+c带时区日期时间 r英文形式
+time()返回php形式10位时间
+strtotime()转换成时间戳 支持'06:08:59' "2014-2-3" "now"  "+1 day" "+1 week" "+2 days" 
+microtime()微秒返回 "0.992 1434963474" microtime().split(" ")[1]
+intval(9.2,8) 转换成整形 第二个表示数据的进制 转换不了返回0
+empty()是否为空 0  false null ''  [] {} undefined
+isset()是否赋值 undefined返回false
+urlencode() 编码url
+urldecode() 解码url
+base64_encode()
+base64_decode()
+function_exists('alert') 检测函数是否存在
+in_array(1, ['1', '2', '3']); 是否在数组中
+range ( 0, 12 ); 生成数组 range( 'a', 'i' ); range( 0, 100, 10 );第三个参数步长
+strip_tags("<div>111") 去除html
+round(1.456,1) 四舍五入
+rand(1,10) 生成随机数1-10 前后都包含
+ceil(1.2) 进1
+floor(3.555) 舍去法
+strtolower()转大写
+strtoupper()小写
+ucfirst()首字母大写
+base_convert(99,16,2) 进制之间转换
+trim()去除多空格 中间的也去掉
+utf8_encode(str)编码成utf8
+utf8_decode(str)解码
+getdomain();//获得域名包含http://
+randcolor() 随机颜色
+strtrim()去除多空格
+strfind(string, find) 查找子字符串
+strrandom(4) //随机长度4个字符串
+strlen("字符1")//获得字符长度 中文2个英文1个
+"1中s".length; //获得字符长度 中文2个英文1个
+strcut("我爱你4中国111",'7',"...");//返回 我爱你4...//截取字符串 中文2个英文1个 和后缀
+straddzero(2,5); //返回00002 字符串//长度为5,不够补0
+timeline(1418497573000)//时间线  时间显示 刚刚 几分钟前
+addhttp(url)//自动添加http
+timered(+new Date(),'blue')//第二个参数默认红色 第一个是时间戳 注意是js的
+var str = '{"a":"2a","b":true,"c":34,"d":[1,2,"a"]}';//json操作
+str2json(str) //字符串json转换成对象
+JSON.parse(str);//json字符串转换成对象
+var obj = eval('(' + str + ')');//3种方法
+ var k1 = {a:1,b:[1,2]};//对象
+ var k2 = {"k1":1,"k2":"中国"};//json标准格式 或者是关联数组
+json2str(k1)  //json对象转换成字符串
+JSON.stringify(k1) //json对象转换成字符串
+is_eq(str1,str2) 是否相等
+is_num("1") 是否数字
+is_phone("1") 是否手机号
+is_qq()
+is_id(str) 是否身份证
+is_chinese(str) 是否中文
+is_reg(str) //是否由字母和数字，下划线,点号组成.且开头的只能是下划线和字母
+is_tel(str) 电话测试 校验普通电话、传真号码：可以“+”开头，除数字外，可含有“-”
+is_ip(str) 是否IP
+is_zipcode(str) 是否邮编
+is_email(邮箱)
+is_english(str) 是否英文
+is_url(str) 是否url
+is_int(1,0,100) 是否在0到100之间
+is_float(1.2,1.1,1.9) 是否在1.1-1.9之间
+is_http() 是否包含http或https
+date_eq(strDate1,strDate2) 判断是否第一个日期大于第二个
+$.fn.cookie('foo', 'bar', { expires: 7 });//过期7天,第二个参数null表示删除,只有第一个参数为读取
+ </pre>   
+</body>
+</html>
