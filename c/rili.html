@@ -11,14 +11,11 @@
 </head>
 
 <body ontouchstart>
-      <div class="weui_cells weui_cells_access">
-        <a href="javascript:;" class="weui_cell"  id="text"> <div class="weui_cell_bd weui_cell_primary"> <p>picker基础</p>  </div> <div class="weui_cell_ft text-v">选择</div> </a>
-        
-       </div> 
 
-<div class="weui_cells weui_cells_form ">       
+<div class="weui_cells weui_cells_form ">   
+            
        <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">多列:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">多列:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="text" value="" id='text1'/>
                     
@@ -26,7 +23,7 @@
               
             </div>   
         <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">国家:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">单列:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="text" value="" id='text2'/>
                     
@@ -35,7 +32,7 @@
             </div>       
   
           <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">日期:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">日期:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="text" value="" id='date'/>
                     
@@ -44,7 +41,7 @@
             </div> 
   
           <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">时间:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">时间:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
                     <input class="weui_input" type="text" value="" id='time'/>
                     
@@ -53,18 +50,27 @@
             </div>                
  
            <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">时间2:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">时间2:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" value="" id='time2'/>
+                    <input class="weui_input" type="text" value="09 12" id='time2'/>
                     
                 </div>
               
             </div>  
- 
+            
             <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">时间3:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">省市县:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" value="" id='time3'/>
+                    <input class="weui_input" type="text" value="" id='ssx'/>
+                    
+                </div>
+              
+            </div>  
+            
+                      <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="">省市:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='ss'/>
                     
                 </div>
               
@@ -78,14 +84,31 @@
        
 <div class="weui_cells weui_cells_form "> 
             <div class="weui_cell">
-                <div class="weui_cell_hd"><label for="" class="weui_label">弹出:</label></div>
+                <div class="weui_cell_hd"><label for="" class="">弹出单选:</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" value="" id='da'/>
+                    <input class="weui_input" type="text" value="" id='d1'/>
                     
                 </div>
               
             </div> 
-            
+    
+    
+          <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="">弹出单选:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='d2'/>
+                    
+                </div>
+              
+            </div> 
+                  <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="">弹出复选:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='d3'/>
+                    
+                </div>
+              
+            </div>         
             
 <div class="weui_cell">
  <div class="weui_cell_bd weui_cell_primary"> <p>Number</p> </div>
@@ -119,28 +142,142 @@
   <a class="rater-box" style="margin-right: 2px; font-size: 25px; width: 25px; height: 25px;"> <span class="rater-inner">★</span> </a>
    </div>
        
-   	<div class="address-wrap">
-		<label for="" class="address-label">选择地址</label>
-		<select name="" id="province1"></select>
-		<select name="" id="city1"></select>
-		<select name="" id="area1"></select>
-	</div>      
+ <div class='p'><a href="javascript:;" class="weui_btn weui_btn_primary open-popup " data-target="#popup">popup</a></div>
+	
+	<div id="popup" class="weui-popup-container">
+  <div class="weui-popup-modal">
+  
+    <h2 class="title">章标题</h2>
+            <section>
+              <h3>1.1 节标题</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute</p>
+            </section>
+  <p class='p'><a href="javascript:;" class="weui_btn weui_btn_plain_primary close-popup">关闭</a></p>
+  </div> 
     <script src="../zepto.min.js"></script> <script src="../example.js"></script>  
-     <script src="../picker.min.js"></script> 
-     <script src="../city.js"></script> 
+     <script src="../picker.js"></script> 
+     
 <script>
-		$("body").areaPick({
-		        selectId : {
-		            province : "province1",
-		            city     : "city1" ,
-		            area     : "area1"
-		        },
-		        defaultArea : {
-		            province : "浙江省" ,
-		            city     : "杭州市" ,
-		            area     : "西湖区"
-		        }
-		    });
+ $("#text2").picker({
+        title: "你喜欢的国家",
+        toolbarCloseText:'确定',
+        cols: [
+          {
+            textAlign: 'center',
+            values: [1,2,3],
+            displayValues:['新西兰','美国','日本'],
+          }
+        ]
+      });
+      $("#text1").picker({
+        title: "他们都喜欢什么",
+        cols: [
+          {
+            textAlign: 'center',
+            values: ['刘备', '关羽','张飞']
+          },
+          {
+            textAlign: 'center',
+            values: ['喜欢', '憎恶', '基情', '可怜']
+          },
+           {
+            textAlign: 'center',
+            values: ['吃西瓜', '吃盒饭', '喝酒']
+          }
+        ]
+      });
+      
+  
+      $("#date").datetimePicker({title:"选择日期",m:1});
+$("#time").datetimePicker({title:"选择日期时间"});
+$("#time2").picker({title:"选择时间",
+        cols: [
+          {
+            textAlign: 'center',
+            values: (function () {
+                var arr = [];
+                for (var i = 0; i <= 23; i++) { arr.push(i < 10 ? '0' + i : i); }
+                return arr;
+            })()
+            
+          },
+          {
+            textAlign: 'center',
+            values:  (function () {
+                var arr = [];
+                for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
+                return arr;
+            })(),
+          }
+        ]});          
+$("#ssx").cityPicker({
+        title: "选择省市县"
+      });
+
+ $("#ss").cityPicker({
+        title: "选择省市",
+        showDistrict: false
+      });
+$("#d1").select({
+        title: "选择爱好",
+        autoClose:true,
+        
+        items: ['男人','女人','外星人'],
+        onChange: function(d) {
+         $.alert("你选择了"+d.values);
+        }
+      });
+      $("#d2").select({
+        title: "选择爱机",
+        items: [
+          {
+            title: "iPhone 3GS",
+            value: "001",
+          },
+          {
+            title: "iPhone 5",
+            value: "002",
+          },
+          {
+            title: "iPhone 5S",
+            value: "003",
+          }
+        ],
+        onChange: function(d) {
+         $.alert("你选择了"+d.values+d.titles);
+        }
+      });
+      $("#d3").select({
+        title: "您的爱好",
+        multi: true,
+        split:',',
+        closeText:'完成',
+        items: [
+          {
+            title: "画画",
+            value: 1
+          },
+          {
+            title: "打球",
+            value: 2
+          },
+          {
+            title: "唱歌",
+            value: 3
+          },
+          {
+            title: "游泳",
+            value: 4
+          },
+        ],
+        onChange: function(d) {
+          $.alert("你选择了"+d.values+d.titles);
+        }
+      });
+
 
 $('.number-selector-plus').click(function(){
         upDownOperation( $(this) );
@@ -181,335 +318,6 @@ $('.number-selector-plus').click(function(){
         }
         _input.val( _new_value );
     }
-
-
-var single = new Picker({
-    "input": "#text",//itemHeight 行高默认30 ,itemsNumber 可视行数7必须奇数
-    "cols": [
-        {//displayValues:[]存放列显示值
-            "width": 100,
-            'textAlign':'center',
-            "values":['西游记','水浒传','三国演义','红楼梦']
-        }
-    ],
-    "onChange": function(picker, cur, old){
-        //console.log(picker);
-        document.querySelector(".text-v").innerHTML =cur;
-    },
-    "onOpen": function(picker){
-    },
-    "onClose": function(picker){console.log(picker);
-         document.querySelector(".text-v").innerHTML = picker.values;
-    }
-});
-
-var single1 = new Picker({
-    "input": "#text1",
-     "formatValue": function(picker, values){
-        return values[0]+"   "+values[1]+"  "+values[2];
-    },
-    "cols": [
-        {
-            "values": ('张飞 关于 刘备 孔明 曹操').split(' ')
-        },
-        {
-            "values": ["在家里","在公司","在车上","在路上","在飞机上","在火车上"]
-        },
-        {
-            "values": ["卖报","吃饭","聊天","看书","打游戏","自言自语","敲代码","装B","cosplay","上QQ","上网"]
-        }
-    ], 
-});
-
-var carVendors = {
-  '日本' : ['北海道', '东京', '大阪'],
-   '中国' : ['上海', '南京', '重庆', '北京', '西安'],
-   '美国' : ['维拉斯', '洛杉矶', '旧金山', '华神盾']
-};
-pickerDependent = new Picker({
-    input: '#text2',
-    formatValue: function (picker, values) {
-        return values[0]+'  '+values[1];
-    },
-    cols: [
-        {
-            width: 110,
-            textAlign: 'right',
-            values:['日本', '中国', '美国'],
-            "onChange": function(picker, country) {
-                if(picker.cols[1].replaceValues){
-                    picker.cols[1].replaceValues(carVendors[country]);
-                }
-            }
-        },
-        {
-            textAlign: 'left',
-            values: carVendors.日本,
-            width: 130
-        },
-    ]
-});
-
-//日期
-function createNumberArray(num){
-    var arr = [];
-    for(var i = 1; i <= num; i++){
-        arr.push(i < 10 ? '0' + i : i);
-    }
-    return arr;
-}
-var timed =  new Picker({
-        input: "#date",
-        formatValue: function(picker, values, displayValues) {
-            return values[0] + '-' + values[1] + '-' + values[2];
-        },
-        cols: [
-            { width:100,
-                values: (function() {
-                    var arr = [];
-                    for (var i = 1980; i <= 2030; i++) {
-                        arr.push(i);
-                    }
-                    return arr;
-                })(),
-                onChange: function(picker, values) {
-                    var year = picker.cols[0].currentValue;
-                    var month = picker.cols[1].currentValue;
-                    var day = picker.cols[2].currentValue;
-                    var _day = month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ? 31 :
-                        month == 4 || month == 6 || month == 9 || month == 11 ? 30 :
-                        year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ? 29 : 28;
-                    picker.cols[2].replaceValues(createNumberArray(_day));
-                    picker.cols[2].select(day > _day ? _day : day);
-                }
-            },
-            // Months
-            {
-                values: (function () {
-                var arr = [];
-                for (var i = 1; i <= 12; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-                width:100,
-                onChange: function(picker, values) {
-                    var year = picker.cols[0].currentValue;
-                    var month = picker.cols[1].currentValue;
-                    var day = picker.cols[2].currentValue;
-                    var _day = month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ? 31 :
-                        month == 4 || month == 6 || month == 9 || month == 11 ? 30 :
-                        year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ? 29 : 28;
-                    picker.cols[2].replaceValues(createNumberArray(_day));
-                    picker.cols[2].select(day > _day ? _day : day);
-                }
-            },
-            // Days
-            {
-                values: createNumberArray(31),
-                width:100,
-            }
-        ]
-    });
-
-//时间
-var timed1 = new Picker({
-    input: "#time",
-    formatValue: function(picker, values, displayValues){
-        return displayValues?displayValues[0]:values[0] + '-' + values[1] + '-' + values[2] + ' ' + values[3] + ':' + values[4];
-    },
-    cols: [
-            {width:80,
-            values: (function () {
-                var arr = [];
-                for (var i = 1980; i <= 2030; i++) { arr.push(i); }
-                return arr;
-            })(),
-          onChange: function(picker, values) {
-                    var year = picker.cols[0].currentValue;
-                    var month = picker.cols[1].currentValue;
-                    var day = picker.cols[2].currentValue;
-                    var _day = month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ? 31 :
-                        month == 4 || month == 6 || month == 9 || month == 11 ? 30 :
-                        year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ? 29 : 28;
-                    picker.cols[2].replaceValues(createNumberArray(_day));
-                    picker.cols[2].select(day > _day ? _day : day);
-                }
-        },
-        {
-            values:(function () {
-                var arr = [];
-                for (var i = 1; i <= 12; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-              onChange: function(picker, values) {
-                    var year = picker.cols[0].currentValue;
-                    var month = picker.cols[1].currentValue;
-                    var day = picker.cols[2].currentValue;
-                    var _day = month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ? 31 :
-                        month == 4 || month == 6 || month == 9 || month == 11 ? 30 :
-                        year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ? 29 : 28;
-                    picker.cols[2].replaceValues(createNumberArray(_day));
-                    picker.cols[2].select(day > _day ? _day : day);
-                },
-            width:50
-        },
-        {
-            values:(function () {
-                var arr = [];
-                for (var i = 1; i <= 31; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-            width:50
-        },
-        {
-            values: (function () {
-                var arr = [];
-                for (var i = 0; i <= 23; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-          width:50
-        },
-        {
-            values: (function () {
-                var arr = [];
-                for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-            width:50
-        },
-    ]
-});
-
-var single5 = new Picker({
-    "input": "#time2",
-     "formatValue": function(picker, values){
-        return values[0]+":"+values[1];
-    },
-    "cols": [
-        {
-            "values": (function () {
-                var arr = [];
-                for (var i = 0; i <= 23; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-            width:100
-        },
-        {
-            "values":(function () {
-                var arr = [];
-                for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-             width:100
-        }
-    ], 
-});
-
-function getDaysArr(year, month){
-   
-                var arr = [];
-                for (var i = 1; i <= 28; i++) { arr.push(i < 10 ? '0' + i : i); }
-               
-      
-    if( [1,3,5,7,8,10,12].indexOf(Number(month)) >= 0 ) return arr.concat([29,30,31]);
-    if( [4,6,9,11].indexOf(Number(month)) >= 0 ) return arr.concat([29,30]);
-    if( year%400 === 0 || (year%4 === 0 && year%100 !== 0) ) return arr.concat([29]);
-    else return arr;
-}
-pickerMitao = new Picker({
-    input: '#time3',
-    container: "#time33",
-    "itemsNumber": 3,
-    "itemHeight": 40,
-    "formatValue": function(picker, values){
-        return values[0]+"-"+values[1]+"-"+values[2];
-    },
-    cols: [
-        {
-            values: (function () {
-                var arr = [];
-                for (var i = 2000; i <= 2030; i++) { arr.push(i); }
-                return arr;
-            })(),width:100,
-            displayValues: (function () {
-                var arr = [];
-                for (var i = 2000; i <= 2030; i++) { arr.push(i+"年"); }
-                return arr;
-            })(),
-            "onChange": function(picker, values){
-                var lastValue1 = picker.cols[1].getValue();
-                var lastValue2 = picker.cols[2].getValue();
-                var displayDaysArr = (getDaysArr(picker.cols[0].currentValue, picker.cols[1].currentValue).join("日,")+"日").split(",");
-                var daysArr = getDaysArr(picker.cols[0].currentValue, picker.cols[1].currentValue);
-                if( daysArr.length != picker.cols[2].values.length ){
-                    picker.cols[2].replaceValues(daysArr, displayDaysArr);
-                    picker.cols[2].values = daysArr;
-                    picker.cols[1].select(lastValue1);
-                    picker.cols[2].select(lastValue2);
-                } 
-            }
-        },
-        {
-            values:(function () {
-                var arr = [];
-                for (var i = 1; i <= 12; i++) { arr.push(i < 10 ? '0' + i : i); }
-                return arr;
-            })(),
-            width:60,
-            displayValues: ("1 2 3 4 5 6 7 8 9 10 11 12".split(" ").join("月,")+"月").split(","),
-            "onChange": function(picker, values){
-                console.log( picker.cols[2].getValue() );
-                var lastValue = picker.cols[2].getValue();
-                var displayDaysArr = (getDaysArr(picker.cols[0].currentValue, picker.cols[1].currentValue).join("日,")+"日").split(",");
-                var daysArr = getDaysArr(picker.cols[0].currentValue, picker.cols[1].currentValue);
-                if( daysArr.length != picker.cols[2].values.length ){
-                    picker.cols[2].replaceValues(daysArr, displayDaysArr);
-                    picker.cols[2].values = daysArr;
-                    picker.cols[2].select(lastValue);
-                } 
-            }
-        },
-        {
-            values: getDaysArr(2000,1),
-            width:60,
-            displayValues: (getDaysArr(2000,1).join("日,")+"日").split(",")
-        },
-    ]
-});
-
-
-single8 = new PickerDialog({
-    input: "#da",
-    innerHTML:'<div class="weui_cells weui_cells_form "  style="margin-top: 0px;height:100%;"> '+
-            '<div class="weui_cell">'+
-                '<div class="weui_cell_hd"><label for="" class="weui_label">你最喜欢的人是谁</label></div>'+
-                '<div class="weui_cell_bd weui_cell_primary">'+
-                    '<input class="weui_input" type="text" value="" /></div></div>'+
-         '<div class="weui_cell">'+
-                '<div class="weui_cell_hd"><label for="" class="weui_label">你喜欢吃西瓜</label></div>'+
-                '<div class="weui_cell_bd weui_cell_primary">'+
-                    '<input class="weui_input" type="text" value="" /></div></div>'+
-           '<div class="weui_cell">'+
-                '<div class="weui_cell_hd"><label for="" class="weui_label">我来自美国</label></div>'+
-                '<div class="weui_cell_bd weui_cell_primary">'+
-                    '<input class="weui_input" type="text" value="" /></div></div>'+
-            '<div class="weui_cell">'+
-                '<div class="weui_cell_hd"><label for="" class="weui_label">我们都是好孩子</label></div>'+
-                '<div class="weui_cell_bd weui_cell_primary">'+
-                    '<input class="weui_input" type="text" value="" /></div></div>'+                            
-                    '</div>',
-    onOpen: function(dialog){
-        console.log(dialog);
-    
-    },
-    onClose: function(dialog){
-   console.log(dialog);
-    }
-});
-
-
-
-
-
 </script>
 
        

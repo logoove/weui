@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <title>单选/复选/开关</title>
  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-  <link rel="stylesheet" href="../style/weui.css"/> <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui.css"/> 
+  <link rel="stylesheet" href="../style/weui2.css"/>
       <script src="../zepto.min.js"></script>
 
 </head>
@@ -51,7 +52,8 @@
                 </tbody>
             </table></div>
 
-  <div class="slider" id="slider1">
+
+ <div class="slider" id="slider1">
 <ul>
 <li><img src="http://7xqzw4.com2.z0.glb.qiniucdn.com/1.jpg" width='640' height='200'/>
 <div class="slider-desc">基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</div></li>
@@ -92,12 +94,13 @@
 </ul>
 </div>
 
+
 <br><br><br><br><br><br>
 
 <script>
 $(function(){
 var elem = document.getElementById('slider1');
-window.mySwipe= Swiper(elem, {
+window.mySwipe= Swipe(elem, {
 		speed:500,
 		auto:1000,
 		startSlide:0,		
@@ -114,7 +117,7 @@ mySwipe.stop = function(){
 };
 
 var elem2 = document.getElementById('slider2');
-window.mySwipe2= Swiper(elem2, {
+window.mySwipe2= Swipe(elem2, {
 		speed:1000,
 		auto:1000,
 		startSlide:0,		
@@ -127,7 +130,7 @@ window.mySwipe2= Swiper(elem2, {
 	});
 	
 	var elem3 = document.getElementById('slider3');
-window.mySwipe3= Swiper(elem3, {
+window.mySwipe3= Swipe(elem3, {
 		speed:3000,
 		auto:2000,
 		startSlide:0,		

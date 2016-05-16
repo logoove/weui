@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>一直顶部</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+      <script src="../zepto.min.js"></script>
+<script>
+//2016-5-6 sticky
+$(function(){
+var sticky = document.querySelector('#sticky');
+    var stickyOffsetY = sticky.offsetTop;
+    function onScroll(e) {
+        window.scrollY >= stickyOffsetY ? sticky.classList.add('sticky-fixed') : sticky.classList.remove('sticky-fixed'); 
+    }
+    window.addEventListener('scroll', onScroll);
+    })
+</script>
+</head>
+
+<body ontouchstart>
+<div class="weui_cells_title">一直黏贴在顶部</div>
+<br><br><br><br>
+<div  class="weui_tab " id="sticky" ><!--tab-fixed添加顶部-->
+            <div class="weui_navbar" style="height:44px;">
+                <div class="weui_navbar_item  tab-green">
+                    已发货
+                </div>
+                <div class="weui_navbar_item">
+                    未发货
+                </div>
+                <div class="weui_navbar_item">
+                    全部订单
+                </div>
+            </div>
+        </div>
+       
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>      
+</body>
+</html>
