@@ -11,7 +11,8 @@
 - 本人主要是微信游戏和应用开发,所以基本上都是使用这套组件来开发界面,个人没有设计师,也只能如此,如有相同爱好可一起交流
 - 使用非常简单,每个单独文件基本都有效果,基本包含了目前流行的各种常用效果,有很多效果可以自己组合或通过js简单就能写出来.
 - 建议使用只加载一个css和js,这样多个页面就不会存在重复加载,节省不少流量.
-
+- 关注公众号查看实际应用实践
+![http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
 ---
 #### 来自以下开源项目的部分代码
 - github演示地址 [http://logoove.github.io/weui2](http://logoove.github.io/weui2)
