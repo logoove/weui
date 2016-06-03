@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>tab</title>
+<title>tab,nav</title>
  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
   <link rel="stylesheet" href="../style/weui.css"/><link rel="stylesheet" href="../style/weui2.css"/>
       <script src="../zepto.min.js"></script>
-
+<script src="../iscroll.js"></script>
 </head>
 
 <body ontouchstart>
@@ -76,7 +76,37 @@
 11
             </div>
         </div>
+<br>
 
+
+<div id="tagnav" class="weui-navigator weui-navigator-wrapper">
+           <ul class="weui-navigator-list">
+                <li><a href="javascript:;">首页</a></li>
+                <li><a href="javascript:;">我爱中国</a></li>
+                <li><a href="javascript:;">国内</a></li>
+                <li><a href="javascript:;">国际</a></li>
+                <li><a href="javascript:;">军事</a></li>
+                <li><a href="javascript:;">社会</a></li>
+                <li><a href="javascript:;">娱乐</a></li>
+                <li><a href="javascript:;">女人</a></li>
+                <li><a href="javascript:;">体育</a></li>
+                <li><a href="javascript:;">科技</a></li>
+                <li><a href="javascript:;">互联网</a></li>
+                <li><a href="javascript:;">教育</a></li>
+                <li><a href="javascript:;">财经</a></li>
+                <li><a href="javascript:;">房产</a></li>
+                <li><a href="javascript:;">汽车</a></li>
+            </ul>
+    </div>
+    <script type="text/javascript">
+$(function(){
+    TagNav('#tagnav',{
+        type: 'scrollToFirst',
+    });
+})
+
+
+</script>
  <!------------------------------------------------>
 <div class="weui_tab tab-bottom" style="height:55px;">
             

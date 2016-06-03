@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>音视频播放器</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../video.css"/>
+      <script src="../video.js"></script>
+
+</head>
+
+<body ontouchstart>
+  <div class="zy_media">
+    <video poster="http://7xr193.com1.z0.glb.clouddn.com/test.jpg" data-config='{"mediaTitle": "《疯狂动物城》--来自Yoby七牛视频"}' webkit-playsinline>
+        <source src="http://7xr193.com1.z0.glb.clouddn.com/test.mp4" type="video/mp4">
+        您的浏览器不支持HTML5视频
+    </video>
+</div> 
+<br>
+在页面内播放或者全屏是可以控制的
+<br>
+<div class="zy_media">
+    <audio data-config='' src="http://7xr193.com1.z0.glb.clouddn.com/test.mp3">
+        您的浏览器不支持HTML5音频
+    </audio>
+</div>
+音频也不错哦
+
+<script>
+
+    zymedia('video');
+    zymedia('audio');
+
+</script>   
+
+<hr>
+
+<pre>
+    type: ''
+    指定媒体类型，默认空
+
+    mediaTitle: ''
+    设置媒体标题，默认空，不展示
+
+    nativeControls: false
+    强制用原生的播放控制器，默认不使用，true为使用
+
+    autoplay: false
+    是否自动播放，默认否，true为自动播放
+
+    preload: 'none'
+    是否预加载，默认关闭，和原生preload对应，其他值为metadata|auto|''
+
+    videoWidth: '100%'
+    指定视频宽，默认100%
+
+    videoHeight: 'auto'
+    指定视频高，默认auto
+
+    aspectRation: (16 / 9)
+    指定视频宽高比，默认16:9
+
+    audioWidth: '100%'
+    指定音频宽，默认100%
+
+    audioHeight: 44
+    指定音频高，默认44px
+
+    autoLoop: false
+    是否循环播放，默认否，true为无限循环
+
+    timeFormatType: 1
+    时间格式类型，默认mm:ss，2为m:s
+
+    alwaysShowHours: false
+    是否强制显示小时位，默认否，true为显示
+
+    alwaysShowControls: false
+    是否始终显示控制栏，默认否，自动隐藏，true为始终显示
+
+    hideVideoControlsOnLoad: false
+    加载时是否显示视频控制栏，默认否，true为显示
+
+    enableFullscreen: true
+    是否显示全屏按钮，默认显示，false为不显示
+
+    pauseOtherPlayers: true
+    是否播放唯一，默认唯一，播放时将暂停其他播放实例，false为不唯一
+
+    duration: 0
+    指定媒体时长，默认0
+
+    success: null
+    实例化成功时的回调，默认无
+
+    error: null
+    实例化错误时的回调，默认无
+</pre>
+</body>
+</html>

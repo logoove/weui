@@ -14,6 +14,9 @@
 - 关注公众号查看实际应用实践
 ![http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
 ---
+####更新日志   
+2016-6-3  新增音视频播放器,新增横向可滚动导航,新增iscroll移动版库,新增9种常见颜色值;修复已知问题.
+---
 #### 来自以下开源项目的部分代码
 - github演示地址 [http://logoove.github.io/weui2](http://logoove.github.io/weui2)
 - 国内演示地址   <http://weixin.yoby123.cn/weui/>
