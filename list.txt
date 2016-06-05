@@ -1,11 +1,13 @@
 lrz.min.js 图片上传前压缩
 picker.js  包含picker相关的选择 地址 时间 
 qrcode.js  二维码生成
-refresh.js  下拉与上拉
+updown.js  下拉与上拉
 sound.js     音乐播放
 zepto.js     包含example,picker,zepto.min 
 zepto.min.js  基础库+扩展
 example.js    包含swiper,tab,search,select,popup样式
+video.js 音视频播放
+iscroll.js 滚动,只在横向导航用到
 weui.css  微信官方css,未压缩
 weui.min.css 压缩
 weui2.css   未压缩扩展包

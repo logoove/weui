@@ -1,26 +1,51 @@
-#weui是在微信官方基础上增强的组件
+#weui-plus是在微信官方基础上增强的组件
 ---
-####本程序版本2.3    基于weui官方0.44开发
-####简介
+#### 最新版本2.5    基于weui官方0.44开发
 
-- 全部效果压缩后css160KB,js160kb左右,总的来说还是比较大的,不过相对目前4G网络或wifi来说,算不上特别大,选择性加载可以保证css在120kb,js在60kb,js大的原因是包含了省市县数据.
-- 个人做的微信项目还是比较多的,基本上都使用这一套组件开发,效果在安卓和ios平台都是非常棒,感谢微信给我们提供了这样一套组件,特别是速度明显提升,以前基于非组件化开发的明显比较卡,效果也不一致.
-- 组件中包含了上传图片,单图多图都支持,图片是通过压缩后上传到服务器,可以保证在100kb左右,2MB以上图片也能;还有一种是通过微信提供的jssdk上传组件,由微信服务器压缩,也能保证很好压缩比,不过速度有点慢.
-- 组件包括了JSSDK演示效果,但是并不包含php处理,如有需要可以联系yoby,因为这个涉及到签名后才能使用jssdk
-- 整理以上所有组件并调试,花费了很多时间,关键是安卓ios效果不一致,目前基本能保证两者效果一致,但是注意ios系统8.0以上 安卓4.0以上版本,手机屏幕4.0以上.由于是个人不可能真机测试,主要是使用微信提供的测试模拟工具.
-- 本人主要是微信游戏和应用开发,所以基本上都是使用这套组件来开发界面,个人没有设计师,也只能如此,如有相同爱好可一起交流
-- 使用非常简单,每个单独文件基本都有效果,基本包含了目前流行的各种常用效果,有很多效果可以自己组合或通过js简单就能写出来.
-- 建议使用只加载一个css和js,这样多个页面就不会存在重复加载,节省不少流量.
-- 关注公众号查看实际应用实践
-![http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994) 
+#### 简介  
+1. weui-plus是官方weui的增强版本,新增非常多的组件,css类,js函数,是微信公众号开发,移动应用最好的UI选择.
+2. 本版本并未删除任何官方css也未修改.而是新增文件weui2.css,使用的时候只需要加载weuix.min.css,就包含了所有UI,js可以加载zepto.min.js,只包含基础组件,zepto.js包含了省市县选择picker.js,所以看起来比较大.  
+3. 需要单独加载的请参考演示示例.
+<pre>
+lrz.min.js 图片上传前压缩
+picker.js  包含picker相关的选择 地址 时间 
+qrcode.js  二维码生成
+updown.js  下拉与上拉
+sound.js     音乐播放
+zepto.js     包含example,picker,zepto.min 
+zepto.min.js  基础库+扩展
+example.js    包含swiper,tab,search,select,popup样式
+video.js 音视频播放
+iscroll.js 滚动,只在横向导航用到
+weui.css  微信官方css,未压缩
+weui.min.css 压缩
+weui2.css   未压缩扩展包
+weui2.min.css  压缩
+weuix.min.css  压缩的weui和weui2合并
+</pre>
 
-#### 更新日志   
-2016-6-3  新增音视频播放器,新增横向可滚动导航,新增iscroll移动版库,新增9种常见颜色值;修复已知问题. 
+####  已使用公众号或移动网站
+- 公众号: 勉县小江南
+![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
+- 待增加
 
-#### 来自以下开源项目的部分代码
+#### [更新日志](http://weixin.yoby123.cn/weui/c/r.html) 
+- 2016-6-5  v2.5  新增认证头像,新增tab切换红色和绿色导航条,loading动画,旋转180度和360度,新增上拉加载更多下拉刷新,新增图片懒加载只需要载入zepto即可使用   
+- 2016-6-3  v2.4  新增音视频播放器,新增横向可滚动导航,新增iscroll移动版库,新增9种常见颜色值;修复已知问题.   
+- 2016-4-1 V1.0 weui是很棒的微信端UI,但是组件太少了,在微信开发很多组建都没有,所以根据此问题,收集网络上优秀的代码片段,组合开发出了这一套增强版weui-plus,目前还在不断增多组件,修复bug,目标是做最好的微信端移动端UI.
+
+#### 已知bug列表和修复  
+1. 部分华为荣耀V4反映不能上传图片,目前没找到原因,可以使用微信jssdk上传来代替.
+2. swiper滚动,手动滑动后不能自动滚动,目前已修复. 
+
+#### 演示连接  
+- 最新国内演示地址   <http://weixin.yoby123.cn/weui/>
+![](http://7xr193.com1.z0.glb.clouddn.com/weui.png)
 - github演示地址 [http://logoove.github.io/weui2](http://logoove.github.io/weui2)
-- 国内演示地址   <http://weixin.yoby123.cn/weui/>
-- 感谢以下开源项目,部分来自他们,谢谢了!
+
+#### 赞助我 支付宝和微信支付
+![](http://7xr193.com1.z0.glb.clouddn.com/weixin-v.jpg)![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg)
+#### 友情感谢(不完全列出,谢谢你们的付出)
 - weui <https://github.com/weui/weui>
 - Vux<https://github.com/airyland/vux>
 - jquery-weui<https://github.com/lihongxun945/jquery-weui>
@@ -30,4 +55,3 @@
 - 图片压缩localResizeIMG <https://github.com/think2011/localResizeIMG>
 - jquery-qrcode <https://github.com/jeromeetienne/jquery-qrcode>
 - zepto <https://github.com/madrobby/zepto>
-- 还有一些片段代码或js代码来自网络,不一一列出,感谢!

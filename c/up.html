@@ -2,9 +2,101 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>单选/复选/开关</title>
+<title>下拉刷新和上拉加载更多</title>
  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weuix.min.css"/>
+ <script src="../zepto.min.js"></script>
+ <script src="../updown.js"></script>  
+<script>
+$(function(){
+    var counter = 0;
+    // 每页展示4个
+    var num =10;
+    var pageStart = 0,pageEnd = 0;
+
+    // dropload
+    $('.weui_panel').dropload({
+        scrollArea : window,
+        autoLoad : true,
+  domDown : {//上拉
+            domClass   : 'dropload-down',
+            domRefresh : '<div class="dropload-refresh f15 "><i class="icon icon-12"></i>上拉加载更多</div>',
+            domLoad    : '<div class="dropload-load f15"><span class="weui-loading"></span>正在加载中...</div>',
+            domNoData  : '<div class="dropload-noData">没有更多数据了</div>'
+        },
+        domUp : {//下拉
+            domClass   : 'dropload-up',
+            domRefresh : '<div class="dropload-refresh"><i class="icon icon-12 xz180"></i>上拉加载更多</div>',
+            domUpdate  : '<div class="dropload-load f15"><i class="icon icon-12"></i>释放更新...</div>',
+            domLoad    : '<div class="dropload-load f15"><span class="weui-loading"></span>正在加载中...</div>'
+        },
+                loadUpFn : function(me){//刷新
+            $.ajax({
+                type: 'GET',
+                url: 'more-update.json',
+                dataType: 'json',
+                success: function(data){
+                    var result = '';
+                    for(var i = 0; i < data.lists.length; i++){
+result+='<div class="weui_media_box weui_media_text weui-updown"><p class="weui_media_desc">'+data.lists[i].link+data.lists[i].title+'</p></div>';
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.weui_panel_bd').html(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                        // 重置索引值，重新拼接more.json数据
+                        counter = 0;
+                        // 解锁
+                        me.unlock();
+                        me.noData(false);
+                    },1000);
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        },
+        loadDownFn : function(me){//加载更多
+            $.ajax({
+                type: 'GET',
+                url: 'more.json',
+                dataType: 'json',
+                success: function(data){
+                    var result = '';
+                    counter++;
+                    pageEnd = num * counter;
+                    pageStart = pageEnd - num;
+
+                    for(var i = pageStart; i < pageEnd; i++){
+                        result+='<div class="weui_media_box weui_media_text weui-updown"><p class="weui_media_desc">'+data.lists[i].link+data.lists[i].title+'</p></div>';
+                        if((i + 1) >= data.lists.length){
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                            break;
+                        }
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.weui_panel_bd').append(result);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    },1000);
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+});
+</script>      
 
  <style>
 </style>
@@ -13,99 +105,14 @@
 </head>
 
 <body ontouchstart>
+<div class="weui_cells_title" >支持单独调用刷新或加载更多</div>
   <div class="weui_panel weui_panel_access" >
            
-            <div class="weui_panel_bd"  id="qq">
-                <div class="weui_media_box weui_media_text">
+            <div class="weui_panel_bd">
                     
-                    <p class="weui_media_desc">1由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>
-                <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">2由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>
-                 <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">3由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">4由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>
-                  <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">5由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>              
-                 <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">6由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                 <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">7由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                 <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">8由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                  <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">9由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                 <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">10由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>  
-                     <div class="weui_media_box weui_media_text">         
-                     <p class="weui_media_desc">11由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                  <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">12由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>               
-                 <div class="weui_media_box weui_media_text">
-                   
-                    <p class="weui_media_desc">13由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-                </div>                  
-                               
-                
-                                
             </div>
             
         </div>
-      <script src="../zepto.min.js"></script>
- <script src="../refresh.js"></script>  
-<script>
-
-$(window).refresh({
-	contentEl: '#qq',
-	// 头部的高度
-	distanceToRefresh: 40,
-	// 开启刷新
-	isRefresh: true,
-	// 开启加载更多
-	isLoadingMore: true,
-	// 触发刷新回调
-	refreshCallback: function(complete) {
-		 setTimeout(function() {
-			window.location.reload();
-			complete();
-		 }, 1000)
-	},
-	// 加载更多回调
-	loadingMoreCallback: function(complete) {
-		var tpl = '';
-
-		for (var i = 0; i < 10; i++) {
-
-			tpl += '<div class="weui_media_box weui_media_text"><p class="weui_media_desc">'+(i+14) +'我爱你星球有一定的形状，有自己的运行轨道。</p></div>';
-		}
-
-		$('#qq').append(tpl);
-		complete('finish');
-
-	}
-});	
-</script>       
+      
 </body>
 </html>
