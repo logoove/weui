@@ -13,7 +13,7 @@ $(function(){
     // 每页展示4个
     var num =10;
     var pageStart = 0,pageEnd = 0;
-
+    var page=1;
     // dropload
     $('.weui_panel').dropload({
         scrollArea : window,
@@ -34,6 +34,7 @@ $(function(){
             $.ajax({
                 type: 'GET',
                 url: 'more-update.json',
+               
                 dataType: 'json',
                 success: function(data){
                     var result = '';
@@ -64,12 +65,13 @@ result+='<div class="weui_media_box weui_media_text weui-updown"><p class="weui_
                 type: 'GET',
                 url: 'more.json',
                 dataType: 'json',
+                 data:{page:page},
                 success: function(data){
                     var result = '';
                     counter++;
                     pageEnd = num * counter;
                     pageStart = pageEnd - num;
-
+                     page++;
                     for(var i = pageStart; i < pageEnd; i++){
                         result+='<div class="weui_media_box weui_media_text weui-updown"><p class="weui_media_desc">'+data.lists[i].link+data.lists[i].title+'</p></div>';
                         if((i + 1) >= data.lists.length){

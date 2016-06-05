@@ -14,7 +14,9 @@ updown.js  下拉与上拉
 sound.js     音乐播放
 zepto.js     包含example,picker,zepto.min 
 zepto.min.js  基础库+扩展
-example.js    包含swiper,tab,search,select,popup样式
+example.js    包含
+swipe.js swipe库
+swiper,tab,search,select,popup样式
 video.js 音视频播放
 iscroll.js 滚动,只在横向导航用到
 weui.css  微信官方css,未压缩
@@ -30,6 +32,7 @@ weuix.min.css  压缩的weui和weui2合并
 - 待增加
 
 #### [更新日志](http://weixin.yoby123.cn/weui/c/r.html) 
+- 2016-6-6 v2.6   替换swipe为更小函数,新版的支持是否自动播放,这个更好用,重写此css,是否使用标题,超链接自己根据例子修改 
 - 2016-6-5  v2.5  新增认证头像,新增tab切换红色和绿色导航条,loading动画,旋转180度和360度,新增上拉加载更多下拉刷新,新增图片懒加载只需要载入zepto即可使用   
 - 2016-6-3  v2.4  新增音视频播放器,新增横向可滚动导航,新增iscroll移动版库,新增9种常见颜色值;修复已知问题.   
 - 2016-4-1 V1.0 weui是很棒的微信端UI,但是组件太少了,在微信开发很多组建都没有,所以根据此问题,收集网络上优秀的代码片段,组合开发出了这一套增强版weui-plus,目前还在不断增多组件,修复bug,目标是做最好的微信端移动端UI.
