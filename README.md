@@ -40,11 +40,12 @@ weuix.min.css  压缩的weui和weui2合并
 
 #### 演示连接  
 - 最新国内演示地址   <http://weixin.yoby123.cn/weui/>
-![](http://7xr193.com1.z0.glb.clouddn.com/weui.png)
+![](http://7xr193.com1.z0.glb.clouddn.com/weui.png?time=1463681994)
 - github演示地址 [http://logoove.github.io/weui2](http://logoove.github.io/weui2)
 
 #### 赞助我 支付宝和微信支付
-![](http://7xr193.com1.z0.glb.clouddn.com/weixin-v.jpg)![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg)
+![](http://7xr193.com1.z0.glb.clouddn.com/weixin-v.jpg?time=1463681994)  ![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg?time=1463681994)
+
 #### 友情感谢(不完全列出,谢谢你们的付出)
 - weui <https://github.com/weui/weui>
 - Vux<https://github.com/airyland/vux>
