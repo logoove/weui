@@ -1,0 +1,19 @@
+lrz.min.js 图片上传前压缩
+picker.js  包含picker相关的选择 地址 时间 
+qrcode.js  二维码生成
+refresh.js  下拉与上拉
+sound.js     音乐播放
+zepto.js     包含example,picker,zepto.min 
+zepto.min.js  基础库+扩展
+example.js    包含swiper,tab,search,select,popup样式
+weui.css  微信官方css,未压缩
+weui.min.css 压缩
+weui2.css   未压缩扩展包
+weui2.min.css  压缩
+weuix.min.css  压缩的weui和weui2合并
+
+有三种加载自由选择
+使用请直接加载 weuix.min.css和zepto.js,因为可以少加载很多文件,共计大概320kb左右
+普通级 weuix.min.css和zepto.min.js 大概210kb
+最轻量级 weui.min.css和zepto.min.js 大概90kb左右
+其余请按需所加载
