@@ -1,6 +1,6 @@
 #weui-plus是在微信官方基础上增强的组件
 ---
-#### 最新版本2.7    基于weui官方0.44开发
+#### 最新版本2.9    基于weui官方0.44开发
 
 #### 简介  
 1. weui-plus是官方weui的增强版本,新增非常多的组件,css类,js函数,是微信公众号开发,移动应用最好的UI选择.
@@ -31,7 +31,8 @@ weuix.min.css  压缩的weui和weui2合并
 ![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
 - 待增加
 
-#### [更新日志](http://weixin.yoby123.cn/weui/c/r.html) 
+#### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
+- 2016-9-4 V2.9  新增手风琴,支持独立和组合调用 
 - 2016-7-26 v2.8  升级weui为0.43,微信weui官方修复了已知bug.
 - 2016-6-18 v2.7  新增15个新图标,上传图片新增提示删除,修复已知bug.
 - 2016-6-6 v2.6   替换swipe为更小函数,新版的支持是否自动播放,这个更好用,重写此css,是否使用标题,超链接自己根据例子修改 

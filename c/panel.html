@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>展开收缩</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+      <script src="../zepto.min.js"></script>
+
+</head>
+
+<body ontouchstart style="background:#efeef3 none repeat scroll 0 0">
+<div class="weui_cells_title">独立使用</div>
+<div class="weui_panel">
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a href="javascript:;" class="weui_cell"  onclick="selectmenu('1');">
+                        <div class="weui_cell_hd"><i class="icon icon-2 f20"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>收缩展开</p>
+                        </div>
+                        <span id="cell_1" class="icon icon-74 f-green"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+             <div  style="display: none;" id="menu_1">
+     <p class="p">测试文字</p>
+      </div>
+    </div>
+    
+    
+    <div class="weui_panel">
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a href="javascript:;" class="weui_cell"  onclick="selectmenu('2');">
+                        <div class="weui_cell_hd"><i class="icon icon-56 f20 f-red"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>登鹳雀楼</p>
+                        </div>
+                        <span id="cell_2" class="icon icon-74 f-gray"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+             <div  style="display: none;" id="menu_2">
+     <p class="p">白日依山尽,黄河入海流<br>欲群千里目,更上一层楼</p>
+      </div>
+    </div>
+    
+     <div class="weui_panel">
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a href="javascript:;" class="weui_cell"  onclick="selectmenu('3');">
+                        <div class="weui_cell_hd"><i class="icon icon-36 f20 f-red"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>yoby创作</p>
+                        </div>
+                        <span id="cell_3" class="icon icon-74 f-gray"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+             <div  style="display: none;" id="menu_3">
+     <p class="p">使用非常简单,只需要引入函数和设置不同数字即可<br>这个组件是很常用的,很多地方都用到了</p>
+      </div>
+    </div>  
+    
+<div class="weui_cells_title">手风琴样式</div>    
+    
+         <div class="weui_panel">
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a href="javascript:;" class="weui_cell"  onclick="selectmenu('4');">
+                        <div class="weui_cell_hd"><i class="icon icon-26 f20 f-red"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>中国足球</p>
+                        </div>
+                        <span id="cell_4" class="icon icon-74 f-gray"></span>
+                    </a>
+                      <div class="ui-border-t" style="display: none;" id="menu_4">
+     <p class="p f14">世界上最差的足球队</p>
+      </div>
+                      <a href="javascript:;" class="weui_cell"  onclick="selectmenu('5');">
+                        <div class="weui_cell_hd"><i class="icon icon-16 f20 f-red"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>巴西足球</p>
+                        </div>
+                        <span id="cell_5" class="icon icon-74 f-gray"></span>
+                    </a>
+                     <div class="ui-border-t" style="display: none;" id="menu_5">
+     <p class="p f14">世界上最优秀的足球队</p>
+      </div>
+       <a href="javascript:;" class="weui_cell"  onclick="selectmenu('6');">
+                        <div class="weui_cell_hd"><i class="icon icon-56 f20 f-red"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>韩国足球</p>
+                        </div>
+                        <span id="cell_6" class="icon icon-74 f-gray"></span>
+                    </a>
+                     <div class="ui-border-t" style="display: none;" id="menu_6">
+     <p class="p f14">比中国强的的足球队</p>
+      </div>
+                </div>
+            </div>
+        </div>
+
+    </div>  
+<script type="text/javascript">
+function selectmenu(n){
+var eleMore = document.getElementById("menu_"+n);
+if(eleMore.style.display=="none"){
+eleMore.style.display = 'block';
+$("#cell_"+n).removeClass("icon-74");
+$("#cell_"+n).addClass("icon-35 ");
+}else{
+eleMore.style.display = 'none';
+$("#cell_"+n).removeClass("icon-35");
+$("#cell_"+n).addClass("icon-74");
+}
+}
+</script>
+</body>
+</html>
