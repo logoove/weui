@@ -1,11 +1,9 @@
-#weui-plus是在微信官方基础上增强的组件
+#weui+移动开发组件
 ---
-#### 最新版本2.9    基于weui官方0.44开发
+#### 最新版本3.0    基于weui官方0.44开发
 
 #### 简介  
-1. weui-plus是官方weui的增强版本,新增非常多的组件,css类,js函数,是微信公众号开发,移动应用最好的UI选择.
-2. 本版本并未删除任何官方css也未修改.而是新增文件weui2.css,使用的时候只需要加载weuix.min.css,就包含了所有UI,js可以加载zepto.min.js,只包含基础组件,zepto.js包含了省市县选择picker.js,所以看起来比较大.  
-3. 需要单独加载的请参考演示示例.
+weui+ 是在weui基础上开发而来,采用了和原来框架分离,所以不影响升级weui的css.组件中采用了js分离,按需要加载相应的文件,一般只需要加载zepto.min.js就包含基础功能,php.js是常用自定义函数
 <pre>
 lrz.min.js 图片上传前压缩
 picker.js  包含picker相关的选择 地址 时间 
@@ -24,6 +22,7 @@ weui.min.css 压缩
 weui2.css   未压缩扩展包
 weui2.min.css  压缩
 weuix.min.css  压缩的weui和weui2合并
+php.js 包含分离出来的自定义函数
 </pre>
 
 ####  已使用公众号或移动网站
@@ -32,6 +31,7 @@ weuix.min.css  压缩的weui和weui2合并
 - 待增加
 
 #### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
+- 2016-10-1 V3.0 修复提示和底部导航同时用不能点击bug.九宫格演示显示不正确,新增红色数字徽标,分离常用函数为php.js,本函数不使用任何库,名称采用php同函数名.
 - 2016-9-4 V2.9  新增手风琴,支持独立和组合调用 
 - 2016-7-26 v2.8  升级weui为0.43,微信weui官方修复了已知bug.
 - 2016-6-18 v2.7  新增15个新图标,上传图片新增提示删除,修复已知bug.
