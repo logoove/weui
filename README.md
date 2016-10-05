@@ -31,6 +31,10 @@ php.js 包含分离出来的自定义函数
 - 待增加
 
 #### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
+weui+  2016-10-15 V3.1全新版本,经过将近10多天,终于即将完成,分五大类(基础,表单,布局,组件,css/js),采用weui0.44作为基础,兼容最新weui1.01所有效果;
+在原来基础进行重构,目前所有功能都采用js函数调用,不需要再写html;
+精简zepto.js;默认将采用只有不到50KB的压缩包,本压缩包包含非常多常用效果,后面有具体说明,没有的需要时候再加载,做到轻量级;
+![Markdown](http://p1.bpimg.com/545664/88f1580a88088829.png)![Markdown](http://p1.bpimg.com/545664/121995740bc80c0d.png)![Markdown](http://p1.bpimg.com/545664/d144378b21ebdac6.png)![Markdown](http://p1.bpimg.com/545664/889cfaa2bd7c9893.png)![Markdown](http://p1.bpimg.com/545664/7f38d512c4a46bcd.png)
 - 2016-10-1 V3.0 修复提示和底部导航同时用不能点击bug.九宫格演示显示不正确,新增红色数字徽标,分离常用函数为php.js,本函数不使用任何库,名称采用php同函数名.
 - 2016-9-4 V2.9  新增手风琴,支持独立和组合调用 
 - 2016-7-26 v2.8  升级weui为0.43,微信weui官方修复了已知bug.
