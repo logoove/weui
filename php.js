@@ -40,16 +40,11 @@ function base64_encode(data){var b64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnop
 function base64_decode(data){var b64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";var o1,o2,o3,h1,h2,h3,h4,bits,i=0,ac=0,dec="",tmp_arr=[];if(!data){return data}data+="";do{h1=b64.indexOf(data.charAt(i++));h2=b64.indexOf(data.charAt(i++));h3=b64.indexOf(data.charAt(i++));h4=b64.indexOf(data.charAt(i++));bits=h1<<18|h2<<12|h3<<6|h4;o1=bits>>16&255;o2=bits>>8&255;o3=bits&255;if(h3==64){tmp_arr[ac++]=String.fromCharCode(o1)}else{if(h4==64){tmp_arr[ac++]=String.fromCharCode(o1,o2)}else{tmp_arr[ac++]=String.fromCharCode(o1,o2,o3)}}}while(i<data.length);dec=tmp_arr.join("");return decodeURIComponent(escape(dec.replace(/\0+$/,"")))};
 
 function preg_replace(pattern,replacement,subject,limit){if(typeof limit==='undefined')limit=-1;if(subject.match(eval(pattern))){if(limit==-1){return subject.replace(eval(pattern+'g'),replacement);}else{for(x=0;x<limit;x++){subject=subject.replace(eval(pattern),replacement);}return subject;}}else{return subject;}}
-
-var strlen=function(str){var bytes=0,i=0;for(;i<str.length;++i,++bytes){if(str.charCodeAt(i)>255){++bytes}}return bytes};
-
-var substr=function(str){return str.replace(/(^\s*)|(\s*$)/g,"")};
 var strcut=function(str,iMaxBytes,sSuffix){if(isNaN(iMaxBytes)){return str}if(strlen(str)<=iMaxBytes){return str}var i=0,bytes=0;for(;i<str.length&&bytes<iMaxBytes;++i,++bytes){if(str.charCodeAt(i)>255){++bytes}}sSuffix=sSuffix||"";return(bytes-iMaxBytes==1?str.substr(0,i-1):str.substr(0,i))+sSuffix};
+var strlen=function(str){var bytes=0,i=0;for(;i<str.length;++i,++bytes){if(str.charCodeAt(i)>255){++bytes}}return bytes};
 var implode=function(c,a){return a.join(c);};
 var explode=function(separator,str,limit){if(typeof limit=='undefined'){return str.split(separator);}return str.split(separator,limit);}
-	
-var setcookie=function(){var e=new Array();var timeout=600000;var today=new Date();for(var i=0;i<arguments.length;i++){e[i]=arguments[i];}switch(e.length){case 1:var s=e[0]+'=';begin=document.cookie.indexOf(s);if(s!=-1){begin+=s.length;end=document.cookie.indexOf(';',begin);if(end!=-1){len=end-begin;return document.cookie.substr(begin,len)!='undefined'?document.cookie.substr(begin,len):'';}}break;case 2:today.setTime(today.getTime()+timeout);return document.cookie=e[0]+'='+e[1]+';expires='+(today.toLocaleString());break;case 3:today.setTime(today.getTime()+e[2]*1000);return document.cookie=e[0]+'='+e[1]+';expires='+(today.toLocaleString());break;default:return false;break;}};
-
+var setcookie=function(c,e,g){if(e===undefined){var f="; "+document.cookie;var d=f.split("; "+c+"=");if(d.length===2){return d.pop().split(";").shift()}return null}else{if(e===false){g=-1}var a="";if(g){var b=new Date();b.setTime(b.getTime()+(g*24*60*60*1000));a="; expires="+b.toGMTString()}document.cookie=c+"="+e+a+"; path=/"}};
 /*json与字符串转换*/
 var json2str=function(oJson){if(typeof(oJson)==typeof(false)){return oJson}if(oJson==null){return"null"}if(typeof(oJson)==typeof(0)){return oJson.toString()}if(typeof(oJson)==typeof("")||oJson instanceof String){oJson=oJson.toString();oJson=oJson.replace(/\\r\\n/,"\\\\r\\\\n");oJson=oJson.replace(/\\n/,"\\\\n");oJson=oJson.replace(/\\"/,'\\\\"');return'"'+oJson+'"'}if(oJson instanceof Array){var strRet="[";for(var i=0;i<oJson.length;i++){if(strRet.length>1){strRet+=","}strRet+=json2str(oJson[i])}strRet+="]";return strRet}if(typeof(oJson)==typeof({})){var strRet="{";for(var p in oJson){if(strRet.length>1){strRet+=","}strRet+='"'+p.toString()+'":'+json2str(oJson[p])}strRet+="}";return strRet}};
 var str2json=function(str){return JSON.stringify(str)};

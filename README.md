@@ -1,40 +1,26 @@
 #weui+移动开发组件
 ---
-#### 最新版本3.0    基于weui官方0.44开发
+#### 最新版本3.1    基于weui官方0.44/1.01开发
 
 #### 简介  
-weui+ 是在weui基础上开发而来,采用了和原来框架分离,所以不影响升级weui的css.组件中采用了js分离,按需要加载相应的文件,一般只需要加载zepto.min.js就包含基础功能,php.js是常用自定义函数
-<pre>
-lrz.min.js 图片上传前压缩
-picker.js  包含picker相关的选择 地址 时间 
-qrcode.js  二维码生成
-updown.js  下拉与上拉
-sound.js     音乐播放
-zepto.js     包含example,picker,zepto.min 
-zepto.min.js  基础库+扩展
-example.js    包含
-swipe.js swipe库
-swiper,tab,search,select,popup样式
-video.js 音视频播放
-iscroll.js 滚动,只在横向导航用到
-weui.css  微信官方css,未压缩
-weui.min.css 压缩
-weui2.css   未压缩扩展包
-weui2.min.css  压缩
-weuix.min.css  压缩的weui和weui2合并
-php.js 包含分离出来的自定义函数
-</pre>
-
+weui+是Zepto1.2和weui.js,weui0.44/1.01等众多开源项目中,参考而成的,接近100个新组件,最目前全网效果最全的.喜欢这个的童鞋们别吝啬去打小星星哦.
 ####  已使用公众号或移动网站
 - 公众号: 勉县小江南
 ![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
-- 待增加
 
 #### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
-weui+  2016-10-15 V3.1全新版本,经过将近10多天,终于即将完成,分五大类(基础,表单,布局,组件,css/js),采用weui0.44作为基础,兼容最新weui1.01所有效果;
+- 2016-10-15 V3.1 经过将近10多天,终于完成,分五大类(基础,表单,布局,组件,css/js),采用weui0.44作为基础,兼容最新weui1.01所有效果;
+
 在原来基础进行重构,目前所有功能都采用js函数调用,不需要再写html;
-精简zepto.js;默认将采用只有不到50KB的压缩包,本压缩包包含非常多常用效果,后面有具体说明,没有的需要时候再加载,做到轻量级;
+
+精简zepto.min.js;默认将采用只有不到50KB的压缩包,本zepto包含非常多常用效果,需要时候再加载插件,做到轻量级,每个演示都有说明是否加载js;
+
+本次更新已在ios10.1/android5.1测试,机型为iPhone6/Meizu Note3
+
+以下是截图欣赏
+
 ![Markdown](http://p1.bpimg.com/545664/88f1580a88088829.png)![Markdown](http://p1.bpimg.com/545664/121995740bc80c0d.png)![Markdown](http://p1.bpimg.com/545664/d144378b21ebdac6.png)![Markdown](http://p1.bpimg.com/545664/889cfaa2bd7c9893.png)![Markdown](http://p1.bpimg.com/545664/7f38d512c4a46bcd.png)
+
 - 2016-10-1 V3.0 修复提示和底部导航同时用不能点击bug.九宫格演示显示不正确,新增红色数字徽标,分离常用函数为php.js,本函数不使用任何库,名称采用php同函数名.
 - 2016-9-4 V2.9  新增手风琴,支持独立和组合调用 
 - 2016-7-26 v2.8  升级weui为0.43,微信weui官方修复了已知bug.

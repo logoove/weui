@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>
+  $(function(){
+	  $('.js-category').click(function(){
+			$parent = $(this).parent('li');
+		   if($parent.hasClass('js-show')){
+                        $parent.removeClass('js-show');
+                        $(this).children('i').removeClass('icon-35').addClass('icon-74');
+                    }else{
+                        $parent.siblings().removeClass('js-show');
+                        $parent.addClass('js-show');
+                        $(this).children('i').removeClass('icon-74').addClass('icon-35');
+                         $parent.siblings().find('i').removeClass('icon-35').addClass('icon-74');
+                    }
+		  });
+	  
+	  });    
+      
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            手风琴
+        </h1>
+        <p class="page-hd-desc">演示首页用的就是这种效果</p>
+    </div>
+  <div class="page-bd">  
+         <ul>
+         
+            <li class="">
+                <div class="weui-flex js-category">
+                    <p class="weui-flex-item">你喜欢的国家</p>
+                    <i class="icon icon-74"></i>
+                </div>
+                <div class="page-category js-categoryInner">
+                
+                    <div class="weui_cells weui_cells_access" style="margin-top: 0px;">
+            <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>新西南</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>   
+             <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>加拿大</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a> 
+                         <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>瑞士</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>
+                     <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>美国</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>    
+        </div>
+                    
+                </div>
+            </li>
+             <li class="">
+                <div class="weui-flex js-category">
+                    <p class="weui-flex-item">你喜欢的英雄是谁</p>
+                    <i class="icon icon-74"></i>
+                </div>
+                <div class="page-category js-categoryInner">
+                
+                    <div class="weui_cells weui_cells_access" style="margin-top: 0px;">
+            <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>马云</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>   
+             <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>马上飞</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a> 
+        </div>
+                    
+                </div>
+            </li>           
+            <li class="">
+                <div class="weui-flex js-category">
+                    <p class="weui-flex-item">你喜欢的美女有谁</p>
+                    <i class="icon icon-74"></i>
+                </div>
+                <div class="page-category js-categoryInner">
+                
+                    <div class="weui_cells weui_cells_access" style="margin-top: 0px;">
+            <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>猛拉丽莎</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>   
+             <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>维拉斯</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a> 
+        </div>
+                    
+                </div>
+            </li>            
+     </ul>
+    </div> 
+ 
+ <script type="text/javascript">
+function selectmenu(n){
+var eleMore = document.getElementById("menu_"+n);
+if(eleMore.style.display=="none"){
+eleMore.style.display = 'block';
+$("#cell_"+n).removeClass("icon-74");
+$("#cell_"+n).addClass("icon-35 ");
+}else{
+eleMore.style.display = 'none';
+$("#cell_"+n).removeClass("icon-35");
+$("#cell_"+n).addClass("icon-74");
+}
+}
+</script>    
+<div class="weui_cells_title">单独使用</div>
+<div class="weui_panel">
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a href="javascript:;" class="weui_cell"  onclick="selectmenu('1');">
+                        <div class="weui_cell_hd"><i class="icon icon-2 f20"></i></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>收缩展开</p>
+                        </div>
+                        <span id="cell_1" class="icon icon-74 f-green"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+             <div  style="display: none;" id="menu_1">
+     <div class="weui_article">测试文字,我是你们的好朋友</div>
+      </div>
+    </div>
+                               
+</body>
+</html>

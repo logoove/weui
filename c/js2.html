@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>   
+ $(document).on("click", "#act", function() {
+        $.actions({
+          title: "选择操作",
+          onClose: function() {
+            console.log("close");
+          },
+          actions: [
+            {
+              text: "发布",
+              className: "color-primary",
+              onClick: function() {
+                $.alert("发布成功");
+              }
+            },
+            {
+              text: "编辑",
+              className: "color-warning",
+              onClick: function() {
+                $.alert("你选择了“编辑”");
+              }
+            },
+            {
+              text: "删除",
+              className: 'color-danger',
+              onClick: function() {
+                $.alert("你选择了“删除”");
+              }
+            }
+          ]
+        });
+      });  
+      
+            $(document).on("click", "#ac", function() {
+        $.actions({
+          actions: [
+            {
+              text: "发布",
+              className: "bg-blue f-white",
+            },
+            {
+              text: "编辑",
+              className: "bg-green f-white",
+            },
+            {
+              text: "删除",
+              className: 'bg-orange f-white',
+            }
+          ]
+        });
+      });   
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            操作表
+        </h1>
+        <p class="page-hd-desc"></p>
+    </div>
+     <div class="page-bd-15">
+        <a href="javascript:;" class="weui_btn weui_btn_primary" id="ac">操作表带颜色</a><a href="javascript:;" class="weui_btn weui_btn_primary" id="act">操作表</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script src="../swipe.js"></script>
+      <script>
+  $(function(){
+$('#slide1').swipeSlide({
+autoSwipe:true,//自动切换默认是
+speed:3000,//速度默认4000
+continuousScroll:true,//默认否
+transitionType:'cubic-bezier(0.22, 0.69, 0.72, 0.88)',//过渡动画linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier
+lazyLoad:true,//懒加载默认否
+firstCallback : function(i,sum,me){
+            me.find('.dot').children().first().addClass('cur');
+        },
+        callback : function(i,sum,me){
+            me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+        }
+});
+
+$('#slide2').swipeSlide({
+autoSwipe:true,//自动切换默认是
+speed:3000,//速度默认4000
+continuousScroll:true,//默认否
+transitionType:'cubic-bezier(0.22, 0.69, 0.72, 0.88)',//过渡动画linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier
+lazyLoad:true,//懒加载默认否
+firstCallback : function(i,sum,me){
+            me.find('.dot').children().first().addClass('cur');
+        },
+        callback : function(i,sum,me){
+            me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+        }
+});
+$('#slide3').swipeSlide({
+autoSwipe:true,//自动切换默认是
+speed:3000,//速度默认4000
+continuousScroll:true,//默认否
+transitionType:'ease-in'
+});
+
+	  
+	  });    
+      
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            轮播
+        </h1>
+        <p class="page-hd-desc">需要单独加载swipe.js</p>
+    </div>
+
+<div class="slide" id="slide1">
+    <ul>
+        <li>
+            <a href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="http://7xr193.com1.z0.glb.clouddn.com/1.jpg" alt="">
+            </a>
+            <div class="slide-desc">零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</div>
+        </li>
+        <li>
+            <a href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="http://7xr193.com1.z0.glb.clouddn.com/2.jpg" alt="">
+            </a>
+            <div class="slide-desc">23333零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</div>
+        </li>
+        <li>
+            <a href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="http://7xr193.com1.z0.glb.clouddn.com/3.jpg" alt="">
+            </a>
+            <div class="slide-desc">33333零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</div>
+        </li>
+    </ul>
+    <div class="dot">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<h1>轮播广告</h1>
+<div class="slide" id="slide2">
+    <ul>
+        <li>
+            <a href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="http://7xr193.com1.z0.glb.clouddn.com/1.jpg" alt="">
+            </a>
+           
+        </li>
+        <li>
+            <a href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="http://7xr193.com1.z0.glb.clouddn.com/2.jpg" alt="">
+            </a>
+            
+        </li>
+        <li>
+            <a href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="http://7xr193.com1.z0.glb.clouddn.com/3.jpg" alt="">
+            </a>
+            
+        </li>
+    </ul>
+    <div class="dot">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<h2>轮播广告</h2>
+
+  <div class="slide" id="slide3" style="background:#eee;height:40px;line-height:40px;rgba(0, 0, 0, 0.01);vertical-align:middle;margin:0 auto;">
+<ul>
+<li>
+<div  class='txt'>基本世神 兑换《传奇世界H5》畅玩级礼包 消耗30金币</div></li>
+<li>
+	<div  class='txt'>零哥章魚 完成传奇世界H5-王者归来任务 获得30金币</div>
+</li>
+<li>
+<div  class='txt'>兑换【饿了么】畅享美食红包 消耗20金币</div>
+</li>
+</ul>
+</div>
+<div class="weui-article page-hd">
+<p>
+<table class="weui-table weui-border-tb f11"><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>默认值</th>
+<th>可填值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ul</td>
+<td>父dom</td>
+<td>ul</td>
+<td>.element的子dom</td>
+</tr>
+<tr>
+<td>li</td>
+<td>子dom</td>
+<td>li</td>
+<td>ul的子dom</td>
+</tr>
+<tr>
+<td>index</td>
+<td>轮播初始值</td>
+<td>0</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>continuousScroll</td>
+<td>连续滚动</td>
+<td>false</td>
+<td>true和false</td>
+</tr>
+<tr>
+<td>autoSwipe</td>
+<td>自动切换</td>
+<td>true</td>
+<td>true和false</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>切换速度</td>
+<td>4000</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>axisX</td>
+<td>X轴滚动</td>
+<td>true</td>
+<td>true和false</td>
+</tr>
+<tr>
+<td>transitionType</td>
+<td>过渡类型</td>
+<td>ease</td>
+<td>linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier</td>
+</tr>
+<tr>
+<td>lazyLoad</td>
+<td>图片懒加载</td>
+<td>false</td>
+<td>true和false</td>
+</tr>
+<tr>
+<td>firstCallback</td>
+<td>页面加载回调</td>
+<td>空</td>
+<td>function(i,sum,me){}（i为索引值，sum为总和，me为自己）</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>每次滚动回调</td>
+<td>空</td>
+<td>function(i,sum,me){}（参数同上）</td>
+</tr>
+</tbody></table>
+
+</p>
+
+</div>
+<div class="weui-footer">
+            <p class="weui-footer-links">
+                <a href="javascript:void(0);" class="weui-footer-link">底部链接</a>
+                <a href="javascript:void(0);" class="weui-footer-link">底部链接</a>
+            </p>
+            <p class="weui-footer-text">Copyright &copy; 2008-2016 移植</p>
+        </div>
+</body>
+</html>

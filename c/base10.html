@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>
+  $(function(){
+
+	  
+	  });    
+      
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            图标
+        </h1>
+        <p class="page-hd-desc">图标包括weui提供的少部分和新增加的126个,使用icon icon-88 后接数字即可</p>
+    </div>
+<div class="page-bd">
+        <i class="weui_icon_msg weui_icon_success"></i>
+        <i class="weui_icon_msg weui_icon_info"></i>
+        <i class="weui_icon_msg weui_icon_warn"></i>
+        <i class="weui_icon_msg weui_icon_waiting"></i>
+        <i class="weui_icon_safe weui_icon_safe_success"></i>
+        <i class="weui_icon_safe weui_icon_safe_warn"></i>
+        <div class="icon_sp_area">
+            <i class="weui_icon_success"></i>
+            <i class="weui_icon_success_circle"></i>
+            <i class="weui_icon_success_no_circle"></i>
+            <i class="weui_icon_info"></i>
+            <i class="weui_icon_waiting"></i>
+            <i class="weui_icon_waiting_circle"></i>
+            <i class="weui_icon_circle"></i>
+            <i class="weui_icon_warn"></i>
+            <i class="weui_icon_download"></i>
+            <i class="weui_icon_info_circle"></i>
+            <i class="weui_icon_cancel"></i>
+            <i class="weui_icon_search"></i>
+            <i class="weui_icon_clear"></i>
+        </div>
+</div>        
+ <style>
+.icon_lists li{
+  float:left;
+  width: 60px;
+  height:60px;
+  text-align: center;
+  list-style-type:none;
+}
+.icon_lists .icon{
+  font-size: 24px;
+  line-height: 40px;
+  margin: 5px 0;
+  color:#18b4ed;
+  -webkit-transition: font-size 0.25s ease-out 0s;
+  -moz-transition: font-size 0.25s ease-out 0s;
+  transition: font-size 0.25s ease-out 0s;
+
+}
+.icon_lists .icon:hover{
+  font-size: 32px;
+}
+</style>
+        <ul class="icon_lists clear">
+            <script>
+      for(var i=1;i<=126;i++){
+      document.write('<li><span class="icon icon-'+i+'"></span>'+i+'</li>');
+      }
+      </script>  
+              
+            
+        </ul>       
+
+</body>
+</html>
