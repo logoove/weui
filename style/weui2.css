@@ -1700,7 +1700,7 @@ weui-box*/
     width: 30px;border:1px solid #FFF;
 }
 .weui_msg_src {
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
     font-size: 0;
     overflow: hidden;
 }
@@ -1727,7 +1727,7 @@ weui-box*/
 }
 .weui_msg_comment {
     background: #fff none repeat scroll 0 0;
-    border-radius: 0 0 10px 10px;
+    border-radius:5px;
     color: #ff0000;
     padding: 0 0 10px;
 }
@@ -2080,18 +2080,17 @@ weui-box*/
  
     align-items: center;
     padding: 10px;
-    transition: all 0.3s ease 0s;display: flex;
+    transition: all 0.3s ease 0s;
+    display: -webkit-flex;
+     display: -webkit-box;
+    display: flex;
 }
 .page-bd .weui-flex-item {
-
+-webkit-flex: 1 1 0;
     flex: 1 1 0;
 }
-.weui_cell_link {
-    color: #586c94;
-    font-size: 14px;
-}
 .weui_cell-bd {
-  
+  -webkit-flex: 1 1 0;
     flex: 1 1 0;
 }
 
@@ -2201,11 +2200,14 @@ weui-box*/
     padding: 0 0.34em;
 }
 .weui-flex {
+ display: -webkit-box;
+display: -webkit-flex;
     display: flex;
 }
 .weui-flex-item {
-   
-    flex: 1 1 0;
+     -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
 }
 .placeholder {
     background-color: #ebebeb;
@@ -2540,6 +2542,7 @@ body {
     text-align: right;
 }
 .weui-form-preview-ft {
+display: -webkit-flex;
     display: flex;
     line-height: 50px;
     position: relative;
