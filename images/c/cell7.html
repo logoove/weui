@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>
+  $(function(){
+//定义文本
+const paragraph = $('#paragraph');
+const paragraphText = paragraph.text();
+const paragraphLength = paragraph.text().length;
+//定义文章长度
+const maxParagraphLength = 80;
+//定义全文按钮
+const paragraphExtender = $('#paragraphExtender');
+var toggleFullParagraph = false;
+
+//定义全文按钮
+if (paragraphLength < maxParagraphLength) {
+  paragraphExtender.hide();
+} else {
+  paragraph.html(paragraphText.substring(0, maxParagraphLength) + '...');
+  paragraphExtender.click(function(){
+    if (toggleFullParagraph) {
+      toggleFullParagraph = false;
+      paragraphExtender.html('显示全文');
+      paragraph.html(paragraphText.substring(0, maxParagraphLength) + '...');
+    } else {
+      toggleFullParagraph = true;
+      paragraphExtender.html('收起');
+      paragraph.html(paragraphText);
+    }
+  });
+};
+const menu = $('#actionMenu');
+const menuBtn = $('#actionToggle');
+menuBtn.click(function(){menu.toggleClass('active')});
+	  });    
+
+ 
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+
+<div class="weui_cells_title">朋友圈</div>
+
+ <!-- 开始 朋友圈 -->
+      <div class="weui_cells moments">
+        <!-- 普通的post -->
+        <div class="weui_cell moments__post">
+          <div class="weui_cell_hd">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" />
+          </div>
+          <div class="weui_cell_bd">
+            <!-- 人名链接 -->
+            <a class="title" href="javascript:;">
+              <span>我就是老大</span>
+            </a>
+            <!-- post内容 -->
+            <p id="paragraph" class="paragraph">
+              weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。weui目前是比较好用的ui,在微信和手机中表现非常好。
+            </p>
+            <!-- 伸张链接 -->
+            <a id="paragraphExtender" class="paragraphExtender">显示全文</a>
+            <!-- 相册 -->
+            <div class="thumbnails">
+              <div class="thumbnail">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" />
+              </div>
+              <div class="thumbnail">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" />
+              </div>
+            </div>
+            <!-- 资料条 -->
+            <div class="toolbar">
+              <p class="timestamp">回忆中的未来</p>
+              <div>
+                <div id="actionMenu" class="actionMenu slideIn">
+                  <p class="actionBtn" id="btnLike"><i class="icon icon-96"></i></p>
+                  <p class="actionBtn" id="btnComment"><i class="icon icon-3"></i></p>
+                </div>
+              </div>
+              <span id="actionToggle" class="actionToggle">..</span>
+            </div>
+            <!-- 赞／评论区 -->
+            <p class="liketext"><i class="icon icon-96"></i><span class="nickname">Yoby</span>,<span class="nickname">奥巴马</span></p>
+          </div>
+          <!-- 结束 post -->
+        </div>
+      </div>
+      <!-- 结束 朋友圈 -->
+</body>
+</html>

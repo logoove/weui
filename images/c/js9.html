@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script><script src="../qrcode.js"></script>
+      <script>
+  $(function(){
+    	$(document).on('swipe','#item .weui_cell',function(){
+	
+	 $('.delete').hide()
+  $('.delete', this).show();
+	})
+$(document).on('tap','.delete',function(){
+	$(this).parent().parent('.weui_cell').remove();
+	})
+	  
+	  });    
+      
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            二维码生成,二维码名片生成
+        </h1>
+        <p class="page-hd-desc">需要加载qrcode.js</p>
+    </div>
+    
+<div class="page-bd-15">
+       <a href='javascript:;' class=' weui_btn weui_btn_primary'  id='qr'>生成</a>
+       <div id="qrcodeimg" class='tcenter'></div>
+       <script >
+ var txt="BEGIN:VCARD\r\nVERSION:3.0\r\nN:太白\r\nFN:李\r\nTITLE:工程师\r\nNICKNAME:昵称\r\nTEL;CELL;VOICE:移动18291448888\r\nTEL;WORK;VOICE:工作电话18291449999\r\nORG:组织机构\r\nEMAIL;PREF;INTERNET:logove@qq.com\r\nADR;TYPE=WORK:;;具体地址;汉中;陕西省;2324200;中国\r\nADR;TYPE=HOME:;;具体地址;汉中;陕西省;2324200;中国\r\nNOTE;ENCODING=QUOTED-PRINTABLE:备注来自名片通讯录\r\nEND:VCARD";
+$("#qr").click(function(){
+$("#qrcodeimg").empty().qrcode({render:"image",ecLevel:"L",size:300,background:"#fff",fill:"#000",text:txt});
+
+});
+
+</script>
+</div>
+
+
+<div class="pag-bd-15">
+<div class="weui_cells " id="item">
+<div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>向左滑动</p>
+                </div>
+                <div class="weui_cell_ft"><a class='delete hide' href="javascript:;"><i class="icon icon-26 f20 f-blue"></i></a></div>
+            </div>   
+                <div class="weui_cell" >
+               
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>更多swipe查看zepto模块</p>
+                </div>
+                <div class="weui_cell_ft"><a class='delete hide' href="javascript:;"><i class="icon icon-26 f20 f-red"></i></a></div>
+            </div>
+    
+ </div> 
+
+</div>
+
+</body>
+</html>

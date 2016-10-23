@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script><script src="../picker.js"></script>
+  <script src="../select.js"></script>
+     <script>
+  $(function(){
+$("#d1").select({
+        title: "选择爱好",
+        autoClose:true,
+        
+        items: ['男人','女人','外星人'],
+        onChange: function(d) {
+         $.alert("你选择了"+d.values);
+        }
+      });
+      $("#d2").select({
+        title: "选择爱机",
+        items: [
+          {
+            title: "iPhone 3GS",
+            value: "001",
+          },
+          {
+            title: "iPhone 5",
+            value: "002",
+          },
+          {
+            title: "iPhone 5S",
+            value: "003",
+          }
+        ],
+        onChange: function(d) {
+         $.alert("你选择了"+d.values+d.titles);
+        }
+      });
+      $("#d3").select({
+        title: "您的爱好",
+        multi: true,
+        split:',',
+        closeText:'完成',
+        items: [
+          {
+            title: "画画",
+            value: 1
+          },
+          {
+            title: "打球",
+            value: 2
+          },
+          {
+            title: "唱歌",
+            value: 3
+          },
+          {
+            title: "游泳",
+            value: 4
+          },
+        ],
+        onChange: function(d) {
+          $.alert("你选择了"+d.values+d.titles);
+        }
+      });
+	  });    
+      
+      </script>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            popup,select
+        </h1>
+        <p class="page-hd-desc">使用弹出需要加载picker.js和select.js</p>
+    </div>
+    
+<div class="weui_cells weui_cells_form "> 
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">弹出单选:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='d1'/>
+                    
+                </div>
+              
+            </div> 
+    
+    
+          <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">弹出单选:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='d2'/>
+                    
+                </div>
+              
+            </div> 
+                  <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">弹出复选:</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" id='d3'/>
+                    
+                </div>
+              
+            </div> 
+</div>
+
+
+ <div class='page-hd'><a href="javascript:;" class="weui_btn weui_btn_primary open-popup " data-target="#popup">打开全屏</a></div>
+	
+	<div id="popup" class="weui-popup-container">
+  <div class="weui-popup-modal">
+  <div class="weui_article">
+    <h2 class="title">这是一篇文章</h2>
+            <section>
+              <h3>我是小标题</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute</p>
+            </section>
+    </div>
+  <p class='page-bd-15'><a href="javascript:;" class="weui_btn weui_btn_plain_primary close-popup" id="p1">关闭</a></p>
+  </div>
+ </div> 
+  
+  
+    
+</body>
+</html>

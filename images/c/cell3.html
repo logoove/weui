@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>
+  $(function(){
+ $('img').attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=');
+ 
+ $('.weui-comment-icon').click(function(){
+ if($(this).parent().hasClass('checked')){
+ $(this).parent().removeClass('checked');
+ var  val = $(this).next().html();
+  $(this).next().html(parseInt(val)-1);
+ }else{
+ $(this).parent().addClass('checked');
+  var  val = $(this).next().html();
+  $(this).next().html(parseInt(val)+1);
+ }
+ });
+	  
+	  });    
+      
+      </script>
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            分页
+        </h1>
+        <p class="page-hd-desc"></p>
+    </div>
+
+<div class="page-bd-15">
+  <div class='pager'>
+<div class="pager-left">
+<div class="pager-first"><a class="pager-nav">首页</a></div>
+<div class="pager-pre"><a  class="pager-nav">上一页</a></div>
+</div>
+<div class="pager-cen">1/120</div>
+<div class="pager-right">
+<div class="pager-next"><a class="pager-nav">下一页</a></div>
+<div class="pager-end"><a  class="pager-nav">尾页</a></div>
+</div>
+</div> 
+
+<div class="weui_cells_title">留言</div>
+ <ul class="weui-comment">
+ <li class="weui-comment-item"> 
+ <div class="weui-comment-li"> <span class="check checked"> <i class="weui-comment-icon"></i> <span class="weui-comment-num">11</span> </span> </div> <div class="userinfo"> <strong class="nickname">张飞</strong> <img class="avatar" src=""> </div> <div class="weui-comment-msg"> <span class="status"></span> 沙发 </div> <p class="time">昨天  </p> 
+ 
+ <div class="weui-comment-reply"> <div class="nickname">刘备回复</div> <div class="weui-comment-msg"> 来看我啦~ </div> <p class="time">今天早上</p> </div>
+  </li>
+ <li class="weui-comment-item"> 
+ <div class="weui-comment-li"> <span class="check"> <i class="weui-comment-icon"></i> <span class="weui-comment-num">0</span> </span> </div> <div class="userinfo"> <strong class="nickname">关羽</strong> <img class="avatar" src=""> </div> <div class="weui-comment-msg"> <span class="status"></span> 板凳 </div> <p class="time">未来时间  </p>  </li>
+ 
+ <li class="weui-comment-item"> 
+ <div class="weui-comment-li"> <span class="check checked"> <i class="weui-comment-icon"></i> <span class="weui-comment-num">999</span> </span> </div> <div class="userinfo"> <strong class="nickname">刘备</strong> <img class="avatar" src=""> </div> <div class="weui-comment-msg"> <span class="status"></span> 居然没抢到沙发 </div> <p class="time">未来时间  </p>  </li>
+ 
+  </ul>
+  
+</div>
+
+
+</body>
+</html>

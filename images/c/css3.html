@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>
+  $(function(){
+
+	  
+	  });    
+      
+      </script>
+</head>
+<style>
+
+#tb tr td{
+text-align:left;
+width:420px;word-wrap:break-word;word-break:break-all;
+}
+</style>
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            js写的php函数
+        </h1>
+        <p class="page-hd-desc">函数用法具体详细参考php,几乎相同,支持mobile/PC</p>
+    </div>
+    
+    <table class="weui-table weui-border-tb" id="tb">
+                <thead>
+                <tr><th>函数名说明</th></tr>
+                </thead>
+                <tbody>
+                <tr ><td>browser变量浏览器语言和版本判断对象
+{"version":{"ie":false,"opera":false,"webKit":false,"firefox":true,"mobile":false,"ios":false,"android":false,"iphone":false,"ipad":false,"weixin":false},"language":"zh-cn","wifi",true}</td></tr>
+                <tr><td>htmlencode(str)/htmldecode(str)
+                转换或还原实体</td></tr>
+                <tr><td>date()Y-m-d H:i:s返回带0 Y-n-j不带0 z一年中第几天要+1才正确 w星期0是周日 N 7是周日D三个字母星期 l英语星期 W周 F月份英语 L闰年判断 c带时区日期时间 r英文形式</td></tr>
+                <tr><td>time()返回php形式10位时间</td></tr>
+                <tr><td>strtotime()转换成时间戳 支持'06:08:59' "2014-2-3" "now"  "+1 day" "+1 week" "+2 days" </td></tr>
+                <tr><td>microtime()微秒返回 "0.992 1434963474" microtime().split(" ")[1]</td></tr>
+                <tr><td>intval(9.2,8)floatval(1.2) 浮点型 转换成整形 第二个表示数据的进制 转换不了返回0</td></tr>
+                <tr><td>empty()是否为空 0  false null ''  [] {} undefined</td></tr>
+                <tr><td>isset()是否赋值 undefined返回false</td></tr>
+                <tr><td>urlencode()urldecode()编解码</td></tr>
+                <tr><td>base64_encode()base64_decode()64编码转换</td></tr>
+                <tr><td>function_exists('alert') 检测函数是否存在</td></tr>
+                <tr><td>in_array(1, ['1', '2', '3']); 是否在数组中</td></tr>
+                <tr><td>range ( 0, 12 ); 生成数组 range( 'a', 'i' ); range( 0, 100, 10 );第三个参数步长</td></tr>
+                <tr><td>strip_tags("111") 去除html</td></tr>
+                <tr><td>round(1.456,1) 四舍五入</td></tr>
+                <tr><td>rand(1,10) 生成随机数1-10 前后都包含</td></tr>
+                <tr><td>ceil(1.2) 进1 floor(3.555) 舍去法</td></tr>
+                <tr><td>strtolower()转大写strtoupper()小写ucfirst()首字母大写</td></tr>  
+                <tr><td>base_convert(99,16,2) 进制之间转换</td></tr>
+                <tr><td>utf8_encode(str)编码成utf8 utf8_decode(str)解码</td></tr>
+                <tr><td>is_eq(str1,str2) 是否相等
+is_num("1") 是否数字
+is_phone("1") 是否手机号
+is_qq()
+is_id(str) 是否身份证
+is_chinese(str) 是否中文
+is_reg(str) //是否由字母和数字，下划线,点号组成.且开头的只能是下划线和字母
+is_tel(str) 电话测试 校验普通电话、传真号码：可以“+”开头，除数字外，可含有“-”
+is_ip(str) 是否IP
+is_zipcode(str) 是否邮编
+is_email(邮箱)
+is_english(str) 是否英文
+is_url(str) 是否url
+is_int(1,0,100) 是否在0到100之间
+is_float(1.2,1.1,1.9) 是否在1.1-1.9之间
+is_http() 是否包含http或https</td></tr>
+                <tr><td>preg_replace(/N/,"32","分数是N分")
+strlen('1我2') 中文2个字符
+strtrim(var) 去除多空格
+timeline()时间线
+strfind(string, find) 查找子字符串
+json2str()   str2json()
+setcookie('v',1,60)设置cookie 获取 默认60s
+implode(',',[1,2,3]) 转换成字符串
+explode(",","1,2,3") 分割成数组
+strcut("我爱中国人",4,"...")  截取字符串汉字占两个 英文一个</td></tr>
+                <tr><td>setcookie( "foo" ); 获取
+setcookie( "foo", "bar", 5 ); 5天过期
+setcookie( "foo", false ); 删除</td></tr>
+                <tr><td>date_eq(strDate1,strDate2) 判断是否第一个日期大于第二个</td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>                                               
+                </tbody>
+            </table>
+</body>
+</html>
