@@ -9,6 +9,7 @@ weui+是Zepto1.2和weui.js,weui0.44/1.01等众多开源项目中,参考而成的
 ![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
 
 #### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
+- 2016-11-23 v3.5 新增fullpage单页应用
 - 2016-10-23 v3.4 新增音效摇一摇和vconsole调试工具
 - 2016-10-18 v3.3 新增十六宫格,微信底部菜单,以及修改js模板函数
 - 2016-10-16 v3.2 修复弹出框圆角和flex某些机型不能正确排版
