@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+	  <script src="../fullpage.js"></script>
+ <style>
+      .fullPage-wp{   
+    -webkit-transform: translate3d(0,0,0);     
+    transform: translate3d(0,0,0);     
+}
+.fullPage-wp:after {
+    display: block;
+    content: ' ';
+    height: 0;
+    clear: both;
+}
+.fullPage-wp.anim{
+    -webkit-transition: all 500ms ease-out 0s;
+    transition: all 500ms ease-out 0s; 
+}
+.fullPage-page{
+    display: block;
+    overflow: hidden;
+}
+
+.fullPage-dir-h {
+    float: left;
+}
+
+.wp{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;  color:#333;          
+}
+.pagex{
+    font-size: 72px;
+    line-height: 320px;
+    text-align: center;
+}
+.page1{
+   
+}
+.page2{
+   
+}
+.page3{
+   
+}
+.page4{
+  
+}
+.page5{
+   
+}
+
+/* 箭头 */
+@-webkit-keyframes start {
+    0%,30% {
+        opacity: 0.2;
+        -webkit-transform: translate(0,10px);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+    100% {
+        opacity: 0.2;
+        -webkit-transform: translate(0, -5px);
+    }
+}
+@keyframes start {
+    0%,30% {
+        opacity: 0.2;
+        transform: translate(0,10px);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translate(0, -5px);
+    }
+}
+.start{
+    position: fixed;
+    left: 50%;
+    margin-left: -17px;
+    top: 95%;
+    margin-top: -34px;
+    width: 34px;
+    height: 34px;
+}
+.start b{
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    margin-left: -9px;
+    width: 19px;
+    height: 12px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAYCAYAAAB9ejRwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3NEE1QzAwRjUwNUVFNDExQjUyN0I2QzNBRjZFQTlDRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBRkFBRkZBNTY5NzcxMUU0QjQ4RkMyMjdFRTY0MERCQiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBRkFBRkZBNDY5NzcxMUU0QjQ4RkMyMjdFRTY0MERCQiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2NURGOEYwOEMyNjhFNDExQjM3NEZBQ0Q5QTM2MUEyMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NEE1QzAwRjUwNUVFNDExQjUyN0I2QzNBRjZFQTlDRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoRMrLEAAADlSURBVHjazNddEYMwDADg4WBSkDAJkxAJk4ATpEzCJEwCEkJ6K0fXDZrfu+YubzT5epBeGRDx0l14oagOUC6UYxcoqvHAPewwK4rWz/gbNpgFdQCyw7SoBsgG06CYID1MihKCdDAuip67Ur5QH3wYB+UAksFaKAEovdYxN7bBzlASULGGC7uJURqQEJYC2Khc9M0oOp1sVg+rUeZdetQqUZ4gU80NFQFSwxIqEqSCZRRnhO8O9y7OAC0bCkKuIPKj5tOr+KYgGtSA7b2q6YNo0AHsu9efcwqiQRXsWfcaevzFWgUYANEEcX5wqz+wAAAAAElFTkSuQmCC);
+    background-size: 100% 100%;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    animation: start 1.5s infinite ease-in-out;
+}
+
+</style>
+      <script>
+  $(function(){
+
+	  
+	  });    
+ 
+      </script>
+</head>
+
+<body ontouchstart>
+    <div class="wp">
+        <div class="wp-inner">
+            <div class="pagex page1" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArIAAAGFBAMAAADzwA07AAAAIVBMVEXr6+vPz8/X19fp6ene3t7k5OTm5ubh4eHT09Pb29vR0dHqLrSfAAACyklEQVR42uzBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGB27GdHaSiO4vgJ5e+s5lzAFlZ2Y1yWoIm6AjPJbItG3VJdmLiiOg9Aow8AybinK1/Tey9ldDttl+eTFC6w+4b+2luRNi2XcIJl8v/H6quHhf9BHiXnFlbGE6wep/D8+gm8Dp8CnEAeJePOBz4n7XKssi254gFWzEkVUWVb0uEeVklz7rxS2ZYM/PnfZ8zEz4atyrYkYOjn63emAPI5VLYtxczHe+HnbWxc7K9fVLYFxwjAIur5eVuGQLcgn6lsczkTYDNDOQb6Nma/oJWqbGMLV/EYIg6BAffIaG5iTlW2sSFXQDFGblzDAwqTIIi5VdmmRrZbYI/F3FXeDbj3uQ8q29SA1/ZYYcgtFkzeMAXQ50llmwo4RYcpRlwhj5DN4RShyjZWTHA1Bwa233Fm435w4onKNnY0yAwQ8BrFFGuezVS2sc0c6xBAPA04Rswz8+9Z7VBl61lwG48BrCd+IEQ33i36DB8eNKpsHUP+KPcAMuMvYgYXnFzS71S2jhF/8+D/mq+YIotwURh4GVOVraPHXy4dOsznfrNb3XUh9kv3nqhsHQEjlw5dFsa97qudAnK/RI8GKltLTANfkyEQlFECfOMBGDFKAaw5Vtl61lW1wifMaW7fMkpcZJr7u+fkTmXr2VRbgqM/+3slrZ+wPtP7A5WtZ8FTVfgA63VhYyZw3tGaJSrbkuDTe1Re3t1/hIiIiIiIiIiIiIj8ZQ8OBAAAAACA/F8bQVVVVVVVVVVVVVVVVVVVhT04EAAAAAAA8n9tBFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVpT04JAAAAAAQ9P+10RMAAAAAAAAAAAAAAADAArTtXKLPR7LcAAAAAElFTkSuQmCC" style="display: block; max-width:100%;height:100%;width:100%"></div>
+            <div class="pagex page2" >
+        <h1 class="f16" style="margin:10px auto">
+            赶紧来测试下看看你的皮肤几岁了
+        </h1>
+        <p class="f14 tleft" style="margin:10px 10px 10px 15px;line-height:22px;color: #aaa;">有的人二十几岁，皮肤就有了松弛的迹象，有的人四十岁却拥有如玉的肌肤。想知道你的肌肤状况吗？那先来做个测试把。</p>
+        <div style=" color: #888;font-size: 14px; margin-bottom:0px;padding-left: 15px;padding-right: 15px;line-height:14px;" class='tleft'>肌肤测试</div>
+<div class="weui_cells weui_cells_checkbox tleft" style='margin-top:5px;height:800px!important;position:absolute;overflow-y:yes'>
+
+            <label class="weui_cell weui_check_label" for="s0">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s0"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>洗完脸拍上化妆水后，感觉水分立刻被吸干。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s1">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s1"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>眼部出现细小的皱纹，笑起来尤为明显。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s2">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s2"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>鼻部的毛孔就算没有黑头，也非常粗大。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s3">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s3"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>眼下形成眼袋，熬夜后水肿更加严重。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s4">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s4"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>在冬季，如果只使用乳液会感到不够滋润。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s5">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s5"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>出现色斑，肤色不均，肤色黯沉，气色不佳。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s6">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s6"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>肌肤非常干燥，但出油又较为严重。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s7">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s7"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>洗完脸后，肌肤表面粗糙，没有柔滑感。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s8">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s8"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>使用护肤品时手法很随意。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s9">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s9"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>脸上的毛孔越来越粗大，并且呈椭圆形。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s10">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s10"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>法令纹明显，两颊肌肤有下垂的倾向。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s11">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s11"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>经常12点后入睡，常熬夜工作等。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s12">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s12"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>有抽烟的习惯，或曾有烟龄三年以上。</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s13">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s13"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>不喜欢户外运动，对健身也无多大热情</p>
+                </div>
+            </label>
+          
+             <label class="weui_cell weui_check_label" for="s14">
+                <div class="weui_cell_hd">
+                    <input class="weui_check" name="checkbox" id="s14"  type="checkbox">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>压力大，容易受到坏情绪影响。</p>
+                </div>
+            </label>
+          
+  
+ 
+                  
+        </div>        
+
+        
+                  
+            </div>
+            <div class="pagex page3">  
+            
+             <div class="weui_btn_area " style="margin-top:450px">
+            <a class="weui_btn weui_btn_primary"  href="javascript:void(0);" id="btn">提交</a>
+        </div> 
+        
+        
+        </div>
+            <div class="pagex page4">测试结果
+             <div class="weui_btn_area " style="margin-top:40px">
+            <a class="weui_btn weui_btn_primary"  href="javascript:void(0);" id="btn2">重新测试</a>
+            
+            </div>
+            </div>
+        </div>
+    </div>
+  
+<span class="start"><b></b></span>
+
+
+
+    <script>
+        $('.wp-inner').fullpage({
+        change: function (e) {    
+            if (e.cur === 2) {
+          $.fn.fullpage.stop();
+            }
+    }
+ });
+   //$.fn.fullpage.start();
+ $('#btn').on('tap', function (e) {
+ $.fn.fullpage.start();
+    $.fn.fullpage.moveNext();
+
+});
+   $('#btn2').on('tap', function (e) {
+    $.fn.fullpage.moveTo(0);$.fn.fullpage.start();
+});  
+    </script>
+</body>
+</html>
+
