@@ -2695,3 +2695,98 @@ button.weui-form-preview-btn {
   padding: .4em;
   min-width: 0;
 }
+/*角标*/
+.weui-mark {
+  padding-left:10px;
+  padding-right:0;
+  padding-top: 10px;-webkit-overflow-scrolling: touch; }
+.weui-mark li {
+    padding-right: 10px;
+    padding-bottom: 10px;
+    float: left;
+    position: relative;
+    -webkit-box-sizing: border-box;
+        width: 50%;
+    list-style: outside none none;
+    }
+.weui-mark-img {
+ padding-top: 100%;
+  position: relative;
+  width: 100%; }
+.weui-mark-img img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0; }
+   
+.weui-mark-rt{
+    border-radius: 2px;
+    top: 0;
+    color: #fff;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    width: 40px;
+
+}
+.weui-mark-rb{
+    border-radius: 2px;
+    bottom: 10px;
+    color: #fff;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    width:40px;
+background-color: rgba(0, 0, 0, 0.4);
+}
+.weui-mark-lb{
+    border-radius: 2px;
+    bottom:10px;
+    color: #fff;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    left:0;
+    text-align: left;
+    width:95%;
+    max-width:99%;
+display:block;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.weui-mark-vip{
+    left: 0;
+    position: absolute;
+    top:0;overflow: hidden;height: 50px;width: 90px;
+}
+.weui-mark-lt{
+    color: #fff;
+    display: block;
+    font-size: 12px!important;
+    left:-15px;height: 14px;
+    line-height: 14px!important;
+    position: relative;
+    text-align: center;
+    top:15px;
+    transform: rotate(-45deg);
+    width:70px;
+    
+}
+.weui-mark-meta{position: relative;}
+.weui-mark-title,.weui-mark-desc{
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+}
+.weui-mark-title{
+font-weight:700;
+}

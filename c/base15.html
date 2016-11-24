@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+      <script>
+  $(function(){
+
+	  
+	  });    
+ 					var t =1136000000;//秒数
+					function showtime(){
+
+						var d = parseInt(t/3600/24);
+						if(d<10){
+							d="0"+d;	
+						}
+						var h = parseInt((t%(3600*24))/3600);
+						if(h<10){
+							h="0"+h;	
+						}
+						var m = parseInt((t%(3600*24))%3600/60);
+						if(m<10){
+							m="0"+m;	
+						}
+						var s = parseInt((t%(3600*24))%60);
+						if(s<10){
+							s="0"+s;	
+						}
+						var a=(d=="00")?"":'<span>'+d+' </span>天 ';
+						var b=(h=="00")?"":'<span>'+ h+' </span> 时 ';
+						var c=(m=="00")?"":'<span>'+m+' </span> 分 ';
+						var d=(s=="00")?"":'<span>'+s+' </span> 秒';
+						$('.countdown').html(a+b+c+d);
+						t = t -1;
+					}
+					showtime();
+					setInterval("showtime()",1000);     
+      </script>
+      <style>
+       .countdown{width:100%;color:#000;line-height: 20px;font-size:14px;}
+        .countdown span{ background-color:rgba(0,0,0,0.5);color: #fff;padding:5px;border-radius: 2px;margin:10px;}
+      </style>
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            倒计时
+        </h1>
+        <p class="page-hd-desc">倒计时css和js是独立的,参看本页,用在答题,需要计时游戏</p>
+    </div>
+<div class="page-bd-15">
+<div class="countdown"></div>
+</div>					
+</body>
+</html>
