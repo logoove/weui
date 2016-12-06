@@ -1,14 +1,15 @@
 #weui+移动开发组件
 ---
-#### 最新版本3.7    基于weui官方0.44/1.01开发
+#### 最新版本3.8    基于weui官方0.44/1.02开发
 
 #### 简介  
-weui+是Zepto1.2和weui.js,weui0.44/1.01等众多开源项目中,参考而成的,接近100个新组件,最目前全网效果最全的.喜欢这个的童鞋们别吝啬去打小星星哦.
+weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的,接近100个新组件,最目前全网效果最全的.喜欢这个的童鞋们别吝啬去打小星星哦.
 ####  已使用公众号或移动网站
 - 公众号: 勉县小江南
 ![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
 
 #### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
+- 2016-12-7 v3.8  修复搜索1px阴影错误,增加打分js,增加验证函数php.js,包含一些功能和php一样同名函数
 - 2016-11-26 v3.7 新增角标用于视频网站,倒计时
 - 2016-11-24 v3.6 新增slider滑块,修改badge徽标,同步weui1.1效果
 - 2016-11-23 v3.5 新增fullpage单页应用
@@ -22,10 +23,6 @@ weui+是Zepto1.2和weui.js,weui0.44/1.01等众多开源项目中,参考而成的
 精简zepto.min.js;默认将采用只有不到50KB的压缩包,本zepto包含非常多常用效果,需要时候再加载插件,做到轻量级,每个演示都有说明是否加载js;
 
 本次更新已在ios10.1/android5.1测试,机型为iPhone6/Meizu Note3
-
-以下是截图欣赏
-
-![Markdown](http://p1.bpimg.com/545664/88f1580a88088829.png)![Markdown](http://p1.bpimg.com/545664/121995740bc80c0d.png)![Markdown](http://p1.bpimg.com/545664/d144378b21ebdac6.png)![Markdown](http://p1.bpimg.com/545664/889cfaa2bd7c9893.png)![Markdown](http://p1.bpimg.com/545664/7f38d512c4a46bcd.png)
 
 - 2016-10-1 V3.0 修复提示和底部导航同时用不能点击bug.九宫格演示显示不正确,新增红色数字徽标,分离常用函数为php.js,本函数不使用任何库,名称采用php同函数名.
 - 2016-9-4 V2.9  新增手风琴,支持独立和组合调用 

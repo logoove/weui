@@ -696,7 +696,7 @@ input.bg-orange-b {
 .slide .txt{overflow: hidden;text-align:center;font-size:16px; white-space: nowrap;word-break: break-all; text-overflow: ellipsis;}
 /*搜索*/
 .search-input{
-  box-sizing: border-box;
+  box-sizing: content-box;
   width:100%;
   height: 30px;
   display:inline-block;
@@ -715,6 +715,12 @@ input.bg-orange-b {
 .search-input::-webkit-input-placeholder {
   color: #cccccc;
   opacity: 1;
+}
+.search-input+button::after {
+    border: 1px solid #04be02!important;
+}
+.search-input+button{
+border-radius:0!important;
 }
 /*标签*/
 .weui-label {

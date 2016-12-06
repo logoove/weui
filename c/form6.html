@@ -51,7 +51,40 @@ $('.weui-number-plus').click(function(){
     $('.weui-number-sub').click(function(){
         upDownOperation( $(this) );
     });
-  
+ 
+ //评分js
+ var arr = ["1分","2分","3分","4分","5分"];
+	var num = -1;
+	$(".weui-rater a").mouseover(function(){
+		var thisL = $(this).index();
+		for(var i = 0;i < thisL;i++){
+			$(".weui-rater a").eq(i).addClass('checked');
+		}
+		for(var i = thisL; i < 5;i++){
+			$(".weui-rater a").eq(i).removeClass('checked');
+		}
+		$(this).addClass('checked');
+	})
+	$(".weui-rater a").mouseout(function(){
+		var thisL = $(this).index();
+		for(var i = thisL; i < 5;i++){
+			$(".weui-rater a").eq(i).removeClass('checked');
+		}
+	})
+	$(".weui-rater").mouseout(function(){
+		
+		for(var i = 0; i < num;i++){
+			$(".weui-rater a").eq(i).addClass('checked');
+		}
+	})
+  $(".weui-rater a").click(function(){
+		var thisL = $(this).index();
+		$("#fen").html(arr[thisL]);
+		$(this).addClass('checked');
+		num = thisL+1;
+		console.log(num);
+	})
+	
  });      
       </script>
 </head>
@@ -82,13 +115,14 @@ $('.weui-number-plus').click(function(){
 
 <div class="page-hd">
  <div class="weui-rater">
-  <a class="weui-rater-box checked"> <span class="weui-rater-inner">★</span> </a>
-  <a class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
-  <a class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
-  <a class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
-  <a class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
+  <a data-num = "0" class="weui-rater-box checked"> <span class="weui-rater-inner">★</span> </a>
+  <a data-num = "1" class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
+  <a data-num = "2" class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
+  <a data-num = "3" class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
+  <a data-num = "4" class="weui-rater-box"> <span class="weui-rater-inner">★</span> </a>
    </div>
 
+<div id='fen' class="weui_cells_title"></div>
 </div>
 </body>
 </html>
