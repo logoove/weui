@@ -1,6 +1,6 @@
 #weui+移动开发组件
 ---
-#### 最新版本3.8    基于weui官方0.44/1.02开发
+#### 最新版本3.9    基于weui官方0.44/1.02开发
 
 #### 简介  
 weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的,接近100个新组件,最目前全网效果最全的.喜欢这个的童鞋们别吝啬去打小星星哦.
@@ -8,7 +8,8 @@ weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的
 - 公众号: 勉县小江南
 ![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
 
-#### [更新日志](http://weixin.yoby123.cn/weui/c/r.html)
+#### [更新日志](http://weixin.yoby123.cn/weui/c/help1.html)
+-2017-1-1 v3.9 修改fullpage全屏滑动组件核心js为微信官方组件,本组件完美支持超过一屏内容先滑动后翻页,支持点击按钮翻页,支持前后翻页,支持动画绑定,只有6kb大小
 - 2016-12-7 v3.8  修复搜索1px阴影错误,增加打分js,增加验证函数php.js,包含一些功能和php一样同名函数
 - 2016-11-26 v3.7 新增角标用于视频网站,倒计时
 - 2016-11-24 v3.6 新增slider滑块,修改badge徽标,同步weui1.1效果
@@ -50,4 +51,4 @@ weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的
 - zepto <https://github.com/madrobby/zepto>
 - zyMedia <https://github.com/ireaderlab/zyMedia>
 - vconsole <https://github.com/WechatFE/vConsole>
-- fullpage <https://github.com/yanhaijing/zepto.fullpage>
+- PageSlider <https://github.com/weixin/PageSlider>
