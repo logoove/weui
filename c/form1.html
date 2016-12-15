@@ -10,7 +10,15 @@
       <script src="../zepto.min.js"></script>
       <script>
   $(function(){
+$('#formSubmitBtn').click(function(){
+var $ck = $('#ck:checked').val();
+if($ck=='on'){
+alert('选中');
+}else{
+alert('没有选中');
+}
 
+});
 	  
 	  });    
       
@@ -112,14 +120,18 @@
             </div>
             
                         <div class="weui_cell weui_cell_switch">
-                <div class="weui_cell_hd weui_cell_primary">标题文字</div>
+                <div class="weui_cell_hd weui_cell_primary">是否选中</div>
                 <div class="weui_cell_ft">
-                    <input class="weui_switch" type="checkbox"/>
+                    <input class="weui_switch" type="checkbox" id='ck'/>
                 </div>
             </div>
             
         </div>
     
     </div>
+    
+     <div class="weui_btn_area">
+        <a id="formSubmitBtn" href="javascript:" class="weui_btn weui_btn_primary">提交</a>
+    </div>   
 </body>
 </html>

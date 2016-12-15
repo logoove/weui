@@ -55,13 +55,23 @@ $("#content").html(dest);
                 
             </div>
 <% } %>
+   <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>
+                    <input class="weui_input" type="text" value="<%=tm%>">
+                    <%=tm%>
+                    </p>
+                </div>
+                
+            </div>
 </div>
 
 </script>
 <script>
 var data1 = {
 	title: '你最喜欢的电影是什么?',
-	list: ['疯狂动物城', '肖申克的救赎', '星球大战', '拯救大兵瑞恩']
+	list: ['疯狂动物城', '肖申克的救赎', '星球大战', '拯救大兵瑞恩'],
+	tm:"2016-12-01 12:45"
 };
 var tplx = document.getElementById('tpl').innerHTML;
 var desc1=tpl(tplx,data1);
