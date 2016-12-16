@@ -1,13 +1,7 @@
-#weui+移动开发组件
+# weui+
 ---
-#### 最新版本4.0    基于weui官方0.44/1.02开发
-
-#### 简介  
+#### [功能简介](http://weixin.yoby123.cn/weui/)  
 weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的,接近100个新组件,最目前全网效果最全的.喜欢这个的童鞋们别吝啬去打小星星哦.
-####  已使用公众号或移动网站
-- 公众号: 勉县小江南
-![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
-
 #### [更新日志](http://weixin.yoby123.cn/weui/c/help1.html)
 - 2017-1-1 v4.0 新增vue2.1.6类库,包括vue.min.js和vue.js,压缩版用于生产环境,非压缩版用于开发环境,vue和zepto等其他可以同时使用,所有组件并没有写成vue组件,但是vue可以用来做一般开发,开发教程参考vue中文教程;本版本更新主要增加一些演示完整性
 - 2017-12-25 v3.9 修改fullpage全屏滑动组件核心js为微信官方组件,本组件完美支持超过一屏内容先滑动后翻页,支持点击按钮翻页,支持前后翻页,支持动画绑定,只有6kb大小
@@ -31,25 +25,32 @@ weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的
 - 2016-6-3  v2.4  新增音视频播放器,新增横向可滚动导航,新增iscroll移动版库,新增9种常见颜色值;修复已知问题.   
 - 2016-4-1 V1.0 weui是很棒的微信端UI,但是组件太少了,在微信开发很多组建都没有,所以根据此问题,收集网络上优秀的代码片段,组合开发出了这一套增强版weui-plus,目前还在不断增多组件,修复bug,目标是做最好的微信端移动端UI.
 
-#### 演示
-<http://weixin.yoby123.cn/weui/>
+#### [在线演示](http://weixin.yoby123.cn/weui/)
 
-二维码扫码看演示
-![](http://7xr193.com1.z0.glb.clouddn.com/weui.png?time=1463681994)
+![http://weixin.yoby123.cn/weui/](http://7xr193.com1.z0.glb.clouddn.com/weui.png?time=1463681994)
 
-#### 赞助我 支付宝和微信支付
-![](http://7xr193.com1.z0.glb.clouddn.com/weixin-v.jpg?time=1463681994)  ![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg?time=1463681994)
+#### [赞助我](#)
+![](http://7xr193.com1.z0.glb.clouddn.com/weixin-v.jpg?time=1463681994)  
 
-#### 友情感谢(不完全列出,谢谢你们的付出)
-- weui官方 <https://github.com/weui/weui>
+![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg?time=1463681994)
+
+####  [已使用公众号或移动网站](#)
+![](http://weixin.yoby123.cn/attachment/headimg_1.jpg?time=1463681994)
+
+#### [友情感谢](#)
+- weui<https://github.com/weui/weui>
 - Vux <https://github.com/airyland/vux>
 - jquery-weui <https://github.com/lihongxun945/jquery-weui>
 - frozen <https://github.com/frozenui/frozenui>
 - sui <https://github.com/sdc-alibaba/SUI-Mobile>
-- swipe <https://github.com/thebird/Swipe>
 - localResizeIMG <https://github.com/think2011/localResizeIMG>
 - jquery-qrcode <https://github.com/jeromeetienne/jquery-qrcode>
 - zepto <https://github.com/madrobby/zepto>
 - zyMedia <https://github.com/ireaderlab/zyMedia>
 - vconsole <https://github.com/WechatFE/vConsole>
 - PageSlider <https://github.com/weixin/PageSlider>
+- vue <https://github.com/vuejs/vue>
+- lazyimg <https://github.com/lzxb/lazy-load-img>
+- updown <https://github.com/ximan/dropload>
+- phpjs <https://github.com/chand3040/phpjs>
+- 以上排名不分先后,参考了他们代码或直接使用了,还有一些未找到出处不在此列出,谢谢.
