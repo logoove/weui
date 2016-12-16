@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+	  <script src="../vue.min.js"></script>
+
+</head>
+
+<body ontouchstart class="page-bg" >
+<div class="page-hd">
+        <h1 class="page-hd-title">
+           vue2.1.6
+        </h1>
+        <p class="page-hd-desc">需要加载vue.min.js</p>
+    </div>
+<div class="page-bd-15">
+<div id="app" v-bind:title="message">
+  {{message}}
+    <ol>
+    <li v-for="v in list">
+      {{ v.text }}
+    </li>
+  </ol>
+</div>
+
+
+<a href="http://vue.sike.io/" target="_blank" >vue中文教程</a>
+
+<a id="app2" href="#" v-on:click="alerts">{{message}}</a>
+</div>    
+    
+    
+      <script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: '你好 世界!',
+    list:[{ text: '我是天朝小民' },{ text: '我是美国公民' },{ text: '我是大侠移民' }]
+  }
+})
+var app2 = new Vue({
+  el: '#app2',
+  data: {
+    message: '中文教程!'
+  },
+  methods: {
+    alerts: function () {
+      this.message ="你好美";
+    }
+  }
+})
+      </script>    
+</body>
+</html>

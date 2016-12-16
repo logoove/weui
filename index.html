@@ -10,7 +10,11 @@
       <script src="zepto.min.js"></script>
       
       <script>
+     
   $(function(){
+   document.querySelector('body').addEventListener('touchmove', function(e) {
+    e.preventDefault();
+})
 	  $('.js-category').click(function(){
 			$parent = $(this).parent('li');
 		   if($parent.hasClass('js-show')){
@@ -33,7 +37,7 @@
 <body ontouchstart  class="page-bg">
 <div class="page-hd">
         <h1 class="page-hd-title">
-            WeUI+3.9您的放心选择
+            WeUI+4.0您的放心选择
         </h1>
         <p class="page-hd-desc">WeUI+是Zepto1.2和weui.js,weui0.44/1.1,以及上百个组件开发而成,兼容IOS和Android两大平台,仅适用于微信/手机网站开发,如有任何问题,请在github反馈,其他方式不做回答.</p>
     </div>
@@ -106,7 +110,7 @@
                 </div>
             </li><li>
                 <div class="weui-flex js-category" >
-                    <p class="weui-flex-item" style="position: relative;margin-right: 10px;">2. 基础<span class="weui-badge" style="position: absolute;top: -.4em;">3</span></p>
+                    <p class="weui-flex-item" >2. 基础</p>
                     <i class="icon icon-74"></i>
                 </div>
                  <div class="page-category js-categoryInner">
@@ -271,7 +275,7 @@
             </li>                     
             <li>
                 <div class="weui-flex js-category" >
-                    <p class="weui-flex-item">4. 组件</p>
+                    <p class="weui-flex-item " style="position: relative;margin-right: 10px;">4. 组件<span class="weui-badge" style="position: absolute;top: -.4em;">1</span></p>
                     <i class="icon icon-74"></i>
                 </div>
                  <div class="page-category js-categoryInner">
@@ -368,7 +372,12 @@
                 </div>
                 <div class="weui_cell_ft">3.5</div>
             </a>	  
-            
+                <a class="weui_cell" href="c/js15.html">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p class="weui-reddot">vue2.1.6</p>
+                </div>
+                <div class="weui_cell_ft">4.0</div>
+            </a>	  
         </div>                   
                 </div>               
             </li>            
