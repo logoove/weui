@@ -34,6 +34,24 @@ weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的
 
 ![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg?time=1463681994)
 
+#### [使用方法](http://www.kancloud.cn/logoove/we7/249788)
+~~~
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hello world</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+ <link rel="stylesheet" href="weuix.min.css"/>
+<script src="zepto.min.js"></script>
+</head>
+<body ontouchstart  class="page-bg">
+<div class="page-bd-15">
+Hello World
+</div>
+</body>
+</html>
+~~~
 ####  [已使用公众号或移动网站](#)
 ![](http://open.weixin.qq.com/qr/code/?username=gh_0c65a0b2e150)
 
