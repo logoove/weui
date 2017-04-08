@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>      
+
+</head>
+
+<body ontouchstart class="page-bg">
+
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            jssdk音频播放
+        </h1>
+        <p class="page-hd-desc">ios和微信客户端内自动播放音频需采用Jsdk,其余都不能自动;</p>
+    </div>
+ <div class="page-hd">
+<audio id="mp3" src="http://7xr193.com1.z0.glb.clouddn.com/test.mp3" preload="meta" controls></audio>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    function audioplay(id){
+    var audio = document.getElementById(id);
+   !audio.paused?audio.pause():audio.play();
+
+    
+    document.addEventListener("WeixinJSBridgeReady", function () {
+          !audio.paused?audio.pause():audio.play();
+    }, false); 
+}
+$(function(){
+audioplay('mp3');
+
+})
+</script>
+
+<a href="javascript:;" class="weui_btn weui_btn_primary" onclick="audioplay('mp3')">播放</a>  
+</div>      
+</body>
+</html>

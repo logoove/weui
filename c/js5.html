@@ -14,7 +14,15 @@
     TagNav('#tagnav',{
         type: 'scrollToFirst',
     });
-	  $('.weui_tab').tab();
+	  $('.weui_tab').tab({
+    defaultIndex: 0,
+    activeClass:'weui_bar_item_on',
+    onToggle:function(index){
+    if(index>0){
+    alert(index)
+    }
+    }
+});
 	  
 	  
 	  
