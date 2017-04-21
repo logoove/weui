@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weuix.min.css"/>
+   <script src="../zepto.min.js"></script>
+   <script >
+   $(function(){
+   if($('#sc').attr('src')==""){$('#sc').attr('src','http://api.xfsub.com/index.php?url=http://tv.sohu.com/20170322/n484314332.shtml');}
+   $('#btn').click(function(){
+ 
+   var $search = $('#search').val();
+   $('#sc').attr('src','http://api.xfsub.com/index.php?url='+$search);
+   });
+   
+   
+   })
+   </script> 
+
+</head>
+
+<body ontouchstart class="page-bg" >
+
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            视屏解析测试
+        </h1>
+        <p class="page-hd-desc">只需要填入视频播放地址</p>
+    </div>
+    <div class="weui_search_bar">
+<input class="search-input" id="search" placeholder="视频地址" style="box-sizing:content-box" type="text"><button id='btn' class="weui_btn weui_btn_mini weui_btn_primary"><i class="icon icon-92"></i></button>    
+</div>
+ <div class="page-hd " >
+<iframe width="100%" height="100%" src="" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" id='sc'></iframe>
+
+
+</div>      
+</body>
+</html>

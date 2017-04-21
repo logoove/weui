@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+      <script src="../zepto.min.js"></script>
+
+</head>
+
+<body ontouchstart style="background-color: #f8f8f8;">
+       <div class="weui_cells_title">左滑动删除,需在尾部加载slideleft.js</div>
+        <div class="weui_cells">
+        
+        
+                    <div class="weui_cell slidelefts">
+                <div class="weui_cell_bd weui_cell_primary ">
+                    <span>仿微信左滑动删除</span>
+                </div>
+                <div class="slideleft">
+                <span style="background:#ccc;color:#fff">取消关注</span>
+                <span class="bg-red f-white dels">删除</span>
+                
+              </div>
+            </div>
+ 
+                    <div class="weui_cell slidelefts">
+                <div class="weui_cell_bd weui_cell_primary ">
+                    <span>自定义颜色用style</span>
+                </div>
+                <div class="slideleft">
+                <span style="background:#ff6600;color:#fff">取消关注</span>
+                <span class="bg-green f-white">分享</span>
+              </div>
+            </div>        
+
+                    <div class="weui_cell slidelefts">
+                <div class="weui_cell_bd weui_cell_primary ">
+                    <span>只有删除,最多支持两个</span>
+   
+                </div>
+                <div class="slideleft">
+                <span class="bg-red f-white">删除</span>
+              </div>
+            </div> 
+</div> 
+
+<div class="weui_cells">         
+<div class="weui_cell slidelefts">
+                <div class="weui_cell_hd" style="padding-left:15px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui_cell_bd weui_cell_primary"  style="padding-left:0">
+                    <p>标题文字</p>
+                </div>
+                <div class="slideleft">
+                <span class="bg-red f-white">删除</span>
+              </div>
+            </div>
+            
+            <div class="weui_cell slidelefts">
+                <div class="weui_cell_hd" style="padding-left:15px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui_cell_bd weui_cell_primary" style="padding-left:0">
+                    <p>标题文字</p>
+                </div>
+                <div class="slideleft" >
+                <span style="background:#ff6600;color:#fff">取消关注</span>
+                <span class="bg-red f-white">删除</span>
+              </div>
+            </div>
+            
+            
+        </div>
+ 
+   <script src="../slideleft.js"></script> 
+   <script>
+
+  $(function(){
+$('.dels').click(function(){
+  $.confirm("您确定要删除吗?", "确认删除?", function() {
+          $.toast("删除成功!");
+        }, function() {
+          //取消操作
+        });
+
+});
+	  
+	  });    
+      
+      </script>
+</body>
+</html>

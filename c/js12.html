@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="../style/weui2.css"/>
   <link rel="stylesheet" href="../style/weui3.css"/>
       <script src="../zepto.min.js"></script>
+
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+        <h1 class="page-hd-title">
+            摇一摇
+        </h1>
+        <p class="page-hd-desc">摇一摇效果</p>
+    </div>
+<audio  id="musicBox"  src="http://weixin.yoby123.cn/weui/c/v4.mp3"></audio>
+</body>
+</html>
       <script>
   $(function(){
 
@@ -28,7 +41,10 @@ y = acceleration.y;
 z = acceleration.z;
 var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
 if(speed > SHAKE_THRESHOLD) {
- document.getElementById('musicBox').play();
+
+ WeixinJSBridge.invoke('getNetworkType', {}, function (res) {
+         document.getElementById('musicBox').play();
+    });
  alert('摇一摇');
 };
 last_x = x;
@@ -41,15 +57,3 @@ last_z = z;
 	  });    
      
       </script>
-</head>
-
-<body ontouchstart class="page-bg">
-<div class="page-hd">
-        <h1 class="page-hd-title">
-            摇一摇
-        </h1>
-        <p class="page-hd-desc">摇一摇效果</p>
-    </div>
-<audio style="display:block" id="musicBox"  src="http://weixin.yoby123.cn/weui/c/v4.mp3"></audio>
-</body>
-</html>

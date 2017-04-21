@@ -2796,3 +2796,40 @@ display:block;
 .weui-mark-title{
 font-weight:700;
 }
+/*左滑动删除css*/
+.slidelefts {
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  transform: translateZ(0);border-bottom: 1px solid  #eee;
+  -webkit-transform: translateZ(0);padding:0;
+}
+.slidelefts .weui_cell_bd {
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  background-color: #fff;
+  padding: 10px 15px;
+}
+.weui_cell .weui_cell_bd.animated {
+  -webkit-transition: -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out;
+}
+.weui_cell .slideleft {
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+.weui_cell .slideleft span {
+  height: 100%;
+  padding: 0 10px;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
