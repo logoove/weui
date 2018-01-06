@@ -32,9 +32,9 @@ weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的
 直接放到本地查看效果吧,以前的演示访问量过大导致服务器经常奔溃,所以不再提供演示
 
 #### [赞助我](#)
-![](http://7xr193.com1.z0.glb.clouddn.com/weixin-v.jpg?time=1463681994)  
+![](https://we7.shanliwawa.top/wechat.jpg)  
 
-![](http://7xr193.com1.z0.glb.clouddn.com/zhi-v.jpg?time=1463681994)
+![](https://we7.shanliwawa.top/alipay.jpg)
 
 #### [使用方法](http://www.kancloud.cn/logoove/we7/249788)
 ~~~
@@ -55,7 +55,7 @@ Hello World
 </html>
 ~~~
 ####  [已使用公众号或移动网站](#)
-![](http://open.weixin.qq.com/qr/code/?username=gh_0c65a0b2e150)
+![](https://we7.shanliwawa.top/mx.jpg)
 
 #### [友情感谢](#)
 - weui<https://github.com/weui/weui>
