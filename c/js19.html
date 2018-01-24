@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<script src="//libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+		<style>
+.pop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 1000; height: 100%; width: 100%; animation: poupFadIn 0.5s ease 0s 1; outline: none }
+.pop .box { border-radius: 20px; background-color: #fff; position: fixed; z-index: 1001; left: 20px; right: 20px; top: 100px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.32), 0 -3px 0px 0px rgba(0, 0, 0, 0.15) inset; -webkit-animation: f1 0.5s 0s ease 1; }
+@-webkit-keyframes f1 {  0% {
+-webkit-transform: translateY(50px);
+opacity:0;
+}
+ 100% {
+-webkit-transform: translateY(0);
+opacity:1;
+}
+}
+#zjl .box { top: 50px; }
+.pop .box .closeb { cursor: pointer; position: absolute; display: block; border-radius: 50%; width: 30px; height: 30px; text-indent: -9999px; top: 5px; right: 5px; }
+.pop .box .closeb:after { position: absolute; content: '.'; display: block; width: 20px; height: 1px; background: #B9B9B9; -webkit-transform: rotate(45deg); top: 14px; left: 5px; }
+.pop .box .closeb:before { position: absolute; content: '.'; display: block; width: 20px; height: 1px; background: #B9B9B9; -webkit-transform: rotate(-45deg); top: 14px; left: 5px; }
+.pop .box h1 { color: #333; text-align: center; padding: 10px 0; font-size: 16px; }
+.pop .box h2 { color: #ee635f; font-size: 12px; text-align: center; padding: 0 5px 5px 5px; word-wrap: break-word; }
+.pop .box .inputqy { margin: 5px 15px; overflow: hidden; }
+.pop .box .inputqy input { box-sizing: border-box; padding: 10px; background-color: #FCFCFC; color: #666; border-radius: 40px; width: 100%; margin: 5px auto; font-size: 14px; border: 1px #E9E9E9 solid; }
+.pop .box .inputqy select { box-sizing: border-box; padding: 10px; background-color: #FCFCFC; color: #666; border-radius: 40px; width: 100%; margin: 5px auto; font-size: 14px; border: 1px #E9E9E9 solid; }
+.pop .box .but_con { margin: 10px 15px 20px 15px; overflow: hidden; }
+.pop .box .w49 { width: 49%; }
+.pop .button_yes { width: 100%; text-align: center; display: inline-block; box-sizing: border-box; font-size: 16px; font-weight: bold; color: #fff; border-radius: 40px; padding: 10px 0; border: 1px solid #04be02; background-color: #04be02; cursor: pointer; }
+.pop .button_yes:active { border: 1px solid #DA443F; background-color: #04be02; }
+.pop .button_no { width: 100%; text-align: center; display: inline-block; box-sizing: border-box; font-size: 16px; color: #999; border-radius: 40px; padding: 10px 0; border: 1px solid #ccc; background-color: transparent; cursor: pointer; }
+.pop .button_no:active { background-image: linear-gradient(to top, #dedede, #f2f2f2); }
+.pop .jpimg { text-align: center }
+.pop .jpimg img { max-height: 240px; max-width: 100%; border-radius: 10px; margin-bottom: 5px; }
+.pop .jptext { text-align: center; font-size: 14px }
+.pop .jptext .ncz { margin: 20px 0; display: block; color: #04be02; }
+.copyright { color: #f9dc97; font-size: 14px; text-align: center; margin: 20px 0; }
+#pwdjp .box { top: 50px; bottom: 50px; }
+.popjiangpin { position: absolute; top: 40px; bottom: 15px; left: 15px; right: 15px; border-radius: 6px; }
+.popjiangpin ul { height: 100%;overflow: auto;-webkit-overflow-scrolling: touch }
+.popjiangpin ul li { margin-bottom: 5px; text-align: center; position: relative; }
+.popjiangpin ul li:nth-child(2n) { margin-right: 0; }
+.popjiangpin ul li .hdjptp { padding: 0; overflow: hidden; border-radius: 6px; background-color: #F9F9F9; }
+.popjiangpin ul li .jptu { position: relative; margin-bottom: 0; border-radius: 6px 0 0 6px; overflow: hidden; background-color: #FFF; width: 80px; height: 80px; float: left; }
+.popjiangpin ul li .jptu img { width: 100% }
+.popjiangpin ul li .jpms { margin-left: 90px; overflow: hidden; text-align: left; display: -webkit-box; -webkit-box-pack: center; -webkit-box-align: center; -webkit-box-orient: vertical; height: 80px; }
+.popjiangpin ul li .jpgs { position: absolute; bottom: 0; background-color: rgba(0, 0, 0, 0.3); color: #FFF; padding: 0; width: 100%; font-size: 12px; text-align: center }
+.popjiangpin ul li .jpdj { font-size: 16px; line-height: 18px; width: 100%; color: #FF4A4A; }
+.popjiangpin ul li .jpmc { font-size: 14px; width: 100%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.popjiangpin ul li .jptime { font-size: 12px; width: 100%; color: #777; }
+.popjiangpin ul li .jpduihuan { position: absolute; top: 0; right: 0; font-size: 12px; color: #fff; background-color: #EA1B29; border-radius: 0 10px; padding: 5px 10px; }
+.popjiangpin ul li .jpduihuan-ok { position: absolute; top: 0; right: 0; font-size: 12px; color: #fff; background-color: #ccc; border-radius: 0 10px; padding: 5px 10px; }
+.poupFadIn { animation: poupFadIn .2s ease 0s 1; -webkit-animation: poupFadIn .2s ease 0s 1; -moz-animation: poupFadIn .2s ease 0s 1; -o-animation: poupFadIn .2s ease 0s 1; }
+.poupFadOut { animation: poupFadOut .2s ease 0s 1; -webkit-animation: poupFadOut .2s ease 0s 1; -moz-animation: poupFadOut .2s ease 0s 1; -o-animation: poupFadOut .2s ease 0s 1; }
+@-webkit-keyframes poupFadIn { from {
+opacity:0
+}
+to { opacity: 1 }
+}
+@-webkit-keyframes poupFadOut { from {
+opacity:1
+}
+to { opacity: 0 }
+}
+			
+		</style>
+		<title>弹出注册框</title>
+	</head>
+	<body>
+	<script>
+		$(function(){
+			$('#a1').click(function(){
+				$('#s1').show();
+			});
+			$('#a3').click(function(){
+				$('#s3').show();
+			});
+			$('#a4').click(function(){
+				$('#s4').show();
+			});
+			$('#a5').click(function(){
+				$('#s5').show();
+			});
+		})
+	</script>
+	<a href="javascript:;" id="a1">注册</a>
+	<a href="javascript:;" id="a3">兑奖</a>
+	<a href="javascript:;" id="a4">中奖</a>
+	<a href="javascript:;" id="a5">提示</a>
+        <div id="s1" class="pop" style="display:none;">
+          <div class="box">
+            <h1>填写您的资料</h1>
+            <div class="inputqy">
+                <h2 id="error_tip" style="color:#F00;"></h2>
+                              	<input type="text" id="true_name" placeholder="请填入真实姓名" />
+                              	<input type="text" id="phone" placeholder="请填入手机号码" />
+                              	<input type="text" id="address" placeholder="请填入详细地址" />
+                              	<select>
+                              		<option>中国</option>
+                              		<option>美国</option>
+                              	</select>
+                            </div>
+            <div class="but_con"  >
+                <button class="button_yes" onClick="sendtel()">确定</button>
+                <div class="clr"></div>
+              </div>
+          	</div>
+        </div>
+    
+    <!--申请兑换-->
+    <div id="s3" class="pop" style="display:none;">
+        <div class="box">
+        	<b class="closeb" onClick="document.getElementById('s3').style.display='none';" ></b>
+        	<h1>申请兑换</h1>
+            <div class="inputqy">
+            	<input type="hidden" id="winner_id" value="" />
+            	<input type="text" readonly id="snid" value="" />
+                            	<input type="password" id="password" placeholder="请输入兑换密码" />
+            	            </div>
+            <div class="but_con">
+            	<button class="button_yes" onClick="ckpass();">确定</button>
+            </div>
+        </div>
+    </div>
+    
+<!--中奖了-->
+<div id="s4" class="pop" style="display:none;">
+  		<div class="box">
+        	<b class="closeb" onClick="document.getElementById('s4').style.display='none';"></b>
+    		<h1>恭喜您！您中奖了！</h1>
+    		<div class="inputqy">
+      			<div class="jpimg"><img id="jpimg" src="http://pic.xmjdwl.com/index/9gg/images/prize.png" /></div>
+      			<div class="jptext">
+        			<p id="jptype">等奖名称</p>
+        			<p id="jpname">奖品具体名称</p>
+      			</div>
+    		</div>
+            <div id="zjlbtn" class="but_con" style="display:none;">
+      			<button class="button_yes" onClick="document.getElementById('wszlBox').style.display='';">领奖</button>
+    		</div>
+  		</div>
+</div>
+
+<!--未中奖-->
+<div id="s5" class="pop" style="display:none;">
+  		<div class="box">
+    		<h1></h1>
+    		<div class="inputqy">
+      			<div class="jptext"><span class="ncz">很遗憾，没抽中任何奖品！</span></div>
+    		</div>
+    		<div class="but_con">
+      			<button class="button_yes" onClick="document.getElementById('s5').style.display='none';">知道啦</button>
+    		</div>
+  		</div>
+</div>            		
+	</body>
+</html>
