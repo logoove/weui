@@ -1,10 +1,10 @@
 <?php
 $config = array();
 $config['db']['host'] = '121.42.172.1';
-$config['db']['username'] = 'root';
-$config['db']['password'] = 'mysqlmysql';
+$config['db']['username'] = '';
+$config['db']['password'] = '';
 $config['db']['port'] = '3306';
-$config['db']['database'] = 'we7';
+$config['db']['database'] = '';
 $config['temp'] =str_replace("\\", '/',dirname(__FILE__))."/cache/";//临时目录
 $config['db']['charset'] = 'utf8';
 $config['db']['pconnect'] = 0;
