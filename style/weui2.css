@@ -573,7 +573,7 @@ input.bg-orange-b {
  * 表格
  */
 .weui-table{width:100%;border-collapse:collapse;background-color:#fff;line-height:32px;text-align:center}.weui-table th{font-weight:500}.weui-table td,.weui-table th{border-bottom:1px solid #d9edf7;border-right:1px solid #d9edf7;text-align:center}.weui-table tr td:last-child,.weui-table tr th:last-child{border-right:0}.weui-table tr:last-child td{border-bottom:0}
-tr:nth-child(2n){ background-color:#d9edf7;}
+.weui-table-2n tr:nth-child(2n){ background-color:#d9edf7;}
 /*swipe*/
 .slide{
     position: relative;
