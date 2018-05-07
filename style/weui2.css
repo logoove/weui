@@ -577,7 +577,7 @@ input.bg-orange-b {
 /*swipe*/
 .slide{
     position: relative;
-    max-width: 640px;
+    max-width:100%;max-height:60%;
     overflow: hidden;
     margin: 0px auto;
 }
