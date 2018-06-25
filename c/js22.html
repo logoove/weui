@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>marquee</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+</head>
+<style type="text/css">
+#marquee1 ul,#marquee2 ul,#marquee3 ul{list-style-type:none;}
+#marquee1{width:310px;height:45px;overflow:hidden;background:#333;border:1px solid #333;}
+#marquee1 ul li{float:left; padding:0 1px;}
+#marquee1 ul li img{display:block;}
+
+#marquee2{width:300px;height:25px;overflow:hidden; background:#EFEFEF;}
+#marquee2 ul li{float:left; padding:0 10px; line-height:25px;}
+
+
+
+#marquee3{height:30px; line-height:30px; overflow:hidden;background:#EFEFEF;}
+#marquee3 ul li{float:left; width:180px; padding:10px; line-height:30px;}
+
+</style>
+</head>
+<body>
+ <div class="weui-flex">
+            <div class="weui-flex-item">
+            <div id="marquee1" class="clearfix">
+	<ul>
+		<li><img  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1822063051,4161046849&fm=27&gp=0.jpg" width="60" height="45"></li>
+		<li><img  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1822063051,4161046849&fm=27&gp=0.jpg" width="60" height="45"></li>
+		<li><img  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1822063051,4161046849&fm=27&gp=0.jpg" width="60" height="45"></li>
+		<li><img  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1822063051,4161046849&fm=27&gp=0.jpg" width="60" height="45"></li>
+		<li><img  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1822063051,4161046849&fm=27&gp=0.jpg" width="60" height="45"></li>
+		<li><img  src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1822063051,4161046849&fm=27&gp=0.jpg" width="60" height="45"></li>
+	</ul>
+</div>
+            </div>
+        </div>
+  <div class="weui-flex">
+            <div class="weui-flex-item">
+      <div id="marquee2" class="clearfix">
+	<ul>
+		<li><a href="#">新闻公告一</a></li>
+		<li><a href="#">新闻公告二新闻公告二新闻公告二新闻公告二</a></li>
+		<li><a href="#">新闻公告三新闻公告三</a></li>
+		<li><a href="#">新闻公告四新闻公告四新闻公告四</a></li>
+		
+	</ul>
+</div>      
+            </div>
+        </div>       
+ <div class="weui-flex">
+            <div class="weui-flex-item">
+          <div id="marquee3" class="clearfix">
+	<ul>
+		<li><a href="#">新闻公告一新闻公告一</a></li>
+		<li><a href="#">新闻公告二新闻公告二新闻公告二新闻公告二新闻公告二新闻公告二新闻公告二新闻公告二</a></li>
+		<li><a href="#">新闻公告三新闻公告三新闻公告三新闻公告三</a></li>
+		<li><a href="#">新闻公告四新闻公告四新闻公告四新闻公告四新闻公告四新闻公告四</a></li>
+		<li><a href="#">新闻公告五新闻公告五新闻公告五新闻公告五新闻公告五</a></li>
+		<li><a href="#">新闻公告六新闻公告六新闻公告六新闻公告六新闻公告六新闻公告六</a></li>
+	</ul>
+</div>  
+            </div>
+        </div>        
+        
+
+
+
+
+
+
+<script src="../zepto.min.js"></script>
+<script src="../marquee.js"></script>
+<script >
+$(function(){
+
+ 	$("#marquee1").kxbdMarquee({direction:"right"});
+	$("#marquee2").kxbdMarquee({
+isEqual:true,		//所有滚动的元素长宽是否相等,true,false
+loop:0,				//循环滚动次数，0时无限
+direction:"left",	//滚动方向，"left","right","up","down"
+scrollAmount:1,		//步长
+scrollDelay:20		//速度
+ });
+	$("#marquee3").kxbdMarquee({direction:"up",isEqual:false,scrollDelay:50});
+})
+
+ </script>
+</body>
+</html>

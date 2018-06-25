@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>侧边栏</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <link rel="stylesheet" href="../style/weui3.css"/>
+</head>
+<style type="text/css">
+/* weui-nav */
+.weui-nav{width: 220px;height: 100%;background: #263238;transition: all .3s; position: absolute;top:0;left: 0;}
+.weui-nav a{display: block;overflow: hidden;padding-left: 20px;line-height: 46px;max-height: 46px;color: #fff;transition: all .3s;}
+.weui-nav a span{margin-left: 30px;}
+.nav-item{position: relative;}
+.nav-item.nav-show{border-bottom: none;}
+.nav-item ul{display: none;background: rgba(0,0,0,.1);}
+.nav-item.nav-show ul{display: block;}
+.nav-item>a:before{content: "";position: absolute;left: 0px;width: 2px;height: 46px;background: #FFF;opacity:0;transition: all .3s;}
+.weui-nav .nav-icon{font-size:16px;position: absolute;margin-left:-1px;}
+.nav-more{float:right;margin-right: 20px;font-size: 12px;transition: transform .3s;}
+.nav-show .nav-more{transform:rotate(180deg);}
+.nav-more::after{content: "\e644";}
+.nav-show,.nav-item>a:hover{color: #FFF;background:rgba(0,0,0,.1);}
+.nav-show>a:before,.nav-item>a:hover:before{opacity:1;}
+.nav-item li:hover a{color: #FFF;background: rgba(0, 0, 0,.1);}
+</style>
+</head>
+<body>
+ 	<div class="weui-nav">
+	        <ul>
+	            <li class="nav-item">
+	                <a href="javascript:;"><i class="icon nav-icon icon-49"></i><span>网站配置</span><i class="icon nav-more"></i></a>
+	                <ul>
+	                    <li><a href="javascript:;"><span>网站设置</span></a></li>
+	                    <li><a href="javascript:;"><span>友情链接</span></a></li>
+	                    <li><a href="javascript:;"><span>分类管理</span></a></li>
+	                    <li><a href="javascript:;"><span>系统日志</span></a></li>
+	                </ul>
+	            </li>
+	            <li class="nav-item">
+	                <a href="javascript:;"><i class="icon nav-icon icon-49"></i><span>文章管理</span><i class="icon nav-more"></i></a>
+	                <ul>
+	                    <li><a href="javascript:;"><span>站内新闻</span></a></li>
+	                    <li><a href="javascript:;"><span>站内公告</span></a></li>
+	                    <li><a href="javascript:;"><span>登录日志</span></a></li>
+	                </ul>
+	            </li>
+	            <li class="nav-item">
+	                <a href="javascript:;"><i class="icon nav-icon icon-49"></i><span>订单管理</span></a>
+	               
+	            </li>
+	            	            <li class="nav-item">
+	                <a href="javascript:;"><i class="icon nav-icon icon-49"></i><span>我的主页设置菜单</span></a>
+	               
+	            </li>
+	        </ul>
+	    </div>
+<script src="../zepto.min.js"></script>
+
+<script >
+    $('.nav-item>a').on('click', function () {
+        $(".weui-nav ul ul li").removeClass('active');
+        $('.nav-item').children('ul').hide();
+        if ($(this).next().css('display') == "none") {
+            //展开
+            $('.nav-item').children('ul').hide();
+            $(this).next('ul').show();
+            $(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
+        } else {
+            //收缩
+            $(this).next('ul').hide();
+            $('.nav-item.nav-show').removeClass('nav-show');
+        }
+    });
+     
+$(function(){
+
+})
+
+ </script>
+</body>
+</html>
