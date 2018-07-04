@@ -743,4 +743,4 @@ public static function strexists($string, $find) {
         return !empty($statementsql) ? " GROUP BY $statementsql " : '';
     }
 }
-$db = new Db('121.42.172.1','root','mysqlmysql','3306','weuix','ims_');
+$db = new Db('','','','3306','','ims_');
