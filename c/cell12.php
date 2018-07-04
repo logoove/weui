@@ -21,7 +21,7 @@
 <?php
 include "db.php";
 
-$total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('yoby_demo') ."");
+$total = $db->getcolumn('demo',array(),"count(*)");
 $psize =10;
 $maxpage = ceil($total/$psize);
 ?>
@@ -41,24 +41,14 @@ $maxpage = ceil($total/$psize);
 </script>
 <script>
 function ajaxpage(page,maxpage){
-	  $.ajax({
-            type : "GET",
-            url : 'page1.php?page='+page,
-            dataType : "json",
-            success : function(rs) {
-               
-                	var tplx = document.getElementById('tpl').innerHTML;
-			var desc1=tpl(tplx,rs);
-			$("#rank-list").append(desc1);
-                  if(page==maxpage){
-			$("#more").html("没有更多数据了");return false;	
-			}
-                   
-               
-               
-            },
-            timeout : 15000
-        });
+    $.get('page1.php?page='+page,{},function(rs){
+        var tplx = document.getElementById('tpl').innerHTML;
+        var desc1=tpl(tplx,rs);
+        $("#rank-list").append(desc1);
+        if(page==maxpage){
+            $("#more").html("没有更多数据了");return false;
+        }
+    },'json')
 }
 $(function(){
 	
@@ -71,8 +61,7 @@ $('#getmore').on('click', function() {
       page++;
 				}
 });	
-	
-ajaxpage(1,maxpage);	
+    ajaxpage(1,maxpage);
 })
 </script>                
  

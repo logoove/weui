@@ -20,7 +20,7 @@
 <body ontouchstart>
 <?php
 include "db.php";
-$total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('yoby_demo') ."");
+$total = $db->getcolumn('demo',array(),"count(*)");
 $psize =10;
 $maxpage = ceil($total/$psize);
 ?>
