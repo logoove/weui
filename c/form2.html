@@ -8,11 +8,33 @@
   <link rel="stylesheet" href="../style/weui2.css"/>
   <link rel="stylesheet" href="../style/weui3.css"/>
       <script src="../zepto.min.js"></script>
+    <style>
+        a[disable]{ opacity:0.5; cursor:default; pointer-events:none}
+    </style>
       <script>
   $(function(){
 
 	  
-	  });    
+	  });
+  var countdown=5;
+
+  function settime() {
+
+          var code = $('#code');
+          if (countdown == 0) {
+                code.removeAttr('disable');
+              code.text("获取验证码");
+              countdown = 5;
+              return;
+          } else {
+              code.text("重新发送(" + countdown + ")");
+              code.attr('disable',true);
+              countdown--;
+          }
+      setTimeout('settime()', 1000);
+
+  }
+  
       
       </script>
 </head>
@@ -33,7 +55,7 @@
                     <input class="weui_input" type="number" placeholder="请输入验证码"/>
                 </div>
                 <div class="weui_cell_ft">
-                    <a href="javascript:;" class="weui-vcode-btn">获取验证码</a>
+                    <a href="javascript:settime();" class="weui-vcode-btn" id="code">获取验证码</a>
                 </div>
             </div>
             
