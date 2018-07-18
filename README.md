@@ -51,7 +51,7 @@ weui+是Zepto1.2和weui.js,weui0.44/1.02等众多开源项目中,参考而成的
 
 ![](https://we7.shanliwawa.top/alipay.jpg)
 
-#### [使用方法http://www.kancloud.cn/logoove/we7/249788](http://www.kancloud.cn/logoove/we7/249788)
+#### [使用方法https://www.kancloud.cn/logoove/we7/678798)
 ~~~
 <!doctype html>
 <html>
