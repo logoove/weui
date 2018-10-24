@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            picker/日期/时间/地址选择
+        </h1>
+        <p class="page-hd-desc">需要加载picker.city.js</p>
+    </div>
+    <div class="page-bd-15">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">三国</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="name" type="text" value="">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">电脑</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="mobile" type="text" value="">
+                </div>
+            </div>
+        </div>
+
+
+
+<!--时间日期 -->
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time" class="weui-label">默认配置</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time" type="text" value="">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time2" class="weui-label">无分钟</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time2" type="text" value="2012-12-12 12时">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time3" class="weui-label">上午下午</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time3" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time4" class="weui-label">定制时间</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time4" type="text" value="2012-12-12 上午8点">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time-format" class="weui-label">自定义格式</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time-format" type="text" value="2012年12月12日 12时13分">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time-format" class="weui-label">限制年月</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="years-monthes" type="text" value="2017-06-20 12:00">
+                </div>
+            </div>
+        </div>
+
+
+<!--地址需要单独js城市数据-->
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">发出地</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="start" type="text" value="陕西省 汉中市 勉县">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">目的地</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="end" type="text" value="">
+                </div>
+            </div>
+        </div>
+
+        <h2 class="demos-second-title">只选择城市</h2>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="home-city" class="weui-label">城市</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="home-city" type="text">
+                </div>
+            </div>
+        </div>
+
+        <script src="../js/picker.city.js"></script>
+
+        <script>
+            $("#start").cityPicker({
+                title: "选择出发地",
+                onChange: function (picker, values, displayValues) {
+                    console.log(values, displayValues);
+                }
+            });
+            $("#end").cityPicker({
+                title: "选择目的地"
+            });
+            $("#home-city").cityPicker({
+                title: "选择目的地",
+                showDistrict: false,
+                onChange: function (picker, values, displayValues) {
+                    console.log(values, displayValues);
+                }
+            });
+        </script>
+<!--内联显示-->
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="inline" class="weui-label">内联显示</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="inline" type="text" value="">
+                </div>
+            </div>
+        </div>
+        <div id="picker-container"></div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time-inline" class="weui-label">内联显示</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="time-inline" type="text" value="">
+                </div>
+            </div>
+        </div>
+
+        <div id="time-container"></div>
+
+</div>
+
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+
+<script>
+    $("#mobile").picker({
+        title: "请选择您的电脑",
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['苹果','三星','联想']
+            }
+        ],
+        onChange: function(p, v, dv) {
+            console.log(p, v, dv);
+        },
+        onClose: function(p, v, d) {
+            console.log("close");
+        }
+    });
+    $("#name").picker({
+        title: "三国",
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['蜀国', '吴国']
+            },
+            {
+                textAlign: 'center',
+                values: ['刘备','曹操','诸葛亮']
+            }
+        ]
+    });
+
+    $("#inline").picker({
+        container: '#picker-container',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['苹果','橘子','香蕉','西红柿']
+            }
+        ],
+        onChange: function(p, v, dv) {
+            console.log(p, v, dv);
+        },
+        onClose: function(p, v, d) {
+            console.log("close");
+        }
+    });
+</script>
+
+<script>
+    $("#time").datetimePicker({
+        title: '出发时间',
+        min: "1990-12-12",
+        max: "2022-12-12 12:12",
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time2").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: (function () {
+                        var hours = [];
+                        for (var i=0; i<24; i++) hours.push(i > 9 ? i : '0'+i);
+                        return hours;
+                    })()
+                },
+                {
+                    divider: true,  // 这是一个分隔符
+                    content: '时'
+                }
+            ];
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        },
+    });
+    $("#time3").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: ['上午', '下午']
+                }
+            ];
+        },
+        value: '2012-12-12 上午',
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time4").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: ['上午8点', '下午2点', '晚上8点']
+                }
+            ];
+        },
+        max: '2013-12-12',
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+
+    $("#time-format").datetimePicker({
+        title: '自定义格式',
+        yearSplit: '年',
+        monthSplit: '月',
+        dateSplit: '日',
+        times: function () {
+            return [  // 自定义的时间
+                {
+                    values: (function () {
+                        var hours = [];
+                        for (var i=0; i<24; i++) hours.push(i > 9 ? i : '0'+i);
+                        return hours;
+                    })()
+                },
+                {
+                    divider: true,  // 这是一个分隔符
+                    content: '时'
+                },
+                {
+                    values: (function () {
+                        var minutes = [];
+                        for (var i=0; i<59; i++) minutes.push(i > 9 ? i : '0'+i);
+                        return minutes;
+                    })()
+                },
+                {
+                    divider: true,  // 这是一个分隔符
+                    content: '分'
+                }
+            ];
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time-inline").datetimePicker({
+        container: '#time-container',
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    })
+    $("#years-monthes").datetimePicker({
+        title: '限定年月',
+        years: [2017, 2018],
+        monthes: ['06', '07'],
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+</script>
+</body>
+</html>

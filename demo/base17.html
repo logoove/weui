@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            $(".weui-payselect-li").on('click',function(){
+                $(this).children().addClass("weui-payselect-on");
+                $(this).siblings().children().removeClass("weui-payselect-on");
+                return false;
+            })
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        按钮
+    </h1>
+    <p class="page-hd-desc">支持a,button</p>
+</div>
+
+<div class="page-bd-15">
+    <a href="javascript:;" class="weui-btn weui-btn_primary">默认按钮绿色</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary weui-btn_loading"><i class="weui-loading"></i>weui-btn_loading</a>
+    <a href="javascript:;" class="weui-btn weui-btn_disabled weui-btn_primary">禁用weui-btn_disabled</a>
+    <a href="javascript:;" class="weui-btn weui-btn_default">默认灰色</a>
+    <a href="javascript:;" class="weui-btn weui-btn_default weui-btn_loading"><i class="weui-loading"></i>灰色loading</a>
+    <a href="javascript:;" class="weui-btn weui-btn_disabled weui-btn_default">灰色禁用</a>
+    <a href="javascript:;" class="weui-btn weui-btn_warn">默认红色</a>
+    <a href="javascript:;" class="weui-btn weui-btn_warn weui-btn_loading"><i class="weui-loading"></i>红色 Loading</a>
+    <a href="javascript:;" class="weui-btn weui-btn_disabled weui-btn_warn">红色禁用</a>
+
+    <div class="button-sp-area">
+        <a href="javascript:;" class="weui-btn weui-btn_plain-default">镂空灰色</a>
+        <a href="javascript:;" class="weui-btn weui-btn_plain-default weui-btn_plain-disabled">镂空灰色禁用</a>
+        <a href="javascript:;" class="weui-btn weui-btn_plain-primary">镂空绿色</a>
+        <a href="javascript:;" class="weui-btn weui-btn_plain-primary weui-btn_plain-disabled">镂空绿色禁用</a>
+
+    </div>
+
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">绿色小按钮</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default">灰色小按钮</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn">红色小按钮</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn"><i class="icon icon-23"></i>删除信息</a>
+
+    <a href="javascript:;" class="weui-btn bg-blue">蓝色背景</a>
+    <a href="javascript:;" class="weui-btn bg-red">背景红色</a>
+    <a href="javascript:;" class="weui-btn bg-green">背景绿色</a>
+    <a href="javascript:;" class="weui-btn bg-orange">背景橙色</a>
+    <a href="javascript:;" class="weui-btn bg-gray f-gray">背景灰色</a>
+
+    <a href="javascript:;" class="weui-btn weui-btn_mini  bg-blue">蓝色背景mini</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini  bg-orange">橙色背景mini</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini  bg-gray f-black">灰色背景mini</a>
+
+    <a href="javascript:;" class="weui-btn  b-blue">蓝色镂空</a>
+    <a href="javascript:;" class="weui-btn  b-orange">橙色镂空</a>
+
+    <a href="javascript:;" class="weui-btn bg-blue"><i class="icon icon-23"></i>删除信息</a>
+        
+</div>
+
+
+
+<div class="weui-pay">
+    <h1 class="weui-payselect-title">选择金额付款</h1>
+    <p class="weui-payselect-info">支付金额给商户</p>
+    <ul class="weui-payselect-ul">
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">1元<span class="weui-pay-12">110次</span></a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">10元</a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">100元<span class="weui-pay-12">99.9元</span></a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a weui-payselect-on">200元</a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">300元</a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">500元</a>
+        </li>
+    </ul>
+    <a href="javascript:;" class="weui-btn weui-btn_primary">立即支付</a>
+
+</div>
+
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

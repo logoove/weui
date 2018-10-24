@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/qrcode.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+        function qr(){
+            var txt="BEGIN:VCARD\r\nVERSION:3.0\r\nN:太白\r\nFN:李\r\nTITLE:工程师\r\nNICKNAME:昵称\r\nTEL;CELL;VOICE:移动18291448888\r\nTEL;WORK;VOICE:工作电话18291449999\r\nORG:组织机构\r\nEMAIL;PREF;INTERNET:logove@qq.com\r\nADR;TYPE=WORK:;;具体地址;汉中;陕西省;2324200;中国\r\nADR;TYPE=HOME:;;具体地址;汉中;陕西省;2324200;中国\r\nNOTE;ENCODING=QUOTED-PRINTABLE:备注来自名片通讯录\r\nEND:VCARD";
+            $("#qrcodeimg").empty().qrcode({render:"image",ecLevel:"L",size:300,background:"#fff",fill:"#000",text:txt});
+        }
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       二维码/名片生成
+    </h1>
+    <p class="page-hd-desc">可扫码二维码,或右键识别二维码</p>
+</div>
+
+<div class="page-bd-15">
+    <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="qr()">生成名片二维码</a>
+       <br>
+    <div id="qrcodeimg" class='tcenter'></div>
+    
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

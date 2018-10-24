@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+     <style>
+         .search_content {width: 1060px;}
+         .search_content .s1 {font-size: 24px;  margin-top: 30px; margin-bottom: 17px;}
+         .search_content span {color:#2b5ed6;}
+         .search_content li {font-size: 14px; color: #333333; width: 1060px; border-bottom: 1px solid #eef0f6; height: 35px; line-height: 35px;}
+         .search_content li .title {width:950px; display: inline-block; color: #333333; padding-left:15px;}
+         .search_content li .date {color: #333333}
+         .search_content .page {float: right; margin-top: 10px; background:#fff}
+         .search_content .page a {width:40px; height:40px; color:#000; line-height:40px; display:inline-block; border:1px solid #f3f3f3; float:left; text-align:center;}
+         .search_content .page .cur {background: #6593ee; color: #ffffff}
+     </style>
+</head>
+
+<body ontouchstart>
+
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       普通ajax分页
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+<a data-tid="34" class="active" href="javascript:search();">测试 </a>
+<ul id="rank-list">
+
+</ul>
+
+<div id="searchResult" class="not_found"></div>
+
+<div class="search_content box" style="display:none;">
+    <div class="page clearfloat" style="height:42px;"></div>
+</div>
+
+<script>
+
+    var pagesize = 6; //每页显示产品数
+    var ajaxFlag = true; //请求开关
+     var showPage = 5; //每页显示页码数
+    function getSearch(pageNum){
+        var params = new Object();
+        params.keyword ='';
+        params.page = pageNum;
+        params.ajax=1;
+        params.pagesize = pagesize;
+        $("a.active").each(function(){
+            var tid = $(this).data("tid");
+
+            if(tid != ""){
+   params.tid=tid;
+            }
+        });
+        return params;
+
+    }
+    function search(){ //a连接上搜索
+        ajaxpage(1);
+    }
+
+    function ajaxpage(pageNum){
+        if(ajaxFlag){
+            ajaxFlag = false;
+            $.post("../php/page.php", getSearch(pageNum), function(json){
+                ajaxFlag = true;
+                $("#rank-list li").remove(); //清除已有数据
+                if(json.code == 200 && json.total> 0){
+                    var html = ""; //产品数据列表HTML
+                    for(var i = 0; i < json.list.length; i ++){
+                        var data = json.list[i];
+html+="<li>ID: "+data.id+"  姓名:"+data.title+"</li>";
+                    }
+
+                    $("#rank-list").append(html); //插入新数据
+
+                    //分页代码处理
+
+                    var productTotal = json.total; //数据总条数
+                    var totalPage = Math.ceil(productTotal / pagesize); //总页数
+                    var beginPageNum = (Math.ceil(pageNum / showPage) - 1) * showPage + 1; //分页开始页码
+                    var endPageNum = (beginPageNum + showPage - 1 >= totalPage) ? totalPage : (beginPageNum + showPage - 1); //分页结束页码
+                    beginPageNum = ((endPageNum - beginPageNum < showPage) && (totalPage > showPage)) ? (endPageNum - showPage + 1) : beginPageNum;
+                    //拼接分页按钮代码
+                    var pageHtml = "<a href='javascript:" + (pageNum == 1 ? "void(0)" : ("ajaxpage(" + (pageNum - 1) + ")")) + ";'>&lt;</a>";
+                    for(var i = beginPageNum; i <= endPageNum; i ++)
+                        pageHtml += "<a href='javascript:ajaxpage(" + i + ");'" + (i == pageNum ? " class='cur'" : "") + ">" + i + "</a>";
+                    pageHtml += "<a href='javascript:" + (pageNum == totalPage ? "void(0)" : ("ajaxpage(" + (pageNum + 1) + ")")) + ";'>&gt;</a>";
+                    $(".search_content .page").html(pageHtml);
+                    $(".search_content").show(); //显示分页信息
+
+                }else{
+                    $("#searchResult").html("抱歉，在产品库中没有找到相关产品。").show(); //显示结果提示
+                    $(".search_content").hide(); //隐藏分页信息
+                
+                }
+            }, "json");
+        }
+    }
+
+
+    ajaxpage(1);
+</script>
+
+
+<div class="weui-footer">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+
+</body>
+</html>

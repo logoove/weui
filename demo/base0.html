@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+    <script src="../js/php.js"></script>
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       基础css类
+    </h1>
+    <p class="page-hd-desc">全局使用的css类</p>
+</div>
+  <div class="page-bd-15">
+<table class="weui-table weui-table-2n">
+    <thead>
+    <tr><th>类名</th><th>功能</th></tr>
+    </thead>
+    <tbody id="rank-list">
+    <script id="tpl" type="text/html">
+        <% for(var i in list) {   %>
+    <tr><td title="类名"><%=list[i].a%></td><td title="功能"><%=list[i].b%></td></tr>
+        <% } %>
+    </script>
+    </tbody>
+</table>
+  </div>
+
+<script>
+    $(function(){
+        var rs = {"list":[
+                {"a":"container ","b":"页面开始类"},
+                {"a":"page-bg","b":"灰色页面背景"},
+                {"a":"page-hd","b":"四边20px"},
+                {"a":"page-bd","b":"四边为0"},
+                {"a":"page-bd-15","b":"上下为0左右15px"},
+                {"a":"page-hd-title,page-hd-desc","b":"用于页面标题和描述"},
+                {"a":"baseline/middle/top","b":"垂直对齐方式"},
+                {"a":"show/hide","b":"显示隐藏"},
+                {"a":"block/inline/iblock","b":"display属性"},
+                {"a":"tleft/tcentet/tright","b":"文本对齐方式"},
+                {"a":"center","b":"div居中"},
+                {"a":"border/dotted","b":"1px 边框实线与虚线"},
+                {"a":"hand/move","b":"手样式和移动样式"},
+                {"a":"u/del/-u","b":"下划线中划线无划线"},
+                {"a":"i/-i","b":"斜体与正常"},
+                {"a":"bold/-bold","b":"粗体,正常"},
+                {"a":"wrap/-wrap","b":"换行与不换行"},
+                {"a":"left/right/clear","b":"左右浮动,清除两边浮动"},
+                {"a":"clearfix","b":"清除浮动"},
+                {"a":"upper/lower/cap","b":"大写/小写/首字母大写"},
+                {"a":"hidden/visible","b":"hidden/visible"},
+                {"a":"rel/abs/fixed","b":"层定位"},
+                {"a":"indent","b":"缩进20px"},
+                {"a":"lheight","b":"行高22px"},
+                {"a":"outline","b":"链接虚线"},
+                {"a":"ell","b":"隐藏超过的文字"},
+                {"a":"yahei","b":"雅黑字体"},
+                {"a":"hr1","b":"1px水平线"},
+                {"a":"req","b":"必填项"},
+                {"a":"v-center","b":"强制垂直居中"},
+                {"a":"weui-loading","b":"loading动画i元素上"},
+                {"a":"loading","b":"loading小图标"} ,
+                {"a":"loading2","b":"loading遮罩动画"}
+            ]};
+        $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
+    })
+</script>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

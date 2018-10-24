@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/swipe.js"></script>
+    <script>
+        $(function(){
+            $('#slide1').swipeSlide({
+                autoSwipe:true,//自动切换默认是
+                speed:3000,//速度默认4000
+                continuousScroll:true,//默认否
+                transitionType:'cubic-bezier(0.22, 0.69, 0.72, 0.88)',//过渡动画linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier
+                lazyLoad:true,//懒加载默认否
+                firstCallback : function(i,sum,me){
+                    me.find('.dot').children().first().addClass('cur');
+                },
+                callback : function(i,sum,me){
+                    me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+                }
+            });
+
+            $('#slide2').swipeSlide({
+                autoSwipe:true,//自动切换默认是
+                speed:3000,//速度默认4000
+                continuousScroll:true,//默认否
+                transitionType:'cubic-bezier(0.22, 0.69, 0.72, 0.88)',//过渡动画linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier
+                lazyLoad:true,//懒加载默认否
+                firstCallback : function(i,sum,me){
+                    me.find('.dot').children().first().addClass('cur');
+                },
+                callback : function(i,sum,me){
+                    me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+                }
+            });
+            $('#slide3').swipeSlide({
+                autoSwipe:true,//自动切换默认是
+                speed:3000,//速度默认4000
+                continuousScroll:true,//默认否
+                transitionType:'ease-in'
+            });
+
+
+
+        })
+    </script>
+
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            swipe
+        </h1>
+        <p class="page-hd-desc">轮播</p>
+    </div>
+
+    <div class="slide" id="slide1">
+        <ul>
+            <li>
+                <a href="javascript:;">
+                    <img src='../images/1.jpg' alt="">
+                </a>
+                <div class="slide-desc">白日依山尽黄河入海流鱼群千里马更上高楼处</div>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src='../images/2.jpg' alt="">
+                </a>
+                <div class="slide-desc">东风无力百花残</div>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src='../images/3.jpg' alt="">
+                </a>
+                <div class="slide-desc">千金易得一将难求</div>
+            </li>
+        </ul>
+        <div class="dot">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <h4>样式1</h4>
+    <div class="slide" id="slide2">
+        <ul>
+            <li>
+                <a href="javascript:;">
+                    <img src='../images/3.jpg' alt="">
+                </a>
+
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src='../images/2.jpg' alt="">
+                </a>
+
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src='../images/1.jpg' alt="">
+                </a>
+
+            </li>
+        </ul>
+        <div class="dot">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <h4>样式2</h4>
+
+    <div class="slide slide-m" id="slide3">
+        <ul>
+            <li>
+                <div  class='txt'>空旷冷落的古旧行宫，只有宫花寂寞地艳红</div></li>
+            <li>
+                <div  class='txt'>几个满头白发的宫女，闲坐无事谈论唐玄宗</div>
+            </li>
+            <li>
+                <div  class='txt'>但见泪痕湿，不知心恨谁</div>
+            </li>
+        </ul>
+    </div>
+    <h4>跑马灯</h4>
+
+    
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+
+</body>
+</html>

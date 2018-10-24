@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+    <script>
+        $(function(){
+
+
+            $(document.body).pullToRefresh({
+                distance: 10,
+                onRefresh:function() {
+
+                     $.post("../php/page.php",{"page":1,"pagesize":8,ajax:2},function(rs){
+                         $("#rank-list").html(tpl(document.getElementById('tpl').innerHTML,rs));
+                     },'json')
+                    $(document.body).pullToRefreshDone();
+
+            }});
+
+
+            
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+
+<div class="weui-pull-to-refresh__layer">
+    <div class='weui-pull-to-refresh__arrow'></div>
+    <div class='weui-pull-to-refresh__preloader'></div>
+    <div class="down">下拉刷新</div>
+    <div class="up">释放刷新</div>
+    <div class="refresh">正在刷新</div>
+</div>
+
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        下拉刷新
+    </h1>
+    <p class="page-hd-desc">下拉显示内容</p>
+</div>
+
+<div class="weui-cells"  id="rank-list">
+    <script id="tpl" type="text/html">
+        <% for(var i in list) {   %>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>ID: <%=list[i].id%>姓名: <%=list[i].title%></p>
+        </div>
+        <div class="weui-cell__ft"><%=list[i].phone%></div>
+    </div>
+        <% } %>
+    </script>
+</div>
+
+
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

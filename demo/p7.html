@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/axios.min.js"></script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        axios 13kb
+    </h1>
+    <p class="page-hd-desc">vue推荐替代ajax方法,可取代jquery/zepto中ajax方法,特点: 支持浏览器和node.js ,支持promise,  能拦截请求和响应,能转换请求和响应数据,能取消请求,自动转换JSON数据, 浏览器端支持防止CSRF(跨站请求伪造)
+    </p>
+</div>
+
+<div class="page-bd-15">
+    <a onclick="get()" href="javascript:;" class="weui-btn weui-btn_primary">GET</a>
+
+    <a onclick="post()" href="javascript:;" class="weui-btn weui-btn_primary">POST</a>
+
+    <a onclick="other()" href="javascript:;" class="weui-btn weui-btn_primary">兼容两种</a>
+</div>
+ <div id="d"></div>
+
+
+<script>
+    function get(){
+        axios.get('../php/axios.php', 
+            {params:{do:1,name:'李白'}}) //也可以直接拼接在url
+    .then(function(rs){
+        console.log(rs)
+        document.querySelector("#d").innerHTML = rs.data.data.name;
+        alert('请求成功')      //数据在rs.data中  状态rs.status=200
+    })
+        .catch(function(e){
+            console.log(e)
+            alert('请求失败') //数据在e.data中  状态e.status=200
+        });
+    }
+
+    function post(){
+        axios.post('../php/axios.php?do=2',
+         {name:'李黑'}) //也可以直接拼接在url
+            .then(function(rs){
+                console.log(rs)
+                document.querySelector("#d").innerHTML = rs.data.data.name;
+                alert('请求post成功')      //数据在rs.data中  状态rs.status=200
+            })
+            .catch(function(e){
+                console.log(e)
+                alert('请求post失败') //数据在e.data中  状态e.status=200
+            });
+    }
+
+    function other(){
+        axios({
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/json;charset=UTF-8',
+                'Access-Control-Allow-Origin': '*'
+            },//设置跨域请求头
+            method: 'post',
+            url: '../php/axios.php?do=3',
+            data: {
+               name:"杜甫"
+            }
+        }) .then(function(rs){
+            console.log(rs)
+            document.querySelector("#d").innerHTML = rs.data.data.name;
+            alert('请求post成功')      //数据在rs.data中  状态rs.status=200
+        });
+        
+    }
+</script>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+            var SHAKE_THRESHOLD = 1300;
+            var last_update = 0;
+            var x = y = z = last_x = last_y = last_z = 0;
+            if(window.DeviceMotionEvent) {
+                window.addEventListener('devicemotion', deviceMotionHandler, false);
+            }
+            function deviceMotionHandler(eventData) {
+                var acceleration = eventData.accelerationIncludingGravity;
+                var curTime = new Date().getTime();
+                if((curTime - last_update) > 100) {
+                    var diffTime = curTime - last_update;
+                    last_update = curTime;
+                    x = acceleration.x;
+                    y = acceleration.y;
+                    z = acceleration.z;
+                    var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                    if(speed > SHAKE_THRESHOLD) {
+
+                        WeixinJSBridge.invoke('getNetworkType', {}, function (res) {
+                            document.getElementById('yao').play();
+                            $.toptip('摇一摇');
+                        });
+
+                    };
+                    last_x = x;
+                    last_y = y;
+                    last_z = z;
+                };
+            };
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        摇一摇
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+<audio  id="yao"  src="../images/yao.mp3"></audio>
+
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+    <script>
+        var pagesize=8;//每页数据条数
+        function ajaxpage(page){
+            $.ajax({
+                type:"post",
+                url:'../php/page.php',
+                data: {"page":page,"pagesize":pagesize,ajax:2},
+                dataType:'json',
+                timeout:10000,
+                beforeSend:function(xhr){
+                    $('.weui-loadmore').show();
+                },
+                success:function(rs){
+                    $('.weui-loadmore').hide();
+                    $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
+
+                    var maxpage = Math.ceil(rs.total / pagesize);
+                    sessionStorage['maxpage'] = maxpage;
+
+                    if(page==maxpage){
+                        $(document.body).destroyInfinite();
+                        $('.weui-loadmore').show().html("没有更多数据了");
+                    }
+                },
+                error:function(xhr){
+                    alert('ajax出错');
+                },
+            });
+
+
+        }
+
+        $(function(){
+
+
+            ajaxpage(1);
+            var loading = false;  //状态标记
+            var page = 2;
+            var maxpage;
+
+            $(document.body).infinite(100).on("infinite", function() {
+                if(loading) return;
+                loading = true;
+                setTimeout(function() {
+                    maxpage = sessionStorage['maxpage'];
+                    if(page<=maxpage) {
+                        ajaxpage(page);
+                        page++;
+                    }
+                    loading = false;
+                }, 1500);   //模拟延迟
+            });
+            
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        滚动加载
+    </h1>
+    <p class="page-hd-desc">插件方法实现</p>
+</div>
+
+<div class="weui-cells"  id="rank-list">
+    <script id="tpl" type="text/html">
+        <% for(var i in list) {   %>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>ID: <%=list[i].id%>姓名: <%=list[i].title%></p>
+        </div>
+        <div class="weui-cell__ft"><%=list[i].phone%></div>
+    </div>
+        <% } %>
+    </script>
+</div>
+
+<div class="weui-loadmore hide">
+    <i class="weui-loading"></i>
+    <span class="weui-loadmore__tips">正在加载</span>
+</div>
+
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

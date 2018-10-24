@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        图标
+    </h1>
+    <p class="page-hd-desc">默认和126个新增icon icon-1 数字</p>
+</div>
+
+<i class="weui-icon-success weui-icon_msg"></i>
+<i class="weui-icon-info weui-icon_msg"></i>
+<i class="weui-icon-warn weui-icon_msg-primary"></i>
+<i class="weui-icon-warn weui-icon_msg"></i>
+<i class="weui-icon-waiting weui-icon_msg"></i>
+<i class="weui-icon_msg weui-icon-waiting-circle"></i>
+<i class="weui-icon_msg weui-icon-safe-warn"></i>
+
+<i class="weui-icon_msg weui-icon-download"></i>
+<i class="weui-icon_msg weui-icon-success-no-circle"></i>
+<i class="weui-icon_msg weui-icon-success-circle"></i>
+<i class="weui-icon_msg weui-icon-cancel"></i>
+<i class="weui-icon_msg weui-icon-clear"></i>
+<i class="weui-icon_msg weui-icon-safe-success"></i>
+   <br>
+<i class="weui-icon-success"></i>
+<i class="weui-icon-success-no-circle"></i>
+  <i class="weui-icon-success-circle"></i>
+<i class="weui-icon-circle"></i>
+<i class="weui-icon-warn"></i>
+<i class="weui-icon-download"></i>
+<i class="weui-icon-info-circle"></i>
+<i class="weui-icon-cancel"></i>
+<i class="weui-icon-search"></i>
+<i class="weui-icon-clear"></i>
+<i class="weui-icon-waiting-circle"></i>
+<i class="weui-icon-safe-success"></i>
+<i class="weui-icon-safe-warn"></i>
+<br>
+
+<style>
+    .icon_lists li{
+        float:left;
+        width: 60px;
+        height:60px;
+        text-align: center;
+        list-style-type:none;
+    }
+    .icon_lists .icon{
+        font-size: 24px;
+        line-height: 40px;
+        margin: 5px 0;
+        color:#10AEFF;
+        -webkit-transition: font-size 0.5s ease-out 0s;
+        -moz-transition: font-size 0.5s ease-out 0s;
+        transition: font-size 0.5s ease-out 0s;
+
+    }
+    .icon_lists .icon:hover{
+        font-size: 80px;
+    }
+</style>
+<ul class="icon_lists clear">
+    <script>
+        for(var i=1;i<=126;i++){
+            document.write('<li><span class="icon icon-'+i+'"></span>'+i+'</li>');
+        }
+    </script>
+
+
+</ul>
+
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

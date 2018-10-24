@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            var ani =  $("#ani");
+            $('.weui-btn').click(function(){
+                ani.removeClass();
+                ani.addClass($(this).data('a')+"  animated");
+
+            })
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       动画效果
+    </h1>
+    <p class="page-hd-desc">注意每两个是一组动画</p>
+</div>
+
+<h1 style="font-size: 2rem;line-height: 1;text-align: center;color:#04BE02" id="ani">Animate</h1>
+
+<div class="page-bd-15">
+<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="fadeIn">淡入fadeIn显示</a>
+<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="fadeOut">淡出fadeOut隐藏</a>
+<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="shake">抖动shake</a>
+<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="pulse">放大pulse</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="rotateIn">旋转显示rotateIn</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="xz360">旋转xz360</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="zoomIn">放大镜zoomIn</a>
+    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" data-a="swing">左右摆动swing</a>
+</div>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        单选/复选/开关
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+<div class="weui-cells__title">单选列表项</div>
+<div class="weui-cells weui-cells_radio">
+    <label class="weui-cell weui-check__label" for="x11">
+        <div class="weui-cell__bd">
+            <p>苍井空</p>
+        </div>
+        <div class="weui-cell__ft">
+            <input class="weui-check" name="radio1" id="x11" type="radio">
+            <span class="weui-icon-checked"></span>
+        </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="x12">
+
+        <div class="weui-cell__bd">
+            <p>黑木真二</p>
+        </div>
+        <div class="weui-cell__ft">
+            <input name="radio1" class="weui-check" id="x12" checked="checked" type="radio">
+            <span class="weui-icon-checked"></span>
+        </div>
+    </label>
+    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+        <div class="weui-cell__bd">添加更多</div>
+    </a>
+</div>
+
+
+<div class="weui-cells__title">复选列表项</div>
+
+<div class="weui-cells weui-cells_checkbox">
+    <label class="weui-cell weui-check__label" for="s11">
+        <div class="weui-cell__hd">
+            <input class="weui-check" name="checkbox1" id="s11" checked="checked" type="checkbox">
+            <i class="weui-icon-checked"></i>
+        </div>
+        <div class="weui-cell__bd">
+            <p>天下第一</p>
+        </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="s12">
+        <div class="weui-cell__hd">
+            <input name="checkbox1" class="weui-check" id="s12" type="checkbox">
+            <i class="weui-icon-checked"></i>
+        </div>
+        <div class="weui-cell__bd">
+            <p>举世无双</p>
+        </div>
+    </label>
+    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+        <div class="weui-cell__bd">添加更多</div>
+    </a>
+</div>
+
+
+<div class="weui-cells__title">开关</div>
+
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell weui-cell_switch">
+        <div class="weui-cell__bd">标题文字</div>
+        <div class="weui-cell__ft">
+            <input class="weui-switch" type="checkbox">
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_switch">
+        <div class="weui-cell__bd">兼容IE Edge的版本</div>
+        <div class="weui-cell__ft">
+            <label for="switchCP" class="weui-switch-cp">
+                <input id="switchCP" class="weui-switch-cp__input" checked="checked" type="checkbox">
+                <div class="weui-switch-cp__box"></div>
+            </label>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

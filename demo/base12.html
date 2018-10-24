@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+           $('#a').click(function(){
+                       $(".weui-gallery").show();
+           })
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        相册
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+ <div class="page-bd-15">
+<a href="javascript:;" class="weui-btn weui-btn_primary" id="a">显示相册</a>
+ </div>
+
+<div class="weui-gallery" style="display: none">
+    <span class="weui-gallery__img" style="background-image: url(../images/pic_article.png);"></span>
+    <div class="weui-gallery__opr">
+        <a href="javascript:" class="weui-gallery__del">
+            <i class="weui-icon-delete weui-icon_gallery-delete" onclick='$(".weui-gallery").hide();'></i>
+        </a>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

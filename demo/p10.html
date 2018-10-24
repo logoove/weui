@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/mock.min.js"></script>
+    <script>
+
+        Mock.mock('http://api.com', {
+            "list|10": [{
+                'name': '@cname',   //中文名称
+                'age|1-100': 100,   //100以内随机整数
+                'date': '@date("yyyy-MM-dd")',  //日期
+                'city': '@city(true)'   //中国城市
+            }]
+        });
+        
+        $(function(){
+
+            $.get("http://api.com",function(rs){
+                var html='';
+                for(var i=0;i<rs.list.length;i++) {
+                    html+=' <a class="weui-cell weui-cell_access" href="javascript:;">' +
+                        '        <div class="weui-cell__bd">' +
+                        '            <p>'+rs.list[i].name+'</p>' +
+                        '        </div>' +
+                        '        <div class="weui-cell__ft">' +rs.list[i].date+'</div>' +
+                        '    </a>'
+                }
+                $("#list").html(html);
+            },'json')
+            
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        mock模拟数据
+    </h1>
+    <p class="page-hd-desc f-green" onclick="location.href='//mockjs.com/examples.html'">开发文档</p>
+</div>
+<div class="weui-cells__title">模拟数据生成列表</div>
+<div class="weui-cells" id="list">
+
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

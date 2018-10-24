@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+    <script src="../js/php.js"></script>
+
+</head>
+
+<body ontouchstart>
+
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            加载更多 分页
+        </h1>
+        <p class="page-hd-desc">向下无限加载</p>
+    </div>
+
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd" id="rank-list">  </div>
+        <script id="tpl" type="text/html">
+            <% for(var i in list) {   %>
+            <a href="js91.html?id=<%=list[i].id%>" class="weui-media-box weui-media-box_appmsg">
+                <!--<div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="">
+                </div>-->
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">ID: <%=list[i].id%>姓名: <%=list[i].title%></h4>
+                    <p class="weui-media-box__desc"><%=list[i].phone%></p>
+                </div>
+            </a>
+            <% } %>
+        </script>
+
+        <div class="weui-panel__ft">
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                <div class="weui-cell__bd" id="getmore">查看更多<i id="loading" class="weui-loading"></i></div>
+
+            </a>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+    <script>
+        $('#loading').hide();
+        var pagesize=8;//每页数据条数
+        function ajaxpage(page){
+            $.ajax({
+                type:"post",
+                url:'../php/page.php',
+                data: {"page":page,"pagesize":pagesize,ajax:2},
+                dataType:'json',
+                timeout:10000,
+                beforeSend:function(xhr){
+                    $('#loading').show();
+                },
+                success:function(rs){
+                    $('#loading').hide();
+                    $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
+
+                   var maxpage = Math.ceil(rs.total / pagesize);
+                    sessionStorage['maxpage'] = maxpage;
+
+                    if(page==maxpage){
+                        $("#getmore").html("没有更多数据了");return false;
+                    }
+                },
+                error:function(xhr){
+                    alert('ajax出错');
+                },
+            });
+
+
+        }
+
+        
+        $(function(){
+
+            var page = 2;
+            var maxpage;
+
+            $('#getmore').on('click', function() {
+                maxpage = sessionStorage['maxpage'];
+                if(page<=maxpage) {
+                    ajaxpage(page);
+                    page++;
+                }
+            });
+            ajaxpage(1);
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            $(".weui-rater a").click(function(){
+                var index = $(this).index();  //当前点击
+
+                for(var i = 0;i <= index;i++){
+                    $(".weui-rater a").eq(i).addClass('on');
+                }
+                for(var j = index; j <=5;j++){
+                    $(".weui-rater a").eq(j).removeClass('on');
+                }
+               $(this).addClass('on');
+                $("#fen").html($(this).data('num')+"分");
+
+                
+            })
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        星级评分
+    </h1>
+    <p class="page-hd-desc">1到5分可自定义</p>
+</div>
+ <div class="page-bd-15">
+<div class="weui-rater">
+    <a data-num = "1" class="on"> <span>★</span> </a>
+    <a data-num = "2"> <span >★</span> </a>
+    <a data-num = "3"> <span >★</span> </a>
+    <a data-num = "4"> <span >★</span> </a>
+    <a data-num = "5"> <span >★</span> </a>
+</div>
+
+<div id='fen' class="weui_cells_title"></div>
+
+ </div>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

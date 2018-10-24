@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+    <style>
+        .keybroad-province {
+            background: #FFF;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 111;
+            clear: both;
+            overflow: hidden;
+        }
+        .keybroad-province .top-line {
+            width: 100%;
+            clear: both;
+            display: block;
+            text-align: right;
+            border-bottom: 1px solid #EEE;
+        }
+        .keybroad-province .btn-packup {
+            display: inline-block;
+            padding: 0.25rem;
+            font-size: 16px;
+        }
+        .font-link {
+            color: #576B95 !important;
+        }
+        a {
+            text-decoration: none;
+        }
+        .keybroad-province .kaybroad-value {
+            float: left;
+            width: 11.11%;
+            border-bottom: 1px solid #EEE;
+            border-right: 1px solid #EEE;
+            margin-left: -1px;
+            text-align: center;
+            padding: 0.3125rem 0;
+            font-size:18px;
+            display: inline-block;
+            position: relative;
+        }
+        .font-black {
+            color: #000 !important;
+        }
+        .keybroad-province .kaybroad-value.chosen {
+            background: #09BB07;
+            color: #FFF !important;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        省简称
+    </h1>
+    <p class="page-hd-desc">弹出层</p>
+</div>
+
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label" id="sjc">选择简称<span class="icon icon-74"></span></label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input"  type="text" id="jc" value="苏" />
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="keybroad-province hide " id="province">
+    <div class="top-line"><a href="javascript:void(0)" onclick="$('#province').hide()" class="btn-packup font-link">收起</a></div>
+    <script>
+        var arr={"陕西":"陕","北京":"京","安徽":"皖","福建":"闽","甘肃":"甘","广东":"粤","广西":"桂","贵州":"贵","海南":"琼","河北":"冀","河南":"豫","黑龙江":"黑","湖北":"鄂","湖南":"湘","吉林":"吉","江苏":"苏","江西":"赣","辽宁":"辽","内蒙古":"蒙","宁夏":"宁","青海":"青","山东":"鲁","山西":"晋","上海":"沪","四川":"川","天津":"津","西藏":"藏","新疆":"新","云南":"云","浙江":"浙","重庆":"渝"};
+        var html='';
+        var chose=$('#jc').val();
+        for(var i  in arr){
+         var chosen = (arr[i]==chose)?"chosen":"";
+html+="<a href='javascript:void(0);' onclick='sprovince(this,\""+arr[i]+"\")'  class='kaybroad-value  font-black  "+chosen+"' >"+arr[i]+"</a>";
+        }
+        $("#province").append(html);
+
+        function sprovince($this,val){
+            $($this).addClass('chosen').siblings().removeClass('chosen');
+            $('#jc').val(val);
+            $('#province').hide();
+        }
+
+        $(function(){
+            $('#sjc').click(function(){
+                $('#province').show();
+
+
+            });
+        })
+    </script>
+
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        popup
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+<div class='page-bd-15'>
+    <a href="javascript:;" class="weui-btn weui-btn_primary open-popup" data-target="#full">显示全屏(默认)Popup</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary open-popup" data-target="#half">显示底部的Popup</a>
+    <a href="javascript:;" id='n' class="weui-btn weui-btn_primary">显示通知</a>
+</div>
+
+<div id="full" class='weui-popup__container'>
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        内容
+        <a href="javascript:;" class="weui-btn weui-btn_primary close-popup">关闭</a>
+    </div>
+</div>
+
+<div id="half" class='weui-popup__container popup-bottom'>
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar">
+            <div class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                <h1 class="title">标题</h1>
+            </div>
+        </div>
+        <div class="modal-content">
+            内容
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on("open", ".weui-popup-modal", function() {
+        console.log("open popup");
+    }).on("close", ".weui-popup-modal", function() {
+        console.log("close popup");
+    });
+
+ /*   $("#about").popup();打开
+    $.closePopup() ;关闭*/
+
+
+    $(document).on("click", "#n", function() {
+        $.noti({
+            title: "中奖啦！",
+            text: "点击领取红包！",
+            // media: "<img src='./images/present.png' />",
+            data: {
+                message: "没有!"
+            },
+            time: 3000,
+            onClick: function(data) {
+                $.alert(data.message);
+            }
+        });
+    });
+    
+</script>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

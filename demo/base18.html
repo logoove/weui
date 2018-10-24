@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            $('#a').click(function(){
+                $("#s1").show();
+                $('#s2,#s3').hide()
+            })
+            $('#b').click(function(){
+                $("#s2").show();
+                $('#s1,#s3').hide()
+            })
+            $('#c').click(function(){
+                $("#s3").show();
+                $('#s1,#s2').hide()
+            })
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       Msg提示页
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+<div class="page-bd-15">
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="a">成功</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="b">失败</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="c">提示页</a>
+</div>
+
+<div class="weui-msg" style="display:none;" id="s1">
+    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+    <div class="weui-msg__text-area">
+        <h2 class="weui-msg__title">操作成功</h2>
+        <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:void(0);">文字链接</a></p>
+    </div>
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="javascript:;" class="weui-btn weui-btn_primary">推荐操作</a>
+            <a href="javascript:;" class="weui-btn weui-btn_default">辅助操作</a>
+        </p>
+    </div>
+    <div class="weui-msg__extra-area">
+
+    </div>
+</div>
+
+<div class="weui-msgbox" style="display:none;" id="s3">
+    <p>
+        <i class="weui-icon-info-circle"></i>暂无数据
+    </p>
+</div>
+
+<div class="weui-msg" style="display:none;" id="s2">
+    <div class="weui-msg__icon-area"><i class="weui-icon-warn  weui-icon_msg"></i></div>
+    <div class="weui-msg__text-area">
+        <h2 class="weui-msg__title">操作失败</h2>
+        <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:void(0);">文字链接</a></p>
+    </div>
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="javascript:;" class="weui-btn weui-btn_primary">推荐操作</a>
+            <a href="javascript:;" class="weui-btn weui-btn_default">辅助操作</a>
+        </p>
+    </div>
+    <div class="weui-msg__extra-area">
+
+    </div>
+</div>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

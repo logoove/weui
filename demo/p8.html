@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/f2.min.js"></script>
+
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        f2 图表 阿里出品
+    </h1>
+    <p class="page-hd-desc">很强大的图表库,为移动而生,只有145kb,支持几十种图表</p>
+</div>
+<div class="page-bd-15">
+<canvas id="myChart" height="260"></canvas>
+    <br>
+<a href="http://antv.alipay.com/zh-cn/f2/3.x/index.html">开发文档</a>
+    <script>
+
+        const data = [
+            { genre: '中国', sold: 275 },
+            { genre: '印度', sold: 115 },
+            { genre: '俄罗斯', sold: 120 },
+            { genre: '美国', sold: 350 },
+            { genre: '日本', sold: 150 },
+        ];
+
+        // Step 1: 创建 Chart 对象
+        const chart = new F2.Chart({
+            id: 'myChart',
+            pixelRatio: window.devicePixelRatio // 指定分辨率
+        });
+
+        // Step 2: 载入数据源
+        chart.source(data);
+
+        // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+        chart.interval().position('genre*sold').color('genre');
+
+        // Step 4: 渲染图表
+        chart.render();
+
+    </script>
+</div>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

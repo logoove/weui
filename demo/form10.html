@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+
+
+
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        slider
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+ <div class="page-bd-15">
+<div class="weui-slider" id="slider1">
+    <div class="weui-slider__inner">
+        <div style="width: 0;" class="weui-slider__track"></div>
+        <div style="left: 0;" class="weui-slider__handler"></div>
+    </div>
+    <div id="sliderValue1" class="weui-slider-box__value">0</div>
+</div>
+
+<div class="weui-slider-box" id="slider2">
+    <div class="weui-slider">
+        <div id="sliderInner" class="weui-slider__inner">
+            <div id="sliderTrack" style="width: 50%;" class="weui-slider__track"></div>
+            <div id="sliderHandler" style="left: 50%;" class="weui-slider__handler"></div>
+        </div>
+    </div>
+    <div id="sliderValue" class="weui-slider-box__value">50</div>
+</div>
+ </div>
+<script>
+    $(function(){
+        var $sliderTrack = $('#sliderTrack'),
+            $sliderHandler = $('#sliderHandler'),
+            $sliderValue = $('#sliderValue');
+
+        var totalLen = $('#sliderInner').width(),
+            startLeft = 0,
+            startX = 0;
+
+        $sliderHandler
+            .on('touchstart', function (e) {
+                startLeft = parseInt($sliderHandler.css('left')) * totalLen / 100;
+                startX = e.changedTouches[0].clientX;
+            })
+            .on('touchmove', function(e){
+                var dist = startLeft + e.changedTouches[0].clientX - startX,
+                    percent;
+                dist = dist < 0 ? 0 : dist > totalLen ? totalLen : dist;
+                percent =  parseInt(dist / totalLen * 100);
+                $sliderTrack.css('width', percent + '%');
+                $sliderHandler.css('left', percent + '%');
+                $sliderValue.text(percent);
+
+                e.preventDefault();
+            })
+        ;
+    });
+</script>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

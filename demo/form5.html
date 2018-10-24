@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        select
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="job" class="weui-label">美女</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="job" type="text" value="">
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="mobile" class="weui-label">手机</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="mobile" type="text" value="">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="in" class="weui-label">喜欢的国家</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="in" type="text" value="美国,中国">
+        </div>
+    </div>
+</div>
+
+<script>
+   /* 支持
+    $("input").select("update", { items: ["法官", "猎人"] })
+    $("input").select("open")
+    $("input").select("close")*/
+    $("#job").select({
+        title: "喜欢的美女",
+        items: ['柳岩','赵丽颖','杨颖','苍井空'],
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+    $("#mobile").select({
+        title: "选择手机",
+        items: [
+            {
+                title: "iPhone 8",
+                value: "001",
+            },
+            {
+                title: "iPhone 9",
+                value: "002",
+            },
+            {
+                title: "iPhone x",
+                value: "003",
+            },
+            {
+                title: "iPhone xs",
+                value: "004",
+            }
+
+        ]
+    });
+    $("#in").select({
+        title: "喜欢的国家",
+        multi: true,
+        min: 1,  //最少选1个
+        max: 3,  //最多选3个
+        items: [
+            {
+                title: "美国",
+                value: 1,
+                description: "额外的数据1"
+            },
+            {
+                title: "中国",
+                value: 2,
+                description: "额外的数据2"
+            },
+            {
+                title: "日本",
+                value: 3,
+                description: "额外的数据3"
+            },
+            {
+                title: "韩国",
+                value: 4,
+                description: "额外的数据4"
+            },
+            {
+                title: "泰国",
+                value: 5,
+                description: "额外的数据5"
+            },
+            {
+                title: "法国",
+                value: 6,
+                description: "额外的数据6"
+            },
+        ],
+        beforeClose: function(values, titles) {
+            if(values.indexOf("5") !== -1) {
+                $.toast("不能选泰国", "cancel");
+                return false;
+            }
+            return true;
+        },
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function (d) {
+            console.log('close')
+        }
+    });
+</script>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

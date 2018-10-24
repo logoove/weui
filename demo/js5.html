@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+     <script>
+         $(function(){
+
+             $('.weui-tab').tab({
+                 defaultIndex: 0,
+                 activeClass: 'weui-bar__item_on',
+                 onToggle: function (index) {
+                     if (index > 0) {
+                         $.toast(index)
+                     }
+                 }
+             })
+         })
+
+     </script>
+</head>
+
+<body ontouchstart>
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            tabbar
+        </h1>
+        <p class="page-hd-desc">底部工具菜单</p>
+    </div>
+
+    <div class="weui-tab tab-bottom " style="height:44px;">
+        
+        <div class="weui-tab__panel">
+               <div class="weui-tab__content">中国</div>
+            <div class="weui-tab__content">日本</div>
+            <div class="weui-tab__content">美国</div>
+            <div class="weui-tab__content">法国</div>
+        </div>
+
+        <div class="weui-tabbar">
+            <a href="javascript:;" class="weui-tabbar__item">
+                    <span style="display: inline-block;position: relative;">
+                        <i class="icon icon-27 f27 weui-tabbar__icon"></i>
+                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                    </span>
+                <p class="weui-tabbar__label">微信</p>
+            </a>
+            <a href="javascript:;" class="weui-tabbar__item">
+                <i class="icon icon-28 f27 weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">通讯录</p>
+            </a>
+            <a href="javascript:;" class="weui-tabbar__item">
+                    <span style="display: inline-block;position: relative;">
+                        <i class="icon icon-29 f27 weui-tabbar__icon"></i>
+                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                    </span>
+                <p class="weui-tabbar__label">发现</p>
+            </a>
+            <a href="javascript:;" class="weui-tabbar__item ">
+                <i class="icon icon-30 f27 weui-tabbar__icon" ></i>
+                <p class="weui-tabbar__label f-green">我</p>
+            </a>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

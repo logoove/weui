@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            日历
+        </h1>
+        <p class="page-hd-desc">日历</p>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="date" class="weui-label">日期</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="date" type="text">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="date2" class="weui-label">中文</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="date2" type="text" value="">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="date-multiple" class="weui-label">多选</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="date-multiple" type="text" value="">
+            </div>
+        </div>
+    </div>
+
+    <div class="demos-header">
+        <h2 class="demos-second-title">内联日历</h2>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="date3" class="weui-label">日期</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="date3" type="text">
+            </div>
+        </div>
+    </div>
+    <div id="inline-calendar"></div>
+  
+
+    <script>
+        $("#date").calendar({
+            onChange: function (p, values, displayValues) {
+                console.log(values, displayValues);
+            }
+        });
+        $("#date2").calendar({
+            value: ['2018-12-12'],
+            dateFormat: 'yyyy-mm-dd'
+        });
+        $("#date-multiple").calendar({
+            multiple: true,
+            onChange: function (p, values, displayValues) {
+                console.log(values, displayValues);
+            }
+        });
+        $("#date3").calendar({
+            container: "#inline-calendar"
+        });
+    </script>
+
+   <!--
+   你可以在初始化的时候指定如下参数：
+参数名 	类型 	默认值 	说明
+multiple 	boolean 	false 	是否多选， V0.8.1+
+inputReadOnly 	boolean 	true 	是否自动在 input 元素上加上 readonly 属性
+closeByOutsideClick 	boolean 	true 	点击日历外面关闭
+toolbarTemplate 	string 	参见源码 	Toolbar 的HTML结构
+value 	array 		默认选择的日期，注意是个数组，比如 ["2016-12-12"]
+formatValue 	function (p, values) 		格式化函数. values 是用户选择的日期
+monthNames 	array 	['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'] 	月名称
+monthNamesShort 	array 	['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'] 	月名称缩写
+dayNames 	array 	['周日', '周一', '周二', '周三', '周四', '周五', '周六'] 	周名称
+dayNamesShort 	array 	['周日', '周一', '周二', '周三', '周四', '周五', '周六'] 	周名称缩写
+dateFormat 	'yyyy-mm-dd' 	日期格式
+minDate 	undefined 	最小可选日期，比如 2015-06-01
+maxDate 	undefined 	最大可选日期，比如 2015-08-01
+onChange 	function(p, values, displayValues){} 	当用户选择日期时触发
+closeOnSelect 	boolean 	true 	用户选择一个时间后就自动关闭
+yearPicker 	boolean 	true 	Enable year picker in toolbar
+回调函数
+onChange 	function (p, values, displayValues) 		Callback function that will be executed when picker value changed. values and displayValues are arrays where each item represents value/display value of related column
+onMonthAdd 	function (p, monthContainer) 		Callback function that will be executed when newly generated month HTML element will be added to calendar.
+onDayClick 	function (p, dayContainer, year, month, day) 		Callback function that will be executed when user clicks/select any date
+onOpen 	function (p) 		Callback function that will be executed when picker is opened
+onClose 	function (p) 		Callback function that will be executed when picker is closed
+
+当用户选择完日期之后，会在 input 上触发 change 事件，你可以监听此事件。
+
+如果你只同时选择日期和时间，请使用 日期时间选择器
+方法
+
+通过 $("xxx").calendar("methodname", args) 可以调用method的方法，目前有如下方法可以调用：
+
+$("#input").calendar("close");  //关闭弹窗
+$("#input").calendar("open");  //打开弹窗
+$("#input").calendar("setValue", ["2012-12-12"]);  //设置日期
+$("#input").calendar("destroy");  //销毁
+
+内联日历
+
+在初始化 Calendar 的时候可以通过 container 参数来指定一个容器，如果把这个容器指定为页面上的一个元素，那么日历就会默认显示出来。
+
+$("#inline-calendar").calendar({
+  container: "#inline-calendar",
+  input: "#date3"
+});
+
+如果你在内联日历的时候，不希望有一个 input 会显示用户的输入值，那么只需要指定一个 type="hidden" 的input即可。但是千万注意不能不设置 input 参数。具体请参见右侧demo的写法
+
+   -->
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+
+<script>
+    //有4个颜色配置
+    $(document).on("click", "#show-actions", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [
+                {
+                    text: "发布",
+                    className: "color-primary",
+                    onClick: function() {
+                        $.alert("发布成功");
+                    }
+                },
+                {
+                    text: "编辑",
+                    className: "color-warning",
+                    onClick: function() {
+                        $.alert("你选择了“编辑”");
+                    }
+                },
+                {
+                    text: "删除",
+                    className: 'color-danger',
+                    onClick: function() {
+                        $.alert("你选择了“删除”");
+                    }
+                }
+            ]
+        });
+    });
+
+    $(document).on("click", "#show-actions-bg", function() {
+        $.actions({
+            actions: [
+                {
+                    text: "发布",
+                    className: "bg-primary",
+                },
+                {
+                    text: "编辑",
+                    className: "bg-warning",
+                },
+                {
+                    text: "删除",
+                    className: 'bg-danger',
+                } ,{
+                    text: "删除",
+                    className: 'bg-success',
+                }
+            ]
+        });
+    });
+</script>
+</body>
+</html>

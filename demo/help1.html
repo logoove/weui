@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/marked.min.js"></script>
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            更新日志
+        </h1>
+        <p class="page-hd-desc">更新日志抓取的是markdown文件</p>
+    </div>
+    <div class="page-bd" id="ajax" style="padding:15px 10px;">
+
+
+
+
+    </div>
+    <script>
+        $(function(){
+
+            $.post('../php/update.php',function(rs){
+                $("#ajax").html(marked(rs));
+
+            })
+
+        })
+    </script>
+ </div>
+</body>
+</html>

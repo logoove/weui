@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+    <script src="../js/php.js"></script>
+
+</head>
+
+<body ontouchstart>
+
+    <div class="page-hd">
+        <h1 class="page-hd-title" id="title">
+           分页标题
+        </h1>
+        <p class="page-hd-desc">详细内容显示</p>
+    </div>
+
+
+
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+    <script>
+       $(function(){
+           var id = getquery('id');
+           $("#title").text("标题id:"+id)
+       })
+    </script>
+
+</body>
+</html>
