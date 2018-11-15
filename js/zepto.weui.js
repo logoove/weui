@@ -2136,7 +2136,6 @@ Device/OS Detection
 
             if(config.autoClose && !config.multi) self.close();
         })
-            .trigger('change')
             .on("click", ".close-select", function() {
                 self.close();
             });
@@ -2258,32 +2257,32 @@ Device/OS Detection
       </div>',
         radioTemplate:
             '<div class="weui-cells weui-cells_radio">\
-        {{#items}}\
-        <label class="weui-cell weui-check_label" for="weui-select-id-{{this.title}}">\
-          <div class="weui-cell__bd weui-cell_primary">\
-            <p>{{this.title}}</p>\
-          </div>\
-          <div class="weui-cell__ft">\
-            <input type="radio" class="weui-check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}">\
-            <span class="weui-icon-checked"></span>\
-          </div>\
-        </label>\
-        {{/items}}\
-      </div>',
+              {{#items}}\
+              <label class="weui-cell weui-check_label" for="weui-select-id-{{this.title}}">\
+                <div class="weui-cell__bd weui-cell_primary">\
+                  <p>{{this.title}}</p>\
+                </div>\
+                <div class="weui-cell__ft">\
+                  <input type="radio" class="weui-check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}">\
+                  <span class="weui-icon-checked"></span>\
+                </div>\
+              </label>\
+              {{/items}}\
+            </div>',
         checkboxTemplate:
             '<div class="weui-cells weui-cells_checkbox">\
-        {{#items}}\
-        <label class="weui-cell weui-check_label" for="weui-select-id-{{this.title}}">\
-          <div class="weui-cell__bd weui-cell_primary">\
-            <p>{{this.title}}</p>\
-          </div>\
-          <div class="weui-cell__ft">\
-            <input type="checkbox" class="weui-check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}" >\
-            <span class="weui-icon-checked"></span>\
-          </div>\
-        </label>\
-        {{/items}}\
-      </div>',
+              {{#items}}\
+              <label class="weui-cell weui-check_label" for="weui-select-id-{{this.title}}">\
+                <div class="weui-cell__bd weui-cell_primary">\
+                  <p>{{this.title}}</p>\
+                </div>\
+                <div class="weui-cell__ft">\
+                  <input type="checkbox" class="weui-check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}" >\
+                  <span class="weui-icon-checked"></span>\
+                </div>\
+              </label>\
+              {{/items}}\
+            </div>',
     }
 
 }($);
@@ -3602,7 +3601,7 @@ Device/OS Detection
         timeout = setTimeout(function() {
 
                 $(".weui-toptips_visible").remove();
-          
+
         }, duration);
     }
 }($);
