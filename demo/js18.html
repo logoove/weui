@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/sidebar.js"></script>
+
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="container">
+    <div class="page-hd">
+        <div class="icon icon-81 f25 iblock" navbar-toggle></div>
+        <h1 class="page-hd-title iblock">
+            侧边栏
+        </h1>
+        <p class="page-hd-desc">需要加载sidebar.js插件和zepto.weui.js</p>
+    </div>
+
+    <article class="weui-article">
+        <h1>君生我未生 我生君已老</h1>
+        <section>
+            <h3>爱情是一种感觉</h3>
+            <p>
+                只是希望能有个人，在我说没事的时候，知道我不是真的没事；能有个人，在我强颜欢笑的时候，知道我不是真的开心。
+            </p>
+        </section>
+    </article>
+</div>
+
+
+<div class="weui-navs" navbar>
+    <ul>
+        <li class="nav-item">
+            <a href="javascript:void(0);"><i class="icon nav-icon icon-49"></i><span>网站配置</span><i class="icon nav-more"></i></a>
+            <ul>
+                <li><a href="javascript:void(0);"><span>网站设置</span></a></li>
+                <li><a href="javascript:void(0);"><span>友情链接</span></a></li>
+                <li><a href="javascript:void(0);"><span>分类管理</span></a></li>
+                <li><a href="javascript:void(0);"><span>系统日志</span></a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="javascript:void(0);"><i class="icon nav-icon icon-49"></i><span>文章管理</span><i class="icon nav-more"></i></a>
+            <ul>
+                <li><a href="javascript:void(0);"><span>站内新闻</span></a></li>
+                <li><a href="javascript:void(0);"><span>站内公告</span></a></li>
+                <li><a href="javascript:void(0);"><span>登录日志</span></a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="javascript:void(0);"><i class="icon nav-icon icon-49"></i><span>订单管理</span></a>
+
+        </li>
+        <li class="nav-item">
+            <a href="javascript:void(0);"><i class="icon nav-icon icon-49"></i><span>我的主页设置菜单</span></a>
+
+        </li>
+        <li class="nav-item">
+            <a href="javascript:void(0);"><i class="icon nav-icon icon-49"></i><span>新年愿望</span><i class="icon nav-more"></i></a>
+            <ul>
+                <li><a href="javascript:void(0);"><span>工作顺利</span></a></li>
+                <li><a href="javascript:void(0);"><span>事事顺心</span></a></li>
+                <li><a href="javascript:void(0);"><span>万事如意</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script >
+    $(function(){
+        $('.nav-item>a').on('click', function () {
+            $(".weui-navs ul ul li").removeClass('active');
+            $('.nav-item').children('ul').hide();
+            if ($(this).next().css('display') == "none") {
+                //展开
+                $('.nav-item').children('ul').hide();
+                $(this).next('ul').show();
+                $(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
+            } else {
+                //收缩
+                $(this).next('ul').hide();
+                $('.nav-item.nav-show').removeClass('nav-show');
+            }
+        });
+    })
+
+    var sidebarjs = new SidebarJS('navbar');
+</script>
+</body>
+</html>

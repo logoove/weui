@@ -9,8 +9,16 @@
 
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
+
+    <script src="../js/iscroll-lite.js"></script>
+
     <script>
         $(function(){
+            TagNav('#tagnav',{
+                type: 'scrollToNext',
+                curClassName: 'weui-state-active',
+                index:2
+            });
 
             $('#t1').tab({
                 defaultIndex: 0,
@@ -44,11 +52,34 @@
 <div class="container">
     <div class="page-hd">
         <h1 class="page-hd-title">
-            navbar/头部导航
+            navbar/今日头条导航
         </h1>
-        <p class="page-hd-desc">导航</p>
+        <p class="page-hd-desc">今日头条导航需要加载iscroll-lite.js插件,这里使用的是精简版,源码未压缩可自行修改其他颜色</p>
     </div>
 
+
+    <div id="tagnav" class="weui-navigator weui-navigator-wrapper">
+        <ul class="weui-navigator-list">
+            <li><a href="javascript:;">首页</a></li>
+            <li><a href="javascript:;">王者荣耀</a></li>
+            <li><a href="javascript:;">国内</a></li>
+            <li><a href="javascript:;">国际</a></li>
+            <li><a href="javascript:;">军事</a></li>
+            <li><a href="javascript:;">社会</a></li>
+            <li><a href="javascript:;">娱乐</a></li>
+            <li><a href="javascript:;">女人</a></li>
+            <li><a href="javascript:;">体育</a></li>
+            <li><a href="javascript:;">科技</a></li>
+            <li><a href="javascript:;">互联网</a></li>
+            <li><a href="javascript:;">教育</a></li>
+            <li><a href="javascript:;">财经</a></li>
+            <li><a href="javascript:;">房产</a></li>
+            <li><a href="javascript:;">汽车</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <br>
     <div class="weui-tab" id="t1" style="height:44px;">
         <div class="weui-navbar">
             <div class="weui-navbar__item">

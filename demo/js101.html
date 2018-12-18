@@ -10,7 +10,7 @@
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
      <style>
-         .search_content {width: 1060px;}
+         .search_content {width:750px;}
          .search_content .s1 {font-size: 24px;  margin-top: 30px; margin-bottom: 17px;}
          .search_content span {color:#2b5ed6;}
          .search_content li {font-size: 14px; color: #333333; width: 1060px; border-bottom: 1px solid #eef0f6; height: 35px; line-height: 35px;}
@@ -26,20 +26,45 @@
 
 <div class="page-hd">
     <h1 class="page-hd-title">
-       普通ajax分页
+       普通ajax分页/分页样式
     </h1>
     <p class="page-hd-desc"></p>
 </div>
-<a data-tid="34" class="active" href="javascript:search();">测试 </a>
-<ul id="rank-list">
+<div class="page-bd-15">
+    <div class="weui-cells__title">分页样式1</div>
+    <div class='pager'>
+        <div class="pager-left">
+            <div class="pager-first"><a class="pager-nav">首页</a></div>
+            <div class="pager-pre"><a  class="pager-nav">上一页</a></div>
+        </div>
+        <div class="pager-cen">1/120</div>
+        <div class="pager-right">
+            <div class="pager-next"><a class="pager-nav">下一页</a></div>
+            <div class="pager-end"><a  class="pager-nav">尾页</a></div>
+        </div>
+    </div>
 
-</ul>
+    <div class="weui-cells__title">分页样式2</div>
+    <div class='pager2'>
+    <a class="pager2-pre">&lt;</a>
+        <a class="active">1</a>
+        <a >2</a>
+        <a >3</a>
+        <a >4</a>
+        <a class="active">5</a>
+        <a class="pager2-next">&gt;</a>
+    </div>
 
-<div id="searchResult" class="not_found"></div>
 
-<div class="search_content box" style="display:none;">
-    <div class="page clearfloat" style="height:42px;"></div>
+    <a data-tid="34" class="active" href="javascript:search();">测试 </a>
+    <div class="weui-cells" id="rank-list">
+
+    </div>
+
+    <div class='pager2' id="pager">
+    </div>
 </div>
+
 
 <script>
 
@@ -71,15 +96,20 @@
             ajaxFlag = false;
             $.post("../php/page.php", getSearch(pageNum), function(json){
                 ajaxFlag = true;
-                $("#rank-list li").remove(); //清除已有数据
+                $("#rank-list .weui-cell").remove(); //清除已有数据
                 if(json.code == 200 && json.total> 0){
-                    var html = ""; //产品数据列表HTML
+                    var html = "";
                     for(var i = 0; i < json.list.length; i ++){
                         var data = json.list[i];
-html+="<li>ID: "+data.id+"  姓名:"+data.title+"</li>";
+                        html+='<div class="weui-cell">\n' +
+                            '            <div class="weui-cell__bd">\n' +
+                            '                <p>'+data.id+'</p>\n' +
+                            '            </div>\n' +
+                            '            <div class="weui-cell__ft">'+data.title+'</div>\n' +
+                            '        </div>';
                     }
 
-                    $("#rank-list").append(html); //插入新数据
+                    $("#rank-list").append(html);
 
                     //分页代码处理
 
@@ -89,17 +119,12 @@ html+="<li>ID: "+data.id+"  姓名:"+data.title+"</li>";
                     var endPageNum = (beginPageNum + showPage - 1 >= totalPage) ? totalPage : (beginPageNum + showPage - 1); //分页结束页码
                     beginPageNum = ((endPageNum - beginPageNum < showPage) && (totalPage > showPage)) ? (endPageNum - showPage + 1) : beginPageNum;
                     //拼接分页按钮代码
-                    var pageHtml = "<a href='javascript:" + (pageNum == 1 ? "void(0)" : ("ajaxpage(" + (pageNum - 1) + ")")) + ";'>&lt;</a>";
+                    var pageHtml = "<a class='pager2-pre' href='javascript:" + (pageNum == 1 ? "void(0)" : ("ajaxpage(" + (pageNum - 1) + ")")) + ";'>&lt;</a>";
                     for(var i = beginPageNum; i <= endPageNum; i ++)
-                        pageHtml += "<a href='javascript:ajaxpage(" + i + ");'" + (i == pageNum ? " class='cur'" : "") + ">" + i + "</a>";
-                    pageHtml += "<a href='javascript:" + (pageNum == totalPage ? "void(0)" : ("ajaxpage(" + (pageNum + 1) + ")")) + ";'>&gt;</a>";
-                    $(".search_content .page").html(pageHtml);
-                    $(".search_content").show(); //显示分页信息
+                        pageHtml += "<a href='javascript:ajaxpage(" + i + ");'" + (i == pageNum ? " class='active'" : "") + ">" + i + "</a>";
+                    pageHtml += "<a class='pager2-next' href='javascript:" + (pageNum == totalPage ? "void(0)" : ("ajaxpage(" + (pageNum + 1) + ")")) + ";'>&gt;</a>";
+                    $("#pager").html(pageHtml);
 
-                }else{
-                    $("#searchResult").html("抱歉，在产品库中没有找到相关产品。").show(); //显示结果提示
-                    $(".search_content").hide(); //隐藏分页信息
-                
                 }
             }, "json");
         }

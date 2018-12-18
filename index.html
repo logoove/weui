@@ -12,7 +12,7 @@
       <script>
      
   $(function(){
-	  $('.js-category').click(function(){
+	  $('.collapse .js-category').click(function(){
 			$parent = $(this).parent('li');
 			if($parent.hasClass('js-show')){
                         $parent.removeClass('js-show');
@@ -35,61 +35,12 @@
 <div class="contianer page-bg">
 <div class="page-hd">
         <h1 class="page-hd-title">
-            WeUI+5正式版将于2018-12-01上线
+            WeUI+5正式版将于2018-12-20上线
         </h1>
         <p class="page-hd-desc">WeUI+是Zepto1.2和WeUI 1.1.3为基础,收集整理了上百个组件开发而成,兼容IOS和Android平台,主要用于微信/手机网站开发,如有任何问题,请在github/码云反馈,QQ和微信不做回答.</p>
     </div>
-    <style>
-        .page-bd li {
-            background-color: #fff;
-            border-radius: 2px;
-            cursor: pointer;
-            margin: 10px 0;
-            overflow: hidden;
-            vertical-align: bottom;
-            display: block;
-        }
-        .page-bd li.js-show .weui-flex {
-            opacity: 0.4;
-        }
-        .page-bd li.js-show .page-category {
-            height: auto;
-        }
-        .page-bd li.js-show .page-category-content {
-            opacity: 1;
-            transform: translateY(0px);
-        }
-        .page-bd li:first-child {
-            margin-top: 0;
-        }
-        .page-bd .page-category {
-            height: 0;
-            overflow: hidden;
-        }
-        .page-bd .page-category-content {
-            opacity: 0;
-            transform: translateY(-50%);
-            transition: 0.3s;
-        }
-        .page-bd .weui-flex {
-
-            align-items: center;
-            padding:10px;
-            transition: all 0.3s ease 0s;
-            display: -webkit-flex;
-            display: -webkit-box;
-            display: flex;
-        }
-        .page-bd .weui-flex--item {
-            -webkit-flex: 1 1 0;
-            flex: 1 1 0;
-        }
-        .page-bd .weui-cells {
-            margin-top: 0;
-        }
-    </style>
 <div class="page-bd">
-        <ul>
+        <ul class="collapse">
             <li><div class="weui-flex js-category" >
                     <div class="weui-flex__item" >A. 基础</div>
                     <i class="icon icon-74"></i>
@@ -189,6 +140,12 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
+                        <a class="weui-cell weui-cell_access" href="demo/base19.html">
+                            <div class="weui-cell__bd">
+                                <p>折叠面板Collapse</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
                         <a class="weui-cell weui-cell_access" href="demo/base15.html">
                             <div class="weui-cell__bd">
                                 <p>动画</p>
@@ -197,7 +154,7 @@
                         </a>
                         <a class="weui-cell weui-cell_access" href="demo/base16.html">
                             <div class="weui-cell__bd">
-                                <p>图片/图片排版/头像</p>
+                                <p>头像认证/图片/图片排版</p>
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
@@ -216,6 +173,12 @@
                         <a class="weui-cell weui-cell_access" href="demo/table.html">
                             <div class="weui-cell__bd">
                                 <p>js动态添加删除内容</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" href="demo/base20.html">
+                            <div class="weui-cell__bd">
+                                <p>角标,图片展示</p>
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
@@ -301,7 +264,7 @@
                         </a>
                         <a class="weui-cell weui-cell_access" href="demo/form12.html">
                             <div class="weui-cell__bd">
-                                <p>图片上传</p>
+                                <p>图片上传和预览,压缩</p>
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
@@ -373,9 +336,15 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
-                        <a class="weui-cell weui-cell_access" href="demo/jw">
+                        <a class="weui-cell weui-cell_access" href="demo/dp">
                             <div class="weui-cell__bd">
-                                <p>jwplayer播放器</p>
+                                <p>DPlayer视频播放器</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" href="demo/dp/music.html">
+                            <div class="weui-cell__bd">
+                                <p>Aplayer音乐播放器</p>
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
@@ -403,27 +372,9 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
-                        <a class="weui-cell weui-cell_access" href="demo/js101.html">
+                        <a class="weui-cell weui-cell_access" href="demo/js15.html">
                             <div class="weui-cell__bd">
-                                <p>ajax分页</p>
-                            </div>
-                            <div class="weui-cell__ft"></div>
-                        </a>
-                        <a class="weui-cell weui-cell_access" href="demo/js11.html">
-                            <div class="weui-cell__bd">
-                                <p>弹出选择面板</p>
-                            </div>
-                            <div class="weui-cell__ft"></div>
-                        </a>
-                        <a class="weui-cell weui-cell_access" href="demo/js12.html">
-                            <div class="weui-cell__bd">
-                                <p>评论/评论显示</p>
-                            </div>
-                            <div class="weui-cell__ft"></div>
-                        </a>
-                        <a class="weui-cell weui-cell_access" href="demo/js13.html">
-                            <div class="weui-cell__bd">
-                                <p>微信文章模板</p>
+                                <p>底部滚动加载2</p>
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
@@ -433,15 +384,47 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
-                        <a class="weui-cell weui-cell_access" href="demo/js15.html">
-                        <div class="weui-cell__bd">
-                            <p>底部滚动加载2</p>
-                        </div>
-                        <div class="weui-cell__ft"></div>
-                    </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js101.html">
+                            <div class="weui-cell__bd">
+                                <p>ajax分页/分页样式</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js11.html">
+                            <div class="weui-cell__bd">
+                                <p>新闻列表仿今日头条</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js12.html">
+                            <div class="weui-cell__bd">
+                                <p>留言列表显示</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js13.html">
+                            <div class="weui-cell__bd">
+                                <p>微信文章模板</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+
+
                         <a class="weui-cell weui-cell_access" href="demo/js16.html">
                             <div class="weui-cell__bd">
                                 <p>省简称弹出层</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js17.html">
+                        <div class="weui-cell__bd">
+                            <p>JSSDK演示1.4</p>
+                        </div>
+                        <div class="weui-cell__ft"></div>
+                    </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js18.html">
+                            <div class="weui-cell__bd">
+                                <p>侧边栏</p>
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>

@@ -3752,3 +3752,6 @@ function share(){
     $("body").append(sharetpl());
 
 }
+$(function(){
+    var weixinimg=[];var weixinsrc=[];weixinimg=$('.weixin');for(var i=0;i<weixinimg.length;i++){weixinsrc[i]=weixinimg[i].src;};$('.weixin').click(function(){var index=$('.weixin').index(this);wx.previewImage({current:weixinsrc[index],urls:weixinsrc});});
+});
