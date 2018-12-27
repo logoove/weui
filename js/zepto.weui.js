@@ -954,7 +954,7 @@
         hide();
     }
 
-    $(document).on("click", ".weui-actions_mask", function() {
+    $(document).on("click tap", ".weui-actions_mask", function() {
         $.closeActions();
     });
 
@@ -1192,7 +1192,7 @@
 
     $.showTab = showTab;
 
-    $(document).on("click", ".weui-navbar__item, .weui-tabbar__item", function(e) {
+    $(document).on("click tap", ".weui-navbar__item, .weui-tabbar__item", function(e) {
         var $a = $(e.currentTarget);
         var href = $a.attr("href");
         if($a.hasClass(ITEM_ON)) return;
@@ -1924,7 +1924,7 @@ Device/OS Detection
         return p;
     };
 
-    $(document).on("click", ".close-picker", function() {
+    $(document).on("click tap", ".close-picker", function() {
         var pickerToClose = $('.weui-picker-modal.weui-picker-modal-visible');
         if (pickerToClose.length > 0) {
             $.closePicker(pickerToClose);
@@ -3433,7 +3433,7 @@ Device/OS Detection
     };
 
 
-    $(document).on("click", ".close-popup, .weui-popup__overlay", function() {
+    $(document).on("click tap", ".close-popup, .weui-popup__overlay", function() {
         $.closePopup();
     })
         .on("click", ".open-popup", function() {
