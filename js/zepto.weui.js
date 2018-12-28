@@ -1820,7 +1820,7 @@ Device/OS Detection
 
         }
 
-        if (!p.inline) $('html').on('click', closeOnHTMLClick);
+        if (!p.inline) $('html').on('click tap', closeOnHTMLClick);
 
         // Open
         function onPickerClose() {
@@ -2136,7 +2136,7 @@ Device/OS Detection
 
             if(config.autoClose && !config.multi) self.close();
         })
-            .on("click", ".close-select", function() {
+            .on("click tap", ".close-select", function() {
                 self.close();
             });
     }
@@ -2964,7 +2964,7 @@ Device/OS Detection
             if (p.input.length > 0) {
                 if (p.params.inputReadOnly) p.input.prop('readOnly', true);
                 if (!p.inline) {
-                    p.input.on('click', openOnInput);
+                    p.input.on('click tap', openOnInput);
                 }
                 if (p.params.inputReadOnly) {
                     p.input.on('focus mousedown', function (e) {
@@ -3436,10 +3436,10 @@ Device/OS Detection
     $(document).on("click tap", ".close-popup, .weui-popup__overlay", function() {
         $.closePopup();
     })
-        .on("click", ".open-popup", function() {
+        .on("click tap", ".open-popup", function() {
             $($(this).data("target")).popup();
         })
-        .on("click", ".weui-popup__container", function(e) {
+        .on("click tap", ".weui-popup__container", function(e) {
             if($(e.target).hasClass("weui-popup__container")) $.closePopup();
         })
 
@@ -3731,7 +3731,7 @@ Device/OS Detection
             options.onToggle(index);
         };
         const self = this;
-        this.on('click', '.weui-tabbar__item, .weui-navbar__item', function (e) {
+        this.on('click tap', '.weui-tabbar__item, .weui-navbar__item', function (e) {
             const index = $(this).index();
             self.toggle(index);
         });
