@@ -4566,3 +4566,52 @@ input.b-orange {
     color:#000;
     font-size: 1.25em;
 }
+/*header*/
+.weui-header {
+  position: relative;
+  padding: 3px 0;
+  -webkit-box-sizing: border-box;
+ 
+}
+.weui-header .weui-header-title,.weui-header h1 {
+  margin: 0 88px;
+  margin-left: 100px;
+  line-height: 40px;
+  text-align: center;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 400;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff
+}
+.weui-header .weui-header-title a,.weui-header .weui-header-title a:active,.weui-header h1 a,.weui-header h1 a:active {
+  color: #fff
+}
+.weui-header .weui-header-left,.weui-header .weui-header-right {
+  position: absolute;
+  top: 14px;
+  display: block;
+  font-size: 16px;
+  line-height: 21px;
+  color:#FFF;
+}
+.weui-header .weui-header-left a,.weui-header .weui-header-left button,.weui-header .weui-header-right a,.weui-header .weui-header-right button {
+  float: left;
+  margin-right: 8px;
+}
+.weui-header .weui-header-left a:active,.weui-header .weui-header-left button:active,.weui-header .weui-header-right a:active,.weui-header .weui-header-right button:active {
+  opacity: .8
+}
+.weui-header .weui-header-left {
+  left: 18px
+}
+.weui-header .weui-header-right {
+  right: 15px
+}
+.weui-header .weui-header-right a,.weui-header .weui-header-right button {
+  margin-left: 8px;
+  margin-right: 0
+}
