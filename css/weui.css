@@ -1,5 +1,5 @@
 /*!
- * WeUI v1.1.3 (https://github.com/weui/weui)
+ * WeUI v2.0 (https://github.com/weui/weui)
  */
 html{
   -ms-text-size-adjust:100%;
@@ -98,31 +98,31 @@ a{
 }
 .weui-icon-success{
   font-size:23px;
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-icon-waiting{
   font-size:23px;
-  color:#10AEFF;
+  color:#10AEff;
 }
 .weui-icon-warn{
   font-size:23px;
-  color:#F43530;
+  color:#FA5151;
 }
 .weui-icon-info{
   font-size:23px;
-  color:#10AEFF;
+  color:#10AEff;
 }
 .weui-icon-success-circle{
   font-size:23px;
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-icon-success-no-circle{
   font-size:23px;
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-icon-waiting-circle{
   font-size:23px;
-  color:#10AEFF;
+  color:#10AEff;
 }
 .weui-icon-circle{
   font-size:23px;
@@ -130,20 +130,20 @@ a{
 }
 .weui-icon-download{
   font-size:23px;
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-icon-info-circle{
   font-size:23px;
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-icon-safe-success{
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-icon-safe-warn{
   color:#FFBE00;
 }
 .weui-icon-cancel{
-  color:#F43530;
+  color:#FA5151;
   font-size:22px;
 }
 .weui-icon-search{
@@ -162,7 +162,7 @@ a{
   font-size:93px;
 }
 .weui-icon_msg.weui-icon-warn{
-  color:#F76260;
+  color:#FA5151;
 }
 .weui-icon_msg-primary{
   font-size:93px;
@@ -217,17 +217,17 @@ a{
   background-color:#DEDEDE;
 }
 .weui-btn_primary{
-  background-color:#1AAD19;
+  background-color:#07c160;
 }
 .weui-btn_primary:not(.weui-btn_disabled):visited{
   color:#FFFFFF;
 }
 .weui-btn_primary:not(.weui-btn_disabled):active{
   color:rgba(255, 255, 255, 0.6);
-  background-color:#179B16;
+  background-color:#06ad56;
 }
 .weui-btn_warn{
-  background-color:#E64340;
+  background-color:#FA5151;
 }
 .weui-btn_warn:not(.weui-btn_disabled):visited{
   color:#FFFFFF;
@@ -257,14 +257,14 @@ a{
   color:rgba(255, 255, 255, 0.6);
 }
 .weui-btn_loading.weui-btn_primary{
-  background-color:#179B16;
+  background-color:#06ad56;
 }
 .weui-btn_loading.weui-btn_warn{
   background-color:#CE3C39;
 }
 .weui-btn_plain-primary{
-  color:#1aad19;
-  border:1px solid #1aad19;
+  color:#07c160;
+  border:1px solid #07c160;
 }
 .weui-btn_plain-primary:not(.weui-btn_plain-disabled):active{
   color:rgba(26, 173, 25, 0.6);
@@ -528,7 +528,7 @@ input.weui-btn_plain-default{
 .weui-cells_radio .weui-check:checked + .weui-icon-checked:before{
   display:block;
   content:'\EA08';
-  color:#09BB07;
+  color:#07C160;
   font-size:16px;
 }
 .weui-cells_checkbox .weui-cell__hd{
@@ -542,7 +542,7 @@ input.weui-btn_plain-default{
 }
 .weui-cells_checkbox .weui-check:checked + .weui-icon-checked:before{
   content:'\EA06';
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-label{
   display:block;
@@ -581,7 +581,7 @@ input.weui-btn_plain-default{
   text-align:right;
 }
 .weui-cell_warn .weui-textarea-counter{
-  color:#E64340;
+  color:#FA5151;
 }
 .weui-toptips{
   display:none;
@@ -600,7 +600,7 @@ input.weui-btn_plain-default{
   word-break:break-all;
 }
 .weui-toptips_warn{
-  background-color:#E64340;
+  background-color:#FA5151;
 }
 .weui-cells_form .weui-cell__ft{
   font-size:0;
@@ -614,7 +614,7 @@ input.weui-btn_plain-default{
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 }
 .weui-cell_warn{
-  color:#E64340;
+  color:#FA5151;
 }
 .weui-cell_warn .weui-icon-warn{
   display:inline-block;
@@ -727,7 +727,7 @@ input.weui-btn_plain-default{
   -webkit-box-flex:1;
   -webkit-flex:1;
           flex:1;
-  color:#3CC51F;
+  color:#07c160;
   text-align:center;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 }
@@ -872,7 +872,7 @@ button.weui-form-preview__btn{
   line-height:45px;
   vertical-align:middle;
   font-size:17px;
-  color:#3CC51F;
+  color:#07c160;
 }
 button.weui-vcode-btn{
   background-color:transparent;
@@ -970,8 +970,8 @@ button.weui-vcode-btn{
 }
 .weui-switch:checked,
 .weui-switch-cp__input:checked ~ .weui-switch-cp__box{
-  border-color:#04BE02;
-  background-color:#04BE02;
+  border-color:#07c160;
+  background-color:#07c160;
 }
 .weui-switch:checked:before,
 .weui-switch-cp__input:checked ~ .weui-switch-cp__box:before{
@@ -1215,7 +1215,7 @@ button.weui-vcode-btn{
 .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon,
 .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon > i,
 .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label{
-  color:#09BB07;
+  color:#07C160;
 }
 .weui-tabbar__icon{
   display:inline-block;
@@ -1331,7 +1331,7 @@ i.weui-tabbar__icon,
 .weui-progress__inner-bar{
   width:0;
   height:100%;
-  background-color:#09BB07;
+  background-color:#07C160;
 }
 .weui-progress__opr{
   display:block;
@@ -1712,7 +1712,7 @@ a.weui-media-box:active{
   -webkit-box-flex:1;
   -webkit-flex:1;
           flex:1;
-  color:#3CC51F;
+  color:#07c160;
   text-decoration:none;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
   position:relative;
@@ -2018,7 +2018,7 @@ a.weui-media-box:active{
   padding:.15em .4em;
   min-width:8px;
   border-radius:18px;
-  background-color:#F43530;
+  background-color:#FA5151;
   color:#FFFFFF;
   line-height:1.2;
   text-align:center;
@@ -2160,7 +2160,7 @@ a.weui-media-box:active{
   display:none;
   margin-left:10px;
   line-height:28px;
-  color:#09BB07;
+  color:#07C160;
   white-space:nowrap;
 }
 .weui-search-bar__input:not(:valid) ~ .weui-icon-clear{
@@ -2216,7 +2216,7 @@ input[type="search"]::-webkit-search-results-decoration{
   -webkit-box-flex:1;
   -webkit-flex:1;
           flex:1;
-  color:#1AAD19;
+  color:#07c160;
 }
 .weui-picker__action:first-child{
   text-align:left;
@@ -2437,7 +2437,7 @@ input[type="search"]::-webkit-search-results-decoration{
   vertical-align:middle;
   text-decoration:inherit;
   content:"\EA08";
-  color:#09BB07;
+  color:#07C160;
   font-size:13px;
   position:absolute;
   top:50%;
@@ -2498,7 +2498,7 @@ input[type="search"]::-webkit-search-results-decoration{
 }
 .weui-slider__track{
   height:2px;
-  background-color:#1AAD19;
+  background-color:#07c160;
   width:0;
 }
 .weui-slider__handler{
