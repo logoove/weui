@@ -846,27 +846,33 @@
         });
     }
 
-    $.toast = function(text, style, callback) {
-        if(typeof style === "function") {
+    $.toast = function (text, style, callback, ms) { //ms为自定义显示时间，默认为空。
+        if (typeof style === "function") {
+            ms = callback;
             callback = style;
+        } else if (typeof style === typeof 1) {
+            ms = style;
+        } else if (typeof callback === typeof 1) {
+            ms = callback;
+            callback = null
         }
         var className, iconClassName = 'weui-icon-success-no-circle';
-        var duration = toastDefaults.duration;
-        if(style == "cancel") {
+        var duration = ms ? ms : toastDefaults.duration;
+        if (style == "cancel") {
             className = "weui-toast_cancel";
             iconClassName = 'weui-icon-cancel'
-        } else if(style == "forbidden") {
+        } else if (style == "forbidden") {
             className = "weui-toast--forbidden";
             iconClassName = 'weui-icon-warn'
-        } else if(style == "text") {
+        } else if (style == "text") {
             className = "weui-toast--text";
-        } else if(typeof style === typeof 1) {
+        } else if (typeof style === typeof 1) {
             duration = style
         }
         show('<i class="' + iconClassName + ' weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
 
-        setTimeout(function() {
-            hide(callback);
+        setTimeout(function () {
+           hide(callback);
         }, duration);
     }
 
