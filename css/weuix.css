@@ -222,7 +222,7 @@ a:active {
 .margin5{margin:5px;}
 .margin10{margin:10px;}
 .margin15{margin:15px;}
-margin20{margin:20px;}
+.margin20{margin:20px;}
 .page-hd-title{
     text-align: left;
     font-size: 20px;
@@ -3513,6 +3513,7 @@ input.b-orange {
     opacity: 0 ;
     border: none;
     float: left;
+	visibility: hidden;
 }
 .weui-icon-radio{
     -webkit-border-radius: 100%;
@@ -3552,6 +3553,7 @@ input.b-orange {
     border: 1px solid #b8b8b8;
     background-color: #fafafa;
     vertical-align: top;
+	cursor: pointer;
 }
 .weui-form-checkbox[type="checkbox"]:checked + label .weui-icon-checkbox {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkY0MTI1RkFBQjJCNzExRTU5NzE3RDMyNDM3NTgzRTE4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkY0MTI1RkFCQjJCNzExRTU5NzE3RDMyNDM3NTgzRTE4Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjQxMjVGQThCMkI3MTFFNTk3MTdEMzI0Mzc1ODNFMTgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjQxMjVGQTlCMkI3MTFFNTk3MTdEMzI0Mzc1ODNFMTgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5UDJTUAAABUElEQVR42mL8//8/w0ACJoYBBqMOGHEOsB0oB/AC8UIgPgTEZvR2gDYQnwXiOChfH0UWVA7QEPsA8af/CDAJXQ0tLS8G4r9Ili8BYkZ6OaD9Pyo4AcQc2NRS22ImIJ6OZvltIBbFpYealjMD8WI0y78CsS4+fdS0fNl/TBBOSC8uCVBiyQViASItX4HF8j5iHI/LwIVQQ+4CsQEeA1iAeBUWyw9AzSHLAS1ohn0H4hQs6liBeDUWy58AsTix0YdNUBiIz2AxeD4Qc0HVsAHxOixqfgKxNSnpB5cEPxAfw2LBeWiq3vofO8gjNQHjk+QF4kNYLPmHw/Kl5OQgQgpAQb77P2FwDil6qOoABmgRuhWP5a+AWJbcMoRYhaBEtx5HorOjpBAjRTEo261Ec0AKpaUoOUUurJDqpEYxTm6Nl05sSUcIM472jEYdMOIdABBgAFfZNpPCdKCTAAAAAElFTkSuQmCC");
@@ -3580,6 +3582,11 @@ input.b-orange {
 }
 .weui-form label{
     cursor: pointer;
+	display: inline-block;
+position: relative;
+min-height:1em;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 /*
 图片效果*/
