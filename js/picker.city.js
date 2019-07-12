@@ -16538,11 +16538,11 @@ $.rawCitiesData = [
     raw.map(function (t) {
       if (t.name === tokens[0]) p = t;
     });
-
+if(!p)return [];
     p.sub.map(function (t) {
       if (t.name === tokens[1]) c = t;
     })
-
+ if(!c)return [p.code];
     if (tokens[2]) {
       c.sub.map(function (t) {
         if (t.name === tokens[2]) d = t;
