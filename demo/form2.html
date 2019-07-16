@@ -20,8 +20,16 @@
                        $.toptip("提交成功",'success');
                    }
                })
-
+			   //解决表单控件不能回弹 只有微信ios有这个问题
+           $("input,select,textarea").blur(function(){
+setTimeout(() => {
+const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+}, 100);
+})    
+  
         });
+        
         var countdown=60;
 
         function settime(obj) {
@@ -237,7 +245,7 @@
 <div class="weui-cells">
     <div class="weui-cell">
         <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="用户名" type="text" id="user">
+            <input class="weui-input" placeholder="用户名" type="text" id="user" >
         </div>
     </div>
 </div>
@@ -249,6 +257,7 @@
 
 <br>
 <br>
+
 <div class="weui-footer weui-footer_fixed-bottom">
     <p class="weui-footer__links">
         <a href="../index.html" class="weui-footer__link">WeUI首页</a>
