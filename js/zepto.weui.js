@@ -3290,7 +3290,7 @@ Device/OS Detection
                         divider: true,  // 这是一个分隔符
                         content: params.monthSplit
                     },
-                    {
+                   {
                         values: (function () {
                             var dates = [];
                             for (var i=1; i<=31; i++) dates.push(formatNumber(i));
@@ -3351,7 +3351,7 @@ Device/OS Detection
         monthes: ('01 02 03 04 05 06 07 08 09 10 11 12').split(' '),
         years: (function () {
             var arr = [];
-            for (var i = 1950; i <= 2030; i++) { arr.push(i); }
+            for (var i = 1930; i <= 2080; i++) { arr.push(i); }
             return arr;
         })(),
         times: function () {
@@ -3386,6 +3386,7 @@ Device/OS Detection
             // 如果你的定制的初始值格式无法被这个默认函数解析，请自定义这个函数。比如你的时间是 '子时' 那么默认情况这个'时'会被当做分隔符而导致错误，所以你需要自己定义parse函数
             // 默认兼容的分隔符
             var t = str.split(this.datetimeSplit);
+
             return t[0].split(/\D/).concat(t[1].split(/:|时|分|秒/)).filter(function (d) {
                 return !!d;
             })

@@ -9,7 +9,7 @@
 
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
-
+<script src="../js/php.js"></script>
 </head>
 
 <body ontouchstart>
@@ -76,6 +76,13 @@
                     <input class="weui-input" id="years-monthes" type="text" value="2017-06-20 12:00">
                 </div>
             </div>
+			<div class="weui-cell">
+                <div class="weui-cell__hd"><label for="time-format" class="weui-label">生日</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="birthday" type="text" value="2019-02-01">
+                </div>
+            </div>
+		
         </div>
 
 
@@ -160,6 +167,8 @@
 </div>
 
 <script>
+
+
     $("#mobile").picker({
         title: "请选择您的电脑",
         cols: [
@@ -207,6 +216,18 @@
 </script>
 
 <script>
+  $("#birthday").datetimePicker({
+        title: '生日',
+        years:range(1940,2030),
+        times:function(){return [];},
+		parse:function(str){
+			return str.split("-");
+		},
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+
     $("#time").datetimePicker({
         title: '出发时间',
         min: "1990-12-12",
