@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+	 <script src="../js/vconsole.min.js"></script>
+    <style>
+        .btn{
+            margin:0 1em;width:5em;
+        }
+        .btn1{
+            margin:0 1em;
+        }
+    </style>
+     <script>
+         const select=(a)=>{
+             $.post("../php/page.php",{py:a,ajax:4},(res)=>{
+                 var list = res.list;
+                 var html='';
+                 console.log(list)
+                 for (var i in list) {
+                     html+=`<a href="javascript:city('${list[i].name}','${list[i].code}',${list[i].isok});" class="weui-btn weui-btn_mini weui-btn_default  btn1">${list[i].name}</a>`;
+                 }
+                 $("#list").html(html)
+             },'json');
+         }
+         const city=(name,code,isok)=>{
+             localStorage.setItem('city',name);
+             localStorage.setItem('code',code);
+             location.href="js20.html";
+         }
+         const so=()=>{
+             let keyword =  $("#search").val();
+             if(keyword==''){
+                 $.toptip('关键字不能为空');return false;
+             }
+             $.post("../php/page.php",{kw:keyword,ajax:5},(res)=>{
+                 var list = res.list;
+                 if(empty(list)){
+                     $("#list").html("没有找到数据")
+                     return false;
+                 }
+                 var html='';
+                 console.log(list)
+                 for (var i in list) {
+                     html+=`<a href="javascript:city('${list[i].name}','${list[i].code}',${list[i].isok});" class="weui-btn weui-btn_mini weui-btn_default  btn1">${list[i].name}</a>`;
+                 }
+                 $("#list").html(html)
+             },'json');
+         }
+     </script>
+</head>
+
+<body ontouchstart>
+
+
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            城市选择
+        </h1>
+        <p class="page-hd-desc">省市县镇四级,带拼音首字母,当然也可以只使用三级,数据库也只有不到3M,是原创整理的,本页演示是需要使用数据库的,这里的城市是县,县级市,区,街道,也就是行政区域的第三级<a href="//gitee.com/yoby/phpclass/tree/master/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%9F%9F%E4%B8%89%E7%BA%A7%E5%8D%95%E7%8B%ACSQL">下载</a></p>
+    </div>
+
+    <div class="page-bd-15">
+        <div class="weui-search-bar">
+            <input type="search" class="search-input" id='search' placeholder='关键字'/><button onclick="so();"  class="weui-btn weui-btn_mini weui-btn_primary"><i class="icon icon-4"></i></button>
+        </div>
+        <div class="weui-cells__title">根据自己所在城市拼音首字母查找</div>
+        <script>
+           const arr= ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','W','X','Y','Z'];
+           let str="";
+           foreach(arr,function(v){
+               str+=`<a href="javascript:select('${v}');" class="weui-btn weui-btn_mini weui-btn_default btn">${v}</a>`;
+           });
+           document.write(str);
+        </script>
+
+        <div class="weui-cells__title">查找的城市如下,如果没有请联系平台管理人员</div>
+        <div id="list" style="padding-bottom: 30px;">
+
+        </div>
+    </div>
+
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</body>
+</html>

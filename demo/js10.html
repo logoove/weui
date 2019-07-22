@@ -23,7 +23,7 @@
     <h1 class="page-hd-title">
       底部滚动加载1
     </h1>
-    <p class="page-hd-desc">非插件底部自动滚动</p>
+    <p class="page-hd-desc">非插件底部自动滚动,记录原滚动位置,跳到详情页返回保留数据</p>
 </div>
 
 <div class="page-bd-15">
@@ -38,7 +38,7 @@
 
 <script id="tpl" type="text/html">
     <% for(var i in list) {   %>
-    <div class="weui-cell" onclick="location.href='js91.html?id=<%=list[i].id%>'">
+    <div class="weui-cell hand" data-id="<%=list[i].id%>">
         <div class="weui-cell__bd">
             <p><%=list[i].id%>姓名<%=list[i].title%>手机<%=list[i].phone%></p>
         </div>
@@ -48,7 +48,7 @@
 </script>
 <script>
     var pagesize=15;//每页数据条数
-    var page = 2;
+    var page = 1;
     var maxpage;
     $('#more').hide();
     function ajaxpage(page){
@@ -76,18 +76,37 @@
             var windowHeight = $(this).height();
             if (scrollTop + windowHeight == scrollHeight) {
                 maxpage = sessionStorage['maxpage'];
-                if(page<=maxpage) {
-                    ajaxpage(page);
+                if(page<maxpage) {
                     page++;
-                    if(page==maxpage){
-                        $("#more").html("没有更多数据了");return false;
-                    }
+                    ajaxpage(page);
+                }else{
+                    $("#more").html("没有更多数据了");return false;
                 }
             }
 
         });
+    const goto=(id)=>{
+        sessionStorage.setItem('index_list',$("#rank-list").html());//存储列表数据
+        sessionStorage.setItem('index_page',page);//存储页码
+        sessionStorage.setItem('index_scroll',$(window).scrollTop());//存储滚动条位置
+        location.href="js91.html?id="+id;
+    }
+    $(document).on('tap click',"#rank-list .weui-cell",function(){
+        id = $(this).data('id');
+        goto(id);
+    })
     $(function(){
-        ajaxpage(1);
+        var l = sessionStorage.getItem('index_list');
+        if(null !== l && '' !== l){
+            $("#rank-list").html(l);
+            $(window).scrollTop(sessionStorage.getItem('index_scroll'));
+            page = sessionStorage.getItem('index_page');
+            sessionStorage.removeItem('index_list');
+            sessionStorage.removeItem('index_page');
+            sessionStorage.removeItem('index_scroll');
+        }else{
+            ajaxpage(1);
+        }
     })
 </script>
 <br>

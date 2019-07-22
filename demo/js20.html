@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+	 <script src="../js/vconsole.min.js"></script>
+    <script src="../js/php.js"></script>
+     <script>
+         $(function(){
+             address();
+             $(document).on("tap","#location",function(){
+                 localStorage.removeItem('code'); localStorage.removeItem('city');
+address();
+             })
+
+         })
+function address(){//定位函数
+    var str=`<iframe id="geoPage" frameborder=0 scrolling="no" src="//apis.map.qq.com/tools/geolocation?key=ACEBZ-FDXWP-WFRDV-VGS5Q-S2Q5K-HQBNA&referer=myapp&effect=zoom" allow="geolocation" style="display:none;"></iframe>`;
+    $(str).prependTo('body');
+}
+      window.addEventListener('message', function(event) {
+            var loc = event.data;
+            var codes= localStorage.getItem('code');
+
+          if (loc && loc.module == 'geolocation') {
+              if (codes == null) {
+                  localStorage.setItem('code', loc.adcode);
+                  if (loc.district == null) {
+                      //根据城市id定位名称
+                      $.post("../php/page.php", {code: localStorage.getItem('code'), ajax: 3}, (res) => {
+                          localStorage.setItem('city', res.name);
+                          $("#city").text(res.name)
+                      },"json")
+                  } else {
+                      localStorage.setItem('city', loc.district);
+                      $("#city").text(loc.district)
+                  }
+              } else {
+                  $("#city").text(strcut(localStorage.getItem('city'),6,"... "))
+              }
+              console.log(loc);
+          }
+        }, false);
+
+     </script>
+</head>
+
+<body ontouchstart>
+<div class="weui-search-bar">
+    <a  href="js21.html" style="width:30%;margin-left:.8em;" class="f-green"><span id="city"></span><i class="icon icon-74 f-green"></i></a><input style="width:70%;display:inline-block;" type="search" class="search-input" id="search">
+</div>
+
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            自动定位
+        </h1>
+        <p class="page-hd-desc">使用腾讯地图密钥,定位成功将城市信息和城市编号写入localStorage,详情信息查看console</p>
+    </div>
+
+<a href="javascript:;" id="location">重新定位</a>
+注意:腾讯的定位要求,域名必须是https开头才可以,非安全域名不能使用定位,大家都都早日用上https
+
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

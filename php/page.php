@@ -31,6 +31,16 @@ if(1==$_POST['ajax']) {
         'total' => $total
     ];
     echo json_encode($arr);
-
-    
+}elseif($_POST['ajax']==3){
+    $areacode = (int)$_POST['code'];
+    $name = $db->getcolumn("city",['code'=>$areacode],'name');
+    exit(json_encode(["name"=>$name]));
+}elseif($_POST['ajax']==4){
+    $z = $_POST['py'];
+    $list =$db->fetchall("select code,name,isok from ".$db->tablename('city')." where provincecode>0 and citycode>0 and areacode=0 and pinyin='$z' order by name");
+    exit(json_encode(["list"=>$list]));
+}elseif($_POST['ajax']==5){
+    $kw = $_POST['kw'];
+    $list = $db->fetchall("select code,name,isok from ".$db->tablename('city')." where provincecode>0 and citycode>0 and areacode=0 and name like '%$kw%' order by name");
+    exit(json_encode(["list"=>$list]));
 }

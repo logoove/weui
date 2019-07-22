@@ -11,7 +11,11 @@
     <script src="../js/zepto.weui.js"></script>
     <script src="../js/php.js"></script>
     <script>
-        var pagesize=8;//每页数据条数
+        var pagesize=15;//每页数据条数
+        var loading = false;  //状态标记
+        var page = 1;
+        var maxpage;
+
         function ajaxpage(page){
             $.ajax({
                 type:"post",
@@ -43,28 +47,38 @@
         }
 
         $(function(){
-
-
-            ajaxpage(1);
-            var loading = false;  //状态标记
-            var page = 2;
-            var maxpage;
-
             $(document.body).infinite(100).on("infinite", function() {
                 if(loading) return;
                 loading = true;
                 setTimeout(function() {
                     maxpage = sessionStorage['maxpage'];
-                    if(page<=maxpage) {
-                        ajaxpage(page);
+                    if(page<maxpage) {
                         page++;
+                        ajaxpage(page);
+
                     }
                     loading = false;
                 }, 1500);   //模拟延迟
             });
-            
-        });
 
+            var l = sessionStorage.getItem('index_list');
+            if(null !== l && '' !== l){
+                $("#rank-list").html(l);
+                $(window).scrollTop(sessionStorage.getItem('index_scroll'));
+                page = sessionStorage.getItem('index_page');
+                sessionStorage.removeItem('index_list');
+                sessionStorage.removeItem('index_page');
+                sessionStorage.removeItem('index_scroll');
+            }else{
+                ajaxpage(1);
+            }
+        });
+        const goto=(id)=>{
+            sessionStorage.setItem('index_list',$("#rank-list").html());//存储列表数据
+            sessionStorage.setItem('index_page',page);//存储页码
+            sessionStorage.setItem('index_scroll',$(window).scrollTop());//存储滚动条位置
+            location.href="js91.html?id="+id;
+        }
     </script>
 </head>
 
@@ -74,13 +88,13 @@
     <h1 class="page-hd-title">
         滚动加载
     </h1>
-    <p class="page-hd-desc">插件方法实现</p>
+    <p class="page-hd-desc">插件方法实现,和非插件功能一样</p>
 </div>
 
 <div class="weui-cells"  id="rank-list">
     <script id="tpl" type="text/html">
         <% for(var i in list) {   %>
-    <div class="weui-cell">
+    <div class="weui-cell hand" data-id="<%=list[i].id%>" onclick="goto(<%=list[i].id%>)">
         <div class="weui-cell__bd">
             <p>ID: <%=list[i].id%>姓名: <%=list[i].title%></p>
         </div>

@@ -10,9 +10,14 @@
     <script src="../js/zepto.min.js"></script>
     <script>
         $(function(){
-
+	$(document).on("click","#k1 .weui-form-checkbox",function(){
+ 
+ var v = $(this).val();
+   $(".page-hd-desc").html(v)
+})
 
         });
+	
 
     </script>
 </head>
@@ -28,7 +33,7 @@
 <div class="page-bd">
 
     <div class="weui-cells__title weui-start"> 1 . 哪个国家是可以大量移民的国家?</div>
-    <div class="weui-form">
+    <div class="weui-form" id="k1">
 
         <div class="weui-form-li">
      
@@ -170,7 +175,9 @@
     </div>
 
 </div>
+<script>
 
+</script>
 <br>
 <br>
 <div class="weui-footer weui-footer_fixed-bottom">
