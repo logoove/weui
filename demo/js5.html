@@ -13,12 +13,17 @@
          $(function(){
 
              $('.weui-tab').tab({
-                 defaultIndex: 0,
+                 defaultIndex: 1,
                  activeClass: 'weui-bar__item_on',
                  onToggle: function (index) {
-                     if (index > 0) {
-                         $.toast(index)
+                     if(index==0){
+                         $("#c"+index).html("我是第一个0")
+                     }else if(index==1){
+                         $("#c"+index).html("我是第2个1")
                      }
+
+                        console.log(index)
+
                  }
              })
          })
@@ -34,16 +39,15 @@
         <p class="page-hd-desc">底部工具菜单</p>
     </div>
 
-    <div class="weui-tab tab-bottom " style="height:44px;">
-        
+    <div class="weui-tab" style="height:auto;">
         <div class="weui-tab__panel">
-               <div class="weui-tab__content">中国</div>
-            <div class="weui-tab__content">日本</div>
-            <div class="weui-tab__content">美国</div>
-            <div class="weui-tab__content">法国</div>
+            <div id="c0" class="weui-tab__content">中国</div>
+            <div id="c1" class="weui-tab__content">日本</div>
+            <div  id="c2" class="weui-tab__content">美国</div>
+            <div id="c3"  class="weui-tab__content">法国</div>
         </div>
 
-        <div class="weui-tabbar">
+        <div class="weui-tabbar tab-bottom">
             <a href="javascript:;" class="weui-tabbar__item">
                     <span style="display: inline-block;position: relative;">
                         <i class="icon icon-27 f27 weui-tabbar__icon"></i>

@@ -3728,7 +3728,7 @@ Device/OS Detection
             const $defaultTabbarItem = $tabbarItems.eq(index);
             $defaultTabbarItem.addClass(options.activeClass).siblings().removeClass(options.activeClass);
             const $defaultTabBdItem = $tabBdItems.eq(index);
-            $defaultTabBdItem.fadeIn().siblings().fadeOut();
+            $defaultTabBdItem.show().siblings().hide();
             options.onToggle(index);
         };
         const self = this;
