@@ -54,7 +54,7 @@
     <tr><td>range ( 0, 12 ); </td><td>生成数组 range( 'a', 'i' ); range( 0, 100, 10 );第三个参数步长</td></tr>
     <tr><td>strip_tags("111")</td><td> 去除html</td></tr>
     <tr><td>round(1.456,1) </td><td>四舍五入</td></tr>
-    <tr><td>rand(1,10) </td><td>生成随机数1-10 前后都包含</td></tr>
+    <tr><td>rand(1,10) mt_rand</td><td>生成随机数1-10 前后都包含</td></tr>
     <tr><td>ceil(1.2) </td><td>进1 floor(3.555) 舍去法</td></tr>
     <tr><td>strtolower()</td><td>转大写strtoupper()小写ucfirst()首字母大写</td></tr>
     <tr><td>base_convert(99,16,2) </td><td>进制之间转换</td></tr>
@@ -66,8 +66,8 @@
     <tr><td>is_reg(str)</td><td>是否由字母和数字，下划线,点号组成.且开头的只能是下划线和字母</td></tr>
     <tr><td>is_tel(str)</td><td>电话测试 校验普通电话、传真号码：可以“+”开头，除数字外，可含有“-”</td></tr>
     <tr><td> is_http() </td><td>是否包含http或https</td></tr>
-    <tr><td> is_float(1.2,1.1,1.9) </td><td>是否在1.1-1.9之间</td></tr>
-    <tr><td> is_int(1,0,100) </td><td>是否在0到100之间</td></tr>
+    <tr><td> in_float(1.2,1.1,1.9) </td><td>是否在1.1-1.9之间</td></tr>
+    <tr><td> in_int(1,0,100) </td><td>是否在0到100之间</td></tr>
     <tr><td>is_url(str) </td><td>是否url</td></tr>
     <tr><td>is_english(str) </td><td>是否英文</td></tr>
     <tr><td>is_email</td><td>(邮箱)</td></tr>
@@ -86,7 +86,7 @@
     <tr><td>strcut("我爱中国人",4,"...") </td><td>截取字符串汉字占两个 英文一个</td></tr>
     <tr><td>strfind(string, find) </td><td>查找子字符串</td></tr>
     <tr><td>timeline()</td><td>时间线</td></tr>
-    <tr><td>strlen('1我2') </td><td>中文2个字符</td></tr>
+    <tr><td>strlen('1我2') </td><td>返回3个字符 length属性一样</td></tr>
     <tr><td>explode(",","1,2,3") </td><td>分割成数组</td></tr>
     <tr><td>md5 sha1</td><td>返回md5 sha1算法字符串</td></tr>
     <tr><td>sort</td><td>数组排序sort(["a","b"],"SORT_STRING")按照字符排序,低到高</td></tr>
@@ -106,15 +106,15 @@
     <tr><td>msg</td><td>提示跳转msg("info","提示信息","//baidu.com"),类型有:close自动关闭,可以有提示;gopage跳转页面不弹出;goto跳转有弹出,info/success/warn只有提示,不能有跳转</td></tr>
     <tr><td>log</td><td>console.log简化函数</td></tr>
     <tr><td>array_column</td><td>提取某列组成的新数组array_column(arr=[{"id":1,"name":"中国"},{"id":2,"name":"中国1"}],value="name",key="id"),第三个可不要</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
+<tr><td>dump</td><td>打印变量</td></tr>
+<tr><td>preg_match</td><td></td></tr>
+<tr><td>str2arr</td><td>自动转化数组成字符串或字符成数组 自动判断</td></tr>
+<tr><td>compact</td><td>变量组合数组</td></tr>
+<tr><td>is_array</td><td></td></tr>
+<tr><td>is_object</td><td></td></tr>
+<tr><td>is_int</td><td></td></tr>
+<tr><td>is_float</td><td></td></tr>
+<tr><td>fn</td><td>打印所有自定义函数</td></tr>
 <tr><td></td><td></td></tr>
 <tr><td></td><td></td></tr>
 <tr><td></td><td></td></tr>
