@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+	 <script src="../js/vconsole.min.js"></script>
+    <style>
+       .picker-calendar-week-days{
+    height:1.4rem;
+}
+        .picker-calendar-week-day{
+            padding:.3rem;
+        }
+    </style>
+     
+</head>
+
+<body ontouchstart class="page-bg">
+<script id="tpl" type="text/html">
+    <div class="picker-calendar-row">
+        <% for(let j=0;j < this.first;j++){ %>
+        <div class="picker-calendar-day"><span></span></div>
+   <% }%>
+    <% for (let i=1;i<=list;i++) {   %>
+        <% let select=(in_array(i,this.signday))?"picker-calendar-day-selected":"";%>
+        <div class="picker-calendar-day <%=select%>"><span><%=i%></span></div>
+        <% if((i+this.first)%7==0){ %> </div><div class="picker-calendar-row"><% }%>
+    <% } %>
+    </div>
+</script>
+<div class="weui-btn_default weui-header bg-white">
+    <div class="weui-header-left"><a class="icon icon-109 f-green" href="javascript:history.go(-1);"></a>  </div>
+    <h1 class="weui-header-title f-green"></h1>
+    <div class="weui-header-right"><a id="sign" href="javascript:;" class="icon icon-70 f-green">立即签到</a></div>
+</div>
+<div class="weui-cells__title"  style="margin-bottom:5px">每天签到可得积分.</div>
+<div class="picker-modal-inner bg-white">
+    <div class="picker-calendar-week-days">
+        <div class="picker-calendar-week-day "> 周一</div>
+        <div class="picker-calendar-week-day "> 周二</div>
+        <div class="picker-calendar-week-day "> 周三</div>
+        <div class="picker-calendar-week-day "> 周四</div>
+        <div class="picker-calendar-week-day "> 周五</div>
+        <div class="picker-calendar-week-day"> 周六</div>
+        <div class="picker-calendar-week-day"> 周日</div>
+    </div>
+    <div class="picker-calendar-months">
+        <div class="picker-calendar-months-wrapper" style="transform: translate3d(-200%, 0%, 0px);">
+        <div id="rili" class="picker-calendar-month picker-calendar-month-current" style="transform: translate3d(200%, 0%, 0px);">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-cells__title"  style="margin-bottom:5px">纯js所写,只需要传入签到日期的天数数组即可,这个可以由mysql查询所得,只能看本月签到哦.</div>
+<script>
+  let json={
+                "list":intval(date("t")),//一个月总天数
+                "first":intval(date("N",mktime(0,0,0,date('m'),1,date('Y'))))-1,//本月第一天星期几,周一是1,周日是0
+                "signday":[1,5,27,22]//本月签到的日期数
+            }
+            log(json)
+            document.getElementById('rili').innerHTML = tpl(document.getElementById('tpl').innerHTML,json);
+             $(document).on("tap","#sign",function(){
+               $.toast("签到成功");
+            })
+</script>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</body>
+</html>

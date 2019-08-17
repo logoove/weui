@@ -11,7 +11,14 @@
     <script>
         $(function(){
 
-
+ $('.weui-switch').on('change', function(){
+                var on = $(this).is(':checked');
+                if(on){
+                   alert("选中了")
+                }else{
+                  alert("取消了")
+                }
+            });
         });
 
     </script>
@@ -46,6 +53,14 @@
             <span class="weui-icon-checked"></span>
         </div>
     </label>
+    <div class="weui-cell no-access">
+        <div class="weui-cell__hd">
+            <label class="weui-label">其他</label>
+        </div>
+        <div class="weui-cell__bd weui-cell__primary">
+            <input class="weui-input" type="text" placeholder="请填写你的答案">
+        </div>
+    </div>
     <a href="javascript:void(0);" class="weui-cell weui-cell_link">
         <div class="weui-cell__bd">添加更多</div>
     </a>

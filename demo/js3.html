@@ -97,6 +97,12 @@
     })
 
  $('.weui-cell_swiped').swipeout('open')
+  $(document).on("swipeout-open",'.weui-cell_swiped',function(){
+           //监听打开触发
+        })
+        $(document).on("swipeout-close",'.weui-cell_swiped',function(){
+            //监听关闭触发
+        })
     
 </script>
 </body>

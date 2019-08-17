@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/php.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            emoji表情处理
+        </h1>
+        <p class="page-hd-desc">emoji表情的编码解码,第一种方法实体编码后内容在页面是可以直接显示的,不需要解码,只有在js中才需要解码,同名的php函数具有相同编码功能;第二种方法,emoji字符转换成unicode,显示的时候需要解码</p>
+    </div>
+    <div class="page-bd-15">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入文本" rows="3" id="c1"> &#128079;&#128536;&#128579;</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入文本" rows="3" id="c2"></textarea>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:;" id='en' class="weui-btn weui-btn_primary">实体编码</a>
+        <a href="javascript:;" id='de' class="weui-btn weui-btn_primary">实体解码</a>
+        <a href="javascript:;" id='en1' class="weui-btn weui-btn_primary">unicode编码</a>
+        <a href="javascript:;" id='de1' class="weui-btn weui-btn_primary">Unicode解码</a>
+    </div>
+
+
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+
+<script>
+$("#en").click(function(){
+let c1 = $("#c1").val();
+    $("#c2").val(emoji_encode(c1));
+})
+
+$("#de").click(function(){
+    let c2 = $("#c2").val();
+    $("#c1").val("解码内容:"+emoji_decode(c2));
+
+})
+$("#en1").click(function(){
+    let c1 = $("#c1").val();
+    $("#c2").val(unicode_encode(c1));
+})
+
+$("#de1").click(function(){
+    let c2 = $("#c2").val();
+    $("#c1").val("解码内容:"+unicode_decode(c2));
+
+})
+/*php同功能函数
+function emoji_encode($str){
+    preg_match_all('/./u',$str,$matches);
+    $unicodeStr = "";
+    foreach($matches[0] as $m){
+        $unicodeStr .=(strlen($m) >= 4 )?"&#".base_convert(bin2hex(iconv('UTF-8',"UCS-4",$m)),16,10).';':$m;
+    }
+    return $unicodeStr;
+}
+* */
+</script>
+</body>
+</html>
