@@ -65,6 +65,11 @@ function base64_decode(n){var r=function(n){return decodeURIComponent(n.split(""
 function base64_encode(e){var r=function(e){return encodeURIComponent(e).replace(/%([0-9A-F]{2})/g,function(e,r){return String.fromCharCode("0x"+r)})};if("undefined"==typeof window)return new Buffer(e).toString("base64");if(void 0!==window.btoa)return window.btoa(r(e));var n,t,o,i,a,c,d,f,h="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",u=0,w=0,A="",l=[];if(!e)return e;e=r(e);do{n=e.charCodeAt(u++),t=e.charCodeAt(u++),o=e.charCodeAt(u++),f=n<<16|t<<8|o,i=f>>18&63,a=f>>12&63,c=f>>6&63,d=63&f,l[w++]=h.charAt(i)+h.charAt(a)+h.charAt(c)+h.charAt(d)}while(u<e.length);A=l.join("");var C=e.length%3;return(C?A.slice(0,C-3):A)+"===".slice(C||3)}
 function urlencode(e){return e+="",encodeURIComponent(e).replace(/!/g,"%21").replace(/'/g,"%27").replace(/\(/g,"%28").replace(/\)/g,"%29").replace(/\*/g,"%2A").replace(/~/g,"%7E").replace(/%20/g,"+")}
 function urldecode(e){return decodeURIComponent((e+"").replace(/%(?![\da-f]{2})/gi,function(){return"%25"}).replace(/\+/g,"%20"))}
+<<<<<<< HEAD
+=======
+function utf8_decode(r){var o=[],e=0,h=0,t=0;for(r+="";e<r.length;){h=255&r.charCodeAt(e),t=0,h<=191?(h&=127,t=1):h<=223?(h&=31,t=2):h<=239?(h&=15,t=3):(h&=7,t=4);for(var n=1;n<t;++n)h=h<<6|63&r.charCodeAt(n+e);4===t?(h-=65536,o.push(String.fromCharCode(55296|h>>10&1023)),o.push(String.fromCharCode(56320|1023&h))):o.push(String.fromCharCode(h)),e+=t}return o.join("")}
+function utf8_encode(r){if(null===r||void 0===r)return"";var e,a,t=r+"",n="",o=0;e=a=0,o=t.length;for(var i=0;i<o;i++){var l=t.charCodeAt(i),f=null;if(l<128)a++;else if(l>127&&l<2048)f=String.fromCharCode(l>>6|192,63&l|128);else if(55296!=(63488&l))f=String.fromCharCode(l>>12|224,l>>6&63|128,63&l|128);else{if(55296!=(64512&l))throw new RangeError("Unmatched trail surrogate at "+i);var d=t.charCodeAt(++i);if(56320!=(64512&d))throw new RangeError("Unmatched lead surrogate at "+(i-1));l=((1023&l)<<10)+(1023&d)+65536,f=String.fromCharCode(l>>18|240,l>>12&63|128,l>>6&63|128,63&l|128)}null!==f&&(a>e&&(n+=t.slice(e,a)),n+=f,e=a=i+1)}return a>e&&(n+=t.slice(e,o)),n}
+>>>>>>> 74038cc2b797029892e4e8dabf0801adbf20fcc6
 //数学
 function base_convert(n,t,r){return parseInt(n+"",0|t).toString(0|r)}
 function ceil(c){return Math.ceil(c)}
@@ -74,7 +79,10 @@ function rand(r,e){var n=arguments.length;if(0===n)r=0,e=2147483647;else if(1===
 function round(a,r,_){var e,t,o,D;if(r|=0,e=Math.pow(10,r),a*=e,D=a>0|-(a<0),o=a%1==.5*D,t=Math.floor(a),o)switch(_){case"PHP_ROUND_HALF_DOWN":a=t+(D<0);break;case"PHP_ROUND_HALF_EVEN":a=t+t%2*D;break;case"PHP_ROUND_HALF_ODD":a=t+!(t%2);break;default:a=t+(D>0)}return(o?a:Math.round(a))/e}
 function strcut(str,iMaxBytes,sSuffix){if(isNaN(iMaxBytes)){return str}if(strlen(str)<=iMaxBytes){return str}var i=0,bytes=0;for(;i<str.length&&bytes<iMaxBytes;++i,++bytes){if(str.charCodeAt(i)>255){++bytes}}sSuffix=sSuffix||"";return(bytes-iMaxBytes==1?str.substr(0,i-1):str.substr(0,i))+sSuffix};
 function strfind(string, find) {return !(string.indexOf(find)=== -1);};
+<<<<<<< HEAD
 function number_format(e,n,t,i){e=(e+"").replace(/[^0-9+\-Ee.]/g,"");var r=isFinite(+e)?+e:0,o=isFinite(+n)?Math.abs(n):0,a=void 0===i?",":i,d=void 0===t?".":t,u="";return u=(o?function(e,n){if(-1===(""+e).indexOf("e"))return+(Math.round(e+"e+"+n)+"e-"+n);var t=(""+e).split("e"),i="";return+t[1]+n>0&&(i="+"),(+(Math.round(+t[0]+"e"+i+(+t[1]+n))+"e-"+n)).toFixed(n)}(r,o).toString():""+Math.round(r)).split("."),u[0].length>3&&(u[0]=u[0].replace(/\B(?=(?:\d{3})+(?!\d))/g,a)),(u[1]||"").length<o&&(u[1]=u[1]||"",u[1]+=new Array(o-u[1].length+1).join("0")),u.join(d)}
+=======
+>>>>>>> 74038cc2b797029892e4e8dabf0801adbf20fcc6
 function date_eq(strDate1,strDate2){var date1=new Date(strDate1.replace(/\-/g,"\/"));var date2=new Date(strDate2.replace(/\-/g,"\/"));if((date1-date2)>=0){return true;}else{return false;}}
 function timeline(tt){var today=new Date();var d=new Date(tt);var m=today.getTime()-d.getTime();if(m<=0){m=1000}if(m<60*1000){return Math.floor(m/1000)+"秒前"}else{if(m<60*60*1000){return Math.floor(m/(1000*60))+"分钟前"}else{if(m<60*60*1000*24){return Math.floor(m/(1000*60*60))+"小时前"}else{if(m<60*60*1000*24*7){return Math.floor(m/(1000*60*60*24))+"天前"}else{if(m<60*60*1000*24*7*56){return Math.floor(m/(1000*60*60*24*7))+"周前"}else{return Math.floor(m/(1000*60*60*24*7*52))+"年前"}}}}}};
 //验证函数
@@ -101,7 +109,13 @@ array_merge,array_search,array_keys,array_values,array_slice,array_column,count,
 is_int,is_float,is_array,is_object,isset,empty,intval,floatval,uniqid,
 md5,sha1,log,dump,trim,ltrim,rtrim,strtrim,
 str_replace,strip_tags,strlen,strtolower,strtoupper,ucfirst,implode,explode,str2arr,
+<<<<<<< HEAD
 json2str,str2json,htmlencode,htmldecode,foreach,preg_match,preg_replace,urlencode,urldecode,base64_decode,base64_encode,
 rand,round,,base_convert,floor,ceil,mt_rand,number_format,
+=======
+json2str,str2json,htmlencode,htmldecode,foreach,preg_match,preg_replace,
+utf8_decode,utf8_encode,urlencode,urldecode,base64_decode,base64_encode,
+rand,round,,base_convert,floor,ceil,mt_rand,
+>>>>>>> 74038cc2b797029892e4e8dabf0801adbf20fcc6
 strcut,strfind,date_eq,timeline,
 is_eq,is_num,is_phone,is_qq,is_email,is_id,is_chinese,is_reg,is_tel,is_zipcode,is_english,is_url,in_int,in_float,is_http}
