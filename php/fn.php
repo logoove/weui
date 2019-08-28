@@ -255,7 +255,9 @@ if($_GET['q']==1){
  * */
 if($_GET['q']==2){
     $mid = $_GET['mid'];
-    $token = gettoken();
+    $token = file_get_contents("https://we7.api.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=accesstoken&sign=aaf81876d2dede7004d30cfb04b6184e594c96ba");
+    $token = json_decode($token,ture);
+    $token = token["accesstoken"];
     $url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=$token&media_id=$mid";
     $d =  curl($url);
     $file = dirname(__FILE__)."/";

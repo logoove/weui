@@ -549,6 +549,7 @@ input.weui-btn_plain-default{
   width:105px;
   word-wrap:break-word;
   word-break:break-all;
+  font-weight: bold;
 }
 .weui-input{
   width:100%;

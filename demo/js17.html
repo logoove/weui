@@ -9,14 +9,14 @@
 
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
-    <script src="../js/vconsole.min.js"></script>
+    <script src="../js/eruda.js"></script>
      <script src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script>
         var url = window.location.href.split('#')[0];
         $(function(){
             $.ajax({
                 type:"get",
-                url:'https://we7.shanliwawa.top/fn.php?q=1',
+                url:'https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=jssdk&sign=cf9e7e16789798154bea9844407189796aca3cff',
                 data: {url:url},
                 dataType: "jsonp",
                 async:false,
@@ -92,35 +92,27 @@
                     "menuItem:share:qq",
                     "menuItem:share:QZone",
                     "menuItem:favorite",
-                    
+
                 ],
             });
             //分享朋友或qq jssdk1.4 注意要在分享按钮前
-            document.querySelector('#share1').onclick = function () {
                 wx.updateAppMessageShareData({
                     title: shareData.title, // 分享标题
                     desc: shareData.desc, // 分享描述
                     link: url,
                     imgUrl: shareData.imgUrl, // 分享图标
                     success: function (rs) {
-                        console.log(rs)
-                        alert("分享成功")
                     }
                 })
-            }
 
 //分享到朋友圈或qq空间   jssdk1.4
-            document.querySelector('#share2').onclick = function () {
                 wx.updateTimelineShareData({
                     title: shareData.title, // 分享标题
                     link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: shareData.imgUrl, // 分享图标
                     success: function (rs) {
-                        console.log(rs)
-                        alert("分享成功")
                     }
                 });
-            }
 
             document.querySelector('#location1').onclick = function () {
                 wx.openLocation({
@@ -161,7 +153,7 @@
 
         <div class="weui-cells__title">相册/公众号二维码生成</div>
         <img src="../images/1.jpg" class="weixin img-max">
-        <img src="http://open.weixin.qq.com/qr/code?username=hszuqiu" class="weixin img-max">
+        <img src="http://open.weixin.qq.com/qr/code?username=hszuqiu" class="img-max">
         <div class="weui-cells__title">分享</div>
         <a href="javascript:;" class="weui-btn weui-btn_primary" id="share1">分享朋友/qq</a>
         <a href="javascript:;" class="weui-btn weui-btn_primary" id="share2">分享朋友圈/qzone</a>
@@ -194,11 +186,7 @@ function jssdkimg(obj){
                 success: function (res) {
                     var serverId = res.serverId; // 返回图片的服务器端ID
                     console.log(serverId)
-                $.get("https://we7.shanliwawa.top/fn.php?q=2",{"mid":serverId},function(rs){
-                    $(obj).parent().prev().html('<li onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url(//we7.shanliwawa.top/'+rs.src+')"><input value="'+rs.src+'"  type="hidden"  name="file" /></li>');
-                    console.log(rs)
-                    
-                },"jsonp");
+                    $(obj).parent().prev().html('<li onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url('+serverId+')"><input value=""  type="hidden"  name="file" /></li>');
                 }
             });
 
@@ -243,12 +231,7 @@ function jssdkimg(obj){
                     isShowProgressTips: 1, // 默认为1，显示进度提示
                     success: function (res) {
                         var serverId = res.serverId; // 返回图片的服务器端ID
-                        console.log(serverId)
-                        $.get("https://we7.shanliwawa.top/fn.php?q=2",{"mid":serverId},function(rs){
-                            $(obj).parent().prev().append('<li onclick="removeimgs(this)" class="weui-uploader__file" style="background-image:url(//we7.shanliwawa.top/'+rs.src+')"><input value="'+rs.src+'"  type="hidden"  name="file" /></li>');
-                            console.log(rs)
-
-                        },"jsonp"); //同一服务器不需要使用jsonp本演示属于不同服务器
+                        $(obj).parent().prev().append('<li onclick="removeimgs(this)" class="weui-uploader__file" style="background-image:url('+serverId+')"><input value=""  type="hidden"  name="file[]" /></li>');
                         if(localIds.length > 0){
                             syncupload(localIds,obj);
                         }
