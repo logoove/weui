@@ -77,7 +77,7 @@ window.scrollTo(0, Math.max(scrollHeight - 1, 0));
         }
 
         function cleararea(obj){
-            $(obj).prev().find('.weui-textarea').val("");
+            $(obj).prev().find('.weui-textarea').val("").next().find("span").text(0);
             return false;
         }
 

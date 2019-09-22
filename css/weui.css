@@ -4,9 +4,11 @@
 html{
   -ms-text-size-adjust:100%;
   -webkit-text-size-adjust:100%;
+  font-size:16px;
 }
 body{
   line-height:1.6;
+  font-size:16px;
   font-family:-apple-system-font, "Helvetica Neue", sans-serif;
 }
 *{

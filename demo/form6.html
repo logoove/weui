@@ -11,8 +11,12 @@
     <script src="../js/zepto.weui.js"></script>
     <script>
         $(function(){
-
-
+ $("input,select,textarea").blur(function(){
+setTimeout(() => {
+const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+}, 100);
+})
         });
 
     </script>
@@ -50,7 +54,55 @@
             </div>
         </div>
         <div class="modal-content">
-            内容
+            <div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">number</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" pattern="[0-9]*" placeholder="请输入qq号" type="number">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">手机号</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入手机号" type="tel">
+        </div>
+
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">验证码</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="验证码" type="number">
+        </div>
+        <div class="weui-cell__ft">
+            <button class="weui-vcode-btn" onclick="settime(this)">获取验证码</button>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">date</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" value="" type="date">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">datetime</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" value="" placeholder="" type="datetime-local">
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入验证码" type="number">
+        </div>
+        <div class="weui-cell__ft">
+            <img id="code" class="weui-vcode-img" src="../php/code.php" onclick="getcode();" width="130" height="53">
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </div>

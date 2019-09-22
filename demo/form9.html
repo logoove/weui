@@ -24,9 +24,13 @@
 
                 
             })
-
+$("#ss").html(getRating(4))
         });
 
+ function getRating(rating) {
+            if(rating > 5 || rating < 0) throw new Error('数字不在范围内');
+            return '★★★★★☆☆☆☆☆'.substring(5 - rating, 10 - rating );
+        }
     </script>
 </head>
 
@@ -51,6 +55,8 @@
  </div>
 <br>
 <br>
+<div id="ss" class="f-green"></div>
+
 <div class="weui-footer weui-footer_fixed-bottom">
     <p class="weui-footer__links">
         <a href="../index.html" class="weui-footer__link">WeUI首页</a>
