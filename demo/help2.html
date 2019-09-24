@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>赞助名单</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/php.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/eruda.js"></script>
+</head>
+
+<body ontouchstart>
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            赞助名单
+        </h1>
+        <p class="page-hd-desc">赞助者请留言昵称和网址,会在本页显示,金额至少1元才会显示,weui+的更新少不了广大用户的支持,谢谢!</p>
+    </div>
+
+<div class="page-bd-15">
+    <div class="weui-cells" id="rank-list">
+
+    </div>
+
+    <div class="weui-loadmore" id="more">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+</div>
+
+<script id="tpl" type="text/html">
+    <% for(var i in list) {   %>
+    <a class="weui-cell weui-cell_access" href="<%=empty(list[i][2])?'javascript:;':list[i][2]%>">
+        <div class="weui-cell__bd">
+            <p><%=list[i][0]%> 赞助:<%=list[i][1]%>元</p>
+        </div>
+        <div class="weui-cell__ft">
+        </div>
+    </a>
+    <% } %>
+</script>
+<script>
+    var pagesize=20;
+    var page = 1;
+    var maxpage;
+    $('#more').hide();
+    function ajaxpage(page){
+        $.ajax({
+            type : "post",
+           url : 'https://we7.shanliwawa.top/addons/yoby_cha/token.php?uniacid=1&tables=2&token=5d8899567110e',
+            data: {"page":page,"pagesize":pagesize},
+            dataType: "json",
+            beforeSend:function(){
+                $("#more").show();
+            },
+            success : function(rs) {
+                $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
+                var maxpage = Math.ceil(rs.total / pagesize);
+                sessionStorage['maxpage'] = maxpage;
+                if(page==maxpage){
+                    $("#more").html("没有更多数据了");
+                }
+            },
+                error:function(xhr){
+                    alert(JSON.stringify(xhr));
+                },
+            timeout : 15000
+        });
+    }
+
+    $(window).scroll(
+        function() {
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if (scrollTop + windowHeight == scrollHeight) {
+                maxpage = sessionStorage['maxpage'];
+                if(page<maxpage) {
+                    page++;
+                    ajaxpage(page);
+                }else{
+                    $("#more").html("没有更多数据了");return false;
+                }
+            }
+
+        });
+
+    ajaxpage(1);
+</script>
+</body>
+</html>

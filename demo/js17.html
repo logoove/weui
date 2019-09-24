@@ -15,12 +15,11 @@
         var url = window.location.href.split('#')[0];
         $(function(){
             $.ajax({
-                type:"get",
+                type:"post",
                 url:'https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=jssdk&sign=cf9e7e16789798154bea9844407189796aca3cff',
                 data: {url:url},
-                dataType: "jsonp",
+                dataType: "json",
                 async:false,
-                jsonp:"callback",
                 success:function(rs){
                     console.log(rs)
                     wx.config({
