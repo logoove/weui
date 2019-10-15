@@ -185,7 +185,10 @@ function jssdkimg(obj){
                 success: function (res) {
                     var serverId = res.serverId; // 返回图片的服务器端ID
                     console.log(serverId)
-                    $(obj).parent().prev().html('<li onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url('+serverId+')"><input value=""  type="hidden"  name="file" /></li>');
+                    $.post("https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=img&sign=cf9e7e16789798154bea9844407189796aca3cff",{"mid":serverId},function(res){
+                    console.log(res.list.src)
+                    $(obj).parent().prev().html('<li onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url('+res.list.src+')"><input value="'+res.list.val+'"  type="hidden"  name="file" /></li>');
+                    })
                 }
             });
 
@@ -230,7 +233,10 @@ function jssdkimg(obj){
                     isShowProgressTips: 1, // 默认为1，显示进度提示
                     success: function (res) {
                         var serverId = res.serverId; // 返回图片的服务器端ID
-                        $(obj).parent().prev().append('<li onclick="removeimgs(this)" class="weui-uploader__file" style="background-image:url('+serverId+')"><input value=""  type="hidden"  name="file[]" /></li>');
+                        $.post("https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=img&sign=cf9e7e16789798154bea9844407189796aca3cff",{"mid":serverId},function(res){
+                         console.log(res.list.src)
+                        $(obj).parent().prev().append('<li onclick="removeimgs(this)" class="weui-uploader__file" style="background-image:url('+res.list.src+')"><input value="'+res.list.src+'"  type="hidden"  name="file[]" /></li>');
+                        })
                         if(localIds.length > 0){
                             syncupload(localIds,obj);
                         }
