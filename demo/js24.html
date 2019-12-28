@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+    <style>
+        ::-webkit-scrollbar {
+            display: none
+        }
+
+        table {table-layout: fixed;
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #e6e7f1;
+            float: left
+        }
+
+        table tr:nth-child(2n) td {
+            background: #f6f7fa
+        }
+
+        table tr td {
+            line-height: 20px;
+            padding: 5px;
+            border-top: 1px solid #e6e7f1;
+            text-align: center;
+            background: #fff;
+            color: #505050;
+            font-size: 12px
+        }
+
+        table tr .dark {
+            border-left: 1px solid #e7e7e7;
+            border-right: 1px solid #e7e7e7
+        }
+        table td,table th{
+            border: none; white-space: nowrap;word-break:  keep-all;width:1px;word-wrap: break-word;padding:0 2px;
+        }
+        table tr th {
+            font-weight: 400;
+            line-height:40px;
+
+            text-align: center;
+            color: #edeef1;
+            background: #798299;
+            font-size: 12px
+        }
+
+        table tr .noborder {
+            border-left: none !important;
+            border-right: none !important
+        }
+
+        table tr td font {
+            color: #e13b6d;
+            font-size: 12px
+        }
+    </style>
+    <script>
+        function table_fixer(ele, tableHeight, fixedLeftLength) {
+            if (fixedLeftLength == undefined) {
+                fixedLeftLength = 0;
+            }
+            var $ele = $(ele);
+            var thisId = (Math.random() + "").replace(/\./g, "");
+            var colLength = $ele.find("th").length;
+            var visLength = colLength - fixedLeftLength;
+            var colWidth = $ele.parent().width() / visLength;
+            $ele.width(colLength * colWidth);
+            $ele.find("th").each(function () {
+                $(this).width(colWidth);
+            })
+            $ele.wrap('<div class="table_' + thisId + '"></div>');
+            $('.table_' + thisId).css({
+                "width": "100%",
+                "height": tableHeight,
+                "float": "left",
+                "position": "relative",
+                "border": "1px solid #e7e7e7",
+                "border-radius": "3px",
+                "overflow": "hidden"
+            })
+            $ele.wrap('<div class="scroll_' + thisId + '"></div>');
+            $('.scroll_' + thisId).css({
+                "width": "100%",
+                "height": tableHeight,
+                "float": "left",
+                "position": "relative",
+                "overflow": "auto"
+            })
+            if (fixedLeftLength != 0) {
+                $('.table_' + thisId).append('<div class="left_scroll_' + thisId + '"></div>');
+                $('.left_scroll_' + thisId).css({
+                    "width": "auto",
+                    "height": tableHeight,
+                    "position": "absolute",
+                    "box-shadow": "1px 0 0 rgba(0,0,0,0.1)",
+                    "top": "0",
+                    "left": "0",
+                    "overflow": "auto"
+                })
+                var leftFixedHtml = $ele.clone().addClass("fixed_left" + thisId);
+                $('.left_scroll_' + thisId).append(leftFixedHtml);
+                $('.fixed_left' + thisId).css({"float": "left"});
+                for (var i = fixedLeftLength; i < colLength; i++) {
+                    $('.fixed_left' + thisId + ' th').eq(fixedLeftLength).remove();
+                    $('.fixed_left' + thisId + ' tr').each(function () {
+                        $(this).children("td").eq(fixedLeftLength).remove();
+                    });
+                    $('.fixed_left' + thisId).width(colWidth * fixedLeftLength);
+                }
+                var leftTopFixedHtml = $ele.clone().addClass("fixed_left_top" + thisId);
+                $('.table_' + thisId).append(leftTopFixedHtml);
+                $('.fixed_left_top' + thisId).css({
+                    "position": "absolute",
+                    "box-shadow": "1px 0 0 rgba(0,0,0,0.1)",
+                    "z-index": "222"
+                });
+                $('.fixed_left_top' + thisId + ' tr').each(function (index) {
+                    if (index != 0) {
+                        $(this).remove();
+                    }
+                })
+                for (var i = fixedLeftLength; i < colLength; i++) {
+                    $('.fixed_left_top' + thisId + ' th').eq(fixedLeftLength).remove();
+                   $('.fixed_left_top' + thisId).width(colWidth * fixedLeftLength);
+                }
+            }
+            var topFixedHtml = $ele.clone().addClass("fixed_top" + thisId);
+            $('.table_' + thisId).append(topFixedHtml);
+            $('.fixed_top' + thisId).css({"position": "absolute"});
+            $('.fixed_top' + thisId + ' tr').each(function (index) {
+                if (index != 0) {
+                    $(this).remove();
+                }
+            })
+            $('.scroll_' + thisId).scroll(function (event) {
+                var scrollTopVal = $('.scroll_' + thisId).scrollTop();
+                var scrollLeftVal = $('.scroll_' + thisId).scrollLeft();
+                $('.left_scroll_' + thisId).scrollTop(scrollTopVal);
+                $('.fixed_top' + thisId).css("left", -scrollLeftVal);
+            })
+            $('.left_scroll_' + thisId).scroll(function () {
+                var scrollVal = $('.left_scroll_' + thisId).scrollTop();
+                $('.scroll_' + thisId).scrollTop(scrollVal);
+            })
+        }
+            
+            $(function(){
+            table_fixer("#table",'',1);//固定id/高度,可为空/固定列数
+            })
+
+
+        function goto(){
+            $.actions({
+                title: "选择操作",
+                onClose: function() {
+                    console.log("close");
+                },
+                actions: [
+                    {
+                        text: "发布",
+                        className: "color-primary",
+                        onClick: function() {
+                            $.alert("发布成功");
+                        }
+                    },
+                    {
+                        text: "编辑",
+                        className: "color-warning",
+                        onClick: function() {
+                            $.alert("你选择了“编辑”");
+                        }
+                    },
+                    {
+                        text: "删除",
+                        className: 'color-danger',
+                        onClick: function() {
+                            $.alert("你选择了“删除”");
+                        }
+                    }
+                ]
+            });
+        }
+            </script>
+     
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        固定table表头插件
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+     
+ <table id="table">
+        <thead >
+        <tr>
+            <th>股票<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"></svg></th>
+            <th>最新价<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th>
+            <th>涨跌幅<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th>
+            <th>PE<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th>
+            <th>PE分位<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th>
+            <th>PB<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th>
+            <th>PB分位<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th>
+       <th style="padding: 0 30px 0 0">20天最大涨幅<svg style="vertical-align: middle" t="1573297313472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20"><path d="M512 292c-5.7 0-10.9 2.8-14.2 7.4l-121 152.9c-3.7 5.3-4.1 12.2-1.2 17.9 3 5.7 8.9 9.3 15.3 9.3H633c6.5 0 12.3-3.6 15.3-9.3 3-5.7 2.5-12.6-1.2-17.9l-121-152.9c-3.1-4.6-8.4-7.4-14.1-7.4zM526.2 724.6l121-152.9c3.7-5.3 4.1-12.2 1.2-17.9-3-5.7-8.9-9.3-15.3-9.3H390.9c-6.5 0-12.4 3.6-15.3 9.3-2.9 5.7-2.5 12.6 1.2 17.9l121 152.9c3.3 4.6 8.5 7.4 14.2 7.4 5.7 0 11-2.8 14.2-7.4z" fill="#ffffff" p-id="2577"></path></svg></th> </tr>
+        </thead>
+        
+        <tbody id="rank">
+        
+
+        
+       
+        
+        </tbody>
+    </table>
+
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+       <script>
+        var html='';
+        for(var i=1;i<15;i++){
+        html+=` <tr onclick="goto()">
+            <td>国药一致<br><span class="f-gray f14 ">000028</span></td>
+            <td><span class="f-red">44.9</span></td>
+            <td><label class="label f-white bg-red padding5">-1.08%</label></td>
+            <td>1.57</td>
+            <td>3.85%</td>
+            <td>15.72</td>
+            <td>5.36%</td>
+            <td>5.36%</td>
+        </tr><tr onclick="goto()">
+            <td>国药一致<br><span class="f-gray f14 ">000028</span></td>
+            <td><span class="f-green">44.9</span></td>
+            <td><label class="label f-white bg-green padding5">+1.08%</label></td>
+            <td>1.57</td>
+            <td>3.85%</td>
+            <td>15.72</td>
+            <td>5.36%</td>
+            <td>5.36%</td>
+        </tr>`;
+       
+        }
+         $('#rank').html(html)
+        
+        </script>
+</body>
+</html>

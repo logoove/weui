@@ -38,7 +38,7 @@
         <div class="weui-cell__bd">
             <p><%=list[i][0]%> 赞助:<%=list[i][1]%>元</p>
         </div>
-        <div class="weui-cell__ft">
+        <div class="weui-cell__ft"><% if(isset(list[i][3])){%><%=list[i][3]%><%}%>
         </div>
     </a>
     <% } %>

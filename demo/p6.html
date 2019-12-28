@@ -8,16 +8,14 @@
     <link rel="stylesheet" href="../css/weuix.css"/>
 
     <script src="../js/zepto.min.js"></script>
-    <script src="../js/qrcode.js"></script>
     <script>
         $(function(){
-
-
         });
 
         function qr(){
-            var txt="BEGIN:VCARD\r\nVERSION:3.0\r\nN:太白\r\nFN:李\r\nTITLE:工程师\r\nNICKNAME:昵称\r\nTEL;CELL;VOICE:移动18291448888\r\nTEL;WORK;VOICE:工作电话18291449999\r\nORG:组织机构\r\nEMAIL;PREF;INTERNET:logove@qq.com\r\nADR;TYPE=WORK:;;具体地址;汉中;陕西省;2324200;中国\r\nADR;TYPE=HOME:;;具体地址;汉中;陕西省;2324200;中国\r\nNOTE;ENCODING=QUOTED-PRINTABLE:备注来自名片通讯录\r\nEND:VCARD";
-            $("#qrcodeimg").empty().qrcode({render:"image",ecLevel:"L",size:300,background:"#fff",fill:"#000",text:txt});
+            const txt="BEGIN:VCARD\r\nVERSION:3.0\r\nN:太白\r\nFN:李\r\nTITLE:工程师\r\nNICKNAME:昵称\r\nTEL;CELL;VOICE:移动18291448888\r\nTEL;WORK;VOICE:工作电话18291449999\r\nORG:组织机构\r\nEMAIL;PREF;INTERNET:logove@qq.com\r\nADR;TYPE=WORK:;;具体地址;汉中;陕西省;2324200;中国\r\nADR;TYPE=HOME:;;具体地址;汉中;陕西省;2324200;中国\r\nNOTE;ENCODING=QUOTED-PRINTABLE:备注来自名片通讯录\r\nEND:VCARD";
+            const canvas = qrcanvas.qrcanvas({data:txt,size:200,foreground:'black',background:'white'});
+            $("#qr").empty().html(canvas)
         }
 
     </script>
@@ -34,8 +32,8 @@
 <div class="page-bd-15">
     <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="qr()">生成名片二维码</a>
        <br>
-    <div id="qrcodeimg" class='tcenter'></div>
-    
+    <div id="qr" class='tcenter'></div>
+
 </div>
 
 <br>
@@ -47,4 +45,5 @@
     <p class="weui-footer__text">Copyright &copy; Yoby</p>
 </div>
 </body>
+<script src="../js/qrcode.js"></script>
 </html>
