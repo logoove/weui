@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="css/weuix.css"/>
   <link rel="icon" href="favicon.png"> <link rel="icon" href="favicon.ico">
       <script src="js/zepto.min.js"></script>
-
+    <script src="js/php.js"></script>
       <script>
 
-  $(function(){
+      $(function(){
 	  $('.collapse .js-category').click(function(){
 			$parent = $(this).parent('li');
 			if($parent.hasClass('js-show')){
@@ -24,7 +24,19 @@
                          $parent.siblings().find('i').removeClass('icon-35').addClass('icon-74');
                     }
 		  });
-
+       var kk=   ls.get("ver")
+       console.log(kk)
+          if(kk==null) {
+              $.getJSON("https://weui.shanliwawa.top/php/ver.php?callback=?", function (res) {
+                  console.log(res)
+                  ls.set("ver", res,3600*24*10*1000);
+                  $("#num").text(res.ver)
+                  $("#version").text(res.date)
+              }, 'jsonp')
+          }else{
+              $("#num").text(kk.ver)
+              $("#version").text(kk.date)
+          }
 
 	  });
 
@@ -35,7 +47,7 @@
 <div class="contianer page-bg">
 <div class="page-hd">
         <h1 class="page-hd-title">
-            WeUI5.29演示
+            WeUI<span id="num" class="f-red"></span>----最后更新<span id="version" class="f-red"></span>
         </h1>
         <p class="page-hd-desc">WeUI+是Zepto1.2和WeUI 2.0为基础,收集整理了上百个组件开发而成,兼容IOS和Android平台,主要用于微信/手机网站开发,如有任何问题,请在github/码云反馈,QQ和微信不做回答.</p>
     </div>
@@ -458,13 +470,19 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js25.html">
+                            <div class="weui-cell__bd">
+                                <p>搜索下拉提示</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
                     </div>
 
                 </div>
             </li>
 
             <li><div class="weui-flex js-category" >
-                <div class="weui-flex__item" >D. js插件</div>
+                <div class="weui-flex__item" >D. 插件</div>
                 <i class="icon icon-74"></i>
             </div>
                 <div class="page-category js-categoryInner">
@@ -550,17 +568,25 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
+                        <a class="weui-cell weui-cell_access" href="demo/js24.html">
+                            <div class="weui-cell__bd">
+                                <p>macy瀑布流</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
                     </div>
 
                 </div>
             </li>
+
              <li onclick="location.href='demo/help1.html'">
                 <div class="weui-flex " >
-                    <p class="weui-flex__item">E. 帮助</p>
+                    <p class="weui-flex__item">E. 更新日志</p>
                     <i class="icon icon-108"></i>
                 </div>
 
             </li>
+
             <li onclick="location.href='demo/help2.html'">
                 <div class="weui-flex " >
                     <p class="weui-flex__item">F. 赞助名单</p>
@@ -569,6 +595,9 @@
 
             </li>
         </ul>
+    <img src="https://weui.shanliwawa.top/images/wechat.jpg" class="img-max">
+    <img src="https://weui.shanliwawa.top/images/alipay.jpg" class="img-max">
+
     </div>
 
 

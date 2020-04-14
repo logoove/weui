@@ -18,7 +18,7 @@
         <h1 class="page-hd-title">
             赞助名单
         </h1>
-        <p class="page-hd-desc">赞助者请留言昵称和网址,会在本页显示,金额至少1元才会显示,weui+的更新少不了广大用户的支持,谢谢!</p>
+        <p class="page-hd-desc">赞助者请留言,金额1元以上才会显示,感谢赞助者用户的支持,谢谢!<a href="help3.html">登录</a></p>
     </div>
 
 <div class="page-bd-15">
@@ -34,11 +34,11 @@
 
 <script id="tpl" type="text/html">
     <% for(var i in list) {   %>
-    <a class="weui-cell weui-cell_access" href="<%=empty(list[i][2])?'javascript:;':list[i][2]%>">
+    <a class="weui-cell weui-cell_access" href="javascript:;">
         <div class="weui-cell__bd">
-            <p><%=list[i][0]%> 赞助:<%=list[i][1]%>元</p>
+            <p><%=list[i]['zid']%>:<i class="f-red"><%=list[i]['money']%>¥</i></p>
         </div>
-        <div class="weui-cell__ft"><% if(isset(list[i][3])){%><%=list[i][3]%><%}%>
+        <div class="weui-cell__ft f12"><% if(isset(list[i]['say'])){%><%=list[i]['say']%><%}%><span class="f-green"><%=timeline(list[i]['createtime'])%></span>
         </div>
     </a>
     <% } %>
@@ -51,8 +51,8 @@
     function ajaxpage(page){
         $.ajax({
             type : "post",
-           url : 'https://we7.shanliwawa.top/addons/yoby_cha/token.php?uniacid=1&tables=2&token=5d8899567110e',
-            data: {"page":page,"pagesize":pagesize},
+           url : '../php/page.php',
+            data: {"page":page,"pagesize":pagesize,"ajax":8},
             dataType: "json",
             beforeSend:function(){
                 $("#more").show();

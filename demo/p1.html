@@ -118,12 +118,12 @@
 <tr><td>unicode_encode("😋😘我们")</td><td>编码emoji字符为unicode,汉字不编码, unicode_encode("1我😜",true)全部编码成unicode</td></tr>
 <tr><td>unicode_encode</td><td>显示编码</td></tr>
 <tr><td>emoji_encode emoji_decode</td><td>emoji表情转换成实体,可以直接存储到数据库,显示的时候也不需要解码,如果在js中使用,需要用解码函数解码</td></tr>
-<tr><td>sl.set("text", "this is string",3*1000);</td><td>设置localstorage,兼容不支持浏览器使用cookie,以及过期时间,毫秒,支持字符串,数字,布尔,对象</td></tr>
-<tr><td>sl.get("text")</td><td>过期返回null</td></tr>
-<tr><td>sl.remove("a") sl.clear()</td><td>删除某个和全部清空</td></tr>
-    <tr><td>sl.setCookie("mycookie", "this is string", 60*60*24*30);</td><td>设置cookie</td></tr>
-    <tr><td>sl.getCookie("a") sl.clearCookie()</td><td>获取,全部清空</td></tr>
-    <tr><td>sl.removeCookie("a")</td><td>删除某个</td></tr>
+<tr><td>ls.set("text", "this is string",3*1000);</td><td>设置localstorage,兼容不支持浏览器使用cookie,以及过期时间,毫秒,支持字符串,数字,布尔,对象</td></tr>
+<tr><td>ls.get("text")</td><td>过期返回null</td></tr>
+<tr><td>ls.remove("a") sl.clear()</td><td>删除某个和全部清空</td></tr>
+    <tr><td>ls.setCookie("mycookie", "this is string", 60*60*24*30);</td><td>设置cookie</td></tr>
+    <tr><td>ls.getCookie("a") sl.clearCookie()</td><td>获取,全部清空</td></tr>
+    <tr><td>ls.removeCookie("a")</td><td>删除某个</td></tr>
     <tr><td>loadjs加载文件</td><td>loadjs("eruda.js",function(istrue){ });</td></tr>
     <tr><td>loadcss加载文件</td><td>loadcss("1.css",function(istrue){ });</td></tr>
     <tr><td>addcss,addjs</td><td>加载代码片段</td></tr>

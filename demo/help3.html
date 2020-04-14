@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+
+        })
+
+        const save0=()=>{
+            let pwd = $("#pwd").val()
+            $.post("../php/page.php",{'ajax':6,'pwd':pwd},function(res){
+                console.log(res)
+                if(res.code==200){
+                    $("#html").html(res.msg);return false;
+
+                }else{
+                    $.alert('密码不正确');
+                }
+            },'json');
+        }
+        const save=()=>{
+            let zid = $("#zid").val()
+            let money = $("#money").val()
+            let say = $("#say").val()
+            $.post("../php/page.php",{'ajax':7,zid,money,say},function(res){
+                console.log(res)
+                if(res.code==200){
+
+                    $("#zid").val('')
+                    $("#money").val('')
+                    $("#say").val('')
+                    $.alert(res.msg);
+                }else{
+                    $.alert(res.msg);
+                }
+            },'json');
+        }
+    </script>
+</head>
+
+<body ontouchstart>
+
+<div class="weui-cell">
+    <div class="weui-cell__bd">
+        <input class="weui-input" placeholder="密码" type="password" id="pwd">
+    </div>
+</div>
+<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_primary" href="javascript:;" onclick="save0()">进入</a>
+</div>
+<div class="weui-cells weui-cells_form" id="html">
+
+</div>
+
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

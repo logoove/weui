@@ -2841,7 +2841,7 @@ input.b-orange {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     bottom: 0;overflow: hidden;
-    padding: 5px;
+    padding: 5px 0;
     width: 100%;
     color: #fff;
     font-size: 16px;
@@ -4768,3 +4768,4 @@ box-sizing: border-box;
   margin-left: 8px;
   margin-right: 0
 }
+.select{line-height:40px;height:40px;width:calc(100% - 20px);margin:12px 10px;font-size: 16px;border: 1px solid rgba(0,0,0,.15);color:#333;background-clip: padding-box;outline: none;background:#FFF;}

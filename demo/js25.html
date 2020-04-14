@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+<style>
+    #showStock{
+        position:relative;
+        z-index:998;
+    }
+    #showStock table td{
+       padding: 2px 0 0 15px;
+        border: none;
+        font-size: 16px;
+        line-height: 22px;
+    }
+</style>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+<script>
+    function cleartxt(obj){
+        $(obj).prev().find('.weui-input').val("");
+        return false;
+    }
+  $(function(){
+    source=['000001,平安银行,payx','000002,万科Ａ,wka','000004,国农科技,gnkj','000005,世纪星源,sjxy','000006,深振业Ａ,szya','000007,全新好,qxh','000008,神州高铁,szgt','000009,中国宝安,zgba','000010,*ST美丽,*stml','000011,深物业A,swya','000012,南玻Ａ,nba','000014,沙河股份,shgf','000016,深康佳Ａ,skja','000017,深中华A,szha','000018,神城A退,scat','000019,深粮控股,slkg','000020,深华发Ａ,shfa','000021,深科技,skj','000023,深天地Ａ,stda','000025,特力Ａ,tla','000026,飞亚达Ａ,fyda','000027,深圳能源,sny','000028,国药一致,gyyz','000030,富奥股份,fagf','000032,深桑达Ａ,ssda','000033,新都退,xdt','000036,华联控股,hlkg','000037,深南电A,snda','000039,中集集团,zjjt','000040,东旭蓝天,dxlt','000042,中洲控股,zzkg','000043,中航善达,zhsd','000045,深纺织Ａ,sfza','000046,泛海控股,fhkg','000048,康达尔,kde','000049,德赛电池,dsdc','000050,深天马Ａ,stma','000055,方大集团,fdjt','000056,皇庭国际,htgj','000058,深赛格,ssg','000059,华锦股份,hjgf','000060,中金岭南,zjln','000061,农产品,ncp','000062,深圳华强,shq','000063,中兴通讯,zxtx','000065,北方国际,bfgj','000066,中国长城,zgcc','000068,华控赛格,hksg','000069,华侨城Ａ,hqca','603109,神驰机电,scjd','159975,深100SZ,s100sz'];
+   elemCSS={ focus:{'color':'black','background':'#ccc'}, blur:{'color':'black','background':'transparent'} };
+     inputUse=document.getElementById("stock");
+    showUse=document.getElementById("showStock");
+      showUse.style.display="none";
+     inputValue=inputUse.defaultValue;
+     console.log(inputValue)
+  })
+
+    function inputFocus(){
+        this.timer=setInterval(function(){
+            if(inputUse.value!=''){
+                //检查文本框的当前值与以前的值是否有变化
+                if(inputUse.value!=inputValue){
+                    //如果文本框当前值与之前的值不同，记录当前值，已被下次调用时使用
+                    inputValue=inputUse.value.toLowerCase();
+                    //清除上次调用显示的结果
+                    showUse.innerHTML='';
+                    if(inputValue!=''){
+                        //定义JS的RegExp对象，查询以inputValue开头的数据
+                        quickExpr=RegExp(eval('/'+inputValue+'/'));
+                        //如果数据源不为空，则调用match函数开始匹配数据
+                        //此处如果通过ajax取数据，则适当修改数据源即可
+                        if(source){
+                            match(quickExpr,inputValue,source);
+                        }
+                    }
+                }
+            }
+            else{
+                inputValue=inputUse.value;
+                showUse.innerHTML='';
+                showUse.style.display="none";
+            }
+        },200)
+    }
+
+    //该函数用来查询匹配数据
+    function match(quickExpr,value,source){
+        var count=0;
+        var table=null;
+        var tr=null;
+        var td=null;
+        //创建table标签
+        table=document.createElement('table');
+        table.id='selector';
+        table.style.width='100%';
+        //开始遍历数组
+        //如果用ajax从后台取数据，我们也可组织成数组的形式返回
+        for(var i in source){
+            //再次检验数据是否为空并且用正则取数据
+            if(value.length>0 && quickExpr.exec(source[i])!=null){
+                //创建tr标签
+                tr=document.createElement('tr');
+                //创建td标签
+                td=document.createElement('td');
+                td.innerHTML = '<a href="javascript:void(0);">'+source[i]+'</a>';
+                tr.appendChild(td);
+                table.appendChild(tr);
+                showUse.appendChild(table);
+                count++;
+                if (count >=20) {
+                    break;
+                }
+            }
+        }
+
+        //检验table下面的a标签的数量，以此确定是否将“提示”列表显示
+        if(showUse.getElementsByTagName('a').length){
+            showUse.style.display="";
+        }else{
+            showUse.style.display="none";
+        }
+    }
+    function inputKeydown(event){
+        //兼容IE
+        event = event || window.event;
+        //如果按了down键
+        if(event.keyCode==40){
+            //如果“提示”列表已经显示,则把焦点切换到列表中的第一个数据项上
+            if(showUse.style.display==""){
+                showUse.getElementsByTagName('a')[0].focus();
+            }else{   //如果“提示”列表未显示,则把焦点依旧留在文本框中
+                inputUse.focus();
+            }
+        }
+        //如果按了up键
+        else if(event.keyCode==38){
+            //如果“提示”列表已经显示,则把焦点切换到列表中的最后一个数据项上
+            if(showUse.style.display==""){
+                showUse.getElementsByTagName('a')[showUse.getElementsByTagName('a').length-1].focus();
+            }else{     //如果“提示”列表未显示,则把焦点依旧留在文本框中
+                inputUse.focus();
+            }
+        }
+        //如果按了tab键，此时的情况与“百度首页”的处理情况一样
+        else if(event.keyCode==9){
+            showUse.innerHTML='';
+            showUse.style.display="none";
+        }
+    }
+
+    //当焦点离开文本框时，触发该事件
+    function inputBlur(){
+        //由于焦点已经离开了文本框，则取消setInterval
+        clearInterval(this.timer);
+        //记住当前有焦点的选项
+        var current=0;
+        //当前table下面的a标签的个数
+        var aArray=showUse.getElementsByTagName('a');
+        var len=aArray.length-1;
+        var select=document.getElementById("selector");
+
+
+        //定义“选项”的onclick事件
+        var aClick = function(){
+            //由于“选项”上触发了click事件，this就是指a标签，则把a标签包含的数据赋值给文本框
+            inputUse.value=this.childNodes[0].data.split(",")[0];
+            //将文本框的当前值更新到记录以前值的变量中
+            inputValue=inputUse.value;
+            //由于上面已经选出合适的数据项，则清空table下的内容，并关闭“提示”列表
+            showUse.innerHTML='';
+            showUse.style.display='none';
+            //将焦点移回文本框
+            inputUse.focus();
+        };
+
+        //定义“选项”的onfocus事件
+        var aFocus = function(){
+            for(var i=len; i>=0; i--){
+                if(this.parentNode===select.childNodes[i].childNodes[0]){
+                    //如果是同一个td，则将current的值置为焦点所在位置的值
+                    current = i;
+                    break;
+                }
+            }
+            //添加有焦点的效果
+            for(var k in elemCSS.focus){
+                this.style[k] = elemCSS.focus[k];
+            }
+        };
+
+        //定义“选项”的onblur事件
+        var aBlur= function(){
+            //添加无焦点的效果
+            for(var k in elemCSS.blur)
+                this.style[k] = elemCSS.blur[k];
+        };
+
+        //定义“选项”的onKeydown是事件
+        var aKeydown = function(event){
+            //兼容IE
+            event = event || window.event;
+
+            //如果在选择数据项时按了tab键，此时的情况与“百度首页”的处理情况一样
+            if(event.keyCode===9){
+                showUse.innerHTML='';
+                showUse.style.display = 'none';
+                inputUse.focus();
+            }
+            //如果按了down键
+            else if(event.keyCode==40){
+                //向下移动，准备移动焦点
+                current++;
+                //如果当前焦点在最后一个数据项上，用户用按了down键，则循环向上，回到文本框上
+                if(current>len){
+                    current=-1;
+                    inputUse.focus();
+                }else{
+                    select.getElementsByTagName('a')[current].focus();
+                }
+            }
+            //如果按了up键
+            else if(event.keyCode==38){
+                //向上移动，准备移动焦点
+                current--;
+                //如果当前焦点在文本框上，用户用按了up键，则循环向下，回到最后一个数据项上
+                if(current<0){
+                    inputUse.focus();
+                }else{
+                    select.getElementsByTagName('a')[current].focus();
+                }
+            }
+        };
+
+        //将“选项”的事件与相应的处理函数绑定
+        for(var i=0; i<aArray.length; i++){
+            aArray[i].onclick = aClick;
+            aArray[i].onfocus = aFocus;
+            aArray[i].onblur = aBlur;
+            aArray[i].onkeydown = aKeydown;
+        }
+    }
+</script>
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+        搜索下拉提示
+        </h1>
+        <p class="page-hd-desc">表单搜索</p>
+
+    </div>
+<form method="post">
+   <div class="weui-cells weui-cells_form">
+       <div class="weui-cells__title f20 bold">股票代码</div>
+       <div class="weui-cells">
+           <div class="weui-cell">
+               <div class="weui-cell__bd">
+                   <input class="weui-input" placeholder="请输入股票代码" type="text" id="stock" onfocus="inputFocus()" onkeydown="inputKeydown(event)" onblur="inputBlur()">
+               </div>
+               <i class="weui-icon-clear" onclick="cleartxt(this)"></i>
+           </div>
+       </div>
+       <div id="showStock">
+           <!-- 此处添加搜索数据的结果，使用的是table标签 -->
+       </div>
+       <div class="weui-cells__title f20 bold">规则条件</div>
+       <div class="weui-cell weui-cell_select weui-cells">
+           <div class="weui-cell__bd">
+               <select class="weui-select" name="select1">
+                   <option value="1">突破</option>
+                   <option value="2">跌破</option>
+               </select>
+           </div>
+       </div>
+
+       <div class="weui-cells__title f20 bold">规则条件</div>
+       <div class="weui-cell padding0 weui-cells">
+           <div class="weui-cell__bd">
+               <select class="select" name="select">
+                   <option value="1" selected>突破</option>
+                   <option value="2">跌破</option>
+               </select>
+           </div>
+       </div>
+
+       <div class="weui-cells__title f20 bold">股票价格</div>
+       <div class="weui-cells">
+           <div class="weui-cell">
+               <div class="weui-cell__bd">
+                   <input class="weui-input" placeholder="请输入股票价格" type="number">
+               </div>
+               <i class="weui-icon-clear" onclick="cleartxt(this)"></i>
+           </div>
+       </div>
+        </div>
+    </form>
+
+
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+</body>
+</html>
