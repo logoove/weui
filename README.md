@@ -12,6 +12,8 @@ weui+是Zepto1.2和weui1.13等众多开源项目中,参考而成的,接近100个
 
 <https://github.com/logoove/weui>
 
+[![Weui+](https://github-readme-stats.vercel.app/api?username=logoove)](https://github.com/anuraghazra/github-readme-stats)
+
 ### 赞助我 
 赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要大于等于1元,框架的正常发展离不开用户的支持!!!
 ![微信](https://weui.shanliwawa.top/images/wechat.jpg)
