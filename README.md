@@ -12,8 +12,6 @@ weui+是Zepto1.2和weui1.13等众多开源项目中,参考而成的,接近100个
 
 <https://github.com/logoove/weui>
 
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=logoove)](https://github.com/anuraghazra/github-readme-stats)
-
 ### 赞助我 
 赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要大于等于1元,框架的正常发展离不开用户的支持!!!
 ![微信](https://weui.shanliwawa.top/images/wechat.jpg)
@@ -26,6 +24,7 @@ weui+是Zepto1.2和weui1.13等众多开源项目中,参考而成的,接近100个
 本项目个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,一般3天之内必有回复,项目主要是在移动端使用,个别会有pc端,最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!发现bug并给出解决方案的,会在后面留下您的名字以示感谢!
 js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的.
 ###  更新日志
+- 2020-8-6 v5.32 新增navbar切换ajax示例,修改已知错误,php.js中JavaScript自定义方法新增参数说明,在phpstorm或webstorm可显示说明
 - 2020-4-8 v5.31 新增瀑布流插件,
 - 2020-1-1 v5.30 修改生成二维码插件为无任何依赖的qrcanvas,js方法增加注释,新增搜索下拉提示,新增select原装控件美化类;
 - 2019-11-09 v.5.29 新增固定table表头列

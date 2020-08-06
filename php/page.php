@@ -22,8 +22,29 @@ if(1==$_POST['ajax']) {
 }elseif(2==$_POST['ajax']){
     $pindex = max(1, intval($_POST['page']));
     $psize = $_POST['pagesize'];
-    $list =$db->fetchall("SELECT *  FROM ".$db->tablename('demo') ." WHERE 1=1  ORDER BY id asc LIMIT ".($pindex - 1) * $psize.','.$psize);
-    $total = $db->getcolumn('demo', array(), "count(*)");
+    if($_POST['type']==2){
+        $list[0] =[
+            'id'=>99,
+            'title'=>'测试',
+            'createtime'=>time(),
+            'phone'=>999,
+            'fen'=>100
+
+        ];
+        $list[1] =[
+            'id'=>98,
+            'title'=>'测试1',
+            'createtime'=>time(),
+            'phone'=>999888,
+            'fen'=>10
+
+        ];
+        $total=2;
+
+    }else {
+        $list = $db->fetchall("SELECT *  FROM " . $db->tablename('demo') . " WHERE 1=1  ORDER BY id asc LIMIT " . ($pindex - 1) * $psize . ',' . $psize);
+        $total = $db->getcolumn('demo', array(), "count(*)");
+    }
     $arr = [
         'msg' => '请求成功',
         'code' => 200,
