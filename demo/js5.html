@@ -11,15 +11,21 @@
     <script src="../js/zepto.weui.js"></script>
      <script>
          $(function(){
-
-             $('.weui-tab').tab({
+ $('#t1').tab({
+                defaultIndex: 0,
+                activeClass: 'tab-green',
+                onToggle: function (index) {
+console.log('index'+index);
+                }
+            })
+             $('#tb').tab({
                  defaultIndex: 1,
                  activeClass: 'weui-bar__item_on',
                  onToggle: function (index) {
                      if(index==0){
-                         $("#c"+index).html("我是第一个0")
+                         $("#c"+index).html("第一个是0")
                      }else if(index==1){
-                         $("#c"+index).html("我是第2个1")
+                         $("#c"+index).html("第2个1")
                      }
 
                         console.log(index)
@@ -34,17 +40,37 @@
 <body ontouchstart>
     <div class="page-hd">
         <h1 class="page-hd-title">
-            tabbar
+            tabbar和navbar切换
         </h1>
-        <p class="page-hd-desc">底部工具菜单</p>
+        <p class="page-hd-desc">navbar切换和tabbar底部工具菜单</p>
     </div>
-
-    <div class="weui-tab" style="height:auto;">
+    <div class="weui-tab" id="t1"  style="height:auto;">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item">
+                杨玉环
+            </div>
+            <div class="weui-navbar__item">
+                赵飞燕
+            </div>
+            <div class="weui-navbar__item">
+                貂蝉
+            </div>
+        </div>
+   <div class="weui-tab__panel">
+			<div id="s0" class="weui-tab__content">唐朝MM</div>
+            <div id="s1" class="weui-tab__content">汉朝MM</div>
+            <div  id="s2" class="weui-tab__content">三国MM</div>
+  </div>
+    </div>
+ 
+    <br>
+    <br>
+    <div id='tb' class="weui-tab" style="height:auto;">
         <div class="weui-tab__panel">
-            <div id="c0" class="weui-tab__content">中国</div>
-            <div id="c1" class="weui-tab__content">日本</div>
-            <div  id="c2" class="weui-tab__content">美国</div>
-            <div id="c3"  class="weui-tab__content">法国</div>
+            <div id="c0" class="weui-tab__content">这是0</div>
+            <div id="c1" class="weui-tab__content">这是1</div>
+            <div  id="c2" class="weui-tab__content">发现被点击了</div>
+            <div id="c3"  class="weui-tab__content">点击了我</div>
         </div>
 
         <div class="weui-tabbar tab-bottom">
