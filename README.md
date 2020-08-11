@@ -1,29 +1,26 @@
-###  weui+
-###  简介 
-weui+是Zepto1.2和weui1.13等众多开源项目中,参考而成的,接近100个新组件,最目前全网效果最全的移动端UI.
+# WeUI+(WeUI Plus)
 
-### 演示
-[v5.X](http://weui.shanliwawa.top)
+WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个组件/插件,最目前全网效果最全的Mobile UI,可用于开发HTML5,公众号端.
 
-[V4.9](http://weui.shanliwawa.top/4.9)
+### 在线演示
+[v5.X++版本](http://weui.shanliwawa.top)
 
-###  安装
-<https://gitee.com/yoby/weui>
+[V4.9版本](http://weui.shanliwawa.top/4.9)
 
-<https://github.com/logoove/weui>
+###  项目地址
+<https://gitee.com/yoby/weui> | <https://github.com/logoove/weui>
 
 ### 赞助我 
-赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要大于等于1元,框架的正常发展离不开用户的支持!!!
+赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要>=1元,框架的正常发展离不开用户的支持!!!
 ![微信](https://weui.shanliwawa.top/images/wechat.jpg)
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![支付宝](https://weui.shanliwawa.top/images/alipay.jpg)
 
 
 ### 版权:  MIT
-
-### 说明
-本项目个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,一般3天之内必有回复,项目主要是在移动端使用,个别会有pc端,最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!发现bug并给出解决方案的,会在后面留下您的名字以示感谢!
-js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的.
-###  更新日志
+本项目系个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,都会及时回复,gitee更迅速回复;
+最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!
+php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的(作者是PHP程序员)
+### 更新日志
 - 2020-8-11 v5.33 新增navbar非ajax切换,navbar和tabbar同页面存在演示
 - 2020-8-6 v5.32 新增navbar切换ajax示例,修改已知错误,php.js中JavaScript自定义方法新增参数说明,在phpstorm或webstorm可显示说明
 - 2020-4-8 v5.31 新增瀑布流插件,
@@ -84,7 +81,4 @@ js所有方法在插件js方法中都有简单介绍,会不断增加;很多同ph
 - 2016-6-6 v2.6   替换swipe为更小函数,新版的支持是否自动播放,这个更好用,重写此css,是否使用标题,超链接自己根据例子修改 
 - 2016-6-5  v2.5  新增认证头像,新增tab切换红色和绿色导航条,loading动画,旋转180度和360度,新增上拉加载更多下拉刷新,新增图片懒加载只需要载入zepto即可使用   
 - 2016-6-3  v2.4  新增音视频播放器,新增横向可滚动导航,新增iscroll移动版库,新增9种常见颜色值;修复已知问题.   
-- 2016-4-1 V1.0 weui是很棒的微信端UI,但是组件太少了,在微信开发很多组建都没有,所以根据此问题,收集网络上优秀的代码片段,组合开发出了这一套增强版weui-plus,目前还在不断增多组件,修复bug,目标是做最好的微信端移动端UI.
-
-### 感谢名单(不分github和gitee,不分排名,仅限帮助解决问题的)
-@shirne @Mr.赵 @TomLiu-GitHub 
+- 2016-4-1 V1.0 weui是很棒的微信端UI,但是组件太少了,在微信开发很多组建都没有,所以根据此问题,收集网络上优秀的代码片段,组合开发出了这一套增强版weui-plus,目前还在不断增多组件,修复bug,目标是做最好的微信端移动端UI
