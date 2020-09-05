@@ -1,5 +1,10 @@
 # WeUI+(WeUI Plus)
-[![GitHub issues](https://img.shields.io/github/issues/logoove/weui?color=1)](https://github.com/logoove/weui/issues)  [![GitHub forks](https://img.shields.io/github/forks/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/network)  [![GitHub stars](https://img.shields.io/github/stars/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/stargazers) [![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/logoove/weui?color=1)](https://github.com/logoove/weui/issues)  [![GitHub forks](https://img.shields.io/github/forks/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/network)  [![GitHub stars](https://img.shields.io/github/stars/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/stargazers)  ![GitHub repo size](https://img.shields.io/github/repo-size/logoove/weui?color=1)
+![GitHub top language](https://img.shields.io/github/languages/top/logoove/weui?color=1)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/logoove/weui?color=1)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/logoove/weui?color=1)
+![GitHub last commit](https://img.shields.io/github/last-commit/logoove/weui)
+[![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
 
 WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个组件/插件,最目前全网效果最全的Mobile UI,可用于开发HTML5,公众号端.
 
