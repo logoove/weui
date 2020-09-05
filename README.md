@@ -1,4 +1,4 @@
-# WeUI+(WeUI Plus)
+# WeUI+
 [![GitHub issues](https://img.shields.io/github/issues/logoove/weui?color=1)](https://github.com/logoove/weui/issues)  [![GitHub forks](https://img.shields.io/github/forks/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/network)  [![GitHub stars](https://img.shields.io/github/stars/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/stargazers)  ![GitHub repo size](https://img.shields.io/github/repo-size/logoove/weui?color=1)
 ![GitHub top language](https://img.shields.io/github/languages/top/logoove/weui?color=1)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/logoove/weui?color=1)
@@ -8,25 +8,24 @@
 
 WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个组件/插件,最目前全网效果最全的Mobile UI,可用于开发HTML5,公众号端.
 
-### 在线演示
-[v5.X++版本](http://weui.shanliwawa.top)
+[![](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-V5%2B%2B-1)](http://weui.shanliwawa.top)
 
-[V4.9版本](http://weui.shanliwawa.top/4.9)
+[![](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-V4.9-1)](http://weui.shanliwawa.top/4.9)
 
-###  项目地址
-<https://gitee.com/yoby/weui> | <https://github.com/logoove/weui>
+[![](https://img.shields.io/badge/github-https%3A%2F%2Fgithub.com%2Flogoove%2Fweui-1)](https://github.com/logoove/weui)
 
-### 赞助我 
+[![](https://img.shields.io/badge/gitee-https%3A%2F%2Fgitee.com%2Fyoby%2Fweui-1)](https://gitee.com/yoby/weui)
+### ![](https://img.shields.io/badge/%E8%B5%9E%E5%8A%A9%E6%88%91-%E6%84%9F%E8%B0%A2%E6%AF%8F%E4%BD%8D%E8%B5%9E%E5%8A%A9%E5%92%8C%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7-1)
 赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要>=1元,框架的正常发展离不开用户的支持!!!
 ![微信](https://weui.shanliwawa.top/images/wechat.jpg)
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![支付宝](https://weui.shanliwawa.top/images/alipay.jpg)
 
 
-### 版权:  MIT
+### [![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
 本项目系个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,都会及时回复,gitee更迅速回复;
 最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!
 php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的(作者是PHP程序员)
-### 更新日志
+### ![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
 - 2020-8-11 v5.33 新增navbar非ajax切换,navbar和tabbar同页面存在演示
 - 2020-8-6 v5.32 新增navbar切换ajax示例,修改已知错误,php.js中JavaScript自定义方法新增参数说明,在phpstorm或webstorm可显示说明
 - 2020-4-8 v5.31 新增瀑布流插件,
