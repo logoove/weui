@@ -26,6 +26,7 @@ WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个�
 最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!
 php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的(作者是PHP程序员)
 ### ![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
+- 2021-3-8 v5.34 新增组件聊天窗口模拟,感谢[pkkgu](https://gitee.com/pkkgu)提供
 - 2020-8-11 v5.33 新增navbar非ajax切换,navbar和tabbar同页面存在演示
 - 2020-8-6 v5.32 新增navbar切换ajax示例,修改已知错误,php.js中JavaScript自定义方法新增参数说明,在phpstorm或webstorm可显示说明
 - 2020-4-8 v5.31 新增瀑布流插件,

@@ -23,13 +23,13 @@
     <div class="page-bd-15">
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label for="name" class="weui-label">三国</label></div>
+                <div class="weui-cell__hd"><label for="name" class="weui-label">实现年月</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" id="name" type="text" value="">
                 </div>
             </div>
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">电脑</label></div>
+                <div class="weui-cell__hd"><label class="weui-label">单选</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" id="mobile" type="text" value="">
                 </div>
@@ -167,7 +167,9 @@
 </div>
 
 <script>
-
+function carr (start, end) {
+      return Array.from(new Array(end + 1).keys()).slice(start)
+    }
 
     $("#mobile").picker({
         title: "请选择您的电脑",
@@ -185,15 +187,15 @@
         }
     });
     $("#name").picker({
-        title: "三国",
+        title: "选择年月",
         cols: [
             {
                 textAlign: 'center',
-                values: ['蜀国', '吴国']
+                values: carr(1980,2030)
             },
             {
                 textAlign: 'center',
-                values: ['刘备','曹操','诸葛亮']
+                values: carr(1,12)
             }
         ]
     });
