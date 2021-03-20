@@ -17,29 +17,32 @@ WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个�
 [![](https://img.shields.io/badge/gitee-https%3A%2F%2Fgitee.com%2Fyoby%2Fweui-1)](https://gitee.com/yoby/weui)
 ### ![](https://img.shields.io/badge/%E8%B5%9E%E5%8A%A9%E6%88%91-%E6%84%9F%E8%B0%A2%E6%AF%8F%E4%BD%8D%E8%B5%9E%E5%8A%A9%E5%92%8C%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7-1)
 赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要>=1元,框架的正常发展离不开用户的支持!!!
-![微信](https://weui.shanliwawa.top/images/wechat.jpg)
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![支付宝](https://weui.shanliwawa.top/images/alipay.jpg)
+![微信](https://weui.shanliwawa.top/weui/images/wechat.jpg)
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![支付宝](https://weui.shanliwawa.top/weui/images/alipay.jpg)
 
 
 ### [![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
 本项目系个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,都会及时回复,gitee更迅速回复;
 最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!
 php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的(作者是PHP程序员)
+新版本将后台服务由php改为go语言提供!
 ### ![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
-- 2021-3-8 v5.34 新增组件聊天窗口模拟,感谢[pkkgu](https://gitee.com/pkkgu)提供
+- 2021-3-20 v6.0 发布最新6.0版本,所有后台都由原来php改为golang提供,包括静态页面,端口:8885,可以自己修改后编译,默认提供64位编译后win10,linux可执行文件,你本地可以不安装任何环境就能运行动态的页面展示效果,数据库采用sqlite3,不管是哪个系统编译都需要gcc支持.
+- 2021-3-18 v5.35 新增商品分类组件,感谢[hanchengluo](https://gitee.com/hanchengluo)提供模板
+- 2021-3-8 v5.34 新增组件聊天窗口模拟,感谢[pkkgu](https://gitee.com/pkkgu)提供模板
 - 2020-8-11 v5.33 新增navbar非ajax切换,navbar和tabbar同页面存在演示
 - 2020-8-6 v5.32 新增navbar切换ajax示例,修改已知错误,php.js中JavaScript自定义方法新增参数说明,在phpstorm或webstorm可显示说明
 - 2020-4-8 v5.31 新增瀑布流插件,
 - 2020-1-1 v5.30 修改生成二维码插件为无任何依赖的qrcanvas,js方法增加注释,新增搜索下拉提示,新增select原装控件美化类;
 - 2019-11-09 v.5.29 新增固定table表头列
 - 2019-10-15 v.5.28 jssdk补全了跨域上传图片演示,删除了js微擎函数tomedia,其他修改!
-- 2019-8-28 v.5.27 汉化eruda.js移动端调试工具,新增gethost()获取网站域名包含https
+- 2019-8-28 v.5.27 eruda.js移动端调试工具,新增gethost()获取网站域名包含https
 - 2019-8-23 v.5.26 替换腾讯移动端调试工具为eruda,此工具几乎和电脑端调试工具一样强大,文件比较大,正式上线后请移除;新增loadjs,loadcss用来加载文件,并且支持回调;
 - 2019-8-21 v5.25 新增sl.set,sl.get,sl.remove,sl.clear四个操作localstorage方法,对于不支持的浏览器自动采用cookie,详细参见自定义方法,主要是微信某些安卓手机不支持
 - 2019-8-8 v5.24 修复宫格可能在android上点击无效;增加addcss,addjs两个添加代码函数,picker调整离底部0;toast调整事件为1秒
 - 2019-8-5 v5.23 新增emoji处理演示和相关处理函数,有两种方法,分别是转换成实体和unicode编码,以及其11kb包含100多个svg图标的演示,其他隐藏银行卡,手机号中间几位,判断是否为价格金额的函数,
 - 2019-7-31 v5.22 新增签到日历;
-- 2019-7-30 v5.21 新增trim,ltrim,rtrim三个函数,分别去掉两端,左边,右边的空格或者特定的字符,用法同名php函数,新增noshare函数,禁止页面在微信分享,一般用于个人中心,发布表单填写页面,直接调用不需要使用jssdk;新增开关获取选中和取消演示.新增.bg-white白色背景,新增margin和padding 上右下左四个方向的0,5px,10px,15px,20px .margin0,.margin0-t,等类似
+- 2019-7-30 v5.21 新增trim,ltrim,rtrim三个函数,分别去掉两端,左边,右边的空格或者特定的字符,用法同名php函数,新增noshare函数,禁止页面在分享,一般用于个人中心,发布表单填写页面,直接调用不需要使用jssdk;新增开关获取选中和取消演示.新增.bg-white白色背景,新增margin和padding 上右下左四个方向的0,5px,10px,15px,20px .margin0,.margin0-t,等类似
 - 2019-7-23 v5.20 修改初始日期1930-2080年,新增年月日选择例子;更新省市县地址选择器数据,最新数据是2019年github上开源的三级数据json,同时压缩数据,体积由350kb变成180多kb,港澳台数据未有变化,因为开源的也没有港澳台含编码的数据.
 - 2019-7-22 v5.19 新增h5自动定位到县级城市,县级城市首字母选择或搜索;新增选择当前位置定位;新增25宫格;新增ajax跳到详情页返回后还原到原来位置;
 新增count数组或对象个数计算,mktime返回日期时间戳,$_GET获取地址中传递参数值,替换原函数getquery,$_COOKIE获取cookie值,foreach数组对象处理函数,unset删除数组元素,数组合并array_merge,array_serch查找元素,array_keys,array_values返回数组键或值组成的新函数,数组截取array_slice
@@ -55,8 +58,8 @@ php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多�
 - 2018-12-20 v5.1 正式版发布,关于jssdk关闭演示上传,与上传有关的全部关闭,节省服务器资源;php文件夹下面db.php和fn.php是配置数据库与jssdk后端;
 - 2018-12-18 新增头像认证,折叠面板,角标
 - 2018-12-06 新增jssdk1.4相关演示包含获取openid,oauth2授权,相册,图片上传想下载,地址位置等含php代码;普通图片上传lrz插件和相关演示;新增音频播放;ajax分页样式2种和效果;留言列表;新闻列表仿今日头条;新版公众号文章样式,新增优秀音乐和视频播放器Dplayer/Aplayer,侧边栏,今日头条导航;
-- 2018-12-01 v5.0beta2 解决select和picker冲突
-- 2018-10-24 v5.0beta1  这是一次全新的重构,新增和去掉一些不常用插件,每天更新一点点正式版v5.0将在12月发布,测试版v5beta1将于10月24日发布
+- 2018-12-01 v5.02 解决select和picker冲突
+- 2018-10-24 v5.01  这是一次全新的重构,新增和去掉一些不常用插件,每天更新一点点正式版v5.0将在12月发布,测试版v5.01将于10月24日发布
 - 2018-5-24 v4.9.2 修复bug,新增图片横排1,2,3张图片效果,无任何css改变,所以无需更新css
 - 2018-5-7 V4.9.1 修复swipe的css的自动宽度和高度
 - 2018-4-8 v4.9 修复表格中复选无法选中,新增表格变色
@@ -68,7 +71,7 @@ php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多�
 - 2017-4-21 v4.2 修复微信中摇一摇不能再ios10+播放声音,其他声音播放也可此方法解决,新增仿微信左滑动删除
 - 2017-4-10 v4.1 修复zepto文件中jssdk相册bug,修复css中不兼容错误,修改重做jssdk演示
 - 2017-1-1 v4.0 新增vue2.1.6类库,包括vue.min.js和vue.js,压缩版用于生产环境,非压缩版用于开发环境,vue和zepto等其他可以同时使用,所有组件并没有写成vue组件,但是vue可以用来做一般开发,开发教程参考vue中文教程;本版本更新主要增加一些演示完整性
-- 2016-12-25 v3.9 修改fullpage全屏滑动组件核心js为微信官方组件,本组件完美支持超过一屏内容先滑动后翻页,支持点击按钮翻页,支持前后翻页,支持动画绑定,只有6kb大小
+- 2016-12-25 v3.9 修改fullpage全屏滑动组件核心js为微信组件,本组件完美支持超过一屏内容先滑动后翻页,支持点击按钮翻页,支持前后翻页,支持动画绑定,只有6kb大小
 - 2016-12-7 v3.8  修复搜索1px阴影错误,增加打分js,增加验证函数php.js,包含一些功能和php一样同名函数
 - 2016-11-26 v3.7 新增角标用于视频网站,倒计时
 - 2016-11-24 v3.6 新增slider滑块,修改badge徽标,同步weui1.1效果

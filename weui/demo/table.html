@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加table</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <style>
+        input{line-height: 2em;
+
+            height: 2em;
+
+            display: block;
+            border: 1px solid rgba(137, 68, 208, 0.17);
+            -webkit-appearance: none;
+
+        }
+    </style>
+</head>
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        动态表格
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+<table >
+    <thead>
+    <tr><th>姓名</th><th>职业</th><th>操作</th></tr>
+    </thead>
+    <tbody id="addlist">
+    <tr id="list-1"><td><input name="list[1][num]" placeholder="名字" value="" type="text"></td><td><input name="list[1][title]" placeholder="标题" value="" type="text"></td><td><a class="" href="javascript:;" onclick="dellist(this)">删除行</a></td></tr>
+    </tbody>
+</table>
+   <a href="javascript:;" class="" onclick="addlist()">添加行</a>
+<script>
+   /* 添加行数据*/
+    function addlist(){
+        var n = $("#addlist tr").length;
+        if(n==0){
+            var i=1;
+        }else{
+            var str = $("#addlist tr:last").attr("id");
+          str=  str.split('-');
+          str=str[1];
+            var  i=  　　parseInt(str);
+            i=i+1;
+        }
+        var tpl='<tr id="list-'+i+'"   ><td><input name="list['+i+'][num]" placeholder="名字" type="text"  value=""/></td><td><input name="list['+i+'][title]" placeholder="标题" type="text"  value=""/></td><td><a href="javascript:;" onclick="dellist(this)">删除行</a></td></tr>';
+        $('#addlist').append(tpl);
+    }
+    /*删除行数据*/
+    function dellist(obj){
+        $(obj).parent().parent().remove();
+    }
+</script>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

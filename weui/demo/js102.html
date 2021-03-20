@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+            $('#sidebar ul li').click(function(){
+                $(this).addClass('active').siblings('li').removeClass('active');
+                var index = $(this).index();
+                $('.j-content').eq(index).show().siblings('.j-content').hide();
+            })
+        })
+    </script>
+     <style>/*商品分类页*/
+.padding-all{padding:10px}
+.w-3{width:33.33%;  float:left; padding:.6rem .4rem; box-sizing: border-box; position: relative;}
+
+.category-top{border-bottom:1px solid #e8e8e8;position:fixed; left:0; top:0; right:0; z-index: 1; background:#F6F6F9}
+.menu-left,.menu-right{position:fixed; left:0;top:44px; bottom:0; overflow-y: scroll;}
+.menu-right #loading{left:11px; top:44px;}
+
+.menu-left{background:#F6F6F9;}
+.menu-left ul li{box-sizing: border-box;  font-size:12px; color:#333; width:76px; height:42px; line-height:42px; text-align: center;}
+.menu-left ul li.active{background:#fff; position:relative;}
+.menu-left ul li.active:before{content: " "; position: absolute;display: block; width:2px; height:100%; background:#e21323; top:0; left:0;}
+.menu-right{background:#fff; position:inherit; margin-left:76px; margin-top:44px; right:0; bottom:0;}
+.menu-right h5{font-size:12px; padding-top:2px; color:#666; margin-top:12px; margin-bottom:4px; border-bottom:1px solid #f5f5f5; padding-bottom:8px;}
+.menu-right h5:first-child{margin-top:0;}
+
+.menu-right ul{overflow: hidden;}
+.menu-right ul li{text-align: center;}
+.menu-right ul li a{display:block; position: absolute; left:3px; top:7px; bottom:7px; right:3px;}
+.menu-right ul li:nth-child(3n+1) a{left:0; right:7px;}
+.menu-right ul li:nth-child(3n) a{right:0; left:7px;}
+.menu-right ul li span{display:block;height:26px; line-height:26px; overflow: hidden; text-align: center; font-size:10px; color:#888;}
+.menu-right ul li img{width:50px; height:50px;	}
+.mune-no-img img{display:none}
+.mune-no-img span{border:1px solid #efefef; color:#555; border-radius:4px;}
+ </style>
+</head>
+
+<body ontouchstart>
+<div class="wy-content">
+    <div class="category-top">
+        <header class='weui-header'>
+            <div class="weui-search-bar" id="searchBar">
+                <form class="weui-search-bar__form">
+                    <div class="weui-search-bar__box">
+                        <i class="weui-icon-search"></i>
+                        <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索您想要的商品" required>
+                        <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                    </div>
+                    <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                        <i class="weui-icon-search"></i>
+                        <span>搜索您想要的商品</span>
+                    </label>
+                </form>
+                <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+            </div>
+        </header>
+    </div>
+    <aside>
+        <div class="menu-left scrollbar-none" id="sidebar">
+            <ul>
+                <li class="active">酒水食品</li>
+                <li>家用电器</li>
+                <li>电脑办公</li>
+                <li>家具家居</li>
+            </ul>
+        </div>
+    </aside>
+    <section class="menu-right padding-all j-content">
+        <h5>酒水食品</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-13 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-13 f30 f-green"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-13 f30 f-blue"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-13 f30 f-zi"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-13 f30 f-orange"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-13 f30 f-red"></span><span>酒水食品</span></li>
+
+        </ul>
+        <h5>酒水食品</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-14 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-14 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-14 f30 f-red"></span><span>酒水食品</span></li>
+        </ul>
+    </section>
+    <section class="menu-right padding-all j-content" style="display:none">
+        <h5>家用电器</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-14 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-14 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-14 f30 f-red"></span><span>酒水食品</span></li>
+        </ul>
+        <h5>家用电器</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-17 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+        </ul>
+    </section>
+    <section class="menu-right padding-all j-content" style="display:none">
+        <h5>电脑办公</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-red"></span><span>酒水食品</span></li>
+        </ul>
+        <h5>电脑办公</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-50 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+        </ul>
+    </section>
+    <section class="menu-right padding-all j-content" style="display:none">
+        <h5>家具家居</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-47 f30 f-red"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+        </ul>
+        <h5>测试分类</h5>
+        <ul>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+            <li class="w-3"><a href="javascript:;"></a> <span class="icon icon-48 f30 f-green"></span><span>酒水食品</span></li>
+        </ul>
+    </section>
+</div>
+
+<div class="weui-footer">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+
+</body>
+</html>

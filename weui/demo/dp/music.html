@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>Aplayer音乐放器演示</title>
+    <link rel="stylesheet" href="../../css/weui.css"/>
+    <link rel="stylesheet" href="../../css/weuix.css"/>
+    <script src="../../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            $(".weui-c-like .icon").click(function(){
+                if($(this).hasClass('on')) {
+                    $(this).removeClass('on')
+                }else{
+                    $(this).addClass('on')
+                }
+            })
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="weui-content">
+    <div class="weui-c-inner">
+        <div class="weui-c-content">
+            <h2 class="weui-c-title">Aplayer演示</h2>
+            <div class="weui-c-meta">
+                <span class="weui-c-nickname"><a href="https://aplayer.js.org/#/zh-Hans/">aplayer文档</a></span>
+                <em class="weui-c-nickname">2018-10-10 10:10</em>
+            </div>
+            <div class="weui-c-article">
+                <p>aplayer是一个音乐播放器,支持歌词lrc,音乐mp3/aac/ogg,音乐列表等播放器</p>
+                <link rel="stylesheet" href="APlayer.min.css">
+                <div id="aplayer"></div>
+                <script src="APlayer.min.js"></script>
+		<script type="text/javascript">
+            const ap = new APlayer({
+                container: document.getElementById('aplayer'),
+                mini: false,
+                audio: [{
+                    name: '测试音乐',
+                    artist: '未知艺术家',
+                    url: '../../images/test.mp3',
+                    cover: '../../images/1.jpg'
+                }]
+            });
+
+		</script>
+            </div>
+        </div>
+        <div class="weui-c-tools">
+            <a href="javascript:;">阅读原文</a>
+            <div class="weui-c-readnum">阅读<span id="readnum">10000+</span></div>
+            <div class="weui-c-like">
+                <i class="icon"></i>
+                <span id="likenum">1000</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+ $("input,select,textarea").blur(function(){
+setTimeout(() => {
+const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+}, 100);
+})
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        popup
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+<div class='page-bd-15'>
+    <a href="javascript:;" class="weui-btn weui-btn_primary open-popup" data-target="#full">显示全屏(默认)Popup</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary open-popup" data-target="#half">显示底部的Popup</a>
+    <a href="javascript:;" id='n' class="weui-btn weui-btn_primary">显示通知</a>
+</div>
+
+<div id="full" class='weui-popup__container'>
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        内容
+        <a href="javascript:;" class="weui-btn weui-btn_primary close-popup">关闭</a>
+    </div>
+</div>
+
+<div id="half" class='weui-popup__container popup-bottom'>
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar">
+            <div class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                <h1 class="title">标题</h1>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">number</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" pattern="[0-9]*" placeholder="请输入qq号" type="number">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">手机号</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入手机号" type="tel">
+        </div>
+
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">验证码</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="验证码" type="number">
+        </div>
+        <div class="weui-cell__ft">
+            <button class="weui-vcode-btn" onclick="settime(this)">获取验证码</button>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">date</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" value="" type="date">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">datetime</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" value="" placeholder="" type="datetime-local">
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入验证码" type="number">
+        </div>
+        <div class="weui-cell__ft">
+            <img id="code" class="weui-vcode-img" src="../php/code.php" onclick="getcode();" width="130" height="53">
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on("open", ".weui-popup-modal", function() {
+        console.log("open popup");
+    }).on("close", ".weui-popup-modal", function() {
+        console.log("close popup");
+    });
+
+ /*   $("#about").popup();打开
+    $.closePopup() ;关闭*/
+
+
+    $(document).on("click", "#n", function() {
+        $.noti({
+            title: "中奖啦！",
+            text: "点击领取红包！",
+            // media: "<img src='./images/present.png' />",
+            data: {
+                message: "没有!"
+            },
+            time: 3000,
+            onClick: function(data) {
+                $.alert(data.message);
+            }
+        });
+    });
+    
+</script>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

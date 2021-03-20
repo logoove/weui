@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/eruda.js"></script>
+     <script src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script>
+        var url = window.location.href.split('#')[0];
+        $(function(){
+            $.ajax({
+                type:"post",
+                url:'https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=jssdk&sign=cf9e7e16789798154bea9844407189796aca3cff',
+                data: {url:url},
+                dataType: "json",
+                async:false,
+                success:function(rs){
+                    console.log(rs)
+                    wx.config({
+                        debug: false,
+                        appId:rs.appId,
+                        timestamp: rs.timestamp,
+                        nonceStr: rs.nonceStr,
+                        signature: rs.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'updateAppMessageShareData',
+                            'updateTimelineShareData',
+                            'hideMenuItems',
+                            'showMenuItems',
+                            'hideAllNonBaseMenuItem',
+                            'showAllNonBaseMenuItem',
+                            'translateVoice',
+                            'startRecord',
+                            'stopRecord',
+                            'onVoiceRecordEnd',
+                            'playVoice',
+                            'onVoicePlayEnd',
+                            'pauseVoice',
+                            'stopVoice',
+                            'uploadVoice',
+                            'downloadVoice',
+                            'chooseImage',
+                            'previewImage',
+                            'uploadImage',
+                            'downloadImage',
+                            'getNetworkType',
+                            'openLocation',
+                            'getLocation',
+                            'hideOptionMenu',
+                            'showOptionMenu',
+                            'closeWindow',
+                            'scanQRCode',
+                            'chooseWXPay',
+                            'openProductSpecificView',
+                            'addCard',
+                            'chooseCard',
+                            'openCard'
+                        ]
+                    });
+                },
+                error:function(xhr){
+                    alert('ajax出错');
+                },
+            });
+
+
+        })
+
+        wx.ready(function () {
+            var shareData = {
+                title:"jssdk演示",
+                desc: "描述",
+                link:url,
+                imgUrl:"https://we7.shanliwawa.top/addons/yoby_test/icon.jpg",
+                type:'', // 分享类型,music、video或link，不填默认为link 分享给朋友
+                dataUrl:'', // 如果type是music或video，则要提供数据链接，默认为空 分享给朋友
+            };
+            wx.hideOptionMenu();
+            wx.showMenuItems({
+                menuList: [
+                    'menuItem:share:timeline',
+                    'menuItem:share:appMessage',
+                    'menuItem:copyUrl',
+                    "menuItem:share:qq",
+                    "menuItem:share:QZone",
+                    "menuItem:favorite",
+
+                ],
+            });
+            //分享朋友或qq jssdk1.4 注意要在分享按钮前
+                wx.updateAppMessageShareData({
+                    title: shareData.title, // 分享标题
+                    desc: shareData.desc, // 分享描述
+                    link: url,
+                    imgUrl: shareData.imgUrl, // 分享图标
+                    success: function (rs) {
+                    }
+                })
+
+//分享到朋友圈或qq空间   jssdk1.4
+                wx.updateTimelineShareData({
+                    title: shareData.title, // 分享标题
+                    link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: shareData.imgUrl, // 分享图标
+                    success: function (rs) {
+                    }
+                });
+
+            document.querySelector('#location1').onclick = function () {
+                wx.openLocation({
+                    latitude: 23.099994,
+                    longitude: 113.324520,
+                    name: 'TIT 创意园',
+                    address: '广州市海珠区新港中路 397 号',
+                    scale: 14,
+                    infoUrl: 'http://weixin.qq.com'
+                });
+            };
+
+            document.querySelector('#location2').onclick = function () {
+                wx.getLocation({
+                    success: function (res) {
+                        alert(JSON.stringify(res));
+                    },
+                    cancel: function (res) {
+                        alert('用户拒绝授权获取地理位置');
+                    }
+                });
+            };
+        })
+
+    </script>
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            JSSDK演示
+        </h1>
+        <p class="page-hd-desc">全部jssdk演示,使用ajax跨域方式签名,jssdk采用1.4最新版本,即将废弃接口不再使用,后端php5.6代码</p>
+    </div>
+
+    <div class="page-bd-15">
+
+        <div class="weui-cells__title">相册/公众号二维码生成</div>
+        <img src="../images/1.jpg" class="weixin img-max">
+        <img src="http://open.weixin.qq.com/qr/code?username=hszuqiu" class="img-max">
+        <div class="weui-cells__title">分享</div>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="share1">分享朋友/qq</a>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="share2">分享朋友圈/qzone</a>
+
+        <div class="weui-cells__title">图片上传</div>
+
+        <div class="weui-uploader">
+            <div class="weui-uploader__hd">
+                <p class="weui-uploader__title">单图上传</p>
+                <div class="weui-uploader__info">0/2</div>
+            </div>
+            <div class="weui-uploader__bd">
+                <ul class="weui-uploader__files"></ul>
+                <div class="weui-uploader__input-box">
+                    <span class="weui-uploader__input" onclick="jssdkimg(this)"></span>
+            </div>
+            <script>
+                function removeimg(obj){
+                    $.confirm('您确定要删除吗?', '确认删除?', function() {$(obj).remove();});
+                    return false;
+                }
+function jssdkimg(obj){
+    wx.chooseImage({
+        count:1,
+        success: function (res) {
+            var localIds = res.localIds; //本地图片id
+            wx.uploadImage({
+                localId:'' + localIds, // 需要上传的图片的本地ID，由chooseImage接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                    var serverId = res.serverId; // 返回图片的服务器端ID
+                    console.log(serverId)
+                    $.post("https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=img&sign=cf9e7e16789798154bea9844407189796aca3cff",{"mid":serverId},function(res){
+                    console.log(res.list.src)
+                    $(obj).parent().prev().html('<li onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url('+res.list.src+')"><input value="'+res.list.val+'"  type="hidden"  name="file" /></li>');
+                    })
+                }
+            });
+
+
+        }
+    });
+}
+            </script>
+        </div>
+    </div>
+
+    <div class="weui-uploader">
+        <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">多图上传</p>
+            <div class="weui-uploader__info">0/2</div>
+        </div>
+        <div class="weui-uploader__bd">
+            <ul class="weui-uploader__files">
+            </ul>
+            <div class="weui-uploader__input-box">
+                <span class="weui-uploader__input" onclick="jssdkimgs(this)"></span>
+            </div>
+        </div>
+        <script>
+            function removeimgs(obj){
+                $.confirm('您确定要删除吗?', '确认删除?', function() {$(obj).remove();});
+                return false;
+            }
+            function jssdkimgs(obj){
+                wx.chooseImage({
+                    count:9,
+                    success: function (res) {
+                        var localIds = res.localIds; //本地图片id
+                        syncupload(localIds,obj);
+                    }
+                });
+            }
+            function syncupload(localIds,obj){
+                var localId = localIds.pop();
+                wx.uploadImage({
+                    localId:localId, // 需要上传的图片的本地ID，由chooseImage接口获得
+                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                    success: function (res) {
+                        var serverId = res.serverId; // 返回图片的服务器端ID
+                        $.post("https://we7.shanliwawa.top/addons/yoby_test/token.php?uniacid=1&type=img&sign=cf9e7e16789798154bea9844407189796aca3cff",{"mid":serverId},function(res){
+                         console.log(res.list.src)
+                        $(obj).parent().prev().append('<li onclick="removeimgs(this)" class="weui-uploader__file" style="background-image:url('+res.list.src+')"><input value="'+res.list.src+'"  type="hidden"  name="file[]" /></li>');
+                        })
+                        if(localIds.length > 0){
+                            syncupload(localIds,obj);
+                        }
+                    }
+                });
+            }
+        </script>
+    </div>
+
+
+    <div class="weui-cells__title">地理位置</div>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="location1">查看地图</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="location2">获取坐标</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="wx.closeWindow();">JSSDK关闭窗口</a>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="WeixinJSBridge.call('closeWindow');">不使用jssdk关闭窗口</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="qr" onclick="qr()">二维码</a>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="getaddress()">地址获取</a>
+
+        <script>
+
+        function qr(){
+            wx.scanQRCode({
+                needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                scanType: ["qrCode","barCode"],
+                success: function (res) {
+                    var result = res.resultStr;
+                    console.log(res)
+                    alert(result)
+                }
+            });
+        }
+    </script>
+    <script>
+        function getaddress(){
+            wx.openAddress({
+                success: function (res) {
+                    alert(JSON.stringify(res));
+                    console.log(res)
+                }
+            });
+        }
+    </script>
+
+    </div>
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+</body>
+</html>

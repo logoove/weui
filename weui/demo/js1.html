@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    
+    <script>
+        $(function(){
+
+
+            $(document).on("click", "#showToast", function() {
+                $.toast();
+
+              /*  说明:  默认已经完成,支持参数回调,以及时间
+                $.toast("取消操作", function() {
+                    console.log("cancel");
+                });
+                $.toast("消息", 20000);
+                */
+
+
+            });
+
+            $(document).on("click", "#show-toast-cancel", function() {
+                $.toast("取消操作", "cancel");
+            });
+            $(document).on("click", "#show-toast-3", function() {
+                $.toast("禁止操作", "forbidden");
+            });
+
+            $(document).on("click", "#text", function() {
+                $.toast.prototype.defaults.duration=1000;//1秒
+                $.toast("我是文本",'text');
+            });
+
+            $(document).on("click", "#showLoading", function() {
+                $.showLoading();
+
+                setTimeout(function() {
+                    $.hideLoading();
+                }, 3000)
+            });
+
+            $(document).on("click", "#sd1", function() {
+                $.alert("弹出对话框就是好","标题",function(){
+                    return alert('回调');
+                });
+            });
+            $(document).on("click", "#sd2", function() {
+                $.confirm("您确定要删除吗?", "确认删除?", function() {
+                    $.toast("删除成功!");
+                }, function() {
+                    //取消操作
+                });
+            });
+            $(document).on("click", "#sd3", function() {
+                $.prompt({
+                    title: '标题',
+                    text: '内容文案',
+                    input: '输入框默认值',
+                    empty: false, // 是否允许为空
+                    onOK: function (input) {
+                        //点击确认
+                    },
+                    onCancel: function () {
+                        //点击取消
+                    }
+                });
+            });
+            $(document).on("click", "#sd4", function() {
+                $.modal({
+                    title: "Hello",
+                    text: "我是自定义的modal",
+                    buttons: [
+                        { text: "支付宝", onClick: function(){ console.log(1)} },
+                        { text: "微信支付", onClick: function(){ console.log(2)} },
+                        { text: "取消", className: "default", onClick: function(){ console.log(3)} },
+                    ]
+                });
+            });
+
+            $(document).on("click", "#login", function() {
+                $.login({
+                    title: '标题',
+                    text: '内容文案',
+                    username: 'tom',  // 默认用户名
+                    password: 'tom',  // 默认密码
+                    onOK: function (username, password) {
+                        //点击确认
+                    },
+                    onCancel: function () {
+                        //点击取消
+                    }
+                });
+            });
+
+
+
+                $(document).on("click", "#sd5", function() {
+                    $.toptip("错误提示",2000);
+                });
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="container">
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       弹出框/toptip/toast
+    </h1>
+    <p class="page-hd-desc">$.closeModal();用来关闭弹出框</p>
+</div>
+<div class="page-bd-15">
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="showToast">Toast 成功</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="show-toast-cancel">Toast 取消</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="show-toast-3">Toast 警告</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="text">Toast text</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="showLoading">Toast Loading </a>
+
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd1">Dialog alert</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd2">Dialog  confirm</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd3">Dialog  prompt</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd4">Dialog modal自定义</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="login">Dialog login</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd5">toptips默认</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="$.toptip('我是绿色提示','success')">success</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary"  onclick="$.toptip('我是黑色提示','error')">error 默认</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary"  onclick="$.toptip('我是橙色提示','warning')"> warning</a>
+
+
+
+</div>
+
+
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/macy.js"></script>
+<style>
+.demo {
+        border-radius:3px;
+        overflow: hidden;
+    }
+    .demo-image {
+        display: inline-block;
+        width:100%;
+        max-width: 100%;
+        max-height:260px;
+        margin-bottom: .5em;
+    }
+</style>
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            瀑布流
+        </h1>
+        <p class="page-hd-desc">需要加载macy.js插件,<a target="_blank" href="https://github.com/bigbite/macy.js">插件官方</a></p>
+    </div>
+    <div class="page-bd-15" id="macy">
+    <div class="demo"><img src="/getimg?c=557x387" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=602x660" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=660x646" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=741x375" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=813x455" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=470x896" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=664x653" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=708x313" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=738x578" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=458x482" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=439x856" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=549x315" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=877x693" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=542x805" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=683x445" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=616x340" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=533x317" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=700x894" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=663x541" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=368x575" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=696x538" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=571x460" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=892x379" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=473x729" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=657x632" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=311x796" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=588x561" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=812x564" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=353x454" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=468x737" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=600x784" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=777x833" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=801x576" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=826x564" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=390x240" class="demo-image"></div>
+    <div class="demo"><img src="/getimg?c=390x130" class="demo-image"></div>
+
+    </div>
+
+
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+<script>
+    var masonry = Macy.init({
+        container: '#macy',
+        trueOrder: false,
+        waitForImages: true,
+        debug: false,
+        margin: {
+            x: 10,
+            y: 10
+        },
+        columns: 6,
+        breakAt: {
+            1200: {
+                columns: 5,
+                margin: {
+                    x: 4,
+                    y: 4
+                }
+            },
+            940: {
+                columns: 3,
+                margin: {
+                    y: 4
+                }
+            },
+            520: {
+                columns: 2,
+                margin: {
+                    x: 4,
+                    y: 4
+                },
+            },
+            400: {
+                columns: 1
+            }
+        }
+    });
+</script>
+</body>
+</html>

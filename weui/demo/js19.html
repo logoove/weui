@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+     <script>
+         $(function(){
+ $(document).on("click tap","#address1",function(){
+        var str=`<iframe style="position: fixed;z-index:9999;bottom:0;height: 100%;" id="mapPage" width="100%" height="100%" frameborder=0
+    src="https://apis.map.qq.com/tools/locpicker?search=1&type=1&key=ACEBZ-FDXWP-WFRDV-VGS5Q-S2Q5K-HQBNA&referer=myapp">
+</iframe>`;
+        $(str).prependTo('body');
+    })
+
+         })
+
+		 window.addEventListener('message', function(event) {
+    // 接收位置信息，用户选择确认位置点后选点组件会触发该事件，回传用户的位置信息
+    var loc = event.data;
+    if (loc && loc.module == 'locationPicker') {
+        console.log('location', loc);
+        $("#address").val(loc.poiaddress);
+        $("#mapPage").remove();
+    }
+}, false);
+
+     </script>
+</head>
+
+<body ontouchstart>
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            地图定位选点
+        </h1>
+        <p class="page-hd-desc">使用腾讯地图,需要密钥</p>
+    </div>
+
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><a class="weui-label" id="address1">选择地址</a></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="选择或填写地址" type="text" name="address" id="address">
+        </div>
+    </div>
+</div>
+
+
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</body>
+</html>

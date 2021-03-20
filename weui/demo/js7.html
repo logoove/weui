@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            音频播放
+        </h1>
+        <p class="page-hd-desc">支持微信内自动播放</p>
+    </div>
+
+    <audio id="mp3" src="../images/test.mp3" preload="meta" controls></audio>
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+<script>
+    function audioplay(id){
+        var audio = document.getElementById(id);
+        !audio.paused?audio.pause():audio.play();
+
+
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            !audio.paused?audio.pause():audio.play();
+        }, false);
+    }
+    $(function(){
+//audioplay('mp3');自动播放语句
+
+    })
+</script>
+<script >var mp3="../images/test.mp3"; </script>
+<script src="../js/sound.js"></script>
+</body>
+</html>

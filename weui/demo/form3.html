@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            $(".weui-payselect-li").on('click',function(){
+                $(this).children().addClass("weui-payselect-on");
+                $(this).siblings().children().removeClass("weui-payselect-on");
+                return false;
+            })
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        支付场景
+    </h1>
+    <p class="page-hd-desc">输入支付/支付表单/订单显示</p>
+</div>
+
+<div class="weui-pay">
+    <div class="weui-pay-inner">
+        <h1 class="weui-pay-title">付款金额(元)</h1>
+        <div class="weui-pay-input"> <strong class="weui-pay-strong">￥</strong>
+            <input type="number" name="money" class="weui-pay-inputs" placeholder="请输入金额"></div>
+        <div class="weui-pay-intro">最多可输入金额500元</div>
+    </div>
+    <p class="weui-pay-info">支付金额给商户</p>
+    <div class="weui-pay-btn">
+        <a href="javascript:;" class="weui-btn weui-btn_primary">立即支付</a>
+    </div>
+</div>
+
+
+<div class="weui-pay">
+    <h1 class="weui-payselect-title">停车费</h1>
+    <p class="weui-pay-num">￥15.00</p>
+    <ul class="weui-pay-u">
+        <li>
+            <span class="title">停车优惠</span>
+            <span class="content">5折停车优惠券</span>
+        </li>
+        <li>
+            <span class="title">已停时长</span>
+            <span class="content">1小时23分</span>
+        </li>
+        <li>
+            <span class="title">停车卡号</span>
+            <span class="content">12345678</span>
+        </li>
+        <li>
+            <span class="title">车牌号码</span>
+            <span class="content">粤B·JQ238</span>
+        </li>
+    </ul>
+    <div class="pay-div">
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="pay">立即支付</a>
+    </div>
+</div>
+
+<div class="weui-payrec">
+    <div class="weui-cells ">
+        <a class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd weui-cell_primary">
+                <h2 class="weui_cell_title">行政业务订单统一支付</h2>
+                <div class="weui_cell_info">4月11日 22:54</div>
+            </div>
+            <div class="weui-cell__ft">
+                <div class="weui_cell_title">支付成功</div>
+                <div class="weui_cell_info">￥200元</div>
+            </div>
+        </a>
+        <a class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd weui-cell_primary">
+                <h2 class="weui_cell_title">行政业务订单统一支付</h2>
+                <div class="weui_cell_info">4月11日 22:54</div>
+            </div>
+            <div class="weui-cell__ft">
+                <div class="weui_cell_title">支付成功</div>
+                <div class="weui_cell_info">￥200元</div>
+            </div>
+        </a>
+        <a class="weui-cell " href="javascript:;">
+            <div class="weui-cell__bd weui-cell_primary">
+                <h2 class="weui_cell_title">行政业务订单统一支付</h2>
+                <div class="weui_cell_info">4月11日 22:54</div>
+                <div class="weui_cell_info">4月11日 22:54</div>
+            </div>
+            <div class="weui-cell__ft">
+                <div class="weui_cell_title f-green">支付成功</div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore-tips">正在加载</span>
+    </div>
+</div>
+
+<ul class="weui-payrec">
+    <div class="weui-pay-m">
+        <li class="weui-pay-order">
+            <dl class="weui-pay-line">
+                <dd class="weui-pay-name">天朝科学商学院</dd>
+                <dt class="weui-pay-label">订 单 号：</dt><dd class="weui-pay-e">465464565665</dd>
+            </dl>
+            <dl class="weui-pay-line"><dt class="weui-pay-label">出发时间：</dt><dd class="weui-pay-e">2015年1月20日 12:20</dd></dl>
+            <dl class="weui-pay-line"><dt class="weui-pay-label">应付金额：</dt><dd class="weui-pay-e">￥315.0</dd></dl>
+
+            <div class="weui-pay-area">
+                <a href="javascript:;" class="weui-pay-c">取消订单</a>
+                <a href="javascript:;" class="weui-pay-v">立即付款</a>
+            </div>
+        </li>
+    </div>
+    <div class="weui-pay-m">
+        <li class="weui-pay-order">
+            <dl class="weui-pay-line">
+                <dd class="weui-pay-name">天朝科学商学院</dd>
+                <dt class="weui-pay-label">订 单 号：</dt><dd class="weui-pay-e">465464565665</dd>
+            </dl>
+            <dl class="weui-pay-line"><dt class="weui-pay-label">出发时间：</dt><dd class="weui-pay-e">2015年1月20日 12:20</dd></dl>
+            <dl class="weui-pay-line"><dt class="weui-pay-label">应付金额：</dt><dd class="weui-pay-e">￥315.0</dd></dl>
+
+            <div class="weui-pay-area">
+                <a href="javascript:;" class="weui-pay-c">取消订单</a>
+                <a href="javascript:;" class="weui-pay-v">立即付款</a>
+            </div>
+        </li>
+    </div>
+</ul>
+
+<div class="weui-pay">
+    <h1 class="weui-payselect-title">选择金额付款</h1>
+    <p class="weui-payselect-info">支付金额给商户</p>
+    <ul class="weui-payselect-ul">
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a weui-payselect-on">1元<span class="weui-pay-12">110次</span></a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">10元</a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">100元<span class="weui-pay-12">99.9元</span></a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">200元</a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">300元</a>
+        </li>
+        <li class="weui-payselect-li">
+            <a href="javascript:;" class="weui-payselect-a">500元</a>
+        </li>
+    </ul>
+    <a href="javascript:;" class="weui-btn weui-btn_primary">立即支付</a>
+
+</div>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

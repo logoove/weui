@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        table表格
+    </h1>
+    <p class="page-hd-desc">默认支持普通表格,支持移动端变换表格为列表</p>
+</div>
+  <h3>默认表格不加类</h3>
+<table >
+    <thead>
+    <tr><th>姓名</th><th>朝代</th><th>职业</th></tr>
+    </thead>
+    <tbody >
+
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    </tbody>
+</table>
+
+<h3>weui-table</h3>
+<table class="weui-table" >
+    <thead>
+    <tr><th>姓名</th><th>朝代</th><th>职业</th></tr>
+    </thead>
+    <tbody >
+
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    </tbody>
+</table>
+
+<h3>weui-table weui-table-2n偶数行换色</h3>
+<table class="weui-table weui-table-2n" >
+    <thead>
+    <tr><th>姓名</th><th>朝代</th><th>职业</th></tr>
+    </thead>
+    <tbody >
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业"><a href="//www.baidu.com">刺客</a></td></tr>
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    <tr><td title="姓名">李白</td><td title="朝代">唐朝</td><td title="职业">刺客</td></tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

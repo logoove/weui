@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+
+    <script src="../js/iscroll-lite.js"></script>
+
+    <script>
+        $(function(){
+            TagNav('#tagnav',{
+                type: 'scrollToNext',
+                curClassName: 'weui-state-active',
+                index:2
+            });
+
+            $('#t1').tab({
+                defaultIndex: 0,
+                activeClass: 'tab-green',
+                onToggle: function (index) {
+console.log('index'+index);
+                }
+            })
+
+            $('#t2').tab({
+                defaultIndex: 1,
+                activeClass: 'tab-red'
+            })
+
+            $('#t3').tab({
+                defaultIndex:2,
+                activeClass: 'tab-blue'
+            })
+
+            $('#t4').tab({defaultIndex:1,activeClass:"bg-green"});
+
+            $('#t5').tab({defaultIndex:2,activeClass:"bg-red"});
+
+        })
+
+    </script>
+
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            navbar/今日头条导航
+        </h1>
+        <p class="page-hd-desc">今日头条导航需要加载iscroll-lite.js插件,这里使用的是精简版,源码未压缩可自行修改其他颜色</p>
+    </div>
+
+
+    <div id="tagnav" class="weui-navigator weui-navigator-wrapper">
+        <ul class="weui-navigator-list">
+            <li><a href="javascript:;">首页</a></li>
+            <li><a href="javascript:;">王者荣耀</a></li>
+            <li><a href="javascript:;">国内</a></li>
+            <li><a href="javascript:;">国际</a></li>
+            <li><a href="javascript:;">军事</a></li>
+            <li><a href="javascript:;">社会</a></li>
+            <li><a href="javascript:;">娱乐</a></li>
+            <li><a href="javascript:;">女人</a></li>
+            <li><a href="javascript:;">体育</a></li>
+            <li><a href="javascript:;">科技</a></li>
+            <li><a href="javascript:;">互联网</a></li>
+            <li><a href="javascript:;">教育</a></li>
+            <li><a href="javascript:;">财经</a></li>
+            <li><a href="javascript:;">房产</a></li>
+            <li><a href="javascript:;">汽车</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <br>
+    <div class="weui-tab" id="t1" style="height:44px;">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item">
+                杨玉环
+            </div>
+            <div class="weui-navbar__item">
+                赵飞燕
+            </div>
+            <div class="weui-navbar__item">
+                貂蝉
+            </div>
+        </div>
+
+    </div>
+<br>
+    <div class="weui-tab" id="t2" style="height:44px;">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item">
+                杨玉环
+            </div>
+            <div class="weui-navbar__item">
+                赵飞燕
+            </div>
+            <div class="weui-navbar__item">
+                貂蝉
+            </div>
+        </div>
+
+    </div>
+      <br>
+    <div class="weui-tab" id="t3" style="height:44px;">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item">
+                杨玉环
+            </div>
+            <div class="weui-navbar__item">
+                赵飞燕
+            </div>
+            <div class="weui-navbar__item">
+                貂蝉
+            </div>
+        </div>
+       
+    </div>
+      <br>
+
+        <div class="weui-tab" style="height:44px;"   id="t4">
+            <div class="weui-tab-nav"> <a href="javascript:" class="weui-navbar__item weui-nav-green"> 中国 </a> <a href="javascript:" class="weui-navbar__item weui-nav-green"> 美国 </a> <a href="javascript:" class="weui-navbar__item weui-nav-green"> 小日本 </a> </div>
+        </div>
+
+
+        <div class="weui-tab" style="height:44px;"   id="t5">
+            <div class="weui-tab-nav"> <a href="javascript:" class="weui-navbar__item weui-nav-red"> 中国 </a> <a href="javascript:" class="weui-navbar__item weui-nav-red"> 美国 </a> <a href="javascript:" class="weui-navbar__item weui-nav-red"> 小日本 </a><a href="javascript:" class="weui-navbar__item weui-nav-red"> 韩国 </a> </div>
+        </div>
+
+
+        <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+
+<script>
+    //有4个颜色配置
+    $(document).on("click", "#show-actions", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [
+                {
+                    text: "发布",
+                    className: "color-primary",
+                    onClick: function() {
+                        $.alert("发布成功");
+                    }
+                },
+                {
+                    text: "编辑",
+                    className: "color-warning",
+                    onClick: function() {
+                        $.alert("你选择了“编辑”");
+                    }
+                },
+                {
+                    text: "删除",
+                    className: 'color-danger',
+                    onClick: function() {
+                        $.alert("你选择了“删除”");
+                    }
+                }
+            ]
+        });
+    });
+
+    $(document).on("click", "#show-actions-bg", function() {
+        $.actions({
+            actions: [
+                {
+                    text: "发布",
+                    className: "bg-primary",
+                },
+                {
+                    text: "编辑",
+                    className: "bg-warning",
+                },
+                {
+                    text: "删除",
+                    className: 'bg-danger',
+                } ,{
+                    text: "删除",
+                    className: 'bg-success',
+                }
+            ]
+        });
+    });
+</script>
+</body>
+</html>

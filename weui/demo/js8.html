@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/php.js"></script>
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+            Template7和tpl的js模板引擎2种
+        </h1>
+        <p class="page-hd-desc">Template7模板在zepto.weui.js中,tpl在php.js中,根据需要选择</p>
+    </div>
+
+    <div class="weui-cells__title">Template7支持循环且能判断是否为空数据,支持if/else,支持js表达式,支持上级对象输出,更多功能都是鸡肋用不着,可以去官方查看</div>
+    <div class="weui-cells" id="list"></div>
+    <script id="tpl" type="text/html">
+
+        {{#each list}}
+        <a class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">
+                <p>{{@index}}- {{../title}} - {{name}}  {{#if ../n<1}}小于1{{else}}大于1{{/if}}  {{js "date('Y-m-d',time())"}}</p>
+            </div>
+            <div class="weui-cell__ft"> {{age}}
+            </div>
+        </a>
+        {{else}}
+        数组为空输出
+        {{/each}}
+
+        </script>
+
+    <script>
+var json = {
+    "title":"我是一个中国人",
+    "date":"2018-12-12",
+    "n":"-99",
+    "list":[
+        {
+            "name":"李白","age":"99岁"
+        },
+        {
+            "name":"杜甫","age":"77岁"
+        },
+        {
+            "name":"白居易","age":"1000岁"
+        },
+        {
+            "name":"李贺","age":"100岁"
+        }
+    ]
+};
+
+var comtpl = $.t7.compile(document.getElementById('tpl').innerHTML);
+document.getElementById('list').innerHTML = comtpl(json);
+        
+    </script>
+
+    <div class="weui-cells__title">tpl是1kb模板引擎,只有一个函数支持循环</div>
+    <div class="weui-cells" id="rank"></div>
+    <script id="tpl1" type="text/html">
+        <% for (var i in list) {   %>
+        <a class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">
+                <p><%=i%>- <%=list[i].name||"不存在"%><%=this.title%><%=(this.n>1)?"大于1":"小于1"%></p>
+            </div>
+            <div class="weui-cell__ft">  <%=list[i].age%>
+            </div>
+        </a>
+        <% } %>
+
+    </script>
+    <script>
+        document.getElementById('rank').innerHTML = tpl(document.getElementById('tpl1').innerHTML,json);
+    </script>
+
+    <div class="weui-cells" id="content"></div>
+    <script>
+        var data={
+            title:"登鹳雀楼",
+            list:[
+                "白日依山尽",
+                "黄河入海流",
+                "欲群千里目",
+                "更上一层楼"
+            ]
+        }
+        var html='<div class="weui-cells__title">tpl用法2字符串赋值方法的模板</div>' +
+            '<% for (var i in list) {   %>' +
+            '<a class="weui-cell weui-cell_access" href="javascript:;">\n' +
+            '            <div class="weui-cell__bd">\n' +
+            '                <p><%=list[i]%><%=this.title%></p>\n' +
+            '            </div>\n' +
+            '            <div class="weui-cell__ft">\n' +
+            '            </div>\n' +
+            '        </a>' +
+            '<% } %>';
+
+        document.getElementById('content').innerHTML = tpl(html,data);
+    </script>
+
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+
+
+</body>
+</html>

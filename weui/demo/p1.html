@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+	<script src="../js/php.js"></script>
+
+    <script>
+        $(function(){
+        });
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+       js方法
+    </h1>
+    <p class="page-hd-desc">在php.js和zepto.weui.js中,js方法与php方法同名,具体参数可以参考php手册</p>
+</div>
+
+<table style="word-wrap:break-word; word-break:break-all;">
+    <thead>
+    <tr><th width="40%">功能</th><th>说明</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>fadeIn和fadeOut</td><td>对应替换show hide</td></tr>
+    <tr><td>data方法</td><td>data("blah", json);支持存取  </td></tr>
+    <tr><td>show/hide</td><td>支持show("slow"),600ms fast 200ms 默认400ms</td></tr>
+    <tr><td>fadeToggle</td><td>fadeToggle("slow","linear")支持ease,linear,ease-in,ease-out,ease-in-out</td></tr>
+    <tr><td>支持事件</td><td>longTap长按,swipe, swipeLeft, swipeRight, swipeUp, swipeDown滑动</td></tr>
+    <tr><td>share</td><td>分享弹出层</td></tr>
+    <tr><td>browser变量</td><td>{"version":{"ie":false,"opera":false,"webKit":false,"firefox":true,"mobile":false,"ios":false,"android":false,"iphone":false,"ipad":false,"weixin":false},"language":"zh-cn","wifi",true}</td></tr>
+    <tr><td>htmlencode(str)/htmldecode(str)</td><td>转换或还原实体</td></tr>
+    <tr><td>date</td><td>Y-m-d H:i:s返回带0 Y-n-j不带0 z一年中第几天要+1才正确 w星期0是周日 N 7是周日D三个字母星期 l英语星期 W周 F月份英语 L闰年判断 c带时区日期时间 r英文形式</td></tr>
+    <tr><td>time</td><td>返回php形式10位时间</td></tr>
+    <tr><td>strtotime</td><td>转换成时间戳 支持'06:08:59' "2014-2-3" "now"  "+1 day" "+1 week" "+2 days"</td></tr>
+    <tr><td>microtime</td><td>微秒返回 "0.992 1434963474" microtime().split(" ")[1]</td></tr>
+    <tr><td>intval(9.2,8)floatval(1.2)</td><td>浮点型 转换成整形 第二个表示数据的进制 转换不了返回0</td></tr>
+    <tr><td>empty()</td><td>是否为空 0  false null ''  [] {} undefined</td></tr>
+    <tr><td>isset()</td><td>是否赋值 undefined返回false</td></tr>
+    <tr><td>urlencode()urldecode()</td><td>编解码</td></tr>
+    <tr><td>base64_encode()base64_decode()</td><td>64编码转换</td></tr>
+    <tr><td>function_exists('alert') </td><td>检测函数是否存在</td></tr>
+    <tr><td>in_array(1, ['1', '2', '3']); </td><td>是否在数组中</td></tr>
+    <tr><td>range ( 0, 12 ); </td><td>生成数组 range( 'a', 'i' ); range( 0, 100, 10 );第三个参数步长</td></tr>
+    <tr><td>strip_tags("111")</td><td> 去除html</td></tr>
+    <tr><td>round(1.456,1) </td><td>四舍五入</td></tr>
+    <tr><td>rand(1,10) mt_rand</td><td>生成随机数1-10 前后都包含</td></tr>
+    <tr><td>ceil(1.2) </td><td>进1 floor(3.555) 舍去法</td></tr>
+    <tr><td>strtolower()</td><td>转大写strtoupper()小写ucfirst()首字母大写</td></tr>
+    <tr><td>base_convert(99,16,2) </td><td>进制之间转换</td></tr>
+    <tr><td>is_eq(str1,str2)</td><td> 是否相等</td></tr>
+    <tr><td>is_qq()</td><td>is_num("1") 是否数字</td></tr>
+    <tr><td>  is_id(str) </td><td>是否身份证</td></tr>
+    <tr><td> is_chinese(str) </td><td>是否中文</td></tr>
+    <tr><td>is_reg(str)</td><td>是否由字母和数字，下划线,点号组成.且开头的只能是下划线和字母</td></tr>
+    <tr><td>is_tel(str)</td><td>电话测试 校验普通电话、传真号码：可以“+”开头，除数字外，可含有“-”</td></tr>
+    <tr><td> is_http() </td><td>是否包含http或https</td></tr>
+    <tr><td> in_float(1.2,1.1,1.9) </td><td>是否在1.1-1.9之间</td></tr>
+    <tr><td> in_int(1,0,100) </td><td>是否在0到100之间</td></tr>
+    <tr><td> in_money(1.23) </td><td>判断是否是价格,金额 1.234这种不是金额 金额必须是1.23 1.2 1这种类型</td></tr>
+    <tr><td>is_url(str) </td><td>是否url</td></tr>
+    <tr><td>is_english(str) </td><td>是否英文</td></tr>
+    <tr><td>is_email</td><td>(邮箱)</td></tr>
+    <tr><td>is_zipcode(str)</td><td> 是否邮编</td></tr>
+    <tr><td>is_ip(str) </td><td>是否IP</td></tr>
+    <tr><td>is_phone("1") </td><td> 是否手机号</td></tr>
+    <tr><td>setcookie( "foo" );</td><td>获取cookie</td></tr>
+    <tr><td> setcookie( "foo", "bar", 5 ); </td><td>5天过期 setcookie( "foo", false ); 删除</td></tr>
+    <tr><td>date_eq(strDate1,strDate2) </td><td>判断是否第一个日期大于第二个</td></tr>
+    <tr><td>tpl($('#id'),json);</td><td>解析模板</td></tr>
+    <tr><td>$_GET("name")</td><td>获取参数</td></tr>
+    <tr><td>preg_replace(/N/,"32","分数是N分")</td><td>替换</td></tr>
+    <tr><td>strtrim(var) </td><td>去除多空格</td></tr>
+    <tr><td>json2str() </td><td>  str2json()</td></tr>
+    <tr><td>implode(',',[1,2,3]) </td><td>转换成字符串</td></tr>
+    <tr><td>strcut("我爱中国人",4,"...") </td><td>截取字符串汉字占两个 英文一个</td></tr>
+    <tr><td>strfind(string, find) </td><td>查找子字符串</td></tr>
+    <tr><td>timeline()</td><td>时间线</td></tr>
+    <tr><td>strlen('1我2') </td><td>返回3个字符 length属性一样</td></tr>
+    <tr><td>explode(",","1,2,3") </td><td>分割成数组</td></tr>
+    <tr><td>md5 sha1</td><td>返回md5 sha1算法字符串</td></tr>
+    <tr><td>sort</td><td>数组排序sort(["a","b"],"SORT_STRING")按照字符排序,低到高</td></tr>
+    <tr><td>ksort</td><td>ksort(["a":"1"],"SORT_STRING")对数组按照键名排序，保留键名到数据的关联。本函数主要用于关联数组。</td></tr>
+    <tr><td>uniqid</td><td>生成唯一id,默认长13,添加前缀uniqid("qq")返回15,uniqid('',true)返回长度23</td></tr>
+    <tr><td>count</td><td>计算数组或对象长度,字符串永远返回1,null/undefined/[]/{}返回0 其他0,'',true,false返回1,所以非数组对象使用length属性才是正确的</td></tr>
+    <tr><td>mktime</td><td>返回日期时间戳,无参数返回当前时间戳,mktime(时,分,秒,月,日,年)</td></tr>
+    <tr><td>$_COOKIE</td><td>返回cookie值$_COOKIE("a")</td></tr>
+    <tr><td>foreach</td><td>处理数组对象foreach (['a', 'b'], function (val) {alert(val);});foreach ({key: 'value'}, function (key, val) {alert(key+'::'+val);});</td></tr>
+    <tr><td>unset</td><td>unset('arr[1]');必须字符串形式传入</td></tr>
+    <tr><td>array_values</td><td>array_values( {firstname: 'Kevin', surname: 'van Zonneveld'} );返回数组值组成的新数组</td></tr>
+    <tr><td>array_keys</td><td>array_keys( {firstname: 'Kevin', surname: 'van Zonneveld'} );返回键组成的新数组</td></tr>
+    <tr><td>array_merge([1,2],[3],[4,5])</td><td>合并多个数组</td></tr>
+    <tr><td>array_search(6,[1,4,3,5,6])</td><td>返回查找的元素键</td></tr>
+    <tr><td>array_slice</td><td>数组截取,array_slice(["a", "b", "c", "d", "e"], 2, -1, true);开始位置,长度为正表示元素个数,为负表示倒数开始,true表示重排</td></tr>
+    <tr><td>str_replace("a","我","来自于a")</td><td>查找a替换成我</td></tr>
+    <tr><td>msg</td><td>提示跳转msg("info","提示信息","//baidu.com"),类型有:close自动关闭,可以有提示;gopage跳转页面不弹出;goto跳转有弹出,info/success/warn只有提示,不能有跳转</td></tr>
+    <tr><td>log</td><td>console.log简化函数</td></tr>
+    <tr><td>array_column</td><td>提取某列组成的新数组array_column(arr=[{"id":1,"name":"中国"},{"id":2,"name":"中国1"}],value="name",key="id"),第三个可不要</td></tr>
+<tr><td>dump</td><td>打印数组或字符变量,对象请用log打印</td></tr>
+<tr><td>preg_match</td><td>正则匹配类似php的</td></tr>
+<tr><td>str2arr</td><td>自动转化数组成字符串或字符成数组 自动判断</td></tr>
+<tr><td>compact</td><td>变量组合数组</td></tr>
+<tr><td>is_array</td><td></td></tr>
+<tr><td>is_object</td><td></td></tr>
+<tr><td>is_int</td><td></td></tr>
+<tr><td>is_float</td><td></td></tr>
+<tr><td>fn</td><td>打印所有自定义函数</td></tr>
+<tr><td>ltrim,trim,rtrim</td><td>去除左中右空格</td></tr>
+<tr><td>number_format</td><td>格式化数字number_format('1 000,50', 0, '.', ',')保留小数位数,小数点显示符号,千分位符号 </td></tr>
+<tr><td>hidebank,hidephone</td><td>隐藏银行卡 手机号中间几位</td></tr>
+<tr><td>unicode_encode("😋😘我们")</td><td>编码emoji字符为unicode,汉字不编码, unicode_encode("1我😜",true)全部编码成unicode</td></tr>
+<tr><td>unicode_encode</td><td>显示编码</td></tr>
+<tr><td>emoji_encode emoji_decode</td><td>emoji表情转换成实体,可以直接存储到数据库,显示的时候也不需要解码,如果在js中使用,需要用解码函数解码</td></tr>
+<tr><td>ls.set("text", "this is string",3*1000);</td><td>设置localstorage,兼容不支持浏览器使用cookie,以及过期时间,毫秒,支持字符串,数字,布尔,对象</td></tr>
+<tr><td>ls.get("text")</td><td>过期返回null</td></tr>
+<tr><td>ls.remove("a") sl.clear()</td><td>删除某个和全部清空</td></tr>
+    <tr><td>ls.setCookie("mycookie", "this is string", 60*60*24*30);</td><td>设置cookie</td></tr>
+    <tr><td>ls.getCookie("a") sl.clearCookie()</td><td>获取,全部清空</td></tr>
+    <tr><td>ls.removeCookie("a")</td><td>删除某个</td></tr>
+    <tr><td>loadjs加载文件</td><td>loadjs("eruda.js",function(istrue){ });</td></tr>
+    <tr><td>loadcss加载文件</td><td>loadcss("1.css",function(istrue){ });</td></tr>
+    <tr><td>addcss,addjs</td><td>加载代码片段</td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+
+
+    </tbody>
+</table>
+
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>

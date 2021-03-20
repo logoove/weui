@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function(){
+          $("#ld").click(function(){
+              $(".loading2").show();
+
+              setTimeout(function() {
+                  $(".loading2").hide();
+              }, 3000)
+
+          })
+
+            $(document).on("click", "#ld1", function() {
+                $.showLoading();
+
+                setTimeout(function() {
+                    $.hideLoading();
+                }, 3000)
+            });
+
+        });
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        loading/分割线/水平线
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+<div class="weui-loadmore">
+    <i class="weui-loading"></i>
+    <span class="weui-loadmore__tips">正在加载</span>
+</div>
+<div class="weui-loadmore weui-loadmore_line">
+    <span class="weui-loadmore__tips">暂无数据</span>
+</div>
+<div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+    <span class="weui-loadmore__tips"></span>
+</div>
+<div class="weui-loadmore" style="height:30px;line-height:30px;font-size:16px;">
+    <i class="loading"></i>
+    <span class="weui-loadmore__tips" >正在加载</span>
+</div>
+
+<div class="loading2 hide" data-text="加载中..."></div>
+<a href="javascript:;" id="ld">遮罩动画loading</a>
+<a href="javascript:;" id="ld1">弹出loading</a>
+
+<div class="hr1"></div>
+<br>
+<br>
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>
