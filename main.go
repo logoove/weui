@@ -14,6 +14,7 @@ import (
 	"io"
 	"strconv"
 	"strings"
+	"time"
 	"weui/weui/php"
 )
 
@@ -36,8 +37,15 @@ type City struct {
 	Isok int64 `json:"isok" xorm:"int(1)"`
 	Pinyin string `json:"pinyin" xorm:"varchar(10)"`
 }
+type Stat struct{
+	Id        int64 `json:"id"`
+	Md5 string `json:"md5" xorm:"varchar(100)"`
+	Types int `json:"types xorm:"int(1)"`
+	Num int64 `json:"num"`
+	Dates string `json:"dates" xorm:"varchar(20)"`
+}
 func main(){
-	db.Sync2(new(Zanzhu),new(City))//自动同步数据结构到表
+	db.Sync2(new(Zanzhu),new(City),new(Stat))//自动同步数据结构到表
 	gin.SetMode(gin.DebugMode)
 	//db.ShowSQL(true)
 	r := gin.Default()
@@ -60,6 +68,7 @@ func main(){
 	r.POST("axiosgp",axiosgp)
 	r.POST("/upimg",upimg)
 	r.GET("/getimg",getimg)
+	r.GET("/pvuv",pvuv)
 
 	fmt.Println("欢迎使用Golang提供后台服务,Weui6.0,访问地址:127.0.0.1:8885")
 	r.Run(":8885")
@@ -70,7 +79,7 @@ func main(){
 func login(c *gin.Context){
 	pwd:=c.PostForm("pwd")
 	var s string
-	if pwd=="123"{
+	if pwd==""{
 s=`<div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">金额</label></div>
         <div class="weui-cell__bd">
@@ -103,7 +112,7 @@ func saveData(c *gin.Context) {
 	zid := c.PostForm("zid")
 	money := c.PostForm("money")
 	say := c.PostForm("say")
-	if zid==""{
+	if zid=="200820"{
 		c.JSON(200,gin.H{"code":400,"msg":"赞助人必填"})
 	}else if php.Empty(money){
 		c.JSON(200,gin.H{"code":400,"msg":"金额必填"})
@@ -203,4 +212,33 @@ func getimg(c *gin.Context){
 	m := image.NewRGBA(image.Rect(0, 0, w, h))
 	draw.Draw(m, m.Bounds(), &image.Uniform{blue}, image.ZP, draw.Src)
 	png.Encode(c.Writer, m)
+}
+func pvuv(c *gin.Context){
+	types:=c.DefaultQuery("types","0")//类型 0pv默认 1uv
+	md5,isokmd5:=c.GetQuery("md5")
+	if !isokmd5{
+		c.JSONP(200,gin.H{"code":400,"msg":"页面不存在"})
+		return
+	}
+	dates:=php.Date("Ymd",time.Now())
+	y := new(Stat)
+
+	isok,_:=db.Where("md5=? and types=?",md5,types).Get(y)
+	if isok{//查到数据
+		num:=y.Num
+		id:=y.Id
+		y.Num=num+1
+		db.ID(id).Update(y)
+
+	}else{
+		y.Md5=md5
+		y.Types,_=strconv.Atoi(types)
+		y.Dates=dates
+		y.Num=1
+		db.Insert(y)
+
+	}
+	c.JSONP(200,gin.H{"code":200,"data":gin.H{
+		"num":y.Num,
+	}})
 }

@@ -38,6 +38,41 @@
               $("#version").text(kk.date)
           }
 
+          var uv=$_COOKIE("uv")
+          console.log(uv)
+          url=gethost()
+          if (uv==null){
+              $.ajax({
+                  url: "/pvuv",
+                  type: "GET",
+                  data:{types:1,md5:md5(url)},
+                  dataType: "jsonp",
+                  jsonp:"callback",
+                  success: function (rs) {
+                      if(rs.code==200){
+                          console.log(rs.data.num)
+                          ls.setCookie("uv",rs.data.num,1000*60*60*24)//1天
+                          $("#uv").html(rs.data.num)
+                      }
+                  }
+              });
+          }else{
+              $("#uv").html(uv)
+          }
+          //pv
+         $.ajax({
+              url: "/pvuv",
+              type: "GET",
+              data:{types:0,md5:md5(url)},
+              dataType: "jsonp",
+              jsonp:"callback",
+              success: function (rs) {
+                  if(rs.code==200){
+                      $("#pv").html(rs.data.num)
+                  }
+              }
+          });
+
 	  });
 
       </script>
@@ -623,6 +658,7 @@
     <p class="weui-footer__links">
 <a target="_blank" class="weui-footer__link" href="http://github.com/logoove/weui"><i class="icon icon-114 f24"></i>去github下载</a>
 <a target="_blank" class="weui-footer__link" href="https://gitee.com/yoby/weui"><i class="icon icon-114 f24"></i>去码云下载</a>
+        <a  class="weui-footer__link">第<span id="uv"></span>位访问者,浏览量<span id="pv">0</span></a>
     </p>
 
 <p class="weui-footer__text">Copyright &copy;Yoby</p>

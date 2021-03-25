@@ -71,8 +71,6 @@
     <tr><td>is_zipcode(str)</td><td> 是否邮编</td></tr>
     <tr><td>is_ip(str) </td><td>是否IP</td></tr>
     <tr><td>is_phone("1") </td><td> 是否手机号</td></tr>
-    <tr><td>setcookie( "foo" );</td><td>获取cookie</td></tr>
-    <tr><td> setcookie( "foo", "bar", 5 ); </td><td>5天过期 setcookie( "foo", false ); 删除</td></tr>
     <tr><td>date_eq(strDate1,strDate2) </td><td>判断是否第一个日期大于第二个</td></tr>
     <tr><td>tpl($('#id'),json);</td><td>解析模板</td></tr>
     <tr><td>$_GET("name")</td><td>获取参数</td></tr>
@@ -121,7 +119,7 @@
 <tr><td>ls.set("text", "this is string",3*1000);</td><td>设置localstorage,兼容不支持浏览器使用cookie,以及过期时间,毫秒,支持字符串,数字,布尔,对象</td></tr>
 <tr><td>ls.get("text")</td><td>过期返回null</td></tr>
 <tr><td>ls.remove("a") sl.clear()</td><td>删除某个和全部清空</td></tr>
-    <tr><td>ls.setCookie("mycookie", "this is string", 60*60*24*30);</td><td>设置cookie</td></tr>
+    <tr><td>ls.setCookie("mycookie", "this is string", 1000*60);//表示1分钟</td><td>设置cookie</td></tr>
     <tr><td>ls.getCookie("a") sl.clearCookie()</td><td>获取,全部清空</td></tr>
     <tr><td>ls.removeCookie("a")</td><td>删除某个</td></tr>
     <tr><td>loadjs加载文件</td><td>loadjs("eruda.js",function(istrue){ });</td></tr>
