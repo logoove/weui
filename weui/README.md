@@ -1,4 +1,4 @@
-# WeUI+
+### WeUI+
 [![GitHub issues](https://img.shields.io/github/issues/logoove/weui?color=1)](https://github.com/logoove/weui/issues)  [![GitHub forks](https://img.shields.io/github/forks/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/network)  [![GitHub stars](https://img.shields.io/github/stars/logoove/weui?color=1&style=social)](https://github.com/logoove/weui/stargazers)  ![GitHub repo size](https://img.shields.io/github/repo-size/logoove/weui?color=1)
 ![GitHub top language](https://img.shields.io/github/languages/top/logoove/weui?color=1)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/logoove/weui?color=1)
@@ -15,19 +15,21 @@ WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个�
 [![](https://img.shields.io/badge/github-https%3A%2F%2Fgithub.com%2Flogoove%2Fweui-1)](https://github.com/logoove/weui)
 
 [![](https://img.shields.io/badge/gitee-https%3A%2F%2Fgitee.com%2Fyoby%2Fweui-1)](https://gitee.com/yoby/weui)
-### ![](https://img.shields.io/badge/%E8%B5%9E%E5%8A%A9%E6%88%91-%E6%84%9F%E8%B0%A2%E6%AF%8F%E4%BD%8D%E8%B5%9E%E5%8A%A9%E5%92%8C%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7-1)
+![](https://img.shields.io/badge/%E8%B5%9E%E5%8A%A9%E6%88%91-%E6%84%9F%E8%B0%A2%E6%AF%8F%E4%BD%8D%E8%B5%9E%E5%8A%A9%E5%92%8C%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7-1)
 赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要>=1元,框架的正常发展离不开用户的支持!!!
 ![微信](https://weui.shanliwawa.top/weui/images/wechat.jpg)
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![支付宝](https://weui.shanliwawa.top/weui/images/alipay.jpg)
 
-
-### [![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
+### 简介
+[![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
 本项目系个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,都会及时回复,gitee更迅速回复;
 最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!
 php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的(作者是PHP程序员)
 新版本将后台服务由php改为go语言提供!
-### ![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
-- 2021-3-20 v6.0 发布最新6.0版本,所有后台都由原来php改为golang提供,包括静态页面,端口:8885,可以自己修改后编译,默认提供64位编译后win10,linux可执行文件,你本地可以不安装任何环境就能运行动态的页面展示效果,数据库采用sqlite3,不管是哪个系统编译都需要gcc支持.
+### 更新日志
+![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
+- 2021-3-21 v6.01 修复底部自动加载在安卓部分手机下不能加载.
+- 2021-3-20 v6.0 发布最新6.0版本,所有后台都由原来php改为golang提供,包括静态页面,端口:8885,可以自己修改后编译,默认提供x6|4位编译后win10,linux可执行文件,你本地可以不安装任何环境就能运行动态的页面展示效果,数据库采用sqlite3,不管是哪个系统编译都需要gcc支持.
 - 2021-3-18 v5.35 新增商品分类组件,感谢[hanchengluo](https://gitee.com/hanchengluo)提供模板
 - 2021-3-8 v5.34 新增组件聊天窗口模拟,感谢[pkkgu](https://gitee.com/pkkgu)提供模板
 - 2020-8-11 v5.33 新增navbar非ajax切换,navbar和tabbar同页面存在演示
@@ -43,8 +45,8 @@ php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多�
 - 2019-8-5 v5.23 新增emoji处理演示和相关处理函数,有两种方法,分别是转换成实体和unicode编码,以及其11kb包含100多个svg图标的演示,其他隐藏银行卡,手机号中间几位,判断是否为价格金额的函数,
 - 2019-7-31 v5.22 新增签到日历;
 - 2019-7-30 v5.21 新增trim,ltrim,rtrim三个函数,分别去掉两端,左边,右边的空格或者特定的字符,用法同名php函数,新增noshare函数,禁止页面在分享,一般用于个人中心,发布表单填写页面,直接调用不需要使用jssdk;新增开关获取选中和取消演示.新增.bg-white白色背景,新增margin和padding 上右下左四个方向的0,5px,10px,15px,20px .margin0,.margin0-t,等类似
-- 2019-7-23 v5.20 修改初始日期1930-2080年,新增年月日选择例子;更新省市县地址选择器数据,最新数据是2019年github上开源的三级数据json,同时压缩数据,体积由350kb变成180多kb,港澳台数据未有变化,因为开源的也没有港澳台含编码的数据.
-- 2019-7-22 v5.19 新增h5自动定位到县级城市,县级城市首字母选择或搜索;新增选择当前位置定位;新增25宫格;新增ajax跳到详情页返回后还原到原来位置;
+- 2019-7-23 v5.20 修改初始日期1930-2080年,新增年月日选择例子;更新省市线地址选择器数据,最新数据是2019年github上开源的三级数据json,同时压缩数据,体积由350kb变成180多kb,港澳台数据未有变化,因为开源的也没有港澳台含编码的数据.
+- 2019-7-22 v5.19 新增h5自动定位到线级城市,线级城市首字母选择或搜索;新增选择当前位置定位;新增25宫格;新增ajax跳到详情页返回后还原到原来位置;
 新增count数组或对象个数计算,mktime返回日期时间戳,$_GET获取地址中传递参数值,替换原函数getquery,$_COOKIE获取cookie值,foreach数组对象处理函数,unset删除数组元素,数组合并array_merge,array_serch查找元素,array_keys,array_values返回数组键或值组成的新函数,数组截取array_slice
 ,字符串替换str_replace,关联数组获取指定列array_column,提示跳转msg,log等
 - 2019-7-20 v5.18 修复popup,picker等的遮罩层在ios无效,在ios平台遇到一些点击无效情况一般只需要加上cursor: pointer;即可,安卓一般不会有此问题
@@ -85,7 +87,7 @@ php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多�
 本次更新已在ios10.1/android5.1测试,机型为iPhone6/Meizu Note3
 - 2016-10-1 V3.0 修复提示和底部导航同时用不能点击bug.九宫格演示显示不正确,新增红色数字徽标,分离常用函数为php.js,本函数不使用任何库,名称采用php同函数名.
 - 2016-9-4 V2.9  新增手风琴,支持独立和组合调用 
-- 2016-7-26 v2.8  升级weui为0.43,微信weui官方修复了已知bug.
+- 2016-7-26 v2.8  升级weui为0.43,微信weui修复了已知bug.
 - 2016-6-18 v2.7  新增15个新图标,上传图片新增提示删除,修复已知bug.
 - 2016-6-6 v2.6   替换swipe为更小函数,新版的支持是否自动播放,这个更好用,重写此css,是否使用标题,超链接自己根据例子修改 
 - 2016-6-5  v2.5  新增认证头像,新增tab切换红色和绿色导航条,loading动画,旋转180度和360度,新增上拉加载更多下拉刷新,新增图片懒加载只需要载入zepto即可使用   

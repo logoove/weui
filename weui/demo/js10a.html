@@ -93,7 +93,7 @@
             var scrollTop = $(this).scrollTop();
             var scrollHeight = $(document).height();
             var windowHeight = $(this).height();
-            if (scrollTop + windowHeight == scrollHeight) {
+            if (scrollTop>scrollHeight-windowHeight-5) {
                 maxpage = sessionStorage['maxpage'];
                 type = sessionStorage.getItem('type')
                 if(page<maxpage) {

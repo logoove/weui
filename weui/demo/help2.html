@@ -68,7 +68,7 @@
                 error:function(xhr){
                     alert(JSON.stringify(xhr));
                 },
-            timeout : 15000
+            timeout : 1000
         });
     }
 
@@ -77,7 +77,7 @@
             var scrollTop = $(this).scrollTop();
             var scrollHeight = $(document).height();
             var windowHeight = $(this).height();
-            if (scrollTop + windowHeight == scrollHeight) {
+            if (scrollTop>scrollHeight-windowHeight-5) {
                 maxpage = sessionStorage['maxpage'];
                 if(page<maxpage) {
                     page++;

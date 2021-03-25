@@ -70,7 +70,7 @@ func main(){
 func login(c *gin.Context){
 	pwd:=c.PostForm("pwd")
 	var s string
-	if pwd=="200820"{
+	if pwd=="123"{
 s=`<div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">金额</label></div>
         <div class="weui-cell__bd">
