@@ -57,7 +57,10 @@
         title: "喜欢的美女",
         items: ['柳岩','赵丽颖','杨颖','苍井空'],
         onChange: function(d) {
-            console.log(this, d);
+           $.post("/ver",{value:d.values},function(res){
+//console.log(res)
+$("#mobile").select("update", { items: [{title:'语文',value:57},{title:'数学',value:17}]})
+},'json');
         },
         onClose: function() {
             console.log("close");

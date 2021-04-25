@@ -113,10 +113,10 @@ var SidebarJS = (function () {
         document.addEventListener('touchend', this.onSwipeOpenEnd.bind(this));
     };
     SidebarJS.prototype.onTouchStart = function (e) {
-        this.initialTouch = (isTouch ? e.touches[0].pageX : e.pageX);
+        this.initialTouch = (isTouch ? e.touches.pageX : e.pageX);
     };
     SidebarJS.prototype.onTouchMove = function (e) {
-        var documentSwiped = this.initialTouch - (isTouch ? e.touches[0].clientX : e.clientX);;
+        var documentSwiped = this.initialTouch - (isTouch ? e.touches.clientX : e.clientX);;
         var sidebarMovement = this.getSidebarPosition(documentSwiped);
         this.touchMoveSidebar = -documentSwiped;
         if (sidebarMovement <= this.container.clientWidth) {
