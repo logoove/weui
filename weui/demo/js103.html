@@ -7,6 +7,88 @@
     <link rel="stylesheet" href="../css/weui.css"/>
     <link rel="stylesheet" href="../css/weuix.css"/>
     <script src="../js/zepto.min.js"></script>
+    <script>
+        function ieOrFireFox(obj) {
+            if (obj.textContent != null) {
+                return obj.textContent;
+            } else {
+                let s = obj.innerText;
+                return s.substring(0, s.length);
+            }
+        }
+        //tableId:表的id，iCol:列索引；dataType:iCol对应的列排序显示数据的类型，removeRight:排序时去掉列的右边的字符个数
+        function sortTable(tableId, iCol, dataType, removeRight) {
+            let table = document.getElementById(tableId);
+            //给排序列标题改变颜色
+            let thead = table.childNodes[0];
+            let tr = thead.childNodes[0];
+            let tbody = table.tBodies[0];
+            let colRows = tbody.rows;
+            let aTrs = new Array;
+            for (let i = 0; i < colRows.length; i++) {
+                aTrs[i] = colRows[i];
+            }
+            if (table.sortCol == iCol) {
+                aTrs.reverse();
+            } else {
+                aTrs.sort(compareEle(iCol, dataType, removeRight));
+            }
+            let oFragment = document.createDocumentFragment();
+            for (let i = 0; i < aTrs.length; i++) {
+                oFragment.appendChild(aTrs[i]);
+            }
+            tbody.appendChild(oFragment);
+            table.sortCol = iCol;
+        }
+        function compareEle(iCol, dataType, removeRight) {
+            return function (oTR1, oTR2) {
+                let vValue1 = convert(ieOrFireFox(oTR1.cells[iCol]), dataType, removeRight);
+                let vValue2 = convert(ieOrFireFox(oTR2.cells[iCol]), dataType, removeRight);
+                if (typeof (vValue1) == 'string') {
+                    return vValue1.localeCompare(vValue2);
+                } else {
+                    if (vValue1 < vValue2) {
+                        return -1;
+                    } else if (vValue1 > vValue2) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            };
+        }
+        function convert(sValue, dataType, removeRight) {
+            if (removeRight != null) {
+                let newLen = sValue.length - removeRight;
+                sValue = sValue.substr(0, newLen);
+            }
+            switch (dataType) {
+                case "int":
+                    return parseInt(sValue);
+                case "float":
+                    return parseFloat(sValue);
+                case "date":
+                    return new Date(Date.parse(sValue));
+                default:
+                    return sValue.toString();
+            }
+        }
+        let f=true
+        const togglec=(id)=>{
+            $(".icon-6,.icon-8").removeClass("f-blue")
+           if(f==true){
+               $(id).children().find(".icon-6").addClass("f-blue")
+               $(id).children().find(".icon-8").removeClass("f-blue")
+               f=false
+           }else{
+               $(id).children().find(".icon-8").addClass("f-blue")
+               $(id).children().find(".icon-6").removeClass("f-blue")
+               f=true
+           }
+
+
+        }
+</script>
  <style>
      table {
          width: 100%;
@@ -61,8 +143,144 @@
  </style>
 </head>
 
-<body ontouchstart class="page-bg">暂无
-</tbody>
+<body ontouchstart class="page-bg">
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        string,int,float,date排序
+    </h1>
+    <p class="page-hd-desc">sortTable('table',0,'float',1)最后是删除字符数</p>
+</div>
+     
+ <table id="table">
+        <thead >
+        <tr>
+            <th onclick="sortTable('table',0,'int');togglec(this)">编号<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+            <th onclick="sortTable('table',1);togglec(this)">用户名<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+            <th onclick="sortTable('table',2);togglec(this)">邮箱<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+            <th onclick="sortTable('table',3);togglec(this)">会员<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+            <th onclick="sortTable('table',4);togglec(this)">城市<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+            <th onclick="sortTable('table',5,'date');togglec(this)">日期<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+        </thead>
+        
+        <tbody id="rank">
+        <tr>
+            <td>126</td>
+            <td>webw3c</td>
+            <td>este@126.com</td>
+            <td>普通会员</td>
+            <td>北京</td>
+            <td>2011-04-13</td>
+        </tr>
+        <tr>
+            <td>145</td>
+            <td>test001</td>
+            <td>test001@126.com</td>
+            <td>中级会员</td>
+            <td>合肥</td>
+            <td>2011-03-27</td>
+        </tr>
+        <tr>
+            <td>116</td>
+            <td>wuliao</td>
+            <td>wuliao@126.com</td>
+            <td>普通会员</td>
+            <td>南昌</td>
+            <td>2011-04-01</td>
+        </tr>
+        <tr>
+            <td>129</td>
+            <td>tired</td>
+            <td>tired@126.com</td>
+            <td>中级会员</td>
+            <td>北京</td>
+            <td>2011-04-06</td>
+        </tr>
+        <tr>
+            <td>155</td>
+            <td>tiredso</td>
+            <td>tireds0@126.com</td>
+            <td>中级会员</td>
+            <td>武汉</td>
+            <td>2011-04-06</td>
+        </tr>
+        <tr>
+            <td>131</td>
+            <td>javascript</td>
+            <td>js2011@126.com</td>
+            <td>中级会员</td>
+            <td>武汉</td>
+            <td>2011-04-08</td>
+        </tr>
+        <tr>
+            <td>132</td>
+            <td>jQuery</td>
+            <td>jQuery@126.com</td>
+            <td>高级会员</td>
+            <td>北京</td>
+            <td>2011-04-12</td>
+        </tr>
+        <script>
+            let arr=[
+                ["178","qq","lo@qq.com","中级会员","深圳","2020-05-12"],
+                ["179","qq1","l111o@qq.com","中级会员","北京","2020-06-12"],
+            ]
+            let html='';
+            arr.forEach(function(v,k){
+                console.log(v)
+            html+=`<tr><td>${v[0]}</td><td>${v[1]}</td><td>${v[2]}</td><td>${v[3]}</td><td>${v[4]}</td><td>${v[5]}</td></tr>`
+            })
+            document.write(html)
+        </script>
+        </tbody>
+    </table>
+
+<table class="" style="opacity: 1;" id="table1">
+    <thead id="th_code">
+    <tr>
+        <th onclick="sortTable('table1',0,'int',1);togglec(this)">日期<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+        <th onclick="sortTable('table1',1,'int');togglec(this)">次数<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+        <th onclick="sortTable('table1',2,'float');togglec(this)">获利<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11 "></span></span></th>
+        <th onclick="sortTable('table1',3,'float');togglec(this)">成本<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+        <th onclick="sortTable('table1',4,'float',1);togglec(this)">比例<span class="iconx"><span class="icon icon-8 f11"></span><span class="icon icon-6 f11"></span></span></th>
+    </tr>
+    </thead>
+    <tbody id="CodeTB"><tr>
+        <td ><span class="f-blue f10 ">2天</span></td>
+        <td >2</td>
+        <td ><span class="f-red">574.2</span></td>
+        <td >367745.7</td>
+        <td ><span class="f-red">0.16%</span></td>
+    </tr><tr>
+        <td ><span class="f-blue f10 ">61天</span></td>
+        <td >3</td>
+        <td ><span class="f-red">3538.0</span></td>
+        <td >22554.4</td>
+        <td ><span class="f-red">15.69%</span></td>
+    </tr><tr>
+        <td ><span class="f-blue f10 ">12天</span></td>
+        <td >2</td>
+        <td ><span class="f-red">18073.8</span></td>
+        <td >199277.2</td>
+        <td ><span class="f-red">9.07%</span></td>
+    </tr><tr>
+        <td ><span class="f-blue f10 ">2天</span></td>
+        <td >2</td>
+        <td ><span class="f-red">1334.1</span></td>
+        <td >61599.3</td>
+        <td ><span class="f-red">2.17%</span></td>
+    </tr><tr>
+        <td ><span class="f-blue f10 ">31天</span></td>
+        <td >4</td>
+        <td ><span class="f-green">-8687.4</span></td>
+        <td >130426.1</td>
+        <td ><span class="f-green">-6.66%</span></td>
+    </tr><tr>
+        <td ><span class="f-blue f10 ">30天</span></td>
+        <td >3</td>
+        <td ><span class="f-green">-1528.0</span></td>
+        <td >25522.5</td>
+        <td ><span class="f-green">-5.99%</span></td>
+    </tr></tbody>
 </table>
     <div class="weui-footer weui-footer_fixed-bottom">
         <p class="weui-footer__links">

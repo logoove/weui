@@ -1,86 +1,113 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/base64"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/go-xorm/xorm"
-	_ "github.com/mattn/go-sqlite3"
+	"github.com/gogf/gf/database/gdb"
+	"github.com/gogf/gf/frame/g"
+	"github.com/gogf/gf/net/ghttp"
+	"github.com/gogf/gf/os/gfile"
+	"github.com/gogf/gf/os/gtime"
+	"github.com/logoove/go/php"
 	"github.com/mojocn/base64Captcha"
 	"image"
 	"image/color"
 	"image/draw"
 	"image/png"
 	"io"
+	_ "modernc.org/sqlite"
 	"strconv"
 	"strings"
 	"time"
-	"weui/weui/php"
 )
-
-//初始化数据库
-var db, _ = xorm.NewEngine("sqlite3", "./db.db")
-type Zanzhu struct {
-	Id        int64 `json:"id"`
-	Zid       string `xorm:"varchar(200)" json:"zid"`
-	Money     float64 `json:"money"`
-	Say       string    `xorm:"varchar(255)" json:"say"`
-	Createtime int64 `xorm:"created" json:"createtime"`
+//跨域中间件
+func MiddlewareCORS(r *ghttp.Request) {
+	r.Response.CORSDefault()
+	r.Middleware.Next()
 }
-type City struct {
-	Id        int64 `json:"id"`
-	Code int64 `json:"code"`
-	Provincecode int64 `json:"provincecode"`
-	Citycode int64 `json:"citycode"`
-	Areacode int64 `json:"areacode"`
-	Name string `json:"name"`
-	Isok int64 `json:"isok" xorm:"int(1)"`
-	Pinyin string `json:"pinyin" xorm:"varchar(10)"`
+type DriverSqlite3 struct {
+	*gdb.DriverSqlite
 }
-type Stat struct{
-	Id        int64 `json:"id"`
-	Md5 string `json:"md5" xorm:"varchar(100)"`
-	Types int `json:"types xorm:"int(1)"`
-	Num int64 `json:"num"`
-	Dates string `json:"dates" xorm:"varchar(20)"`
+func init(){
+	gdb.Register("sqlite", &DriverSqlite3{})
+}
+func (d *DriverSqlite3) New(core *gdb.Core, node *gdb.ConfigNode) (gdb.DB, error) {
+	return &DriverSqlite3{
+		&gdb.DriverSqlite{
+			Core: core,
+		},
+	}, nil
+}
+func (d *DriverSqlite3) Open(config *gdb.ConfigNode) (*sql.DB, error) {
+	var source string
+	if config.LinkInfo != "" {
+		source = config.LinkInfo
+	} else {
+		source = config.Name
+	}
+	if absolutePath, _ := gfile.Search(source); absolutePath != "" {
+		source = absolutePath
+	}
+	if db, err := sql.Open("sqlite", source); err == nil {
+		return db, nil
+	} else {
+		return nil, err
+	}
 }
 func main(){
-	db.Sync2(new(Zanzhu),new(City),new(Stat))//自动同步数据结构到表
-	gin.SetMode(gin.DebugMode)
-	//db.ShowSQL(true)
-	r := gin.Default()
-	r.StaticFS("/weui",gin.Dir("weui",false))
-	//r.Static("/weui", "./weui")
-	r.GET("/", func(c *gin.Context) {
-		c.Redirect(301,"weui/index.html")
-	})
-	r.POST("/login",login)
-	r.POST("/savedata",saveData)
-	r.POST("/zanlist",zanList)
-	r.POST("/ver",ver)
-	r.GET("/code",code)
-	r.POST("/getcity",getcity)
-	r.POST("/getcitypinyin",getcitypinyin)
-	r.POST("/getcityso",getcityso)
-	r.POST("md",md)
-	r.GET("axiosget",axiosget)
-	r.POST("axiospost",axiospost)
-	r.POST("axiosgp",axiosgp)
-	r.POST("/upimg",upimg)
-	r.GET("/getimg",getimg)
-	r.GET("/pvuv",pvuv)
+	php.Color("欢迎使用WeUI6新版,采用goframe框架\n本地访问地址:http://localhost:8885\n","green")
+	fmt.Println("")
+	s:=g.Server()
+	//s.SetServerRoot(php.GetPath()+"/weui")
+	s.AddStaticPath("/weui", php.GetPath()+"/weui")
+	s.Group("/", func(group *ghttp.RouterGroup) {
+		group.Middleware(MiddlewareCORS)
+		group.GET("/",func(r *ghttp.Request){
+			r.Response.RedirectTo("weui/index.html",301)
+		})
+		group.POST("/ver",ver)
+		group.POST("/zanlist",zanlist)
+		group.POST("/login",login)
+		group.POST("/savedata",savedata)
+		group.GET("/code",code)
+		group.POST("/getcity",getcity)
+		group.POST("/getcitypinyin",getcitypinyin)
+		group.POST("/getcityso",getcityso)
+		group.POST("/md",md)
+		group.GET("/axiosget",axiosget)
+		group.POST("/axiospost",axiospost)
+		group.POST("/axiosgp",axiosgp)
+		group.POST("/upimg",upimg)
+		group.GET("/getimg",getimg)
+		group.GET("/pvuv",pvuv)
 
-	fmt.Println("欢迎使用Golang提供后台服务,Weui6.0,访问地址:127.0.0.1:8885")
-	r.Run(":8885")
+	})
+	s.Run()
 
 }
+//版本获取
+func ver(r *ghttp.Request){
+	str:=php.ReadFile(php.GetPath()+"/weui/php/ver")
+	s:=strings.Split(str,"|")
+	c:=g.Map{"ver":s[0],"date":s[1]}
+	r.Response.WriteJson(c)
+}
+//赞助列表
+func zanlist(r *ghttp.Request){
+	page:=r.GetInt("page",1)
+	pagesize:=r.GetInt("pagesize",20)
+	page=(page-1)*pagesize
+	list,_:=g.Model("zanzhu").Where("1=1").Order("id desc").Limit(page,pagesize).All()
+	total,_:=g.Model("zanzhu").Where("1=1").Count()
+	r.Response.WriteJson(g.Map{"code":200,"msg":"请求成功","total":total,"list":list})
 
-//登陆赞助
-func login(c *gin.Context){
-	pwd:=c.PostForm("pwd")
-	var s string
-	if pwd==""{
-s=`<div class="weui-cell">
+}
+//登录
+func login(r *ghttp.Request){
+pwd:=r.GetString("pwd")
+	if pwd=="0"{
+		s:=`<div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">金额</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input" pattern="[0-9]*" placeholder="金额" type="number" id="money">
@@ -101,144 +128,106 @@ s=`<div class="weui-cell">
     <div class="weui-btn-area">
     <a class="weui-btn weui-btn_primary" href="javascript:;" onclick="save()">保存</a>
     </div>`
-c.JSON(200,gin.H{"code":200,"msg":s})
+		r.Response.WriteJson(g.Map{"code":200,"msg":s})
 	}else{
-		c.JSON(200,gin.H{"code":400,"msg":"密码不正确"})
+		r.Response.WriteJson(g.Map{"code":400,"msg":"密码不正确"})
 	}
-
 }
 //保存赞助
-func saveData(c *gin.Context) {
-	zid := c.PostForm("zid")
-	money := c.PostForm("money")
-	say := c.PostForm("say")
-	if zid=="200820"{
-		c.JSON(200,gin.H{"code":400,"msg":"赞助人必填"})
+func savedata(r *ghttp.Request){
+zid:=r.GetString("zid")
+money:=r.GetString("money")
+say:=r.GetString("say")
+	if zid==""{
+		r.Response.WriteJson(g.Map{"code":400,"msg":"赞助人必填"})
 	}else if php.Empty(money){
-		c.JSON(200,gin.H{"code":400,"msg":"金额必填"})
+		r.Response.WriteJson(g.Map{"code":400,"msg":"金额必填"})
 	}else{
-		z:=new(Zanzhu)
-		z.Zid=zid
-		z.Money=php.String2Float(money,64).(float64)
-		z.Say=say
-		db.Insert(z)
-		c.JSON(200,gin.H{"code":200,"msg":"保存成功"})
+		rs, _ := g.Model("zanzhu").Data(g.Map{"zid": zid,"money":money,"say":say,"createtime":gtime.Timestamp()}).Insert()
+		n,_:=rs.RowsAffected()
+		if n>0{
+			r.Response.WriteJson(g.Map{"code":200,"msg":"保存成功"})
+		}else{
+			r.Response.WriteJson(g.Map{"code":400,"msg":"保存失败"})
+		}
+
 	}
-
-
 }
-//赞助列表
-func zanList(c *gin.Context){
-	page,_ :=strconv.Atoi(c.DefaultPostForm("page", "1"))
-	pagesize,_ := strconv.Atoi(c.PostForm("pagesize"))
-	page=(page-1)*pagesize
-
-	z := make([]Zanzhu, 0)
-	db.Where("1=1").OrderBy("id desc").Limit(pagesize,page).Find(&z)
-	total, _ := db.Where("1=1").Count(new(Zanzhu))
-	c.JSON(200, gin.H{"code":200,"msg":"获取成功","total":total,"list":z})
-}
-//版本
-func ver(c *gin.Context){
-	str:=php.ReadFile(php.GetPath()+"/weui/php/ver")
-	s:=strings.Split(str,"|")
-	c.JSON(200,gin.H{"ver":s[0],"date":s[1]})
-}
-//验证码生成
 var store = base64Captcha.DefaultMemStore
-func code(c *gin.Context) {
+func code(r *ghttp.Request){
 	driver := base64Captcha.DefaultDriverDigit
 	rs := base64Captcha.NewCaptcha(driver, store)
 	id, b64s, _ := rs.Generate()
 	fmt.Println(id)
 	i := strings.Index(b64s, ",")
 	dec := base64.NewDecoder(base64.StdEncoding, strings.NewReader(b64s[i+1:]))
-	c.Header("Content-Type","image/png")
-	io.Copy(c.Writer, dec)
+	r.Header.Set("Content-Type","image/png")
+	io.Copy(r.Response.Writer, dec)
 }
 //获取城市
-func getcity(c *gin.Context) {
-	code := c.PostForm("code")
-	y := new(City)
-	db.Where("code=?",code).Get(y)
-	c.JSON(200,gin.H{"name":y.Name})
+func getcity(r *ghttp.Request){
+code:=r.GetString("code")
+name,_:=g.Model("city").Where("code=?",code).Value("name")
+	r.Response.WriteJson(g.Map{"code":200,"name":name})
 }
-func getcitypinyin(c *gin.Context) {
-	code := c.PostForm("py")
-	y := make([]City, 0)
-	db.SQL("select code,name,isok from city where provincecode>0 and citycode>0 and areacode=0 and pinyin=? order by name",code).Find(&y)
-	c.JSON(200,gin.H{"list":y})
+func getcitypinyin(r *ghttp.Request){
+	code:=r.GetString("py")
+	list, _ := g.DB().GetAll("select code,name,isok from city where provincecode>0 and citycode>0 and areacode=0 and pinyin=? order by name",code)
+	r.Response.WriteJson(g.Map{"code":200,"list":list})
 }
-func getcityso(c *gin.Context) {
-	kw := c.PostForm("kw")
-	y := make([]City, 0)
-	db.SQL("select code,name,isok from city where provincecode>0 and citycode>0 and areacode=0 and name like ? order by name","%"+kw+"%").Find(&y)
-	c.JSON(200,gin.H{"list":y})
+func getcityso(r *ghttp.Request){
+	kw:=r.GetString("kw")
+	list, _ := g.DB().GetAll("select code,name,isok from city where provincecode>0 and citycode>0 and areacode=0 and name like ? order by name","%"+kw+"%")
+	r.Response.WriteJson(g.Map{"code":200,"list":list})
 }
-func md(c *gin.Context){
+func md(r *ghttp.Request){
 	s:=php.ReadFile(php.GetPath()+"/weui/README.md")
-	c.String(200,s)
+	r.Response.Write(s)
 }
-type User struct {
-	Name string `json:"name" form:"name"`
+func axiosget(r *ghttp.Request){
+	name:=r.GetString("name")
+	r.Response.WriteJson(g.Map{"code":200,"data":g.Map{"name":name}})
 }
-func axiosget(c *gin.Context){
-	name:=c.Query("name")
-	c.JSON(200,gin.H{"code":200,"data":gin.H{"name":name}})
+func axiospost(r *ghttp.Request){
+	name:=r.GetString("name")
+	r.Response.WriteJson(g.Map{"code":200,"data":g.Map{"name":name}})
 }
-func axiospost(c *gin.Context){
-	var u User
-	c.BindJSON(&u)
-
-	c.JSON(200,gin.H{"code":200,"data":gin.H{"name":u.Name}})
+func axiosgp(r *ghttp.Request){
+	name:=r.GetString("name")
+	r.Response.WriteJson(g.Map{"code":200,"data":g.Map{"name":name}})
 }
-func axiosgp(c *gin.Context){
-	var u User
-	c.BindJSON(&u)
-	c.JSON(200,gin.H{"code":200,"data":gin.H{"name":u.Name}})
-}
-func upimg(c *gin.Context){
-	data:=c.PostForm("imgbase64")
+func upimg(r *ghttp.Request){
+	data:=r.GetString("imgbase64")
 	src:=php.Base642Img("./weui/php/image",data)
-	c.JSON(200,gin.H{"src":src})
-
+	r.Response.WriteJson(g.Map{"code":200,"src":src})
 }
-func getimg(c *gin.Context){
+//生成占位符图片
+func getimg(r *ghttp.Request){
 	var blue  color.Color = color.RGBA{50,205,50, 255}
-	s:=c.Query("c")
+	s:=r.GetString("c")
 	sl:=strings.Split(s,"x")
 	w,_:=strconv.Atoi(sl[0])
 	h,_:=strconv.Atoi(sl[1])
 	m := image.NewRGBA(image.Rect(0, 0, w, h))
-	draw.Draw(m, m.Bounds(), &image.Uniform{blue}, image.ZP, draw.Src)
-	png.Encode(c.Writer, m)
+	draw.Draw(m, m.Bounds(), &image.Uniform{blue}, image.Point{}, draw.Src)
+	png.Encode(r.Response.Writer, m)
 }
-func pvuv(c *gin.Context){
-	types:=c.DefaultQuery("types","0")//类型 0pv默认 1uv
-	md5,isokmd5:=c.GetQuery("md5")
-	if !isokmd5{
-		c.JSONP(200,gin.H{"code":400,"msg":"页面不存在"})
-		return
-	}
-	dates:=php.Date("Ymd",time.Now())
-	y := new(Stat)
-
-	isok,_:=db.Where("md5=? and types=?",md5,types).Get(y)
-	if isok{//查到数据
-		num:=y.Num
-		id:=y.Id
-		y.Num=num+1
-		db.ID(id).Update(y)
-
-	}else{
-		y.Md5=md5
-		y.Types,_=strconv.Atoi(types)
-		y.Dates=dates
-		y.Num=1
-		db.Insert(y)
-
-	}
-	c.JSONP(200,gin.H{"code":200,"data":gin.H{
-		"num":y.Num,
-	}})
+//统计
+func pvuv(r *ghttp.Request){
+types:=r.GetString("types","0")
+md5:=r.Get("md5")
+dates:=php.Date("Ymd",time.Now())
+if md5==nil{
+	r.Response.WriteJsonP(g.Map{"code":400,"msg":"页面不存在"})
+	return
+}
+isok,_:=g.Model("stat").Where("md5=? and types=?",md5,types).One()
+if len(isok)==0{//没查到
+	g.Model("stat").Data(g.Map{"md5": md5,"types":types,"dates":dates,"num":1}).Insert()
+	r.Response.WriteJsonP(g.Map{"code":200,"data":g.Map{"num":1}})
+}else{
+	g.Model("stat").Data(g.Map{"num":gdb.Raw("num+1")}).Where("id",isok["id"]).Update()
+	num:=isok["num"].Int()
+	r.Response.WriteJsonP(g.Map{"code":200,"data":g.Map{"num":num+1}})
+}
 }

@@ -1,0 +1,20 @@
+# HTTP Server
+[server]
+	Address     = ":8885"
+	ServerAgent = "gf-app"
+	LogPath     = "tmp"
+
+# Logger.
+[logger]
+    Path        = "weui/log"
+    Level       = "all"
+    Stdout      = true
+[database]
+    type = "sqlite"
+    link  = "weui/db.db"
+    debug = false
+    # Database logger.
+    [database.logger]
+        Path   = "weui/log"
+        Level  = "all"
+        Stdout = true
