@@ -10,21 +10,6 @@
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
     <script src="../js/php.js"></script>
-    <script>
-        $(function(){
-            $('#t1').tab({
-                defaultIndex: 0,
-                activeClass: 'tab-green',
-                onToggle: function (index) {
-                    $("#rank-list").html('');
-                    ajaxpage(1,index+1);
-                    var type = sessionStorage.setItem('type',index+1);
-                }
-            })
-
-        });
-
-    </script>
 </head>
 
 <body ontouchstart>
@@ -32,7 +17,7 @@
     <h1 class="page-hd-title">
       ajax navbar切换 无限加载
     </h1>
-    <p class="page-hd-desc">常见的新闻列表</p>
+    <p class="page-hd-desc">特点:采用底部自动加载,分页只需要传入数据开始条数,后台不用计算数据总条数;存在bug有,从本页调到详情页,返回以后数据会重新加载,比如在拼多多跳到详情页返回也是到初始化页面,存在不能保存位置状态问题.暂时无解决好的方法,如果不是tab,可用临时缓存解决.有能解决的请提交代码</p>
 </div>
 <div class="weui-tab" id="t1" style="height:44px;">
     <div class="weui-navbar">
@@ -66,27 +51,52 @@
     <% } %>
 </script>
 <script>
-    var pagesize=15;//每页数据条数
-    var page = 1;
-    var maxpage;
-    $('#more').hide();
-    function ajaxpage(page,type){
+    let start = 0 //开始位置
+    let pagesize = 15 //每页显示
+    let flag=true //是否加载完了
+    let index=0 //导航默认索引
+    let loading=false//防止重复加载
+    function ajaxpage(start1,index1){
         $.ajax({
-            type : "POST",
-            url : '/zanlist',
-            data: {"page":page,"pagesize":pagesize,type:type},
+            url:"/zanlist1",
+            data: {"start":start1,"pagesize":pagesize,"index":index1},
+            type:"POST",
             dataType : "json",
             beforeSend:function(){
                 $("#more").show();
             },
-            success : function(rs) {
+            success:function (rs) {
+                if(rs.list==null){
+                    $("#more").html("没有更多数据了");
+                    return true
+                }
+                start = start1+rs.list.length
+                if(rs.list.length<pagesize){
+                    flag=false//设置没有数据了标记
+                   $("#more").html("没有更多数据了");
+                }
                 $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
-                var maxpage = Math.ceil(rs.total / pagesize);
-                sessionStorage['maxpage'] = maxpage;
-            },
-            timeout : 15000
-        });
+            }
+        })
+
     }
+
+    $('#t1').tab({
+        // defaultIndex: 0,
+        activeClass: 'tab-green',
+        onToggle: function (ix) {
+            start=0
+            $("#rank-list").html('');
+            ajaxpage(start,ix);
+            flag=true
+            console.log("初始化执行")
+        }
+    })
+
+    $(document).on('tap click',"#rank-list .weui-cell",function(){
+        id = $(this).data('id');
+        location.href="js91.html?id="+id;
+    })
 
     $(window).scroll(
         function() {
@@ -94,40 +104,16 @@
             var scrollHeight = $(document).height();
             var windowHeight = $(this).height();
             if (scrollTop>scrollHeight-windowHeight-5) {
-                maxpage = sessionStorage['maxpage'];
-                type = sessionStorage.getItem('type')
-                if(page<maxpage) {
-                    page++;
-                    ajaxpage(page,type);
-                }else{
-                    $("#more").html("没有更多数据了");return false;
-                }
+                if(loading) return;
+                loading = true;
+                setTimeout(function() {
+                    if(flag){
+                        ajaxpage(start,index)
+                    }
+                    loading = false;
+                }, 1500);
             }
-
         });
-    const goto=(id)=>{
-        sessionStorage.setItem('index_list',$("#rank-list").html());//存储列表数据
-        sessionStorage.setItem('index_page',page);//存储页码
-        sessionStorage.setItem('index_scroll',$(window).scrollTop());//存储滚动条位置
-        location.href="js91.html?id="+id;
-    }
-    $(document).on('tap click',"#rank-list .weui-cell",function(){
-        id = $(this).data('id');
-        goto(id);
-    })
-    $(function(){
-        var l = sessionStorage.getItem('index_list');
-        if(null !== l && '' !== l){
-            $("#rank-list").html(l);
-            $(window).scrollTop(sessionStorage.getItem('index_scroll'));
-            page = sessionStorage.getItem('index_page');
-            sessionStorage.removeItem('index_list');
-            sessionStorage.removeItem('index_page');
-            sessionStorage.removeItem('index_scroll');
-        }else{
-            ajaxpage(1,1);
-        }
-    })
 </script>
 <br>
 <br>

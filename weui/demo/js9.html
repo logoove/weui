@@ -20,7 +20,7 @@
         <h1 class="page-hd-title">
             加载更多 分页
         </h1>
-        <p class="page-hd-desc">向下无限加载</p>
+        <p class="page-hd-desc">向下无限加载,不需要计算总分页,只要提供开始,每页显示数据即可</p>
     </div>
 
     <div class="weui-panel weui-panel_access">
@@ -47,8 +47,6 @@
         </div>
     </div>
 
-
-
     <br>
     <br>
     <div class="weui-footer weui-footer_fixed-bottom">
@@ -59,12 +57,14 @@
     </div>
     <script>
         $('#loading').hide();
-        var pagesize=8;//每页数据条数
-        function ajaxpage(page){
+        let start = 0
+        let pagesize=15;
+        let flag=true
+function ajaxpage1(start1){
             $.ajax({
                 type:"post",
-                url:'/zanlist',
-                data: {"page":page,"pagesize":pagesize},
+                url:'/zanlist1',
+                data: {"start":start1,"pagesize":pagesize},
                 dataType:'json',
                 timeout:10000,
                 beforeSend:function(xhr){
@@ -72,38 +72,29 @@
                 },
                 success:function(rs){
                     $('#loading').hide();
-                    $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
-
-                   var maxpage = Math.ceil(rs.total / pagesize);
-                    sessionStorage['maxpage'] = maxpage;
-
-                    if(page==maxpage){
-                        $("#getmore").html("没有更多数据了");return false;
+                    if(rs.list==null){
+                        $("#getmore").html("没有更多数据了");
+                        return false
                     }
+                    start = start1+rs.list.length
+                    if(rs.list.length<pagesize){
+                        flag=false//设置没有数据了标记
+                        $("#getmore").html("没有更多数据了");
+                    }
+                    $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
                 },
                 error:function(xhr){
                     alert('ajax出错');
                 },
             });
-
-
         }
+$('#getmore').on('click', function() {
+if(flag) {
+ajaxpage1(start);
+}
+});
+ajaxpage1(0)
 
-        
-        $(function(){
-
-            var page = 2;
-            var maxpage;
-
-            $('#getmore').on('click', function() {
-                maxpage = sessionStorage['maxpage'];
-                if(page<=maxpage) {
-                    ajaxpage(page);
-                    page++;
-                }
-            });
-            ajaxpage(1);
-        })
     </script>
 
 </body>

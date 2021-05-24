@@ -44,26 +44,31 @@
     <% } %>
 </script>
 <script>
-    var pagesize=20;
-    var page = 1;
-    var maxpage;
     $('#more').hide();
-    function ajaxpage(page){
+    let start = 0
+    let pagesize=15;
+    let flag=true
+    let loading=false;
+    function ajaxpage(start1){
         $.ajax({
             type : "post",
-           url : '/zanlist',
-            data: {"page":page,"pagesize":pagesize},
+           url : '/zanlist1',
+            data: {"start":start1,"pagesize":pagesize},
             dataType: "json",
             beforeSend:function(){
                 $("#more").show();
             },
             success : function(rs) {
-                $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
-                var maxpage = Math.ceil(rs.total / pagesize);
-                sessionStorage['maxpage'] = maxpage;
-                if(page==maxpage){
+                if(rs.list==null){
+                    $("#more").html("没有更多数据了");
+                    return false
+                }
+                start = start1+rs.list.length
+                if(rs.list.length<pagesize){
+                    flag=false//设置没有数据了标记
                     $("#more").html("没有更多数据了");
                 }
+                $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
             },
                 error:function(xhr){
                     alert(JSON.stringify(xhr));
@@ -74,22 +79,30 @@
 
     $(window).scroll(
         function() {
-            var scrollTop = $(this).scrollTop();
-            var scrollHeight = $(document).height();
-            var windowHeight = $(this).height();
-            if (scrollTop>scrollHeight-windowHeight-5) {
-                maxpage = sessionStorage['maxpage'];
-                if(page<maxpage) {
-                    page++;
-                    ajaxpage(page);
-                }else{
-                    $("#more").html("没有更多数据了");return false;
-                }
+            let pageHeight = Math.max(document.body.scrollHeight,document.body.offsetHeight);
+            let viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+            let scrollHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if(pageHeight - viewportHeight - scrollHeight < 50){
+                if(loading) return;
+                loading = true;
+                setTimeout(function() {
+                    if(flag){
+                        ajaxpage(start)
+                    }
+                    loading = false;
+                }, 1500);
             }
 
         });
 
-    ajaxpage(1);
+    ajaxpage(0);
 </script>
+<div style="margin-top:40px">&nbsp;</div>
+    <div class="weui-footer weui-footer_fixed-bottom" >
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
 </body>
 </html>

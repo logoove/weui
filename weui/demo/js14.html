@@ -19,7 +19,7 @@
                 distance: 10,
                 onRefresh:function() {
 
-                     $.post("/zanlist",{"page":1,"pagesize":8},function(rs){
+                     $.post("/zanlist1",{"start":0,"pagesize":8},function(rs){
                          $("#rank-list").html(tpl(document.getElementById('tpl').innerHTML,rs));
                      },'json')
                     $(document.body).pullToRefreshDone();

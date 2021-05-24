@@ -68,6 +68,7 @@ func main(){
 		})
 		group.POST("/ver",ver)
 		group.POST("/zanlist",zanlist)
+		group.POST("/zanlist1",zanlist1)
 		group.POST("/login",login)
 		group.POST("/savedata",savedata)
 		group.GET("/code",code)
@@ -101,6 +102,13 @@ func zanlist(r *ghttp.Request){
 	list,_:=g.Model("zanzhu").Where("1=1").Order("id desc").Limit(page,pagesize).All()
 	total,_:=g.Model("zanzhu").Where("1=1").Count()
 	r.Response.WriteJson(g.Map{"code":200,"msg":"请求成功","total":total,"list":list})
+
+}
+func zanlist1(r *ghttp.Request){
+	start:=r.GetInt("start",0)
+	pagesize:=r.GetInt("pagesize",20)
+	list,_:=g.Model("zanzhu").Where("1=1").Order("id desc").Limit(start,pagesize).All()
+	r.Response.WriteJson(g.Map{"code":200,"msg":"请求成功","list":list})
 
 }
 //登录

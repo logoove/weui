@@ -11,32 +11,33 @@
     <script src="../js/zepto.weui.js"></script>
     <script src="../js/php.js"></script>
     <script>
-        var pagesize=15;//每页数据条数
         var loading = false;  //状态标记
-        var page = 1;
-        var maxpage;
+        let start = 0
+        let pagesize=15;
+        let flag=true
 
-        function ajaxpage(page){
+        function ajaxpage(start1){
             $.ajax({
                 type:"post",
-                url:'/zanlist',
-                data: {"page":page,"pagesize":pagesize},
+                url:'/zanlist1',
+                data: {"start":start1,"pagesize":pagesize},
                 dataType:'json',
                 timeout:10000,
                 beforeSend:function(xhr){
                     $('.weui-loadmore').show();
                 },
                 success:function(rs){
-                    $('.weui-loadmore').hide();
-                    $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
-
-                    var maxpage = Math.ceil(rs.total / pagesize);
-                    sessionStorage['maxpage'] = maxpage;
-
-                    if(page==maxpage){
-                        $(document.body).destroyInfinite();
-                        $('.weui-loadmore').show().html("没有更多数据了");
+                    if(rs.list==null){
+                        $(".weui-loadmore").html("没有更多数据了");
+                        return false
                     }
+                    start = start1+rs.list.length
+                    if(rs.list.length<pagesize){
+                        flag=false//设置没有数据了标记
+                        $(document.body).destroyInfinite();
+                        $(".weui-loadmore").html("没有更多数据了");
+                    }
+                    $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
                 },
                 error:function(xhr){
                     alert('ajax出错');
@@ -51,11 +52,8 @@
                 if(loading) return;
                 loading = true;
                 setTimeout(function() {
-                    maxpage = sessionStorage['maxpage'];
-                    if(page<maxpage) {
-                        page++;
-                        ajaxpage(page);
-
+                    if(flag){
+                        ajaxpage(start)
                     }
                     loading = false;
                 }, 1500);   //模拟延迟
@@ -65,17 +63,17 @@
             if(null !== l && '' !== l){
                 $("#rank-list").html(l);
                 $(window).scrollTop(sessionStorage.getItem('index_scroll'));
-                page = sessionStorage.getItem('index_page');
+                start = parseInt(sessionStorage.getItem('index_start'));
                 sessionStorage.removeItem('index_list');
                 sessionStorage.removeItem('index_page');
                 sessionStorage.removeItem('index_scroll');
             }else{
-                ajaxpage(1);
+                ajaxpage(0);
             }
         });
         const goto=(id)=>{
             sessionStorage.setItem('index_list',$("#rank-list").html());//存储列表数据
-            sessionStorage.setItem('index_page',page);//存储页码
+            sessionStorage.setItem('index_start',start);//存储页码
             sessionStorage.setItem('index_scroll',$(window).scrollTop());//存储滚动条位置
             location.href="js91.html?id="+id;
         }
