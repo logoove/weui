@@ -60,12 +60,12 @@
                     $("#more").html("没有更多数据了");
                     return false
                 }
-                if(rs.list.length<pagesize){
+                if(count(rs.list)<pagesize){
                     flag=false//设置没有数据了标记
                     $("#more").html("没有更多数据了");
                 }
                 $("#rank-list").append(tpl(document.getElementById('tpl').innerHTML,rs));
-                start = start1+rs.list.length
+                start = start1+count(rs.list)
             },
             timeout : 15000
         });
@@ -73,10 +73,10 @@
 
     $(window).scroll(
         function() {
-            let pageHeight = Math.max(document.body.scrollHeight,document.body.offsetHeight);
-            let viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
-            let scrollHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            if(pageHeight - viewportHeight - scrollHeight < 50){
+            let scrollTop = $(this).scrollTop();
+            let scrollHeight = $(document).height();
+            let windowHeight = $(this).height();
+            if(scrollTop>scrollHeight-windowHeight-5){
                 if(loading) return;
                 loading = true;
                 setTimeout(function() {

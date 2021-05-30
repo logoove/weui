@@ -31,8 +31,8 @@
                         $(".weui-loadmore").html("没有更多数据了");
                         return false
                     }
-                    start = start1+rs.list.length
-                    if(rs.list.length<pagesize){
+                    start = start1+count(rs.list)
+                    if(count(rs.list)<pagesize){
                         flag=false//设置没有数据了标记
                         $(document.body).destroyInfinite();
                         $(".weui-loadmore").html("没有更多数据了");
