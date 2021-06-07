@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"encoding/base64"
 	"fmt"
 	"github.com/gogf/gf/database/gdb"
 	"github.com/gogf/gf/frame/g"
@@ -15,7 +14,6 @@ import (
 	"image/color"
 	"image/draw"
 	"image/png"
-	"io"
 	_ "modernc.org/sqlite"
 	"strconv"
 	"strings"
@@ -167,10 +165,11 @@ func code(r *ghttp.Request){
 	rs := base64Captcha.NewCaptcha(driver, store)
 	id, b64s, _ := rs.Generate()
 	fmt.Println(id)
-	i := strings.Index(b64s, ",")
+	/*i := strings.Index(b64s, ",")
 	dec := base64.NewDecoder(base64.StdEncoding, strings.NewReader(b64s[i+1:]))
 	r.Header.Set("Content-Type","image/png")
-	io.Copy(r.Response.Writer, dec)
+	io.Copy(r.Response.Writer, dec)*/
+	r.Response.WriteJson(g.Map{"code":200,"img":b64s})
 }
 //获取城市
 func getcity(r *ghttp.Request){

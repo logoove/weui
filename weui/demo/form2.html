@@ -49,9 +49,12 @@ window.scrollTo(0, Math.max(scrollHeight - 1, 0));
                 settime(obj) }, 1000);
 
         }
-
+        getcode()
         function getcode(){
-            $("#code").attr("src","/code?random="+Math.random());
+            $.get("/code?random="+Math.random(),function(res){
+                $("#code").attr("src",res.img);
+            },'json');
+
         };
 
         function textarea(input) {

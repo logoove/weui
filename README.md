@@ -16,33 +16,16 @@ WeUI+基于Zepto1.2和weui1.13等众多开源项目参考而成的,接近100个�
 
 [![](https://img.shields.io/badge/gitee-https%3A%2F%2Fgitee.com%2Fyoby%2Fweui-1)](https://gitee.com/yoby/weui)
 ![](https://img.shields.io/badge/%E8%B5%9E%E5%8A%A9%E6%88%91-%E6%84%9F%E8%B0%A2%E6%AF%8F%E4%BD%8D%E8%B5%9E%E5%8A%A9%E5%92%8C%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7-1)
-赞助者可以留下姓名,网站,在演示页面会给予展示,金额需要>=1元,框架的正常发展离不开用户的支持!!!
-![微信](https://weui.shanliwawa.top/weui/images/wechat.jpg)
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![支付宝](https://weui.shanliwawa.top/weui/images/alipay.jpg)
 
 ### 简介
 [![GitHub license](https://img.shields.io/github/license/logoove/weui?color=1)](https://github.com/logoove/weui/blob/master/LICENSE)
 本项目系个人作品,没有时间写文档,所以使用方法参见演示例子,不懂得可以在issues留言提问,都会及时回复,gitee更迅速回复;
-最新更新里面js会逐渐采用ES6的写法,如果不懂的快去看看语法书吧!
-php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多同php相同名字的用法也是一样的(作者是PHP程序员)
-新版本将后台服务由php改为go语言提供!
-
-### go编译后台注意
-本项目不含cgo,所以可以跨平台编译,开发使用goframe框架+数据sqlite3,go版本>=1.16.
-
-### 其他作品
-- weuiplus 一个移动端UI库,可开发公众号和一般移动端.<https://github.com/logoove/weui>
-- php,一个函数工具库,不使用任何第三方库和扩展库只用基础库写成<https://github.com/logoove/go/php>
-- cli 命令行工具构建工具<https://github.com/logoove/cli>
-- gv go版本管理器 <https://github.com/logoove/gv>
-- nv nodejs版本管理器 <https://github.com/logoove/nv>
-- pv python管理工具 <https://github.com/logoove/pv>
-
 ### 更新日志
 ![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
+- 2021-6-7 v6.07 修复验证码可能导致在小内存机器上内存崩溃闪退程序.
 - 2021-5-30 v6.06 修复分页中计算数组或对象长度使用count,否则可能导致分页错误,length属性可以计算数组不能计算对象.
 - 2021-5-24 v6.05 修改分页中一些逻辑,错误,以及优化.
-- 2021-5-19 v6.04 使用goframe框架重写后台(原来是gin),数据库依然是sqlite3,本次采用新的sqlite驱动,不再使用cgo,可以直接在win10上交叉编译任何系统的程序,新增图片占位符和统计流量接口.
+- 2021-5-19 v6.04 数据库依然是sqlite3,本次采用新的sqlite驱动,不再使用cgo,可以交叉编译任何系统的程序,新增图片占位符和统计流量接口.
 - 2021-4-22 v6.03 重写fn.js,新增一些函数,全部使用export导出函数,里面函数使用必须import {md5,dump} from 'js/fn.js'这样导入,需要哪个导入哪个;新增js表格排序,支持string,int,float,date四种类型能排序常见数据类型
 - 2021-3-26 V6.02 删除js函数setcookie,因为此函数存在设置过期时间不生效,使用ls.setCookie替代,修复md5函数错误,新增统计站点pv,uv,此接口(/pvuv)可以用来统计任何静态页面,包括跨域名,原理是传递每个页面的url生成的md5值,类型1是uv,0是pv.
 - 2021-3-21 v6.01 修复底部自动加载在安卓部分手机下不能加载.

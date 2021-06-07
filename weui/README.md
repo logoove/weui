@@ -30,14 +30,6 @@ php.js所有方法在插件js方法中都有简单介绍,会不断增加;很多�
 ### go编译后台注意
 本项目不含cgo,所以可以跨平台编译,开发使用goframe框架+数据sqlite3,go版本>=1.16.
 
-### 其他作品
-- weuiplus 一个移动端UI库,可开发公众号和一般移动端.<https://github.com/logoove/weui>
-- php,一个函数工具库,不使用任何第三方库和扩展库只用基础库写成<https://github.com/logoove/go/php>
-- cli 命令行工具构建工具<https://github.com/logoove/cli>
-- gv go版本管理器 <https://github.com/logoove/gv>
-- nv nodejs版本管理器 <https://github.com/logoove/nv>
-- pv python管理工具 <https://github.com/logoove/pv>
-
 ### 更新日志
 ![](https://img.shields.io/badge/Date-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-1)
 - 2021-5-30 v6.06 修复分页中计算数组或对象长度使用count,否则可能导致分页错误,length属性可以计算数组不能计算对象.
