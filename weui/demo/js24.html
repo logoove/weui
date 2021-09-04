@@ -18,8 +18,7 @@
         display: inline-block;
         width:100%;
         max-width: 100%;
-        max-height:260px;
-        margin-bottom: .5em;
+        height:auto;
     }
 </style>
 </head>
@@ -87,38 +86,16 @@
     var masonry = Macy.init({
         container: '#macy',
         trueOrder: false,
-        waitForImages: true,
+        waitForImages: false,
         debug: false,
-        margin: {
-            x: 10,
-            y: 10
-        },
+        margin:{x:10,y:5},
         columns: 6,
-        breakAt: {
-            1200: {
-                columns: 5,
-                margin: {
-                    x: 4,
-                    y: 4
-                }
-            },
-            940: {
-                columns: 3,
-                margin: {
-                    y: 4
-                }
-            },
-            520: {
-                columns: 2,
-                margin: {
-                    x: 4,
-                    y: 4
-                },
-            },
-            400: {
-                columns: 1
+       breakAt: {
+                1200: 5,
+                940: 3,
+                520: 2,
+                320: 1
             }
-        }
     });
 </script>
 </body>
