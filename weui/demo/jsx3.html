@@ -74,7 +74,13 @@
             }
         });
         $("#date3").calendar({
-            container: "#inline-calendar"
+            container: "#inline-calendar",
+            dateFormat :'yyyy-mm-dd' ,
+            onChange: function (p, values, displayValues) {
+                console.log(values, displayValues,p);
+                 $.toast(values,'text');
+              
+            }
         });
     </script>
 
