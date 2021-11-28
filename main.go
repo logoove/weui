@@ -1,12 +1,11 @@
 package main
 
 import (
-	"database/sql"
+	_ "weui/packed"
 	"fmt"
 	"github.com/gogf/gf/database/gdb"
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/gfile"
 	"github.com/gogf/gf/os/gtime"
 	"github.com/logoove/go/php"
 	"github.com/mojocn/base64Captcha"
@@ -14,7 +13,7 @@ import (
 	"image/color"
 	"image/draw"
 	"image/png"
-	_ "modernc.org/sqlite"
+	_ "github.com/logoove/sqlite"
 	"strconv"
 	"strings"
 	"time"
@@ -24,35 +23,7 @@ func MiddlewareCORS(r *ghttp.Request) {
 	r.Response.CORSDefault()
 	r.Middleware.Next()
 }
-type DriverSqlite3 struct {
-	*gdb.DriverSqlite
-}
-func init(){
-	gdb.Register("sqlite", &DriverSqlite3{})
-}
-func (d *DriverSqlite3) New(core *gdb.Core, node *gdb.ConfigNode) (gdb.DB, error) {
-	return &DriverSqlite3{
-		&gdb.DriverSqlite{
-			Core: core,
-		},
-	}, nil
-}
-func (d *DriverSqlite3) Open(config *gdb.ConfigNode) (*sql.DB, error) {
-	var source string
-	if config.LinkInfo != "" {
-		source = config.LinkInfo
-	} else {
-		source = config.Name
-	}
-	if absolutePath, _ := gfile.Search(source); absolutePath != "" {
-		source = absolutePath
-	}
-	if db, err := sql.Open("sqlite", source); err == nil {
-		return db, nil
-	} else {
-		return nil, err
-	}
-}
+
 func main(){
 	php.Color("欢迎使用WeUI6新版,采用goframe框架\n本地访问地址:http://localhost:8885\n","green")
 	fmt.Println("")

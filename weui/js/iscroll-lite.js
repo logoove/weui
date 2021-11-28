@@ -1129,7 +1129,8 @@ if ( typeof module != 'undefined' && module.exports ) {
                 self.iScroll = new IScroll(self.el, { 
                     scrollX: true, 
                     scrollY: false ,
-                    click: true
+                    click: true,
+                    bindToWrapper: true //防止touchend等事件绑定到window,导致滑动敏感触发
                 });
 
                 if ( self.index === undefined ) {

@@ -6,15 +6,15 @@
 
 # Logger.
 [logger]
-    Path        = "weui/log"
+    Path        = "tmp/log"
     Level       = "all"
-    Stdout      = true
+    Stdout      = false
 [database]
     type = "sqlite"
     link  = "weui/db.db"
     debug = false
     # Database logger.
     [database.logger]
-        Path   = "weui/log"
+        Path   = "tmp/log"
         Level  = "all"
-        Stdout = true
+        Stdout = false
