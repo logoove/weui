@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>省市区镇四级联动</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/pcas.js"></script>
+	<style>
+		.city-title{
+			border: 1px solid #E2E2E2;
+	    padding: 5px 8px;
+	    color: #555;
+			font-size: 16px;
+		}
+		.city-mask{
+			background-color: rgba(0, 0, 0, 0.4);
+	    position: fixed;z-index: 500;
+	    bottom: 0;right: 0; left: 0;top: 0;
+	    display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;
+	    -webkit-box-pack: center;-webkit-justify-content: center;
+	    -ms-flex-pack: center;justify-content: center;
+	    -webkit-box-align: center;-webkit-align-items: center;
+	    -ms-flex-align: center;align-items: center;
+			font-size: 16px;
+		}
+		.city-select{
+			position: fixed;
+			font-size: 16px;
+	    bottom: 0;left: 0;
+	    width: 100%;height: 75%;overflow-y:auto;overflow-x: hidden;
+	    z-index: 1000; background-color: #fff;
+	    -webkit-transform: translate(0, 100%);transform: translate(0, 100%);-webkit-transition: -webkit-transform .3s;
+	    transition: -webkit-transform .3s;transition: transform .3s;transition: transform .3s, -webkit-transform .3s;
+		}
+		.city-select.brouce-in{
+			-webkit-transform: translate(0, 0);transform: translate(0, 0);
+		}
+		.city-select-header{
+			position: absolute;top: 0;left: 0;
+			width: 100%;z-index: 1;
+		}
+		.city-select-title{
+			width: 100%;text-align: center;
+	    height: 45px;line-height: 45px;position: relative;
+		}
+		.city-select-title:after {
+	    content: '';position: absolute;
+	    z-index: 0;bottom: 0;left: 0;width: 100%;height: 1px;
+	    border-bottom: 1px solid #B2B2B2;-webkit-transform: scaleY(0.5);
+	    transform: scaleY(0.5);-webkit-transform-origin: 0 100%;transform-origin: 0 100%;
+		}
+		.city-select-nav{
+			width: 100%;padding-left: .2rem;overflow: hidden;
+	    display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;
+		}
+		.city-select-nav > a {
+	   color: #222;display: block;
+	    height: 40px;line-height: 46px;text-decoration: none;
+	    padding: 0 .2rem;position: relative;
+	    margin-right: .15rem;white-space: nowrap;
+	    overflow: hidden;text-overflow: ellipsis;max-width: 40%;
+		}
+		.city-select-nav > a.crt {
+	    color: #07C160;
+		}
+		.city-select-nav > a.crt:after {
+	    content: '';
+	    width: 100%;height: 2px;
+	    background-color: #07C160;
+	    position: absolute;bottom: 0;left: 0;z-index: 2;
+		}
+		.city-select-content{
+			height: 100%;padding-top: 85px;
+	    width: 100%;display: -webkit-box;display: -webkit-flex;
+	    display: -ms-flexbox;display: flex;
+		}
+		.city-select-content>.city-select-item{
+			display: block;height: inherit;width: 25%;overflow-x: hidden;
+	    -webkit-box-flex: 0;-webkit-flex: 0 0 25%;-ms-flex: 0 0 25%;flex: 0 0 25%;
+	    overflow-y: auto;-webkit-overflow-scrolling: touch;
+	    background-color: #FFF;border-right: 1px solid #D9D9D9;
+		}
+		.city-select-item-box{
+			width: 250%;height: inherit;
+	    display: block; padding: 0 .4rem;
+		}
+		.city-select-item-box > a {
+	    color: #333;height: 40px;line-height: 40px;
+	    overflow: hidden;
+	    display: -webkit-box;display: -webkit-flex;
+	    display: -ms-flexbox;display: flex;
+	    -webkit-box-align: center;-webkit-align-items: center;-ms-flex-align: center;
+	    align-items: center;width: 100%;position: relative;z-index: 1;
+		}
+		.city-select-item-box > a.crt {
+	    color: #07C160;
+		}
+		.city-select-item-box > a:before {
+	    content: '';
+	    position: absolute;
+	    z-index: 0;bottom: 0;left: 0;
+	    width: 100%;height: 1px;
+	    border-bottom: 1px solid #D9D9D9;
+	    -webkit-transform: scaleY(0.5);
+	    transform: scaleY(0.5);
+	    -webkit-transform-origin: 0 100%;
+	    transform-origin: 0 100%;
+		}
+  </style>
+</head>
+<body>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        四级联动省市县镇(街道/乡)
+    </h1>
+    <p class="page-hd-desc f-green">数据来自github排名第一的采集</p>
+</div>
+
+	<div class="city-title">请选择省市县街道(乡镇)</div>
+
+<script>
+	
+	function pcasLocation(className){
+		this.cityBox = $("."+className);  //获取元素
+		this.chinaData = (new Location()).citys;  //设置中国城市数据
+		this.citys;     //选中省份后获得下面的所有地级市数据
+		this.areas;     //选中地级市后获得下面的所有县级市数据
+		this.streets;   //选中县级市后获得下面的所有街镇数据
+		this.address = Array(4);  //四个长度的数组，存放地址选择的结果
+		this.init();
+	}
+	pcasLocation.prototype={
+		constructor: pcasLocation,
+
+		init:function(){
+			this.defaultHtml(this.cityBox);
+			this.defaultProvince(this.chinaData);
+
+			this.selected("province", 0, "city");
+			this.selected("city", 1, "area");
+			this.selected("area", 2, "street");
+			this.selected("street", 3, "");
+
+			this.bind();
+		},
+		//1. 开始默认生成html
+		defaultHtml:function(dom){
+			let html = `
+				<div class="city-select brouce-in">
+					<div class="city-select-header">
+						<p class="city-select-title">选择省市县街道(乡镇)</p>
+						<div class="city-select-nav">
+							<a id="province-nav" href="javascript:;" class="crt">请选择</a>
+							<a id="city-nav" href="javascript:;" class=""></a>
+							<a id="area-nav" href="javascript:;" class=""></a>
+							<a id="street-nav" href="javascript:;" class=""></a>
+						</div>
+					</div>
+					<ul class="city-select-content">
+						<li class="city-select-item">
+							<div id="province" class="city-select-item-box"></div>
+						</li>
+						<li class="city-select-item">
+							<div id="city" class="city-select-item-box"></div>
+						</li>
+						<li class="city-select-item">
+							<div id="area" class="city-select-item-box"></div>
+						</li>
+						<li class="city-select-item">
+							<div id="street" class="city-select-item-box"></div>
+						</li>
+					</ul>
+				</div>
+				<div class="city-mask"></div>
+			           `;
+			$("body").append(html);
+		},
+		//2. 默认加载省份数据
+		defaultProvince:function(chinArr){
+			let str = "";
+			chinArr.forEach(function(e,i,arr){
+				str += ` 
+				  <a title="${e.n}" code="${e.c}" href="javascript:;" >${e.n}</a>
+				       `;
+			})
+			$("#province").append(str);
+		},
+		//3. 省，地，县，街点击事件
+		selected:function(idName, index, nextidName){
+			let that = this;
+			$("#"+idName).on("click","a",function(){
+				//点击颜色变化
+		  	$("#"+idName+" a").removeClass("crt");
+		  	$(this).addClass("crt");
+		  	let value = $(this).attr("title");
+		  	//将选中的地址存放到数组中	
+		  	//先清空数组
+		  	if(index == 0){
+		  		that.address.forEach(function(e,i,arr){
+			  		delete that.address[i];
+			  	});
+		  	}	
+		  	that.address[index] = value;
+		  	that.loadAddress(that.address);
+		  	$("#"+idName+"-nav").html(value);
+		  	$(".city-select-nav a").removeClass("crt");	
+		  	$("#"+idName+"-nav").addClass("crt");
+		  	let arrSelect;
+		  	switch(index){
+		  		case 0:
+		    		arrSelect = that.getData(value, that.chinaData);
+		    		break;
+		    	case 1:
+		    		arrSelect = that.getData(value, that.citys); //获取选中的地级市的全部数据
+		    		break;
+		    	case 2:
+		    		arrSelect = that.getData(value, that.areas); //获取选中的县级市的全部数据
+		    		break;	
+		    	default:
+		    		arrSelect = 0;
+		    		break;
+		  	}
+				if(that.findChildren(arrSelect)){
+					$("#"+nextidName).empty();
+					$("#"+nextidName).append(that.loadHtml(arrSelect).html);
+					switch(index){
+						case 0:
+			    		that.citys = that.loadHtml(arrSelect).data;  //获得子级全部数据
+			    		break;
+			    	case 1:
+			    		that.areas = that.loadHtml(arrSelect).data;  //获得子级全部数据
+			    		break;
+			    	default:
+			    		that.streets = that.loadHtml(arrSelect).data;  //获得子级全部数据
+			    		break;
+					}
+				}else{
+					$(".city-select").removeClass("brouce-in");
+					$(".city-mask").css("display","none");
+				}
+			});
+		},
+		//4. 将获取到的结果加载到页面上
+		loadAddress:function(arr){
+			let result = arr[0];
+			//判断后面是否为空，为空就不显示"-"
+			arr.forEach(function(e,i,arr){
+				if(i>0){
+					if(e != undefined){
+						result += "-";
+						result += e;
+					}
+				}
+			});
+			$(".city-title").html(result);
+			$(".city-title").css("color","#000");
+		},
+		//5. 点击地址选择框弹出模态框
+		bind:function(){
+			$(".city-title").on("click",function(){
+				$(".city-select").addClass("brouce-in");
+				$(".city-mask").css("display","block");
+			});
+			$(".city-mask").on("click",function(){
+				$(".city-select").removeClass("brouce-in");
+				$(".city-mask").css("display","none");
+			});
+		},
+		//查找对象中是否有children属性
+		findChildren:function(obj){
+			for(var name in obj){
+				if(obj.hasOwnProperty("h")){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		},
+		//根据父级数据加载对应的子级数据
+		loadHtml:function(obj){
+			let str = "";
+			let data = obj.h;
+			obj.h.forEach(function(e,i,arr){	
+				str += `
+							<a title="${e.n}" code="${e.c}" href="javascript:;" class="">${e.n}</a>
+				       `;
+			});
+			return {"html":str , "data":data};
+		},
+		//根据code和子级全部数据,获得选中的完整数据
+		getData:function(str,arr){
+			let data;
+			arr.forEach(function(e,i,arr){
+				if(e.n == str){
+					data = e;
+				}
+			});
+			return data;
+		}
+	}
+var citySelect = new pcasLocation("city-title");
+$(function(){
+	$(".city-select").removeClass("brouce-in");
+	$(".city-mask").css("display","none");
+})
+</script>
+</body>
+</html>
