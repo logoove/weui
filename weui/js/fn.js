@@ -1349,3 +1349,15 @@ export function handleTree(data, id, parentId, children, rootId) {
     });
     return treeData != '' ? treeData : data;
 }
+/*友好显示数字,十万以上显示10w+,一万以上显示1.00w,一千以上显示1.00k*/
+export function n(num) {
+    if (num >= 100000) {
+        num = round(num / 10000) + 'w+';
+    } else if (num >= 10000) {
+        num = round(num / 10000, 2) + 'w';
+    } else if (num >= 1000) {
+        num = round(num / 1000, 2) + 'k';
+    }
+
+    return num;
+}

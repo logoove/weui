@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script src="../js/countUp.min.js"></script>
+</head>
+
+<body ontouchstart>
+<div class="container">
+    <div class="page-hd">
+        <h1 class="page-hd-title">
+        数字翻牌插件
+        </h1>
+        <p class="page-hd-desc">独立插件不依赖框架,仅作收集整合</p>
+
+    </div>
+<div class="h5 bold page-bd-15 padding10-t padding10-b">统计展示</div>
+<div class="weui-grids grids-small tcenter"  >
+    <a href="javascript:;" class="grid bg-green f-white bold"  >
+        <div class="">
+            总用户量
+        </div>
+        <p class="weui-grid__label" id="n1">
+0
+        </p>
+    </a>
+    <a href="javascript:;" class="grid bg-orange f-white bold" >
+        <div class="">
+           拾人拾物
+        </div>
+        <p class="weui-grid__label" id="n2">
+0
+        </p>
+    </a>
+    <a href="javascript:;" class="grid bg-blue f-white bold" >
+        <div class="">
+            总浏览量
+        </div>
+        <p class="weui-grid__label" id="n3">
+0
+        </p>
+    </a>
+    <a href="javascript:;" class="grid bg-red f-white bold" >
+        <div class="">
+            今日浏览
+        </div>
+        <p class="weui-grid__label" id="n4">
+0
+        </p>
+    </a>
+</div>
+ <script>
+    let options= {
+        useEasing: true, // 使用缓和
+        useGrouping: true, // 使用分组(是否显示千位分隔符,一般为 true)
+        separator: '', // 分隔器(千位分隔符,默认为',')
+        decimal: '.', // 十进制(小数点符号,默认为 '.')
+        prefix: '', // 字首(数字的前缀,根据需要可设为 $,¥,￥ 等)
+        suffix: '' // 后缀(数字的后缀 ,根据需要可设为 元,个,美元 等)
+    };
+   const countUp1 = new CountUp('n1',0, 5234,0,2,options).start();
+    const countUp2 = new CountUp('n2',0, 123,0,3).start();
+    const countUp3 = new CountUp('n3',0, 1234,0,4).start();
+    const countUp4 = new CountUp('n4',0, 12345,0,5).start();
+</script>
+    <br>
+    <br>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; Yoby</p>
+    </div>
+</div>
+</body>
+</html>

@@ -883,7 +883,7 @@
     }
 
     var toastDefaults = $.toast.prototype.defaults = {
-        duration: 1000
+        duration: 2500
     }
 
 }($);
@@ -3756,4 +3756,3 @@ function share(){
 $(function(){
     var weixinimg=[];var weixinsrc=[];weixinimg=$('.weixin');for(var i=0;i<weixinimg.length;i++){weixinsrc[i]=weixinimg[i].src;};$('.weixin').click(function(){var index=$('.weixin').index(this);wx.previewImage({current:weixinsrc[index],urls:weixinsrc});});
 });
-function noshare(){var e=function(){WeixinJSBridge.call("hideOptionMenu")};"undefined"==typeof WeixinJSBridge&&(document.addEventListener?document.addEventListener("WeixinJSBridgeReady",e,!1):document.attachEvent&&(document.attachEvent("WeixinJSBridgeReady",e),document.attachEvent("onWeixinJSBridgeReady",e)))}
