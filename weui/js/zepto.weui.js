@@ -3743,6 +3743,77 @@ Device/OS Detection
         return oldFnTab;
     };
 })($);
+function render(tpl, data) {
+    const code = 'var p=[];with(this){p.push(\'' +
+        tpl
+            .replace(/[\r\t\n]/g, ' ')
+            .split('<%').join('\t')
+            .replace(/((^|%>)[^\t]*)'/g, '$1\r')
+            .replace(/\t=(.*?)%>/g, '\',$1,\'')
+            .split('\t').join('\');')
+            .split('%>').join('p.push(\'')
+            .split('\r').join('\\\'')
+        + '\');}return p.join(\'\');';
+    return new Function(code).apply(data);
+}
+let _sington;
+function gallery(url, options = {}) {
+    if(_sington) return _sington;
+    options = $.extend({
+        className: '',
+        onDelete:function(){}
+    }, options);
+
+    const $gallery = $(render(`<div class="weui-gallery <%= className %>" role="dialog" aria-modal="true" tabindex="-1">
+    <button class="weui-hidden_abs weui-gallery__close">关闭</button>
+    <span class="weui-gallery__img" style="background-image: url(<%= url %>);" role="img" src="<%= url %>"></span>
+    <div class="weui-gallery__opr">
+        <a href="javascript:" class="weui-gallery__del" role="button" aria-label="删除">
+            <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+        </a>
+    </div>
+</div>`, $.extend({
+        url: url
+    }, options)));
+
+    function _hide(callback) {
+        _hide =function(){} // 防止二次调用导致报错
+
+        $gallery
+            .addClass('weui-animate-fade-out')
+            .on('animationend webkitAnimationEnd', function () {
+                $gallery.remove();
+                _sington = false;
+                callback && callback();
+            });
+    }
+
+    function hide(callback) {
+        _hide(callback);
+    }
+
+    $('body').append($gallery);
+    $gallery.find('.weui-gallery__img').on('click', function () {
+        hide();
+    });
+    $gallery.find('.weui-gallery__close').on('click', function () {
+        hide();
+    });
+    $gallery.find('.weui-gallery__del').on('click', function () {
+        options.onDelete.call(this, url);
+    });
+
+    $gallery
+        .show()
+        .addClass('weui-animate-fade-in')
+        .on('animationend webkitAnimationEnd', function (evt) {
+            evt.target.focus();
+        });
+
+    _sington = $gallery[0];
+    _sington.hide = hide;
+    return _sington;
+}
 function share(){
     var sharetpl='<div class="weui-share" onclick="$(this).remove();">\n' +
         '<div class="weui-share-box">\n' +
@@ -3756,3 +3827,4 @@ function share(){
 $(function(){
     var weixinimg=[];var weixinsrc=[];weixinimg=$('.weixin');for(var i=0;i<weixinimg.length;i++){weixinsrc[i]=weixinimg[i].src;};$('.weixin').click(function(){var index=$('.weixin').index(this);wx.previewImage({current:weixinsrc[index],urls:weixinsrc});});
 });
+

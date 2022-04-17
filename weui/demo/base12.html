@@ -8,10 +8,16 @@
     <link rel="stylesheet" href="../css/weuix.css"/>
 
     <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
     <script>
         $(function(){
            $('#a').click(function(){
-                       $(".weui-gallery").show();
+                let gall =gallery("../images/pic_article.png",{
+            className: '',//自定义类
+            onDelete: function(){
+              if(confirm('确定删除该图片？')){ console.log('删除'); }
+                gall.hide(function(){})//隐藏
+            }})
            })
 
         });
@@ -29,16 +35,6 @@
  <div class="page-bd-15">
 <a href="javascript:;" class="weui-btn weui-btn_primary" id="a">显示相册</a>
  </div>
-
-<div class="weui-gallery" style="display: none">
-    <span class="weui-gallery__img" style="background-image: url(../images/pic_article.png);"></span>
-    <div class="weui-gallery__opr">
-        <a href="javascript:" class="weui-gallery__del">
-            <i class="weui-icon-delete weui-icon_gallery-delete" onclick='$(".weui-gallery").hide();'></i>
-        </a>
-    </div>
-</div>
-
 <br>
 <br>
 <div class="weui-footer weui-footer_fixed-bottom">
