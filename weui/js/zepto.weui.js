@@ -744,6 +744,59 @@
 
         return modal;
     };
+      $.prompts = function(text, title, onOK, onCancel, input) {
+        var config;
+        if (typeof text === 'object') {
+            config = text;
+        } else {
+            if (typeof title === 'function') {
+                input = arguments[3];
+                onCancel = arguments[2];
+                onOK = arguments[1];
+                title = undefined;
+            }
+            config = {
+                text: text,
+                title: title,
+                input: input,
+                onOK: onOK,
+                onCancel: onCancel,
+                empty: false  //allow empty
+            }
+        }
+
+        var modal = $.modal({
+            text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><textarea  rows="5" class="weui-textarea border weui-prompts" id="weui-prompt-input">' + (config.input || '')+'</textarea>',
+            title: config.title,
+            autoClose: false,
+            buttons: [
+                {
+                    text: defaults.buttonCancel,
+                    className: "default",
+                    onClick: function () {
+                        $.closeModal();
+                        config.onCancel && config.onCancel.call(modal);
+                    }
+                },
+                {
+                    text: defaults.buttonOK,
+                    className: "primary",
+                    onClick: function() {
+                        var input = $("#weui-prompt-input").val();
+                        if (!config.empty && (input === "" || input === null)) {
+                            modal.find('.weui-prompts').focus()[0].select();
+                            return false;
+                        }
+                        $.closeModal();
+                        config.onOK && config.onOK.call(modal, input);
+                    }
+                }]
+        }, function () {
+            this.find('.weui-prompts').focus()[0].select();
+        });
+
+        return modal;
+    };
 
     //如果参数过多，建议通过 config 对象进行配置，而不是传入多个参数。
     $.login = function(text, title, onOK, onCancel, username, password) {
@@ -3814,6 +3867,7 @@ function gallery(url, options = {}) {
     _sington.hide = hide;
     return _sington;
 }
+  
 function share(){
     var sharetpl='<div class="weui-share" onclick="$(this).remove();">\n' +
         '<div class="weui-share-box">\n' +

@@ -11,47 +11,10 @@
     <script src="../js/zepto.weui.js"></script>
 	 <script src="../js/eruda.js"></script>
     <script src="../js/php.js"></script>
-     <script>
-         $(function(){
-             address();
-             $(document).on("tap","#location",function(){
-                 localStorage.removeItem('code'); localStorage.removeItem('city');
-address();
-             })
-
-         })
-function address(){//定位函数
-    var str=`<iframe id="geoPage" frameborder=0 scrolling="no" src="//apis.map.qq.com/tools/geolocation?key=ACEBZ-FDXWP-WFRDV-VGS5Q-S2Q5K-HQBNA&referer=myapp&effect=zoom" allow="geolocation" style="display:none;"></iframe>`;
-    $(str).prependTo('body');
-}
-      window.addEventListener('message', function(event) {
-            var loc = event.data;
-            var codes= localStorage.getItem('code');
-
-          if (loc && loc.module == 'geolocation') {
-              if (codes == null) {
-                  localStorage.setItem('code', loc.adcode);
-                  if (loc.district == null) {
-                      //根据城市id定位名称
-                      $.post("/getcity", {code: localStorage.getItem('code')}, (res) => {
-                          localStorage.setItem('city', res.name);
-                          $("#city").text(res.name)
-                      },"json")
-                  } else {
-                      localStorage.setItem('city', loc.district);
-                      $("#city").text(loc.district)
-                  }
-              } else {
-                  $("#city").text(strcut(localStorage.getItem('city'),6,"... "))
-              }
-              console.log(loc);
-          }
-        }, false);
-
-     </script>
 </head>
 
 <body ontouchstart>
+<iframe id="geoPage" frameborder=0 scrolling="no" src="//apis.map.qq.com/tools/geolocation?key=2H4BZ-MGLW3-WZK3F-YEGNK-D5KLJ-33BHP&referer=myapp&effect=zoom" allow="geolocation" style="display:none;"></iframe>
 <div class="weui-search-bar">
     <a  href="js21.html" style="width:30%;margin-left:.8em;" class="f-green"><span id="city"></span><i class="icon icon-74 f-green"></i></a><input style="width:70%;display:inline-block;" type="search" class="search-input" id="search">
 </div>
@@ -72,5 +35,37 @@ function address(){//定位函数
     </p>
     <p class="weui-footer__text">Copyright &copy; Yoby</p>
 </div>
+<script>
+         $(function(){
+             $(document).on("click","#location",function(){
+                 localStorage.removeItem('code'); localStorage.removeItem('city');
+             })
+
+         })
+		var loc;
+      window.addEventListener('message', function(event) {
+            loc = event.data;
+          if (loc && loc.module == 'geolocation') {
+           console.log(loc)
+                  localStorage.setItem('code', loc.adcode);
+                  if (loc.district == null) {
+                      //根据城市id定位名称
+                      $.post("/getcity", {code: localStorage.getItem('code')}, (res) => {
+                          localStorage.setItem('city', res.name);
+                          $("#city").text(res.name)
+                      },"json")
+                  } else {
+                      localStorage.setItem('city', loc.district);
+                      $("#city").text(loc.district)
+                  }
+          }
+        }, false);
+document.getElementById("geoPage").contentWindow.postMessage('getLocation', '*');
+   setTimeout(function() {
+       if(!loc) {
+           document.getElementById("geoPage").contentWindow.postMessage('getLocation.robust', '*');
+       }
+   }, 6000);
+     </script>
 </body>
 </html>

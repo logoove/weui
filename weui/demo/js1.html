@@ -73,6 +73,20 @@
                     }
                 });
             });
+             $(document).on("click", "#sd30", function() {
+                $.prompts({
+                    title: '标题',
+                    text: '内容文案',
+                    input: '输入框默认值',
+                    empty: false, // 是否允许为空
+                    onOK: function (input) {
+                        //点击确认
+                    },
+                    onCancel: function () {
+                        //点击取消
+                    }
+                });
+            });
             $(document).on("click", "#sd4", function() {
                 $.modal({
                     title: "Hello",
@@ -130,6 +144,7 @@
     <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd1">Dialog alert</a>
     <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd2">Dialog  confirm</a>
     <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd3">Dialog  prompt</a>
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd30">Dialog  prompts文本域</a>
     <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd4">Dialog modal自定义</a>
     <a href="javascript:;" class="weui-btn weui-btn_primary" id="login">Dialog login</a>
     <a href="javascript:;" class="weui-btn weui-btn_primary" id="sd5">toptips默认</a>

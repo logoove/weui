@@ -968,7 +968,7 @@ export function strfind(string, find) {return !(string.indexOf(find)=== -1);};
  * @param 后日期
  * @returns 判断日期是否前边大于后边
  */
-export function date_eq(strDate1,strDate2){let date1=new Date(strDate1.replace(/\-/g,"\/"));let date2=new Date(strDate2.replace(/\-/g,"\/"));if((date1-date2)>=0){return true;}else{return false;}}
+export function date_eq(strDate1,strDate2){let date1=Date.parse(strDate1.replace(/\-/g,"\/"));let date2=Date.parse(strDate2.replace(/\-/g,"\/"));if((date1-date2)>0){return true;}else{return false;}}
 /**
  * @param 时间戳10位
  * @returns 格式化时间
