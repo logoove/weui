@@ -3818,7 +3818,7 @@ function gallery(url, options = {}) {
     }, options);
 
     const $gallery = $(render(`<div class="weui-gallery <%= className %>" role="dialog" aria-modal="true" tabindex="-1">
-    <button class="weui-hidden_abs weui-gallery__close">关闭</button>
+    <button class="weui-hidden_abs weui-gallery__close right">关闭</button>
     <span class="weui-gallery__img" style="background-image: url(<%= url %>);" role="img" src="<%= url %>"></span>
     <div class="weui-gallery__opr">
         <a href="javascript:" class="weui-gallery__del" role="button" aria-label="删除">

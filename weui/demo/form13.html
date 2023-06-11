@@ -16,6 +16,11 @@
    $(".page-hd-desc").html(v)
 })
 
+$(document).on("click","#k2 .weui-form-radio",function(){
+ 
+ var v = $(this).val();
+   $(".page-hd-desc").html(v)
+})
         });
 	
 
@@ -68,7 +73,7 @@
     <div class="weui-form">
 
         <div class="weui-form-li iblock">
-            <input class="weui-form-checkbox"  name="f2"  id="g1" value="中国" type="radio">
+            <input class="weui-form-checkbox"  name="f2"  id="g1" value="刘亦菲" type="radio">
             <label for="g1" >
                 <i class="weui-icon-radio"></i>
                 <div class="weui-form-text"><p>刘亦菲</p></div>
@@ -76,29 +81,47 @@
         </div>
 
         <div class="weui-form-li iblock">
-            <input class="weui-form-checkbox"  name="f2"  id="g2" value="美国" type="radio">
+            <input class="weui-form-checkbox"  name="f2"  id="g2" value="杨幂" type="radio">
             <label for="g2" >
                 <i class="weui-icon-radio"></i>
-                <div class="weui-form-text"><p>范冰冰</p></div>
+                <div class="weui-form-text"><p>杨幂</p></div>
             </label>
         </div>
         <div class="weui-form-li iblock">
-            <input class="weui-form-checkbox"  name="f2"  id="g3" value="日本" type="radio">
+            <input class="weui-form-checkbox"  name="f2"  id="g3" value="杨紫" type="radio">
             <label for="g3" >
                 <i class="weui-icon-radio"></i>
-                <div class="weui-form-text"><p>童菲</p></div>
+                <div class="weui-form-text"><p>杨紫</p></div>
             </label>
         </div>
         <div class="weui-form-li iblock">
-            <input class="weui-form-checkbox"  name="f2"  id="g4" value="日本" type="radio">
+            <input class="weui-form-checkbox"  name="f2"  id="g4" value="迪丽热巴" type="radio">
             <label for="g4" >
                 <i class="weui-icon-radio"></i>
-                <div class="weui-form-text"><p>徐佳琪</p></div>
+                <div class="weui-form-text"><p>迪丽热巴</p></div>
             </label>
         </div>
 
     </div>
 
+  <div class="weui-cells__title weui-start">你经常用weui做项目吗</div>
+
+  <div class="weui-form-div" id="k2">
+        <div class="weui-form-radio-li">
+            <input class="weui-form-radio" checked  name="a2"  id="a1" value="1" type="radio">
+            <label for="a1" >
+                <div class="weui-form-text"><p>是</p></div>
+            </label>
+        </div>
+
+        <div class="weui-form-radio-li">
+            <input class="weui-form-radio"  name="a2"  id="a2" value="0" type="radio">
+            <label for="a2" >
+                <div class="weui-form-text"><p>否</p></div>
+            </label>
+        </div>
+        
+</div>
 
     <div class="weui-cells__title weui-start"> 3 . 选择你的爱好?<span class="f-green">[多选题]</span></div>
     <div class="weui-form">
@@ -130,11 +153,11 @@
     </div>
 
 
-    <div class="weui-cells__title weui-start"> 4 . 哪些都是大公司老板?<span class="f-green">[多选题]</span></div>
+    <div class="weui-cells__title weui-start"> 4 . 哪些人不是中国人?<span class="f-green">[多选题]</span></div>
     <div class="weui-form">
 
         <div class="weui-form-li">
-            <input class="weui-form-checkbox"  name="f4"  id="j1" value="美术" type="checkbox">
+            <input class="weui-form-checkbox"  name="f4"  id="j1" value="马云" type="checkbox">
             <label for="j1" >
                 <i class="weui-icon-checkbox"></i>
                 <div class="weui-form-text"><p>马云</p></div>
@@ -142,17 +165,17 @@
         </div>
 
         <div class="weui-form-li">
-            <input class="weui-form-checkbox"  name="f4"  id="j2" value="美国" type="checkbox">
+            <input class="weui-form-checkbox"  name="f4"  id="j2" value="马化腾" type="checkbox">
             <label for="j2" >
                 <i class="weui-icon-checkbox"></i>
                 <div class="weui-form-text"><p>马化腾</p></div>
             </label>
         </div>
         <div class="weui-form-li">
-            <input class="weui-form-checkbox"  name="f4"  id="j3" value="日本" type="checkbox">
+            <input class="weui-form-checkbox"  name="f4"  id="j3" value="马斯克" type="checkbox">
             <label for="j3" >
                 <i class="weui-icon-checkbox"></i>
-                <div class="weui-form-text"><p>马赛克</p></div>
+                <div class="weui-form-text"><p>马斯克</p></div>
             </label>
         </div>
 

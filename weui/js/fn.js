@@ -1124,18 +1124,6 @@ export function tpl(a,d){let c=function(l){let j,h=[],g=[];for(j in l){h.push(j)
 export const browser={version:function(){let u=navigator.userAgent.toLowerCase(),app=navigator.appVersion;return{ie:u.indexOf("trident")>-1,opera:u.indexOf("tresto")>-1,webKit:u.indexOf("applewebkit")>-1,firefox:u.indexOf("gecko")>-1&&u.indexOf("khtml")==-1,mobile:!!u.match(/applewebkit.*mobile.*/),ios:!!u.match(/\(i[^;]+;( u;)? cpu.+mac os x/),android:u.indexOf("android")>-1||u.indexOf("linux")>-1,iphone:u.indexOf("iphone")>-1,ipad:u.indexOf("ipad")>-1,weixin:u.match(/micromessenger/i)=="micromessenger"}}(),language:(navigator.browserLanguage||navigator.language).toLowerCase(),wifi:!function(t){let e=!0,n=t.navigator.userAgent,i=t.navigator.connection;if(/MicroMessenger/.test(n))if(/NetType/.test(n)){let o=n.match(/NetType\/(\S)+/)[0].replace("NetType/","");o&&"WIFI"!=o&&(e=!1)}else document.addEventListener("WeixinJSBridgeReady",function(){WeixinJSBridge.invoke("getNetworkType",{},function(t){"network_type:wifi"!=t.err_msg&&(e=!1)})});else if(i){let a=i.type;"wifi"!=a&&"2"!=a&&"unknown"!=a&&(e=!1)}t.wifi=e}(window)};
 
 /**
- *
- * @param key 支持字符串
- * @param value 只能字符串
- * @param time 过期时间 秒
- * @return 设置cookie
- */
-export function setCookie(key, value, time){
-    let d = new Date();
-    d.setTime(d.getTime() + time*1000);
-    document.cookie = key + "=" + value + "; expires=" + d.toGMTString();
-}
-/**
  * ls.set("text", "this is string",3);
  * ls.get("text")
  * ls.remove("a")

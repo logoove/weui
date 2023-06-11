@@ -1393,8 +1393,6 @@ label > * {
     text-align: right;
     font-size: 1rem;
     font-weight: normal;
-    -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
-    -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
 }
 .weui-picker-modal .bar + .picker-items {
     height: 10.8rem;
@@ -1484,18 +1482,6 @@ label > * {
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    .weui-picker-modal .picker-center-highlight:before {
-        -webkit-transform: scaleY(0.5);
-        transform: scaleY(0.5);
-    }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-    .weui-picker-modal .picker-center-highlight:before {
-        -webkit-transform: scaleY(0.33);
-        transform: scaleY(0.33);
-    }
-}
 .weui-picker-modal .picker-center-highlight:after {
     content: '';
     position: absolute;
@@ -1510,18 +1496,6 @@ label > * {
     z-index: 15;
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    .weui-picker-modal .picker-center-highlight:after {
-        -webkit-transform: scaleY(0.5);
-        transform: scaleY(0.5);
-    }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-    .weui-picker-modal .picker-center-highlight:after {
-        -webkit-transform: scaleY(0.33);
-        transform: scaleY(0.33);
-    }
 }
 .weui-picker-modal .picker-3d .picker-items {
     overflow: hidden;
@@ -3732,6 +3706,34 @@ position: relative;
 min-height:1em;
 -webkit-box-sizing: border-box;
 box-sizing: border-box;
+}
+.weui-form-div{
+width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+.weui-form-radio-li{
+display: inline-block;
+ padding:5px;
+    width:45%;
+}
+.weui-form-radio{
+     position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.weui-form-radio + label{
+	text-align: center;
+    border: 1px solid #07c160;
+    border-radius: 5px;
+     line-height: 2;
+    display: inline-block;
+    width:100%;
+}
+.weui-form-radio:checked + label {
+    border-color: #07c160;
+    background-color: #07c160;
+    color: white;
 }
 /*
 图片效果*/
