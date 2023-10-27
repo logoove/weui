@@ -108,7 +108,7 @@
             }
             function uploadimg(obj) {
                 lrz(obj.files[0],{width:750,fieldName:"file"}).then(function(data) {
-                    $.post("/upimg",{imgbase64: data.base64},function(rs){
+                    $.post("/v1/upimg",{imgbase64: data.base64},function(rs){
                         $(obj).parent().prev().html('<li onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url(/'+rs.src+')"><input value="'+rs.src+'"  type="hidden"  name="file" /></li>');
                     },'json');
                  
@@ -143,7 +143,7 @@
                 var len = files.length;
                 for (var i=0; i < len; i++) {
                     lrz(files[i], {width: 750, fieldName: "file"}).then(function (data) {
-                        $.post("/upimg", {imgbase64: data.base64}, function (rs) {
+                        $.post("/v1/upimg", {imgbase64: data.base64}, function (rs) {
                             $(obj).parent().prev().append('<li onclick="removeimgs(this)" class="weui-uploader__file " style="background-image:url(/' + rs.src + ')"><input value="'+rs.src+'"  type="hidden"  name="files" /></li>');
                         }, 'json');
 
@@ -178,7 +178,7 @@
              var reader = new FileReader();
              reader.onload = function (evt) {
 
-                 $.post("/upimg",{imgbase64: evt.target.result},function(rs){
+                 $.post("/v1/upimg",{imgbase64: evt.target.result},function(rs){
                      $(file).parent().prev().html('<li  onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url('+evt.target.result+')"><input value="'+rs.src+'"  type="hidden"  name="files" /></li>');
                  },'json');
              };
@@ -212,7 +212,7 @@
                     if (file.files && file.files[i]) {
                         var reader = new FileReader();
                         reader.onload = function (evt) {
-                            $.post("/upimg",{imgbase64: evt.target.result},function(rs){
+                            $.post("/v1/upimg",{imgbase64: evt.target.result},function(rs){
                                 $(file).parent().prev().append('<li  onclick="removeimg(this)" class="weui-uploader__file" style="background-image:url('+evt.target.result+')"><input value="'+rs.src+'"  type="hidden"  name="files" /></li>');
                             },'json');
                         };

@@ -31,7 +31,7 @@
 
 <script>
     function get(){
-        axios.get('/axiosget',
+        axios.get('/v1/axget',
             {params:{do:1,name:'李白'}}) //也可以直接拼接在url
     .then(function(rs){
         console.log(rs)
@@ -45,7 +45,7 @@
     }
 
     function post(){
-        axios.post('/axiosgp',
+        axios.post('/v1/axpost',
          {name:'李黑'}) //也可以直接拼接在url
             .then(function(rs){
                 console.log(rs)
@@ -66,7 +66,7 @@
                 'Access-Control-Allow-Origin': '*'
             },//设置跨域请求头
             method: 'post',
-            url: '/axiosgp',
+            url: '/v1/ax2',
             data: {
                name:"杜甫"
             }

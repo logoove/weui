@@ -21,7 +21,7 @@
     </style>
      <script>
          const select=(a)=>{
-             $.post("/getcitypinyin",{py:a},(res)=>{
+             $.post("/v1/getpy",{py:a},(res)=>{
                  var list = res.list;
                  var html='';
                  console.log(list)
@@ -41,7 +41,7 @@
              if(keyword==''){
                  $.toptip('关键字不能为空');return false;
              }
-             $.post("/getcityso",{kw:keyword},(res)=>{
+             $.post("/v1/getso",{kw:keyword},(res)=>{
                  var list = res.list;
                  if(empty(list)){
                      $("#list").html("没有找到数据")

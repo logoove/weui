@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>DPlayer视频播放器演示</title>
-    <link rel="stylesheet" href="../../css/weui.css"/>
-    <link rel="stylesheet" href="../../css/weuix.css"/>
-    <script src="../../js/zepto.min.js"></script>
+    <link rel="stylesheet" href="../../weui/css/weui.css"/>
+    <link rel="stylesheet" href="../../weui/css/weuix.css"/>
+    <script src="../../weui/js/zepto.min.js"></script>
     <script>
         $(function(){
             $(".weui-c-like .icon").click(function(){
@@ -32,18 +32,18 @@
             </div>
             <div class="weui-c-article">
                 <p>DPlayer是一个支持弹幕的 HTML5 视频播放器。支持 Bilibili 视频和 danmaku，支持HLS，FLV，MPEG DASH，WebTorrent(需要相应插件,默认支持mp4)以及其他视频格式，支持截屏、热键、切换清晰度以及字幕等</p>
-        <link rel="stylesheet" href="DPlayer.min.css">
+        <link rel="stylesheet" href="./dp/DPlayer.min.css">
 <div id="dplayer"></div>
-<script src="DPlayer.min.js"></script>
+<script src="./dp/DPlayer.min.js"></script>
 		<script type="text/javascript">
 	const dp = new DPlayer({
     container: document.getElementById('dplayer'),
     screenshot: true,
     autoplay:true,
     video: {
-        url: './1.mp4',
-        pic: '../../images/1.jpg',
-        thumbnails: '../../images/1.jpg'
+        url: './dp/1.mp4',
+        pic: './dp/1.jpg',
+        thumbnails: './dp/1.jpg'
     }
 });
 		</script>

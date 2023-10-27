@@ -62,8 +62,8 @@
         let flag=true
 function ajaxpage1(start1){
             $.ajax({
-                type:"post",
-                url:'/zanlist1',
+                type:"get",
+                url:'/v1/zlist1',
                 data: {"start":start1,"pagesize":pagesize},
                 dataType:'json',
                 timeout:10000,

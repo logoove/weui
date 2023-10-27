@@ -48,8 +48,8 @@
     let loading=false
     function ajaxpage(start1){
         $.ajax({
-            type : "POST",
-            url : '/zanlist1',
+            type : "get",
+            url : '/v1/zlist1',
             data: {"start":start1,"pagesize":pagesize},
             dataType : "json",
             beforeSend:function(){

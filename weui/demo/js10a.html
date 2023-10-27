@@ -58,9 +58,9 @@
     let loading=false//防止重复加载
     function ajaxpage(start1,index1){
         $.ajax({
-            url:"/zanlist1",
+            url:"/v1/zlist1",
             data: {"start":start1,"pagesize":pagesize,"index":index1},
-            type:"POST",
+            type:"GET",
             dataType : "json",
             beforeSend:function(){
                 $("#more").show();

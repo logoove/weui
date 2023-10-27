@@ -50,7 +50,7 @@
                   localStorage.setItem('code', loc.adcode);
                   if (loc.district == null) {
                       //根据城市id定位名称
-                      $.post("/getcity", {code: localStorage.getItem('code')}, (res) => {
+                      $.post("/v1/getcity", {code: localStorage.getItem('code')}, (res) => {
                           localStorage.setItem('city', res.name);
                           $("#city").text(res.name)
                       },"json")

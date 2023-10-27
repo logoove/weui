@@ -93,7 +93,7 @@
     function ajaxpage(pageNum){
         if(ajaxFlag){
             ajaxFlag = false;
-            $.post("/zanlist", getSearch(pageNum), function(json){
+            $.get("/v1/zlist", getSearch(pageNum), function(json){
                 ajaxFlag = true;
                 $("#rank-list .weui-cell").remove(); //清除已有数据
                 if(json.code == 200 && json.total> 0){

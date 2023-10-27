@@ -16,7 +16,7 @@
 
         const save0=()=>{
             let pwd = $("#pwd").val()
-            $.post("/login",{'pwd':pwd},function(res){
+            $.post("/v1/login",{'pwd':pwd},function(res){
                 console.log(res)
                 if(res.code==200){
                     $("#html").html(res.msg);return false;
@@ -30,7 +30,7 @@
             let zid = $("#zid").val()
             let money = $("#money").val()
             let say = $("#say").val()
-            $.post("/savedata",{zid,money,say},function(res){
+            $.post("/v1/savedata",{zid,money,say},function(res){
                 console.log(res)
                 if(res.code==200){
 

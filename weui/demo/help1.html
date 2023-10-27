@@ -29,7 +29,7 @@
     <script>
         $(function(){
 
-            $.post('/md',function(rs){
+            $.post('/v1/md',function(rs){
                 $("#ajax").html(marked(rs));
 
             })
