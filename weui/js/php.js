@@ -408,7 +408,27 @@ function $_COOKIE(b){var d=0,g="",f=b+"=",a=document.cookie.split(";"),e=a.lengt
  * @param 处理方法函数
  * @returns 循环输出
  */
-function foreach(a,d){var b,c,e;if(a&&typeof a==="object"&&a.change_key_case){return a.foreach(d)}if(typeof this.Iterator!=="undefined"){var c=this.Iterator(a);if(d.length===1){for(e in c){d(e[1])}}else{for(e in c){d(e[0],e[1])}}}else{if(d.length===1){for(b in a){if(a.hasOwnProperty(b)){d(a[b])}}}else{for(b in a){if(a.hasOwnProperty(b)){d(b,a[b])}}}}};
+function foreach(obj,callback){
+       if("length" in obj){
+           for(let i =0;i<obj.length;i++){
+               let item = obj[i];
+               let res = callback && callback.call(item,i,item);
+               if(res === false){
+                   break;
+               }
+           }
+       }else{
+           for(let key in obj){
+               if(obj.hasOwnProperty(key)){
+                   let value = obj[key];
+                   let res = callback && callback.call(value,key,value);
+                   if(res === false){
+                       break;
+                   }
+               }
+           }
+       }
+   }
 
 /**
  * preg_match('a','abc') true

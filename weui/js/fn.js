@@ -819,26 +819,27 @@ export function $_COOKIE(b){let d=0,g="",f=b+"=",a=document.cookie.split(";"),e=
  * @param 处理方法函数
  * @returns 循环输出
  */
-export function foreach(arr, handler) {
- let k, it, pair;
-    if (arr && typeof arr === 'object' && arr.change_key_case) { // Duck-type check for our own array()-created PHPJS_Array
-        return arr.foreach(handler);
-    }
-if (handler.length === 1) {
-        for (k in arr) {
-            if (arr.hasOwnProperty(k)) {
-                handler(arr[k]); // only pass the value
-            }
-        }
-    }
-    else {
-        for (k in arr) {
-            if (arr.hasOwnProperty(k)) {
-                handler(k, arr[k]);
-            }
-        }
-    }
-}
+export function foreach(obj,callback){
+       if("length" in obj){
+           for(let i =0;i<obj.length;i++){
+               let item = obj[i];
+               let res = callback && callback.call(item,i,item);
+               if(res === false){
+                   break;
+               }
+           }
+       }else{
+           for(let key in obj){
+               if(obj.hasOwnProperty(key)){
+                   let value = obj[key];
+                   let res = callback && callback.call(value,key,value);
+                   if(res === false){
+                       break;
+                   }
+               }
+           }
+       }
+   }
 
 /**
  * preg_match('a','abc') true
